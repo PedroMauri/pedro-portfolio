@@ -1,5 +1,6 @@
 ﻿import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import { MockUIPreview } from "@/components/case-study/MockUIPreview";
 import type { CaseStudy } from "@/content/cases";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +18,17 @@ export function CaseCard({ caseStudy, featured = false }: CaseCardProps) {
         featured && "md:flex-row"
       )}
     >
-      <div className={cn("relative aspect-[16/10] bg-gradient-to-br", caseStudy.accent, featured ? "md:w-1/2" : "w-full")} />
+      <div
+        className={cn(
+          "relative aspect-[16/10] overflow-hidden border-b border-border bg-slate-50",
+          featured ? "md:w-1/2 md:border-b-0 md:border-r" : "w-full"
+        )}
+      >
+        <MockUIPreview
+          variant={caseStudy.previewVariant ?? "workflow"}
+          className="h-full transition-transform duration-300 group-hover:scale-[1.02]"
+        />
+      </div>
       <div className={cn("flex flex-1 flex-col p-6 md:p-8", featured && "md:w-1/2")}>
         <div className="mb-3 flex flex-wrap gap-2">
           {caseStudy.tags.map((tag) => (
@@ -30,7 +41,7 @@ export function CaseCard({ caseStudy, featured = false }: CaseCardProps) {
           {caseStudy.title}
         </h3>
         <p className="mt-2 text-sm text-muted">
-          {caseStudy.company} - {caseStudy.role} - {caseStudy.year}
+          {caseStudy.company} · {caseStudy.role} · {caseStudy.year}
         </p>
         <p className="mt-4 flex-1 leading-relaxed text-muted">{caseStudy.summary}</p>
         <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent">
