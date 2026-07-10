@@ -1,9 +1,15 @@
 ﻿import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { CaseFigure } from "@/components/case-study/CaseFigure";
 import { CaseSection } from "@/components/case-study/CaseSection";
 import { InsightCard } from "@/components/case-study/InsightCard";
 import { MockUIPreview } from "@/components/case-study/MockUIPreview";
 import { cases, getCaseBySlug } from "@/content/cases";
+
+function useSectionNumber() {
+  let count = 0;
+  return () => String(++count).padStart(2, "0");
+}
 
 export default function CaseStudyPage() {
   const { slug } = useParams();
@@ -22,9 +28,18 @@ export default function CaseStudyPage() {
     );
   }
 
+  const section = useSectionNumber();
+  const legacySteps = caseStudy.problemBefore?.legacySteps ?? [
+    "Modal",
+    "Tab",
+    "Email",
+    "Tab",
+    "Modal",
+    "Export",
+  ];
+
   return (
     <article>
-      {/* Hero */}
       <header className={`bg-gradient-to-br ${caseStudy.accent} text-white`}>
         <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
           <Link
@@ -63,7 +78,6 @@ export default function CaseStudyPage() {
         </div>
       </header>
 
-      {/* Meta strip */}
       {caseStudy.meta ? (
         <div className="border-b border-border bg-card">
           <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 md:grid-cols-3">
@@ -84,7 +98,7 @@ export default function CaseStudyPage() {
       ) : null}
 
       <div className="mx-auto max-w-3xl space-y-16 px-6 py-12 md:space-y-20 md:py-16">
-        <CaseSection number="01" title="Context">
+        <CaseSection number={section()} title="Context">
           <p className="leading-relaxed text-muted">{caseStudy.context}</p>
           {caseStudy.statCallout ? (
             <div className="mt-6 rounded-2xl border border-accent/20 bg-accent-soft px-6 py-5">
@@ -94,20 +108,22 @@ export default function CaseStudyPage() {
         </CaseSection>
 
         {caseStudy.problemBefore ? (
-          <CaseSection number="02" title="The problem">
+          <CaseSection number={section()} title="The problem">
             <p className="leading-relaxed text-muted">{caseStudy.problemBefore.description}</p>
             <div className="mt-6 overflow-hidden rounded-2xl border border-border">
               <div className="border-b border-border bg-slate-100 px-4 py-2 text-xs font-medium uppercase tracking-wider text-muted">
-                Legacy flow (simplified)
+                Legacy experience (simplified)
               </div>
               <div className="aspect-[16/9] bg-slate-50 p-4">
                 <div className="flex h-full flex-wrap items-center justify-center gap-2">
-                  {["Modal", "Tab", "Email", "Tab", "Modal", "Export"].map((step, i) => (
+                  {legacySteps.map((step, i) => (
                     <div key={`${step}-${i}`} className="flex items-center gap-2">
                       <div className="rounded-lg border border-dashed border-slate-300 bg-white px-3 py-2 text-xs text-slate-500">
                         {step}
                       </div>
-                      {i < 5 ? <span className="text-slate-300">→</span> : null}
+                      {i < legacySteps.length - 1 ? (
+                        <span className="text-slate-300">→</span>
+                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -124,13 +140,13 @@ export default function CaseStudyPage() {
           </CaseSection>
         ) : null}
 
-        <CaseSection number="03" title="My role">
+        <CaseSection number={section()} title="My role">
           <p className="leading-relaxed text-muted">{caseStudy.myRole}</p>
         </CaseSection>
 
         {caseStudy.insights && caseStudy.insights.length > 0 ? (
-          <CaseSection number="04" title="Discovery insights">
-            <div className="grid gap-4 md:grid-cols-1">
+          <CaseSection number={section()} title="Discovery insights">
+            <div className="grid gap-4">
               {caseStudy.insights.map((insight) => (
                 <InsightCard key={insight.label} insight={insight} />
               ))}
@@ -138,20 +154,49 @@ export default function CaseStudyPage() {
           </CaseSection>
         ) : null}
 
-        <CaseSection number="05" title="Process">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {caseStudy.process.map((step, index) => (
-              <div key={step.title} className="rounded-2xl border border-border bg-card p-5">
-                <p className="text-xs font-medium text-accent">Step {index + 1}</p>
-                <h3 className="mt-2 font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
-              </div>
-            ))}
-          </div>
+        <CaseSection number={section()} title="Process">
+          {caseStudy.figures?.process ? (
+            <CaseFigure figure={caseStudy.figures.process} />
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {caseStudy.process.map((step, index) => (
+                <div key={step.title} className="rounded-2xl border border-border bg-card p-5">
+                  <p className="text-xs font-medium text-accent">Step {index + 1}</p>
+                  <h3 className="mt-2 font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </CaseSection>
 
+        {caseStudy.figures?.sitemap ? (
+          <CaseSection number={section()} title="Information architecture">
+            <CaseFigure figure={caseStudy.figures.sitemap} aspectRatio="aspect-[4/3]" />
+          </CaseSection>
+        ) : null}
+
+        {caseStudy.figures?.userFlow ? (
+          <CaseSection number={section()} title="User journey">
+            <CaseFigure figure={caseStudy.figures.userFlow} aspectRatio="aspect-[16/11]" />
+          </CaseSection>
+        ) : null}
+
+        {caseStudy.keyDecisions && caseStudy.keyDecisions.length > 0 ? (
+          <CaseSection number={section()} title="Key design decisions">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {caseStudy.keyDecisions.map((decision) => (
+                <div key={decision.title} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="font-semibold text-foreground">{decision.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{decision.description}</p>
+                </div>
+              ))}
+            </div>
+          </CaseSection>
+        ) : null}
+
         {caseStudy.keyDecision ? (
-          <CaseSection number="06" title="Key design decision">
+          <CaseSection number={section()} title="Key design decision">
             <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
               <h3 className="text-lg font-semibold text-foreground">{caseStudy.keyDecision.title}</h3>
               <p className="mt-4 text-sm text-muted">Explored</p>
@@ -172,16 +217,33 @@ export default function CaseStudyPage() {
           </CaseSection>
         ) : null}
 
-        <CaseSection number="07" title="Solution">
+        {caseStudy.figures?.wireframe ? (
+          <CaseSection number={section()} title="Early exploration">
+            <p className="mb-6 leading-relaxed text-muted">
+              Multiple wireframes were explored before defining the final information hierarchy,
+              balancing community identity with the engagement signals users needed to make confident
+              decisions.
+            </p>
+            <CaseFigure figure={caseStudy.figures.wireframe} />
+          </CaseSection>
+        ) : null}
+
+        <CaseSection number={section()} title="Solution">
           <p className="leading-relaxed text-muted">{caseStudy.solution}</p>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-border shadow-sm">
-            <div className="border-b border-border bg-slate-100 px-4 py-2 text-xs font-medium uppercase tracking-wider text-muted">
-              Final UI — main flow
+          {caseStudy.figures?.solution ? (
+            <div className="mt-8">
+              <CaseFigure figure={caseStudy.figures.solution} />
             </div>
-            <div className="aspect-[16/10]">
-              <MockUIPreview variant={caseStudy.previewVariant ?? "workflow"} className="h-full" />
+          ) : (
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border shadow-sm">
+              <div className="border-b border-border bg-slate-100 px-4 py-2 text-xs font-medium uppercase tracking-wider text-muted">
+                Final UI — main flow
+              </div>
+              <div className="aspect-[16/10]">
+                <MockUIPreview variant={caseStudy.previewVariant ?? "workflow"} className="h-full" />
+              </div>
             </div>
-          </div>
+          )}
           {caseStudy.solutionDetails ? (
             <ul className="mt-6 space-y-2">
               {caseStudy.solutionDetails.map((detail) => (
@@ -207,7 +269,7 @@ export default function CaseStudyPage() {
         </CaseSection>
 
         {caseStudy.beforeAfter ? (
-          <CaseSection number="08" title="Before and after">
+          <CaseSection number={section()} title="Before and after">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-2xl border border-border bg-card p-6">
                 <p className="text-xs font-medium uppercase tracking-wider text-muted">
@@ -219,7 +281,10 @@ export default function CaseStudyPage() {
                 <div className="mt-4 aspect-video rounded-lg bg-slate-100 p-2">
                   <div className="flex h-full flex-wrap gap-1">
                     {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="h-8 flex-1 rounded border border-dashed border-slate-300 bg-white" />
+                      <div
+                        key={i}
+                        className="h-8 flex-1 rounded border border-dashed border-slate-300 bg-white"
+                      />
                     ))}
                   </div>
                 </div>
@@ -232,18 +297,26 @@ export default function CaseStudyPage() {
                   {caseStudy.beforeAfter.afterDescription}
                 </p>
                 <div className="mt-4 aspect-video overflow-hidden rounded-lg border border-border">
-                  <MockUIPreview
-                    variant={caseStudy.previewVariant ?? "workflow"}
-                    className="h-full"
-                    compact
-                  />
+                  {caseStudy.figures?.solution ? (
+                    <img
+                      src={caseStudy.figures.solution.src}
+                      alt=""
+                      className="h-full w-full object-cover object-top"
+                    />
+                  ) : (
+                    <MockUIPreview
+                      variant={caseStudy.previewVariant ?? "workflow"}
+                      className="h-full"
+                      compact
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </CaseSection>
         ) : null}
 
-        <CaseSection number="09" title="Impact">
+        <CaseSection number={section()} title="Impact">
           {caseStudy.impactMetrics ? (
             <div className="grid gap-4 sm:grid-cols-3">
               {caseStudy.impactMetrics.map((metric) => (
@@ -271,7 +344,9 @@ export default function CaseStudyPage() {
         </CaseSection>
 
         <section className="rounded-2xl bg-accent-soft p-6 md:p-8">
-          <p className="text-xs font-medium uppercase tracking-wider text-accent">10 — Reflection</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-accent">
+            {section()} — Reflection
+          </p>
           <p className="mt-4 text-lg leading-relaxed text-foreground">{caseStudy.reflection}</p>
         </section>
 
@@ -280,7 +355,7 @@ export default function CaseStudyPage() {
             <p className="text-sm font-medium text-muted">Next case study</p>
             <Link
               to={`/work/${nextCase.slug}`}
-              className="mt-3 group flex items-center justify-between rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
+              className="group mt-3 flex items-center justify-between rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
             >
               <div>
                 <p className="font-semibold text-foreground group-hover:text-accent">{nextCase.title}</p>

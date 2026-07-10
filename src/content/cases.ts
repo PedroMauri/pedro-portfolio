@@ -22,6 +22,17 @@ export interface KeyDecision {
   rationale: string;
 }
 
+export interface DesignDecision {
+  title: string;
+  description: string;
+}
+
+export interface CaseFigure {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -33,7 +44,8 @@ export interface CaseStudy {
   summary: string;
   heroLine?: string;
   accent: string;
-  previewVariant?: "workflow" | "onboarding";
+  previewVariant?: "workflow" | "onboarding" | "community";
+  thumbnail?: string;
   featured: boolean;
   meta?: {
     team: string;
@@ -46,10 +58,19 @@ export interface CaseStudy {
   problemBefore?: {
     description: string;
     pains: string[];
+    legacySteps?: string[];
   };
   insights?: Insight[];
   process: ProcessStep[];
+  figures?: {
+    process?: CaseFigure;
+    sitemap?: CaseFigure;
+    userFlow?: CaseFigure;
+    wireframe?: CaseFigure;
+    solution?: CaseFigure;
+  };
   keyDecision?: KeyDecision;
+  keyDecisions?: DesignDecision[];
   solution: string;
   solutionDetails?: string[];
   solutionStates?: string[];
@@ -67,228 +88,160 @@ export interface CaseStudy {
 
 export const cases: CaseStudy[] = [
   {
-    slug: "workflow-automation-platform",
-    title: "Reducing approval cycle time for operations teams",
-    company: "B2B Operations Platform",
-    role: "Lead Product Designer",
-    year: "2025",
-    duration: "8 weeks",
-    tags: ["Research", "Dashboard", "Design system"],
-    summary:
-      "Replaced a fragmented 12-step approval path with one guided workflow teams could finish without leaving the product.",
-    heroLine:
-      "Guided workflow cut confusion at handoffs and reduced support load in pilot accounts.",
-    accent: "from-indigo-500 to-violet-600",
-    previewVariant: "workflow",
-    featured: true,
-    meta: {
-      team: "2 designers, 1 PM, 4 engineers",
-      platform: "Web app — admin and approver roles",
-      methods: "Interviews, journey map, prototype, usability test",
-    },
-    context:
-      "Mid-market companies used the platform to route purchase and policy approvals. Power users knew the workarounds; new managers took two to three times longer and escalated to support weekly.",
-    statCallout: "68% of drop-off happened between steps 4 and 6 in the legacy flow.",
-    myRole:
-      "I led discovery and end-to-end UI for the approval module. Partnered with PM on scope, ran 10 interviews, and facilitated design critique with engineering. I extended the existing design system rather than creating one-off screens.",
-    problemBefore: {
-      description:
-        "Approvals were scattered across modals, tabs, and email handoffs. Status lived in different places depending on who you asked.",
-      pains: [
-        "No single view of where a request stood in the chain",
-        "Approvers relied on email threads outside the product",
-        "Bulk actions required exporting to spreadsheets",
-        "New users could not tell if a step was waiting on them or another team",
-      ],
-    },
-    insights: [
-      {
-        type: "quote",
-        label: "User voice",
-        body: "I never know if it's waiting on me or finance.",
-        attribution: "Operations manager, 120-person company",
-      },
-      {
-        type: "data",
-        label: "Analytics + interviews",
-        body: "68% of drop-off happened between steps 4 and 6 — the handoff between department approvers.",
-      },
-      {
-        type: "opportunity",
-        label: "Design opportunity",
-        body: "Users wanted progress visibility more than fewer clicks. Clarity beat minimalism.",
-      },
-    ],
-    process: [
-      {
-        title: "Discovery",
-        description:
-          "10 stakeholder and user interviews, support ticket audit, and end-to-end journey map with pain points at each handoff.",
-      },
-      {
-        title: "Explore",
-        description:
-          "Three navigation models — wizard, split view, and timeline — tested as clickable prototypes with 8 users.",
-      },
-      {
-        title: "Prototype",
-        description:
-          "High-fidelity flows in Figma with realistic states: pending, rejected, escalated, and bulk approval.",
-      },
-      {
-        title: "Validate",
-        description:
-          "Moderated usability tests followed by a pilot with one customer team before full rollout.",
-      },
-      {
-        title: "Ship",
-        description:
-          "Paired with engineering through two release cycles; empty and error states shipped as first-class screens.",
-      },
-    ],
-    keyDecision: {
-      title: "Navigation model",
-      explored: ["Step wizard", "Split-panel with timeline", "Tab-based sections"],
-      chosen: "Split-panel with persistent status",
-      rationale:
-        "Status stayed visible while users reviewed details on the right. Trade-off: more horizontal space on desktop; mobile became a step list with a sticky status bar.",
-    },
-    solution:
-      "Shipped a guided workflow with persistent status, inline context for each step, and a single source of truth for approvers.",
-    solutionDetails: [
-      "List + detail panel for scanning and acting on multiple requests",
-      "Inline rejection reasons and escalation paths",
-      "Bulk select and approve for high-volume approvers",
-    ],
-    solutionStates: ["Pending review", "Rejected with reason", "Bulk selection", "First-time empty state"],
-    beforeAfter: {
-      beforeLabel: "Before",
-      afterLabel: "After",
-      beforeDescription: "12 steps across modals and email. Status unclear. No bulk actions.",
-      afterDescription: "Single surface with progress, context, and actions in one place.",
-    },
-    impact: [
-      "Pilot sessions showed roughly 30% reduction in median completion time",
-      "Support tickets tagged approval flow decreased after six weeks",
-      "Post-task confidence scores improved in moderated usability tests",
-    ],
-    impactMetrics: [
-      { value: "~30%", label: "Faster completion in pilot" },
-      { value: "-18%", label: "Approval-related support tickets" },
-      { value: "4.2→4.7", label: "Task confidence score" },
-    ],
-    impactCaveat:
-      "Full rollout metrics were still maturing at time of writing. Pilot data from 12 moderated sessions and one customer team.",
-    reflection:
-      "Clarity beat minimalism. B2B users do not need fewer steps — they need visible progress and trustworthy state. Next time I would involve customer success earlier for edge-case inventory.",
-  },
-  {
-    slug: "saas-onboarding",
-    title: "Self-serve onboarding for admin users",
-    company: "HR Tech SaaS",
+    slug: "yethos-community-discovery",
+    title: "Improving Community Discovery and Engagement",
+    company: "Yethos",
     role: "Product Designer",
-    year: "2024",
-    duration: "6 weeks",
-    tags: ["Onboarding", "UX Writing", "Design system"],
+    year: "2021",
+    duration: "10 weeks",
+    tags: ["Research", "IA", "Community", "Prototyping"],
     summary:
-      "Rebuilt first-run setup so admins could configure their workspace without scheduling a call.",
+      "Helping users quickly understand a community's value before joining by redesigning the experience around clarity, activity, and trust.",
     heroLine:
-      "Checklist-based setup increased self-serve activation during trial.",
-    accent: "from-slate-600 to-slate-800",
-    previewVariant: "onboarding",
+      "Helping users evaluate a community's value before joining — through clarity, activity signals, and trust.",
+    accent: "from-violet-600 to-indigo-700",
+    previewVariant: "community",
+    thumbnail: "/cases/yethos/hifi-community.png",
     featured: true,
     meta: {
-      team: "1 designer, 1 PM, 3 engineers",
-      platform: "Web app — admin setup hub",
-      methods: "Analytics audit, IA, prototype, feature flag launch",
+      team: "Founder, Product Designer, 2 Engineers",
+      platform: "Responsive web application",
+      methods:
+        "Competitive analysis, user research, IA, user flows, wireframing, prototyping, usability testing, design system",
     },
     context:
-      "New admin accounts required an onboarding call before they could invite their team. Conversion from trial to activated workspace lagged behind product benchmarks.",
+      "Yethos was designed around communities, allowing creators to build public, private, and paid spaces for people with shared interests. While the platform offered flexible community management, users struggled to evaluate whether a community was relevant before joining. Important information was scattered across different pages, forcing users to spend unnecessary time exploring before deciding to participate. The challenge was not creating another community page — it was helping users answer one question as quickly as possible: \"Is this community worth joining?\"",
+    statCallout:
+      "Users explored multiple pages before understanding whether a community was worth joining.",
     myRole:
-      "Owned the onboarding experience end-to-end: audit, information architecture, UI design, and copy guidelines aligned with the design system.",
+      "I led the end-to-end product design process for the Community experience. Working directly with the founders, I was responsible for product discovery, information architecture, UX strategy, interaction design, high-fidelity interfaces, and usability validation. Throughout the project I collaborated closely with engineering to ensure design decisions were technically feasible while maintaining a scalable experience for future platform growth.",
     problemBefore: {
       description:
-        "Setup tasks were buried across settings pages with no sense of progress or priority.",
+        "The existing experience made community evaluation unnecessarily difficult. Because information was fragmented across different screens, users had to navigate through multiple interactions before understanding a community's value. This created friction during discovery and reduced confidence before joining.",
+      legacySteps: ["About page", "Members list", "Topics", "Pricing", "Feed", "Settings"],
       pains: [
-        "Admins did not know which steps were required vs optional",
-        "Validation errors only appeared at the final submit",
-        "No way to skip and return without losing context",
+        "Could not immediately understand what the community was about",
+        "No clear signal of whether the community was active",
+        "Hard to see who participated and what topics were discussed",
+        "Premium communities did not justify their cost at first glance",
       ],
     },
     insights: [
       {
         type: "data",
-        label: "Funnel analysis",
-        body: "40% of trial admins dropped off before inviting their first team member.",
-      },
-      {
-        type: "quote",
-        label: "User voice",
-        body: "I assumed I was done, then got blocked when I tried to invite someone.",
-        attribution: "HR admin, 80-person company",
+        label: "Community health",
+        body: "Activity, member count, and discussions created confidence faster than descriptions alone.",
       },
       {
         type: "opportunity",
-        label: "Design opportunity",
-        body: "A checklist with time estimates could replace the need for a kickoff call.",
+        label: "Fragmented navigation",
+        body: "Users visited multiple pages before understanding scope, activity, or cost of premium communities.",
+      },
+      {
+        type: "quote",
+        label: "Conversations over copy",
+        body: "Visible discussions drove trust more than promotional descriptions.",
       },
     ],
     process: [
       {
-        title: "Audit",
-        description:
-          "Reviewed analytics funnels, session recordings, and sales notes to find where admins dropped off.",
+        title: "Research",
+        description: "Competitive analysis, user personas, and evaluation of how users assess online communities.",
       },
       {
         title: "Structure",
-        description:
-          "Grouped setup tasks into required vs optional paths with clear progress and estimated time.",
+        description: "Information architecture and user flows to reduce navigation before join decisions.",
       },
       {
-        title: "System alignment",
-        description:
-          "Extended existing form and empty-state components instead of one-off screens.",
+        title: "Explore",
+        description: "Wireframes and interactive prototypes balancing community identity with engagement signals.",
       },
       {
-        title: "Launch",
-        description:
-          "Rolled out behind a feature flag, monitored activation metrics for two weeks, then iterated on two choke points.",
+        title: "Validate",
+        description: "Usability testing and design iterations with founders and engineering.",
+      },
+      {
+        title: "Deliver",
+        description: "High-fidelity interfaces aligned with the design system for scalable implementation.",
       },
     ],
-    keyDecision: {
-      title: "Setup structure",
-      explored: ["Linear wizard", "Checklist hub", "Contextual prompts in-app"],
-      chosen: "Checklist hub with skip and return",
-      rationale:
-        "Admins could see the full picture upfront and tackle tasks in flexible order. Trade-off: more UI on first visit, mitigated with time estimates per task.",
+    figures: {
+      process: {
+        src: "/cases/yethos/project-workflow.png",
+        alt: "Full project workflow",
+        caption:
+          "The complete design process used throughout the project, from research and persona definition to usability validation and prototype delivery.",
+      },
+      sitemap: {
+        src: "/cases/yethos/sitemap-ia.png",
+        alt: "Community site map",
+        caption:
+          "Information architecture created to simplify navigation and surface the most relevant information earlier in the user journey.",
+      },
+      userFlow: {
+        src: "/cases/yethos/user-flow.png",
+        alt: "User flow diagram",
+        caption:
+          "Mapping the primary user journeys helped identify unnecessary navigation steps and opportunities to simplify interactions.",
+      },
+      wireframe: {
+        src: "/cases/yethos/wireframe-homepage.png",
+        alt: "Community homepage wireframe",
+        caption:
+          "Early exploration focused on prioritizing engagement signals, community metadata, and content hierarchy before moving into high-fidelity design.",
+      },
+      solution: {
+        src: "/cases/yethos/hifi-community.png",
+        alt: "Final community page design",
+        caption:
+          "The redesigned experience helps users evaluate a community before asking them to commit.",
+      },
     },
+    keyDecisions: [
+      {
+        title: "Surface community health before visual content",
+        description:
+          "Instead of leading with large banners or descriptions, the page highlights meaningful engagement metrics so users immediately understand whether a community is active.",
+      },
+      {
+        title: "Prioritize conversations",
+        description:
+          "Recent discussions appear immediately below the community overview. Research suggested users trusted authentic conversations more than promotional copy.",
+      },
+      {
+        title: "Expose community scope",
+        description:
+          "Topic tags provide an immediate overview of subjects discussed inside each community, reducing uncertainty before joining.",
+      },
+      {
+        title: "Support quick scanning",
+        description:
+          "Information hierarchy emphasizes progressive disclosure, allowing users to understand the community within seconds while still providing deeper content further down the page.",
+      },
+    ],
     solution:
-      "A checklist-based setup hub with contextual help, sensible defaults, and the ability to skip and return. Each step validated input inline.",
+      "The redesigned experience centered on a single principle: help users evaluate a community before asking them to commit. The final interface combines community overview, activity indicators, member engagement, topic discovery, recent conversations, and clear content hierarchy — reducing exploration time while increasing confidence throughout the discovery process.",
     solutionDetails: [
-      "Required vs optional tasks clearly labeled",
-      "Inline validation on each step",
-      "Contextual help without leaving the flow",
+      "Community overview with activity indicators at the top",
+      "Recent conversations surfaced before deep navigation",
+      "Topic tags for immediate scope understanding",
+      "Progressive disclosure for deeper content below the fold",
     ],
-    solutionStates: ["Empty checklist", "In progress", "Completed workspace"],
-    beforeAfter: {
-      beforeLabel: "Before",
-      afterLabel: "After",
-      beforeDescription: "Scattered settings pages. No progress. Surprise errors at the end.",
-      afterDescription: "Single hub with progress, inline validation, and flexible order.",
-    },
     impact: [
-      "Increase in self-serve workspace activation during trial",
-      "Fewer onboarding calls requested in the first week",
-      "Positive qualitative feedback on clarity from CS team",
+      "Participants evaluated communities faster in moderated sessions",
+      "Navigation hierarchy rated clearer vs. legacy structure",
+      "Higher confidence before joining in post-task interviews",
+      "Reduced cognitive load during first-visit scanning",
     ],
     impactMetrics: [
-      { value: "+24%", label: "Self-serve activation" },
-      { value: "-35%", label: "Onboarding calls week 1" },
-      { value: "4.5/5", label: "CS clarity rating" },
+      { value: "Faster", label: "Community evaluation" },
+      { value: "Clearer", label: "Navigation hierarchy" },
+      { value: "Higher", label: "Pre-join confidence" },
     ],
-    impactCaveat: "Activation lift measured over 8 weeks post-launch vs prior cohort.",
+    impactCaveat:
+      "Findings from usability validation during product development; production rollout metrics were not available at time of writing.",
     reflection:
-      "Onboarding is a trust problem. Every screen needed to answer: where am I, what is required, and what happens next?",
+      "Users do not join communities because they are beautifully designed. They join because they quickly understand the value they will receive. By prioritizing clarity, activity signals, and information architecture over visual decoration, the experience became easier to scan, easier to trust, and ultimately easier to join.",
   },
 ];
 
@@ -298,4 +251,8 @@ export function getCaseBySlug(slug: string): CaseStudy | undefined {
 
 export function getFeaturedCases(): CaseStudy[] {
   return cases.filter((item) => item.featured);
+}
+
+export function getCaseThumbnail(caseStudy: CaseStudy): string | undefined {
+  return caseStudy.thumbnail ?? caseStudy.figures?.solution?.src;
 }

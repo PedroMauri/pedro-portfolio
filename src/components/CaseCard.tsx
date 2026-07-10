@@ -1,12 +1,37 @@
-﻿import { Link } from "react-router-dom";
+﻿import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { MockUIPreview } from "@/components/case-study/MockUIPreview";
-import type { CaseStudy } from "@/content/cases";
+import { getCaseThumbnail, type CaseStudy } from "@/content/cases";
 import { cn } from "@/lib/utils";
 
 interface CaseCardProps {
   caseStudy: CaseStudy;
   featured?: boolean;
+}
+
+function CaseCardThumbnail({ caseStudy }: { caseStudy: CaseStudy }) {
+  const thumbnail = getCaseThumbnail(caseStudy);
+  const [failed, setFailed] = useState(false);
+
+  if (thumbnail && !failed) {
+    return (
+      <img
+        src={thumbnail}
+        alt={caseStudy.title}
+        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+
+  return (
+    <MockUIPreview
+      variant={caseStudy.previewVariant ?? "workflow"}
+      className="h-full transition-transform duration-300 group-hover:scale-[1.02]"
+    />
+  );
 }
 
 export function CaseCard({ caseStudy, featured = false }: CaseCardProps) {
@@ -24,10 +49,7 @@ export function CaseCard({ caseStudy, featured = false }: CaseCardProps) {
           featured ? "md:w-1/2 md:border-b-0 md:border-r" : "w-full"
         )}
       >
-        <MockUIPreview
-          variant={caseStudy.previewVariant ?? "workflow"}
-          className="h-full transition-transform duration-300 group-hover:scale-[1.02]"
-        />
+        <CaseCardThumbnail caseStudy={caseStudy} />
       </div>
       <div className={cn("flex flex-1 flex-col p-6 md:p-8", featured && "md:w-1/2")}>
         <div className="mb-3 flex flex-wrap gap-2">
