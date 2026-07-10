@@ -19,7 +19,7 @@ function CaseCardThumbnail({ caseStudy }: { caseStudy: CaseStudy }) {
       <img
         src={thumbnail}
         alt={caseStudy.title}
-        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+        className="h-full w-full object-contain object-center p-4 transition-transform duration-300 group-hover:scale-[1.02]"
         loading="lazy"
         onError={() => setFailed(true)}
       />
@@ -45,7 +45,7 @@ export function CaseCard({ caseStudy, featured = false }: CaseCardProps) {
     >
       <div
         className={cn(
-          "relative aspect-[16/10] overflow-hidden border-b border-border bg-slate-50",
+          "relative aspect-[16/10] overflow-hidden border-b border-border bg-white",
           featured ? "md:w-1/2 md:border-b-0 md:border-r" : "w-full"
         )}
       >

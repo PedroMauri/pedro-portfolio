@@ -147,7 +147,7 @@ export default function CaseStudyPage() {
 
         {caseStudy.figures?.sitemap ? (
           <CaseSection number={section()} title="Information architecture">
-            <CaseFigure figure={caseStudy.figures.sitemap} aspectRatio="aspect-[4/3]" />
+            <CaseFigure figure={caseStudy.figures.sitemap} />
           </CaseSection>
         ) : null}
 
@@ -194,7 +194,7 @@ export default function CaseStudyPage() {
 
         {caseStudy.figures?.wireframe ? (
           <CaseSection number={section()} title="Early exploration">
-            <CaseFigure figure={caseStudy.figures.wireframe} />
+            <CaseFigure figure={caseStudy.figures.wireframe} variant="wireframe" />
           </CaseSection>
         ) : null}
 

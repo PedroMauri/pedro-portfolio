@@ -6,27 +6,44 @@ import { cn } from "@/lib/utils";
 interface CaseFigureProps {
   figure: CaseFigureType;
   className?: string;
-  aspectRatio?: string;
+  /** Wireframes get extra padding so low-fi sketches read at a smaller, clearer scale. */
+  variant?: "default" | "wireframe";
 }
+
+/** Fixed frame so every case image occupies the same visual area. */
+const FRAME_HEIGHT = "h-[380px] sm:h-[420px]";
 
 export function CaseFigure({
   figure,
   className,
-  aspectRatio = "aspect-auto",
+  variant = "default",
 }: CaseFigureProps) {
   const [failed, setFailed] = useState(false);
-  const isAuto = aspectRatio === "aspect-auto";
+  const isWireframe = variant === "wireframe";
 
   return (
-    <figure className={cn("overflow-hidden rounded-2xl border border-border bg-card shadow-sm", className)}>
-      <div className={cn("relative w-full bg-slate-950", !isAuto && aspectRatio)}>
+    <figure
+      className={cn(
+        "overflow-hidden rounded-2xl border border-border bg-white shadow-sm",
+        className
+      )}
+    >
+      <div
+        className={cn(
+          "relative flex w-full items-center justify-center bg-white",
+          FRAME_HEIGHT,
+          isWireframe ? "p-12 sm:p-16 md:p-20" : "p-8 sm:p-10 md:p-12"
+        )}
+      >
         {!failed ? (
           <img
             src={figure.src}
             alt={figure.alt}
             className={cn(
-              "w-full",
-              isAuto ? "h-auto" : "h-full object-contain object-center"
+              "object-contain object-center",
+              isWireframe
+                ? "max-h-[52%] max-w-[42%] rounded-xl border-[3px] border-slate-300 bg-black shadow-md"
+                : "max-h-full max-w-full"
             )}
             loading="lazy"
             onError={() => setFailed(true)}
@@ -41,7 +58,7 @@ export function CaseFigure({
         )}
       </div>
       {figure.caption ? (
-        <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-muted">
+        <figcaption className="border-t border-border bg-card px-4 py-3 text-sm leading-relaxed text-muted">
           {figure.caption}
         </figcaption>
       ) : null}
