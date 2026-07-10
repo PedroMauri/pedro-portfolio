@@ -58,7 +58,6 @@ export interface CaseStudy {
   problemBefore?: {
     description: string;
     pains: string[];
-    legacySteps?: string[];
   };
   insights?: Insight[];
   process: ProcessStep[];
@@ -73,13 +72,6 @@ export interface CaseStudy {
   keyDecisions?: DesignDecision[];
   solution: string;
   solutionDetails?: string[];
-  solutionStates?: string[];
-  beforeAfter?: {
-    beforeLabel: string;
-    afterLabel: string;
-    beforeDescription: string;
-    afterDescription: string;
-  };
   impact: string[];
   impactMetrics?: ImpactMetric[];
   impactCaveat?: string;
@@ -93,49 +85,46 @@ export const cases: CaseStudy[] = [
     company: "Yethos",
     role: "Product Designer",
     year: "2021",
-    duration: "10 weeks",
     tags: ["Research", "IA", "Community", "Prototyping"],
     summary:
-      "Helping users quickly understand a community's value before joining by redesigning the experience around clarity, activity, and trust.",
+      "Redesigned the community experience so users can evaluate relevance, activity, and trust before joining.",
     heroLine:
-      "Helping users evaluate a community's value before joining — through clarity, activity signals, and trust.",
+      "Clarity, activity signals, and conversation-first layout to answer one question: is this community worth joining?",
     accent: "from-violet-600 to-indigo-700",
     previewVariant: "community",
     thumbnail: "/cases/yethos/hifi-community.png",
     featured: true,
     meta: {
       team: "Founder, Product Designer, 2 Engineers",
-      platform: "Responsive web application",
-      methods:
-        "Competitive analysis, user research, IA, user flows, wireframing, prototyping, usability testing, design system",
+      platform: "Mobile web application",
+      methods: "Competitive analysis, research, IA, user flows, prototyping, usability testing",
     },
     context:
-      "Yethos was designed around communities, allowing creators to build public, private, and paid spaces for people with shared interests. While the platform offered flexible community management, users struggled to evaluate whether a community was relevant before joining. Important information was scattered across different pages, forcing users to spend unnecessary time exploring before deciding to participate. The challenge was not creating another community page — it was helping users answer one question as quickly as possible: \"Is this community worth joining?\"",
+      "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
     statCallout:
-      "Users explored multiple pages before understanding whether a community was worth joining.",
+      "Users had to explore several screens before understanding a community's value.",
     myRole:
-      "I led the end-to-end product design process for the Community experience. Working directly with the founders, I was responsible for product discovery, information architecture, UX strategy, interaction design, high-fidelity interfaces, and usability validation. Throughout the project I collaborated closely with engineering to ensure design decisions were technically feasible while maintaining a scalable experience for future platform growth.",
+      "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
     problemBefore: {
       description:
-        "The existing experience made community evaluation unnecessarily difficult. Because information was fragmented across different screens, users had to navigate through multiple interactions before understanding a community's value. This created friction during discovery and reduced confidence before joining.",
-      legacySteps: ["About page", "Members list", "Topics", "Pricing", "Feed", "Settings"],
+        "Evaluation was fragmented. Users could not quickly see what a community was about, how active it was, who participated, or whether premium access was justified.",
       pains: [
-        "Could not immediately understand what the community was about",
-        "No clear signal of whether the community was active",
-        "Hard to see who participated and what topics were discussed",
-        "Premium communities did not justify their cost at first glance",
+        "No at-a-glance view of community activity or health",
+        "Scope and topics hidden behind extra navigation",
+        "Promotional copy outweighed visible conversations",
+        "Join decision required too many steps",
       ],
     },
     insights: [
       {
         type: "data",
         label: "Community health",
-        body: "Activity, member count, and discussions created confidence faster than descriptions alone.",
+        body: "Activity, member count, and discussions built confidence faster than descriptions alone.",
       },
       {
         type: "opportunity",
         label: "Fragmented navigation",
-        body: "Users visited multiple pages before understanding scope, activity, or cost of premium communities.",
+        body: "Users visited multiple pages before understanding scope, activity, or premium pricing.",
       },
       {
         type: "quote",
@@ -143,95 +132,60 @@ export const cases: CaseStudy[] = [
         body: "Visible discussions drove trust more than promotional descriptions.",
       },
     ],
-    process: [
-      {
-        title: "Research",
-        description: "Competitive analysis, user personas, and evaluation of how users assess online communities.",
-      },
-      {
-        title: "Structure",
-        description: "Information architecture and user flows to reduce navigation before join decisions.",
-      },
-      {
-        title: "Explore",
-        description: "Wireframes and interactive prototypes balancing community identity with engagement signals.",
-      },
-      {
-        title: "Validate",
-        description: "Usability testing and design iterations with founders and engineering.",
-      },
-      {
-        title: "Deliver",
-        description: "High-fidelity interfaces aligned with the design system for scalable implementation.",
-      },
-    ],
+    process: [],
     figures: {
       process: {
         src: "/cases/yethos/project-workflow.png",
-        alt: "Full project workflow",
-        caption:
-          "The complete design process used throughout the project, from research and persona definition to usability validation and prototype delivery.",
-      },
-      sitemap: {
-        src: "/cases/yethos/sitemap-ia.png",
-        alt: "Community site map",
-        caption:
-          "Information architecture created to simplify navigation and surface the most relevant information earlier in the user journey.",
+        alt: "Product design workflow",
+        caption: "End-to-end process from discovery and research through validation and handoff.",
       },
       userFlow: {
         src: "/cases/yethos/user-flow.png",
-        alt: "User flow diagram",
+        alt: "Community experience user flow",
         caption:
-          "Mapping the primary user journeys helped identify unnecessary navigation steps and opportunities to simplify interactions.",
+          "Primary flows for members and creators — discover, evaluate, join, engage, and manage.",
       },
       wireframe: {
         src: "/cases/yethos/wireframe-homepage.png",
         alt: "Community homepage wireframe",
         caption:
-          "Early exploration focused on prioritizing engagement signals, community metadata, and content hierarchy before moving into high-fidelity design.",
+          "Early wireframe prioritizing engagement metrics, community metadata, and feed hierarchy.",
       },
       solution: {
         src: "/cases/yethos/hifi-community.png",
-        alt: "Final community page design",
+        alt: "Final community page designs",
         caption:
-          "The redesigned experience helps users evaluate a community before asking them to commit.",
+          "High-fidelity community homepage and topic detail — follow state, activity stats, and conversation-first feed.",
       },
     },
     keyDecisions: [
       {
-        title: "Surface community health before visual content",
+        title: "Surface community health first",
         description:
-          "Instead of leading with large banners or descriptions, the page highlights meaningful engagement metrics so users immediately understand whether a community is active.",
+          "Engagement metrics appear before decorative content so users immediately read activity signals.",
       },
       {
         title: "Prioritize conversations",
         description:
-          "Recent discussions appear immediately below the community overview. Research suggested users trusted authentic conversations more than promotional copy.",
+          "Recent discussions sit below the overview — authentic posts beat promotional copy for trust.",
       },
       {
         title: "Expose community scope",
-        description:
-          "Topic tags provide an immediate overview of subjects discussed inside each community, reducing uncertainty before joining.",
+        description: "Topic tags summarize what the community covers before a user commits to join.",
       },
       {
         title: "Support quick scanning",
         description:
-          "Information hierarchy emphasizes progressive disclosure, allowing users to understand the community within seconds while still providing deeper content further down the page.",
+          "Progressive disclosure lets users grasp value in seconds while deeper content stays one scroll away.",
       },
     ],
     solution:
-      "The redesigned experience centered on a single principle: help users evaluate a community before asking them to commit. The final interface combines community overview, activity indicators, member engagement, topic discovery, recent conversations, and clear content hierarchy — reducing exploration time while increasing confidence throughout the discovery process.",
-    solutionDetails: [
-      "Community overview with activity indicators at the top",
-      "Recent conversations surfaced before deep navigation",
-      "Topic tags for immediate scope understanding",
-      "Progressive disclosure for deeper content below the fold",
-    ],
+      "The final design helps users evaluate a community before committing. Overview stats, topic scope, and live conversations sit in one scannable hierarchy — from unfollowed to followed states through to topic-level discussion.",
     impact: [
-      "Participants evaluated communities faster in moderated sessions",
-      "Navigation hierarchy rated clearer vs. legacy structure",
+      "Faster community evaluation in moderated usability sessions",
+      "Clearer navigation hierarchy vs. the previous structure",
       "Higher confidence before joining in post-task interviews",
-      "Reduced cognitive load during first-visit scanning",
+      "Lower cognitive load on first visit",
     ],
     impactMetrics: [
       { value: "Faster", label: "Community evaluation" },
@@ -239,9 +193,9 @@ export const cases: CaseStudy[] = [
       { value: "Higher", label: "Pre-join confidence" },
     ],
     impactCaveat:
-      "Findings from usability validation during product development; production rollout metrics were not available at time of writing.",
+      "Findings from usability validation during product development; production metrics were not available.",
     reflection:
-      "Users do not join communities because they are beautifully designed. They join because they quickly understand the value they will receive. By prioritizing clarity, activity signals, and information architecture over visual decoration, the experience became easier to scan, easier to trust, and ultimately easier to join.",
+      "Users join when they quickly understand the value — not when the page looks polished. Clarity, activity signals, and information architecture mattered more than visual decoration.",
   },
 ];
 
