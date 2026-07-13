@@ -110,7 +110,7 @@ export const cases: CaseStudy[] = [
       "Redesigned the community experience so users can evaluate relevance, activity, and trust before joining.",
     heroLine:
       "Clarity, activity signals, and conversation-first layout to answer one question: is this community worth joining?",
-    accent: "from-violet-600 to-indigo-700",
+    accent: "from-[#DD6B20] to-[#C45A14]",
     previewVariant: "community",
     thumbnail: "/cases/yethos/hifi-channels.png",
     featured: true,
