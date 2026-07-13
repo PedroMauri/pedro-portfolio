@@ -111,7 +111,7 @@ export const cases: CaseStudy[] = [
       "Clarity, activity signals, and conversation-first layout to answer one question: is this community worth joining?",
     accent: "from-violet-600 to-indigo-700",
     previewVariant: "community",
-    thumbnail: "/cases/yethos/hifi-community.png",
+    thumbnail: "/cases/yethos/hifi-channels.png",
     featured: true,
     overview: [
       "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
@@ -219,10 +219,10 @@ export const cases: CaseStudy[] = [
           "Early wireframe prioritizing engagement metrics, community metadata, and feed hierarchy.",
       },
       solution: {
-        src: "/cases/yethos/hifi-community.png",
-        alt: "Final community page designs",
+        src: "/cases/yethos/hifi-channels.png",
+        alt: "Final community channels designs",
         caption:
-          "High-fidelity community homepage and topic detail — follow state, activity stats, and conversation-first feed.",
+          "High-fidelity community channels — follow state, activity stats, channel list, and channel feed with composer.",
       },
     },
     keyDecisions: [

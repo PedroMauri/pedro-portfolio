@@ -126,11 +126,12 @@ export function CaseFigure({
                 <X className="size-4" />
               </button>
             </div>
-            <div className="max-h-[calc(100vh-7rem)] overflow-auto bg-white p-3 sm:p-6">
+            <div className="max-h-[calc(100vh-7rem)] overflow-auto bg-slate-100/80 p-3 sm:p-6">
               <img
                 src={figure.src}
                 alt={figure.alt}
-                className="mx-auto block h-auto w-auto min-w-full max-w-none md:min-w-[1100px]"
+                decoding="async"
+                className="mx-auto block h-auto w-auto max-w-full"
               />
             </div>
           </div>
