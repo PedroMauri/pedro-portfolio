@@ -35,13 +35,12 @@ export const profile = {
   linkedin: "https://linkedin.com/in/pedromauri",
   location: "Canada",
   resumeUrl: "#", // Placeholder — replace with PDF URL
-  currentRole: "I am currently designing at BuildClock",
+  currentRole: "I am a product designer",
   heroLines: [
     "I am a product designer",
     "I turn complex problems into clear, user-friendly solutions",
     "I have a meticulous eye for detail",
     "I have been crafting designs for B2B SaaS",
-    "I am currently designing at BuildClock",
   ],
   bio: [
     "With experience across B2B SaaS and digital products, I specialize in complex workflows, information architecture, and high-impact product experiences that improve usability and drive measurable outcomes.",
