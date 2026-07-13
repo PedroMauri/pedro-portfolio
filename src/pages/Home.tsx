@@ -16,23 +16,15 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-b from-accent-softer via-white to-white">
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] items-center justify-center overflow-hidden bg-gradient-to-b from-accent-softer via-white to-white">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,rgba(0,149,159,0.12),transparent_60%)]" />
-        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 text-center sm:px-8">
           <p className="animate-fade-up text-lg font-medium text-accent-dark sm:text-xl">
             {profile.welcome}
           </p>
-          <div className="mt-6 max-w-4xl">
-            <HeroRotator />
+          <div className="mt-6 w-full">
+            <HeroRotator className="mx-auto text-center" />
           </div>
-          <a
-            href="#get-in-touch"
-            className="animate-fade-up mt-10 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
-            style={{ animationDelay: "120ms" }}
-          >
-            Get in touch
-            <ArrowRight className="size-4" />
-          </a>
         </div>
       </section>
 
