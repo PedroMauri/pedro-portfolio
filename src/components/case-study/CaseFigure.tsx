@@ -10,9 +10,9 @@ interface CaseFigureProps {
   variant?: "default" | "wireframe" | "diagram";
 }
 
-/** Shared frame for every case image — same height and padding as flows. */
+/** Shared frame — tall enough for MVP and portrait sketches at the same visual scale. */
 const FRAME =
-  "relative flex w-full items-center justify-center bg-white min-h-[420px] p-6 sm:min-h-[520px] sm:p-8";
+  "relative flex h-[560px] w-full items-center justify-center bg-white p-4 sm:h-[640px] sm:p-6";
 
 export function CaseFigure({
   figure,
@@ -58,7 +58,7 @@ export function CaseFigure({
               <img
                 src={figure.src}
                 alt={figure.alt}
-                className="max-h-full max-w-full object-contain object-center transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                className="h-full w-auto max-w-full object-contain object-center transition-transform duration-300 ease-out group-hover:scale-[1.02]"
                 loading="lazy"
                 decoding="async"
                 onError={() => setFailed(true)}
