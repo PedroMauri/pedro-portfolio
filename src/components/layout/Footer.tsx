@@ -1,18 +1,38 @@
 ﻿import { Link } from "react-router-dom";
+import { Mail } from "lucide-react";
 import { profile } from "@/content/profile";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-border bg-accent-softer">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-medium text-foreground">{profile.name}</p>
-          <p className="mt-1 text-sm text-muted">{profile.title}</p>
+          <p className="text-xl font-medium tracking-tight text-foreground">{profile.name}</p>
+          <p className="mt-1 text-muted">{profile.title}</p>
+          <div className="mt-6 flex flex-wrap gap-5 text-sm font-medium">
+            <Link to="/" className="text-muted transition-colors hover:text-accent-dark">
+              Home
+            </Link>
+            <Link to="/case-studies" className="text-muted transition-colors hover:text-accent-dark">
+              Case Studies
+            </Link>
+            <Link to="/about" className="text-muted transition-colors hover:text-accent-dark">
+              About
+            </Link>
+            <Link to="/resume" className="text-muted transition-colors hover:text-accent-dark">
+              Resume
+            </Link>
+          </div>
         </div>
-        <div className="flex gap-6 text-sm">
-          <Link to="/work" className="text-muted transition-colors hover:text-foreground">Work</Link>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-muted transition-colors hover:text-foreground">LinkedIn</a>
-          <a href={`mailto:${profile.email}`} className="text-muted transition-colors hover:text-foreground">Email</a>
+        <div className="flex items-center gap-4">
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
+            aria-label="Email"
+          >
+            <Mail className="size-4" />
+          </a>
+          <p className="text-sm text-muted-soft">© {new Date().getFullYear()} – {profile.name}</p>
         </div>
       </div>
     </footer>

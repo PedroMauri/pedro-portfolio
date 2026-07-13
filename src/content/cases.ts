@@ -47,6 +47,8 @@ export interface CaseStudy {
   previewVariant?: "workflow" | "onboarding" | "community";
   thumbnail?: string;
   featured: boolean;
+  comingSoon?: boolean;
+  liveUrl?: string;
   meta?: {
     team: string;
     platform: string;
@@ -210,6 +212,53 @@ export const cases: CaseStudy[] = [
     reflection:
       "Users join when they quickly understand the value — not when the page looks polished. Clarity, activity signals, and information architecture mattered more than visual decoration.",
   },
+  {
+    slug: "buildclock-placeholder",
+    title: "[BuildClock] Improving [core workflow] for [users]",
+    company: "BuildClock",
+    role: "Product Designer",
+    year: "[Year]",
+    tags: ["B2B SaaS", "0 to 1 Design", "Placeholder"],
+    summary:
+      "[Placeholder summary — describe the problem, approach, and outcome in 1–2 sentences.]",
+    accent: "from-teal-600 to-cyan-700",
+    previewVariant: "workflow",
+    featured: true,
+    comingSoon: true,
+    context: "[Placeholder]",
+    myRole: "[Placeholder]",
+    process: [],
+    solution: "[Placeholder]",
+    impact: ["[Placeholder impact]"],
+    impactMetrics: [
+      { value: "[+X%]", label: "[Metric label]" },
+      { value: "[+Y]", label: "[Metric label]" },
+    ],
+    reflection: "[Placeholder]",
+  },
+  {
+    slug: "case-placeholder-2",
+    title: "[Case title] — [outcome for users or business]",
+    company: "[Company]",
+    role: "Product Designer",
+    year: "[Year]",
+    tags: ["Full redesign", "Placeholder", "Web & App"],
+    summary:
+      "[Placeholder summary — consolidating friction, clarifying flows, and shipping measurable improvement.]",
+    accent: "from-slate-600 to-slate-800",
+    featured: true,
+    comingSoon: true,
+    context: "[Placeholder]",
+    myRole: "[Placeholder]",
+    process: [],
+    solution: "[Placeholder]",
+    impact: ["[Placeholder impact]"],
+    impactMetrics: [
+      { value: "[-X%]", label: "[Metric label]" },
+      { value: "[+Yx]", label: "[Metric label]" },
+    ],
+    reflection: "[Placeholder]",
+  },
 ];
 
 export function getCaseBySlug(slug: string): CaseStudy | undefined {
@@ -218,6 +267,10 @@ export function getCaseBySlug(slug: string): CaseStudy | undefined {
 
 export function getFeaturedCases(): CaseStudy[] {
   return cases.filter((item) => item.featured);
+}
+
+export function getListedCases(): CaseStudy[] {
+  return cases;
 }
 
 export function getCaseThumbnail(caseStudy: CaseStudy): string | undefined {

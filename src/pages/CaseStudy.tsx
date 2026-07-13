@@ -14,15 +14,21 @@ function useSectionNumber() {
 export default function CaseStudyPage() {
   const { slug } = useParams();
   const caseStudy = slug ? getCaseBySlug(slug) : undefined;
-  const currentIndex = caseStudy ? cases.findIndex((c) => c.slug === caseStudy.slug) : -1;
-  const nextCase = currentIndex >= 0 ? cases[(currentIndex + 1) % cases.length] : undefined;
+  const readableCases = cases.filter((item) => !item.comingSoon);
+  const currentIndex = caseStudy
+    ? readableCases.findIndex((c) => c.slug === caseStudy.slug)
+    : -1;
+  const nextCase =
+    currentIndex >= 0 ? readableCases[(currentIndex + 1) % readableCases.length] : undefined;
 
-  if (!caseStudy) {
+  if (!caseStudy || caseStudy.comingSoon) {
     return (
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <h1 className="text-3xl font-semibold">Case study not found</h1>
-        <Link to="/work" className="mt-4 inline-block text-accent">
-          Back to work
+        <h1 className="text-3xl font-semibold">
+          {caseStudy?.comingSoon ? "Case study coming soon" : "Case study not found"}
+        </h1>
+        <Link to="/case-studies" className="mt-4 inline-block text-accent">
+          Back to case studies
         </Link>
       </section>
     );
@@ -35,11 +41,11 @@ export default function CaseStudyPage() {
       <header className={`bg-gradient-to-br ${caseStudy.accent} text-white`}>
         <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
           <Link
-            to="/work"
+            to="/case-studies"
             className="inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
             <ArrowLeft className="size-4" />
-            Back to work
+            Back to case studies
           </Link>
 
           <div className="mt-8 flex flex-wrap gap-2">
@@ -268,7 +274,7 @@ export default function CaseStudyPage() {
           <div className="border-t border-border pt-12">
             <p className="text-sm font-medium text-muted">Next case study</p>
             <Link
-              to={`/work/${nextCase.slug}`}
+              to={`/case-studies/${nextCase.slug}`}
               className="group mt-3 flex items-center justify-between rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
             >
               <div>
