@@ -6,12 +6,9 @@ import { cn } from "@/lib/utils";
 interface CaseFigureProps {
   figure: CaseFigureType;
   className?: string;
-  /** Wireframes get extra padding so low-fi sketches read at a smaller, clearer scale. */
-  variant?: "default" | "wireframe";
+  /** Wireframes get extra padding; diagrams get a taller frame for readability. */
+  variant?: "default" | "wireframe" | "diagram";
 }
-
-/** Fixed frame so every case image occupies the same visual area. */
-const FRAME_HEIGHT = "h-[380px] sm:h-[420px]";
 
 export function CaseFigure({
   figure,
@@ -20,6 +17,7 @@ export function CaseFigure({
 }: CaseFigureProps) {
   const [failed, setFailed] = useState(false);
   const isWireframe = variant === "wireframe";
+  const isDiagram = variant === "diagram";
 
   return (
     <figure
@@ -31,8 +29,11 @@ export function CaseFigure({
       <div
         className={cn(
           "relative flex w-full items-center justify-center bg-white",
-          FRAME_HEIGHT,
-          isWireframe ? "p-12 sm:p-16 md:p-20" : "p-8 sm:p-10 md:p-12"
+          isDiagram
+            ? "min-h-[420px] p-4 sm:min-h-[520px] sm:p-6"
+            : isWireframe
+              ? "h-[380px] p-12 sm:h-[420px] sm:p-16 md:p-20"
+              : "h-[380px] p-8 sm:h-[420px] sm:p-10 md:p-12"
         )}
       >
         {!failed ? (

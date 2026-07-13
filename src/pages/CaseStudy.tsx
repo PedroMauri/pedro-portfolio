@@ -145,6 +145,16 @@ export default function CaseStudyPage() {
           </CaseSection>
         ) : null}
 
+        {caseStudy.figures?.roadmap ? (
+          <CaseSection number={section()} title="Strategic roadmap">
+            <p className="mb-6 leading-relaxed text-muted">
+              Research insights shaped product priorities. UX foundations came first — clearer community
+              evaluation before growth, monetization, or expansion work.
+            </p>
+            <CaseFigure figure={caseStudy.figures.roadmap} variant="diagram" />
+          </CaseSection>
+        ) : null}
+
         {caseStudy.figures?.sitemap ? (
           <CaseSection number={section()} title="Information architecture">
             <CaseFigure figure={caseStudy.figures.sitemap} />

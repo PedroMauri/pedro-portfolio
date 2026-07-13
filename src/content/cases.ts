@@ -63,6 +63,7 @@ export interface CaseStudy {
   process: ProcessStep[];
   figures?: {
     process?: CaseFigure;
+    roadmap?: CaseFigure;
     sitemap?: CaseFigure;
     userFlow?: CaseFigure;
     wireframe?: CaseFigure;
@@ -138,6 +139,12 @@ export const cases: CaseStudy[] = [
         src: "/cases/yethos/project-workflow.png",
         alt: "Product design workflow",
         caption: "End-to-end process from discovery and research through validation and handoff.",
+      },
+      roadmap: {
+        src: "/cases/yethos/roadmap.png",
+        alt: "Yethos product roadmap from vision to prioritized initiatives",
+        caption:
+          "Product roadmap linking vision to goals, initiatives, and resources — UX foundations prioritized first to unlock community growth.",
       },
       userFlow: {
         src: "/cases/yethos/user-flow.png",
