@@ -157,7 +157,11 @@ export default function CaseStudyPage() {
 
         {caseStudy.figures?.sitemap ? (
           <CaseSection number={section()} title="Information architecture">
-            <CaseFigure figure={caseStudy.figures.sitemap} />
+            <p className="mb-6 leading-relaxed text-muted">
+              Platform elements were organized into a clear hierarchy so users could move from discovery
+              to community evaluation without hunting across disconnected pages.
+            </p>
+            <CaseFigure figure={caseStudy.figures.sitemap} variant="diagram" />
           </CaseSection>
         ) : null}
 

@@ -146,6 +146,12 @@ export const cases: CaseStudy[] = [
         caption:
           "Product roadmap linking vision to goals, initiatives, and resources — UX foundations prioritized first to unlock community growth.",
       },
+      sitemap: {
+        src: "/cases/yethos/information-architecture.png",
+        alt: "Information architecture from platform elements to core pages",
+        caption:
+          "From platform elements to hierarchy and core pages — community discovery and the community page as the primary evaluation surface.",
+      },
       userFlow: {
         src: "/cases/yethos/user-flow.png",
         alt: "Community user flow for members and managers",
