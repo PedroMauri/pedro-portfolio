@@ -45,7 +45,7 @@ export const profile = {
   ],
   bio: [
     "With experience across B2B SaaS and digital products, I specialize in complex workflows, information architecture, and high-impact product experiences that improve usability and drive measurable outcomes.",
-    "I've led design for community platforms, discovery flows, and product systems — and founded BuildClock, a field time tracking product for Canadian contractors.",
+    "I've led design for community platforms, discovery flows, and product systems — and founded BuildClock with engineering support, a field time tracking product for Canadian contractors.",
     "Outside of design, I enjoy [hobby], [hobby], and mentoring designers.",
     "I love meeting new people, so feel free to connect!",
   ],

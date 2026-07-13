@@ -220,7 +220,7 @@ export const cases: CaseStudy[] = [
     year: "2026",
     tags: ["B2B SaaS", "0 to 1", "Field ops", "Mobile web"],
     summary:
-      "Designed and shipped a solo-built field time tracking product so Canadian contractors can GPS clock-in, approve hours, and export billing-ready packages — without chasing Friday timesheets.",
+      "Designed and shipped a field time tracking product so Canadian contractors can GPS clock-in, approve hours, and export billing-ready packages — without chasing Friday timesheets.",
     heroLine:
       "Two personas, one platform: workers punch in under 10 seconds; admins close the week with confidence.",
     accent: "from-teal-600 to-cyan-700",
@@ -228,7 +228,7 @@ export const cases: CaseStudy[] = [
     featured: true,
     liveUrl: "https://www.buildclock.io/",
     meta: {
-      team: "Solo founder — product design end to end",
+      team: "Founder & Product Designer + 1 Engineer",
       platform: "Mobile web (no app install) · Desktop admin",
       methods: "Problem discovery, dual-persona IA, MVP scoping, interaction design, shipped product",
     },
@@ -237,7 +237,7 @@ export const cases: CaseStudy[] = [
     statCallout:
       "Every Friday looked the same: chase punches, reconcile spreadsheets, bill with uncertainty.",
     myRole:
-      "As Founder & Product Designer I owned the full product: problem framing, dual-persona experience design, MVP scope, interaction design, and shipping the live product at buildclock.io.",
+      "As Founder & Product Designer I owned problem framing, dual-persona experience design, MVP scope, and interaction design — partnering with one engineer to ship the live product at buildclock.io.",
     problemBefore: {
       description:
         "Field attendance lived across texts, memory, and mismatched spreadsheets. Supervisors lacked live visibility, and billing depended on manual hour calculation — errors got passed to clients.",
@@ -289,7 +289,7 @@ export const cases: CaseStudy[] = [
       {
         title: "Ship and iterate live",
         description:
-          "Launched the full product loop — from create account to review and bill — as a working SaaS.",
+          "Partnered with engineering to launch the full product loop — from create account to review and bill — as a working SaaS.",
       },
     ],
     keyDecision: {
@@ -337,12 +337,12 @@ export const cases: CaseStudy[] = [
       "Turned week close into an in-product workflow with PDF export for billing",
     ],
     impactMetrics: [
-      { value: "Solo", label: "End-to-end build" },
+      { value: "0→1", label: "Shipped MVP" },
       { value: "0 apps", label: "Installs required" },
       { value: "CAD", label: "Billing ready" },
     ],
     impactCaveat:
-      "Qualitative outcomes from a solo-shipped MVP; production growth metrics are still maturing.",
+      "Qualitative outcomes from an early shipped MVP with a small team; production growth metrics are still maturing.",
     reflection:
       "For field SaaS, clarity for two personas beats feature depth. Closing the week — approve and export — was the real product; GPS clock-in was the entry point that made that week trustworthy.",
   },
