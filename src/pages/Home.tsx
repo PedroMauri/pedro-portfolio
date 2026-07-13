@@ -20,10 +20,10 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,149,159,0.16),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent-soft/40 via-transparent to-accent-softer" />
         <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 text-center sm:px-8">
-          <p className="animate-fade-up text-lg font-medium text-accent-dark sm:text-xl">
+          <p className="shrink-0 text-lg font-medium text-accent-dark sm:text-xl">
             {profile.welcome}
           </p>
-          <div className="mt-6 w-full">
+          <div className="mt-6 w-full shrink-0">
             <HeroRotator className="mx-auto text-center" />
           </div>
         </div>

@@ -16,10 +16,17 @@ export function HeroRotator({ className }: { className?: string }) {
   }, [lines.length]);
 
   return (
-    <div className={cn("relative mx-auto min-h-[3.2em] w-full overflow-hidden text-center", className)}>
+    <div
+      className={cn(
+        "relative mx-auto w-full max-w-4xl overflow-hidden text-center",
+        // Fixed height so welcome stays put when lines wrap to 1 or 2 rows
+        "h-[5.5rem] sm:h-[6.5rem] md:h-[7.25rem] lg:h-[7.75rem]",
+        className
+      )}
+    >
       <p
         key={key}
-        className="animate-fade-swap mx-auto max-w-4xl text-balance text-center text-3xl font-medium leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.35rem]"
+        className="animate-fade-swap absolute inset-x-0 top-0 text-balance text-center text-3xl font-medium leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.35rem]"
       >
         {lines[index]}
       </p>
