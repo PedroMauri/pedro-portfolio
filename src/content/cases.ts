@@ -284,10 +284,11 @@ export const cases: CaseStudy[] = [
       "Designed and shipped a field time tracking product so Canadian contractors can GPS clock-in, approve hours, and export billing-ready packages — without chasing Friday timesheets.",
     heroLine:
       "Two personas, one platform: workers punch in under 10 seconds; admins close the week with confidence.",
-    accent: "from-teal-600 to-cyan-700",
+    accent: "from-emerald-600 to-teal-700",
     previewVariant: "workflow",
     featured: true,
     liveUrl: "https://www.buildclock.io/",
+    thumbnail: "/cases/buildclock/active-workers.png",
     overview: [
       "Canadian contractors lose hours every week to timesheet chase: forgotten clock-outs, spreadsheets that don't match the field, and midnight math before billing deadlines.",
       "As Founder & Product Designer I owned problem framing, dual-persona experience design, MVP scope, and interaction design — partnering with one engineer to ship the live product at buildclock.io.",
@@ -423,6 +424,28 @@ export const cases: CaseStudy[] = [
           "Pricing and checkout match Canadian contractors: transparent Basic plan, no stored card data on our side.",
       },
     ],
+    figures: {
+      solutions: [
+        {
+          src: "/cases/buildclock/clocked-in.png",
+          alt: "Worker clocked-in status card",
+          caption:
+            "Worker — clocked-in state with live duration, jobsite, address, switch site, and clock out.",
+        },
+        {
+          src: "/cases/buildclock/active-workers.png",
+          alt: "Admin dashboard with active workers",
+          caption:
+            "Admin — live Active Workers dashboard with site status, review exceptions, and quick actions.",
+        },
+        {
+          src: "/cases/buildclock/weekly-report.png",
+          alt: "Weekly report ready for PDF export",
+          caption:
+            "Week close — approved hours in a Weekly Report with one-click Export PDF for billing.",
+        },
+      ],
+    },
     solution:
       "BuildClock is a dual-persona field time tracking product: workers select a jobsite and clock in with GPS verification; admins and supervisors run live crew status, approve punches, and export weekly reports for client billing — all mobile-friendly, with no app installs.",
     solutionDetails: [
