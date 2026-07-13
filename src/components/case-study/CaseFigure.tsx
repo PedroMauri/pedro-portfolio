@@ -6,20 +6,21 @@ import { cn } from "@/lib/utils";
 interface CaseFigureProps {
   figure: CaseFigureType;
   className?: string;
-  /** Wireframes get extra padding; diagrams get a taller frame for readability. */
+  /** Kept for callers; all variants now share the same frame size and padding. */
   variant?: "default" | "wireframe" | "diagram";
 }
+
+/** Shared frame for every case image — same height and padding as flows. */
+const FRAME =
+  "relative flex w-full items-center justify-center bg-white min-h-[420px] p-6 sm:min-h-[520px] sm:p-8";
 
 export function CaseFigure({
   figure,
   className,
-  variant = "default",
 }: CaseFigureProps) {
   const [failed, setFailed] = useState(false);
   const [open, setOpen] = useState(false);
   const titleId = useId();
-  const isWireframe = variant === "wireframe";
-  const isDiagram = variant === "diagram";
 
   useEffect(() => {
     if (!open) return;
@@ -46,16 +47,7 @@ export function CaseFigure({
           className
         )}
       >
-        <div
-          className={cn(
-            "relative flex w-full items-center justify-center bg-white",
-            isDiagram
-              ? "min-h-[420px] p-4 sm:min-h-[520px] sm:p-6"
-              : isWireframe
-                ? "h-[380px] p-12 sm:h-[420px] sm:p-16 md:p-20"
-                : "h-[380px] p-8 sm:h-[420px] sm:p-10 md:p-12"
-          )}
-        >
+        <div className={FRAME}>
           {!failed ? (
             <button
               type="button"
@@ -66,13 +58,9 @@ export function CaseFigure({
               <img
                 src={figure.src}
                 alt={figure.alt}
-                className={cn(
-                  "object-contain object-center transition-transform duration-300 ease-out group-hover:scale-[1.04]",
-                  isWireframe
-                    ? "max-h-[52%] max-w-[42%] rounded-xl border-[3px] border-slate-300 bg-black shadow-md"
-                    : "max-h-full max-w-full"
-                )}
+                className="max-h-full max-w-full object-contain object-center transition-transform duration-300 ease-out group-hover:scale-[1.03]"
                 loading="lazy"
+                decoding="async"
                 onError={() => setFailed(true)}
               />
               <span className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-sm backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
