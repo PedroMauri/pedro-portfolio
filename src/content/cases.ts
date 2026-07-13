@@ -148,9 +148,9 @@ export const cases: CaseStudy[] = [
       },
       userFlow: {
         src: "/cases/yethos/user-flow.png",
-        alt: "Community experience user flow",
+        alt: "Community user flow for members and managers",
         caption:
-          "Primary flows for members and creators — discover, evaluate, join, engage, and manage.",
+          "Primary flows for members and community managers — discover, join, engage, explore topics, and manage settings.",
       },
       wireframe: {
         src: "/cases/yethos/wireframe-homepage.png",
