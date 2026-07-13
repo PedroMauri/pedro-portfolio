@@ -194,11 +194,6 @@ export const cases: CaseStudy[] = [
     ],
     process: [],
     figures: {
-      process: {
-        src: "/cases/yethos/project-workflow.png",
-        alt: "Product design workflow",
-        caption: "End-to-end process from discovery and research through validation and handoff.",
-      },
       roadmap: {
         src: "/cases/yethos/roadmap.png",
         alt: "Yethos product roadmap from vision to prioritized initiatives",
