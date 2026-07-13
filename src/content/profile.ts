@@ -35,17 +35,17 @@ export const profile = {
   linkedin: "https://linkedin.com/in/pedromauri",
   location: "Canada",
   resumeUrl: "#", // Placeholder — replace with PDF URL
-  currentRole: "I am currently designing at [Company]",
+  currentRole: "I am currently designing at BuildClock",
   heroLines: [
     "I am a product designer",
     "I turn complex problems into clear, user-friendly solutions",
     "I have a meticulous eye for detail",
     "I have been crafting designs for B2B SaaS",
-    "I am currently designing at [Company]",
+    "I am currently designing at BuildClock",
   ],
   bio: [
     "With experience across B2B SaaS and digital products, I specialize in complex workflows, information architecture, and high-impact product experiences that improve usability and drive measurable outcomes.",
-    "I've led design for community platforms, discovery flows, and product systems — collaborating with founders, product, and engineering to ship scalable, user-centered solutions.",
+    "I've led design for community platforms, discovery flows, and product systems — and founded BuildClock, a field time tracking product for Canadian contractors.",
     "Outside of design, I enjoy [hobby], [hobby], and mentoring designers.",
     "I love meeting new people, so feel free to connect!",
   ],
@@ -57,12 +57,12 @@ export const profile = {
   ] satisfies FunStat[],
   experience: [
     {
-      company: "[Current Company]",
+      company: "BuildClock",
       roles: [
         {
-          title: "Product Designer",
-          period: "[Month Year] - Present",
-          tags: ["B2B SaaS", "Placeholder"],
+          title: "Founder & Product Designer",
+          period: "2026 - Present",
+          tags: ["B2B SaaS", "Field ops", "0 to 1"],
         },
       ],
     },

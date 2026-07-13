@@ -213,28 +213,138 @@ export const cases: CaseStudy[] = [
       "Users join when they quickly understand the value — not when the page looks polished. Clarity, activity signals, and information architecture mattered more than visual decoration.",
   },
   {
-    slug: "buildclock-placeholder",
-    title: "[BuildClock] Improving [core workflow] for [users]",
+    slug: "buildclock-field-time-tracking",
+    title: "Stop chasing timesheets — field time tracking for Canadian contractors",
     company: "BuildClock",
-    role: "Product Designer",
-    year: "[Year]",
-    tags: ["B2B SaaS", "0 to 1 Design", "Placeholder"],
+    role: "Founder & Product Designer",
+    year: "2026",
+    tags: ["B2B SaaS", "0 to 1", "Field ops", "Mobile web"],
     summary:
-      "[Placeholder summary — describe the problem, approach, and outcome in 1–2 sentences.]",
+      "Designed and shipped a solo-built field time tracking product so Canadian contractors can GPS clock-in, approve hours, and export billing-ready packages — without chasing Friday timesheets.",
+    heroLine:
+      "Two personas, one platform: workers punch in under 10 seconds; admins close the week with confidence.",
     accent: "from-teal-600 to-cyan-700",
     previewVariant: "workflow",
     featured: true,
-    comingSoon: true,
-    context: "[Placeholder]",
-    myRole: "[Placeholder]",
-    process: [],
-    solution: "[Placeholder]",
-    impact: ["[Placeholder impact]"],
-    impactMetrics: [
-      { value: "[+X%]", label: "[Metric label]" },
-      { value: "[+Y]", label: "[Metric label]" },
+    liveUrl: "https://www.buildclock.io/",
+    meta: {
+      team: "Solo founder — product design end to end",
+      platform: "Mobile web (no app install) · Desktop admin",
+      methods: "Problem discovery, dual-persona IA, MVP scoping, interaction design, shipped product",
+    },
+    context:
+      "Canadian contractors lose hours every week to timesheet chase: forgotten clock-outs, spreadsheets that don't match the field, and midnight math before billing deadlines. BuildClock needed a product that worked for crews on-site and for admins closing the week — without forcing app-store installs.",
+    statCallout:
+      "Every Friday looked the same: chase punches, reconcile spreadsheets, bill with uncertainty.",
+    myRole:
+      "As Founder & Product Designer I owned the full product: problem framing, dual-persona experience design, MVP scope, interaction design, and shipping the live product at buildclock.io.",
+    problemBefore: {
+      description:
+        "Field attendance lived across texts, memory, and mismatched spreadsheets. Supervisors lacked live visibility, and billing depended on manual hour calculation — errors got passed to clients.",
+      pains: [
+        "Workers forget to clock out; timesheets arrive late",
+        "Punch data scattered across messages and sheets",
+        "Hours calculated manually — mistakes billed to clients",
+        "No clear view of who is on-site right now",
+      ],
+    },
+    insights: [
+      {
+        type: "opportunity",
+        label: "Two jobs, two interfaces",
+        body: "Admins need live crew status, review queues, and exports. Workers need a near-zero-friction clock-in. One product — different views.",
+      },
+      {
+        type: "data",
+        label: "Installs kill adoption",
+        body: "Crews will punch from a phone browser. Native apps add friction for contractors who just need to start the day.",
+      },
+      {
+        type: "quote",
+        label: "Closing the week is the product",
+        body: "GPS clock-in only matters if supervisors can approve and export billing packages without another Friday firefight.",
+      },
     ],
-    reflection: "[Placeholder]",
+    process: [
+      {
+        title: "Map the Friday chaos",
+        description:
+          "Captured the end-to-end pain from punch → approval → invoice for Canadian contractor workflows.",
+      },
+      {
+        title: "Split personas early",
+        description:
+          "Designed admin/supervisor and worker experiences as separate jobs, not one overloaded screen.",
+      },
+      {
+        title: "Scope a ruthless MVP",
+        description:
+          "Prioritized GPS attendance, geofence trust, approval flows, weekly PDF export, and CAD billing.",
+      },
+      {
+        title: "Design for mobile web first",
+        description:
+          "Optimized clock-in and dashboards for phone use so crews never need an app store download.",
+      },
+      {
+        title: "Ship and iterate live",
+        description:
+          "Launched the full product loop — from create account to review and bill — as a working SaaS.",
+      },
+    ],
+    keyDecision: {
+      title: "Native apps vs mobile web for field crews",
+      explored: ["Native iOS/Android apps", "Hybrid / PWA-heavy stack", "Mobile web, no installs"],
+      chosen: "Mobile web for workers and mobile-friendly admin — no app store required",
+      rationale:
+        "Contractors need crews clocking in on day one. Removing installs reduced adoption friction while still delivering GPS-tagged punches and supervisor flows on phone or desktop.",
+    },
+    keyDecisions: [
+      {
+        title: "GPS + geofence as trust layer",
+        description:
+          "Auto-approve inside the jobsite fence; flag punches outside — fewer disputes, clearer accountability.",
+      },
+      {
+        title: "Live status + review queue for admins",
+        description:
+          "Supervisors see who's active, review exceptions, and act from desktop or phone with the same mental model.",
+      },
+      {
+        title: "Week close + PDF export",
+        description:
+          "Approval in-app and one-click billing packages turn Friday chaos into a closed week.",
+      },
+      {
+        title: "CAD-native, Stripe-secured billing",
+        description:
+          "Pricing and checkout match Canadian contractors: transparent Basic plan, no stored card data on our side.",
+      },
+    ],
+    solution:
+      "BuildClock is a dual-persona field time tracking product: workers select a jobsite and clock in with GPS verification; admins and supervisors run live crew status, approve punches, and export weekly reports for client billing — all mobile-friendly, with no app installs.",
+    solutionDetails: [
+      "Worker clock-in designed to complete in under 10 seconds",
+      "Admin dashboard with active workers, review queue, and weekly reports",
+      "GPS-tagged attendance with geofence auto-approve / flag outside",
+      "Supervisor sign-off and PDF export for billing packages",
+      "Multi-site orgs with Stripe Checkout billing in CAD",
+    ],
+    impact: [
+      "Shipped a full 0→1 product loop: signup → invite crew → punch → approve → export",
+      "Removed app-install friction for field workers via mobile web",
+      "Gave supervisors live on-site visibility instead of chasing texts",
+      "Turned week close into an in-product workflow with PDF export for billing",
+    ],
+    impactMetrics: [
+      { value: "Solo", label: "End-to-end build" },
+      { value: "0 apps", label: "Installs required" },
+      { value: "CAD", label: "Billing ready" },
+    ],
+    impactCaveat:
+      "Qualitative outcomes from a solo-shipped MVP; production growth metrics are still maturing.",
+    reflection:
+      "For field SaaS, clarity for two personas beats feature depth. Closing the week — approve and export — was the real product; GPS clock-in was the entry point that made that week trustworthy.",
   },
   {
     slug: "case-placeholder-2",

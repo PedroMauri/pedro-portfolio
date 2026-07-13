@@ -1,9 +1,8 @@
 ﻿import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { CaseFigure } from "@/components/case-study/CaseFigure";
 import { CaseSection } from "@/components/case-study/CaseSection";
 import { InsightCard } from "@/components/case-study/InsightCard";
-import { MockUIPreview } from "@/components/case-study/MockUIPreview";
 import { cases, getCaseBySlug } from "@/content/cases";
 
 function useSectionNumber() {
@@ -72,6 +71,18 @@ export default function CaseStudyPage() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
               {caseStudy.heroLine}
             </p>
+          ) : null}
+
+          {caseStudy.liveUrl ? (
+            <a
+              href={caseStudy.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
+            >
+              View live product
+              <ExternalLink className="size-4" />
+            </a>
           ) : null}
         </div>
       </header>
@@ -220,20 +231,32 @@ export default function CaseStudyPage() {
 
         <CaseSection number={section()} title="Solution">
           <p className="leading-relaxed text-muted">{caseStudy.solution}</p>
+          {caseStudy.solutionDetails && caseStudy.solutionDetails.length > 0 ? (
+            <ul className="mt-6 space-y-2">
+              {caseStudy.solutionDetails.map((detail) => (
+                <li key={detail} className="flex gap-3 text-muted">
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          ) : null}
           {caseStudy.figures?.solution ? (
             <div className="mt-8">
               <CaseFigure figure={caseStudy.figures.solution} />
             </div>
-          ) : (
-            <div className="mt-8 overflow-hidden rounded-2xl border border-border shadow-sm">
-              <div className="border-b border-border bg-slate-100 px-4 py-2 text-xs font-medium uppercase tracking-wider text-muted">
-                Final UI — main flow
-              </div>
-              <div className="aspect-[16/10]">
-                <MockUIPreview variant={caseStudy.previewVariant ?? "workflow"} className="h-full" />
-              </div>
-            </div>
-          )}
+          ) : null}
+          {caseStudy.liveUrl ? (
+            <a
+              href={caseStudy.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-dark"
+            >
+              View live product
+              <ExternalLink className="size-4" />
+            </a>
+          ) : null}
         </CaseSection>
 
         <CaseSection number={section()} title="Impact">
