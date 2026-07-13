@@ -427,22 +427,10 @@ export const cases: CaseStudy[] = [
     figures: {
       solutions: [
         {
-          src: "/cases/buildclock/clocked-in.png",
-          alt: "Worker clocked-in status card",
-          caption:
-            "Worker — clocked-in state with live duration, jobsite, address, switch site, and clock out.",
-        },
-        {
           src: "/cases/buildclock/active-workers.png",
           alt: "Admin dashboard with active workers",
           caption:
-            "Admin — live Active Workers dashboard with site status, review exceptions, and quick actions.",
-        },
-        {
-          src: "/cases/buildclock/weekly-report.png",
-          alt: "Weekly report ready for PDF export",
-          caption:
-            "Week close — approved hours in a Weekly Report with one-click Export PDF for billing.",
+            "Admin — live Active Workers dashboard with site status and quick Switch / Out actions.",
         },
       ],
     },
