@@ -1,4 +1,5 @@
 ﻿import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageLayout } from "@/components/layout/PageLayout";
 import About from "@/pages/About";
 import CaseStudies from "@/pages/CaseStudies";
@@ -14,6 +15,7 @@ function LegacyWorkRedirect() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <PageLayout>
         <Routes>
           <Route path="/" element={<Home />} />
