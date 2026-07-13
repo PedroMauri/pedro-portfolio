@@ -86,6 +86,7 @@ export interface CaseStudy {
     userFlow?: CaseFigure;
     wireframe?: CaseFigure;
     solution?: CaseFigure;
+    solutions?: CaseFigure[];
   };
   keyDecision?: KeyDecision;
   keyDecisions?: DesignDecision[];
@@ -218,12 +219,20 @@ export const cases: CaseStudy[] = [
         caption:
           "Early wireframe prioritizing engagement metrics, community metadata, and feed hierarchy.",
       },
-      solution: {
-        src: "/cases/yethos/hifi-channels.png",
-        alt: "Final community channels designs",
-        caption:
-          "High-fidelity community channels — follow state, activity stats, channel list, and channel feed with composer.",
-      },
+      solutions: [
+        {
+          src: "/cases/yethos/hifi-channels.png",
+          alt: "Final community channels designs — mobile",
+          caption:
+            "Mobile — community channels with follow state, activity stats, channel list, and channel feed with composer.",
+        },
+        {
+          src: "/cases/yethos/hifi-web.png",
+          alt: "Final community homepage design — web",
+          caption:
+            "Web — community homepage with cover, join CTA, favorites, interactions, discussions table, files, and members.",
+        },
+      ],
     },
     keyDecisions: [
       {
@@ -489,5 +498,9 @@ export function getListedCases(): CaseStudy[] {
 }
 
 export function getCaseThumbnail(caseStudy: CaseStudy): string | undefined {
-  return caseStudy.thumbnail ?? caseStudy.figures?.solution?.src;
+  return (
+    caseStudy.thumbnail ??
+    caseStudy.figures?.solutions?.[0]?.src ??
+    caseStudy.figures?.solution?.src
+  );
 }

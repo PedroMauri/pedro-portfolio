@@ -315,11 +315,19 @@ export default function CaseStudyPage() {
             ))}
           </ul>
         ) : null}
-        {caseStudy.figures?.solution ? (
-          <div className="mt-10">
-            <CaseFigure figure={caseStudy.figures.solution} />
-          </div>
-        ) : null}
+        {(() => {
+          const solutionFigures =
+            caseStudy.figures?.solutions ??
+            (caseStudy.figures?.solution ? [caseStudy.figures.solution] : []);
+          if (solutionFigures.length === 0) return null;
+          return (
+            <div className="mt-10 space-y-8">
+              {solutionFigures.map((figure) => (
+                <CaseFigure key={figure.src} figure={figure} />
+              ))}
+            </div>
+          );
+        })()}
         {caseStudy.liveUrl ? (
           <a
             href={caseStudy.liveUrl}
