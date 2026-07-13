@@ -16,8 +16,9 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative flex min-h-[calc(100svh-4.25rem)] items-center justify-center overflow-hidden bg-gradient-to-b from-accent-softer via-white to-white">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,rgba(0,149,159,0.12),transparent_60%)]" />
+      <section className="relative flex min-h-[calc(100svh-4.25rem)] items-center justify-center overflow-hidden bg-accent-softer">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,149,159,0.16),transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent-soft/40 via-transparent to-accent-softer" />
         <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 text-center sm:px-8">
           <p className="animate-fade-up text-lg font-medium text-accent-dark sm:text-xl">
             {profile.welcome}
