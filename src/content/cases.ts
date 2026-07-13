@@ -33,6 +33,11 @@ export interface CaseFigure {
   caption: string;
 }
 
+export interface CaseLearning {
+  title: string;
+  description: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -49,6 +54,17 @@ export interface CaseStudy {
   featured: boolean;
   comingSoon?: boolean;
   liveUrl?: string;
+  /** Nicole-format overview paragraphs */
+  overview: string[];
+  goals: string[];
+  responsibilities: string[];
+  collaborators: string;
+  timeline: string;
+  businessNeed: string;
+  userNeed: string;
+  problemStatement: string;
+  howMightWe: string;
+  learnings: CaseLearning[];
   meta?: {
     team: string;
     platform: string;
@@ -97,6 +113,47 @@ export const cases: CaseStudy[] = [
     previewVariant: "community",
     thumbnail: "/cases/yethos/hifi-community.png",
     featured: true,
+    overview: [
+      "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
+      "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
+    ],
+    goals: [
+      "Help users evaluate a community’s value before joining.",
+      "Surface activity, scope, and conversations in one scannable hierarchy.",
+      "Reduce steps and cognitive load between discovery and the join decision.",
+    ],
+    responsibilities: [
+      "End-to-end UX & UI design",
+      "Information architecture & user flows",
+      "Prototyping & usability validation",
+    ],
+    collaborators: "Founder, Product Designer, 2 Engineers",
+    timeline: "2021",
+    businessNeed:
+      "Increase join confidence and engagement by making community value obvious at first glance.",
+    userNeed:
+      "Quickly understand what a community is about, how active it is, and whether it is worth joining.",
+    problemStatement:
+      "Users struggle to quickly understand a community’s value, leading to slow discovery, fragmented evaluation, and uncertain join decisions.",
+    howMightWe:
+      "How might we help users evaluate relevance, activity, and trust before joining — without forcing them across multiple pages?",
+    learnings: [
+      {
+        title: "Clarity beats polish",
+        description:
+          "Users join when they quickly understand the value — not when the page looks polished.",
+      },
+      {
+        title: "Activity signals build trust",
+        description:
+          "Follower counts, comments, and live discussions outperformed promotional copy.",
+      },
+      {
+        title: "Architecture is the product",
+        description:
+          "Information hierarchy and conversation-first layout mattered more than visual decoration.",
+      },
+    ],
     meta: {
       team: "Founder, Product Designer, 2 Engineers",
       platform: "Mobile web application",
@@ -227,6 +284,47 @@ export const cases: CaseStudy[] = [
     previewVariant: "workflow",
     featured: true,
     liveUrl: "https://www.buildclock.io/",
+    overview: [
+      "Canadian contractors lose hours every week to timesheet chase: forgotten clock-outs, spreadsheets that don't match the field, and midnight math before billing deadlines.",
+      "As Founder & Product Designer I owned problem framing, dual-persona experience design, MVP scope, and interaction design — partnering with one engineer to ship the live product at buildclock.io.",
+    ],
+    goals: [
+      "Replace Friday timesheet chaos with a trustworthy punch-to-billing loop.",
+      "Give workers a near-zero-friction mobile clock-in without app installs.",
+      "Give admins live visibility, approval flows, and billing-ready exports.",
+    ],
+    responsibilities: [
+      "Product vision & dual-persona UX",
+      "MVP scoping & interaction design",
+      "Shipped product partnership with engineering",
+    ],
+    collaborators: "Founder & Product Designer + 1 Engineer",
+    timeline: "2026",
+    businessNeed:
+      "Close weeks accurately and bill clients with confidence — without manual hour reconciliation.",
+    userNeed:
+      "Workers need to clock in fast on-site; supervisors need live status, approvals, and exports.",
+    problemStatement:
+      "Every Friday looked the same: chase punches, reconcile spreadsheets, and bill with uncertainty.",
+    howMightWe:
+      "How might we design one platform for two jobs — field clock-in and week close — without forcing app-store installs?",
+    learnings: [
+      {
+        title: "Two personas, two interfaces",
+        description:
+          "Admins and workers have different jobs. One product only works when each role gets a dedicated experience.",
+      },
+      {
+        title: "Closing the week is the product",
+        description:
+          "GPS clock-in is the entry point; approve + export is what removes Friday chaos.",
+      },
+      {
+        title: "Installs kill adoption",
+        description:
+          "Mobile web let crews punch on day one — clarity and speed beat native-app polish for field ops.",
+      },
+    ],
     meta: {
       team: "Founder & Product Designer + 1 Engineer",
       platform: "Mobile web (no app install) · Desktop admin",
@@ -358,6 +456,18 @@ export const cases: CaseStudy[] = [
     accent: "from-slate-600 to-slate-800",
     featured: true,
     comingSoon: true,
+    overview: ["[Placeholder overview]"],
+    goals: ["[Goal 1]", "[Goal 2]", "[Goal 3]"],
+    responsibilities: ["[Responsibility]"],
+    collaborators: "[Collaborators]",
+    timeline: "[Timeline]",
+    businessNeed: "[Business need]",
+    userNeed: "[User need]",
+    problemStatement: "[Problem statement]",
+    howMightWe: "[How might we…]",
+    learnings: [
+      { title: "[Learning]", description: "[Description]" },
+    ],
     context: "[Placeholder]",
     myRole: "[Placeholder]",
     process: [],
