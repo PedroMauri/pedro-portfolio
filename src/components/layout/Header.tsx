@@ -57,7 +57,7 @@ export function Header() {
 
       {open ? (
         <div className="bg-accent-softer px-5 py-4 md:hidden">
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-col items-end gap-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -66,7 +66,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    "rounded-xl px-4 py-3 text-base font-medium",
+                    "rounded-xl px-4 py-3 text-right text-base font-medium",
                     isActive ? "bg-accent-soft text-accent-dark" : "text-muted"
                   )
                 }

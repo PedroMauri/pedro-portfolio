@@ -20,18 +20,18 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
       style={{ transitionDelay: `${index * 80}ms` }}
     >
       <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="flex flex-col p-6 sm:p-8 lg:p-10">
+        <div className="flex flex-col p-6 text-center sm:p-8 lg:p-10 lg:text-left">
           <p className="text-sm font-medium uppercase tracking-[0.08em] text-accent-dark">
             {caseStudy.company}
           </p>
           <h3 className="mt-3 text-balance text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl">
             {caseStudy.title}
           </h3>
-          <p className="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-muted">
+          <p className="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-muted lg:mx-0 mx-auto">
             {caseStudy.summary}
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
             {caseStudy.tags.map((tag) => (
               <span
                 key={tag}
@@ -43,20 +43,24 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
           </div>
 
           {metrics.length > 0 ? (
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-5 grid grid-cols-2 gap-2 sm:mt-8 sm:gap-4">
               {metrics.map((metric) => (
                 <div
                   key={`${metric.value}-${metric.label}`}
-                  className="rounded-2xl bg-cream px-4 py-4"
+                  className="rounded-lg bg-cream px-2.5 py-2 text-left sm:rounded-2xl sm:px-4 sm:py-4"
                 >
-                  <p className="text-3xl font-medium tracking-tight text-foreground">{metric.value}</p>
-                  <p className="mt-1 text-sm uppercase tracking-[0.06em] text-muted">{metric.label}</p>
+                  <p className="text-base font-medium leading-tight tracking-tight text-foreground sm:text-3xl">
+                    {metric.value}
+                  </p>
+                  <p className="mt-0.5 text-[0.65rem] uppercase leading-snug tracking-[0.04em] text-muted sm:mt-1 sm:text-sm sm:tracking-[0.06em]">
+                    {metric.label}
+                  </p>
                 </div>
               ))}
             </div>
           ) : null}
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
             {caseStudy.comingSoon ? (
               <span className="inline-flex items-center rounded-full bg-surface px-4 py-2 text-sm font-medium text-muted">
                 Case study coming soon
@@ -86,7 +90,7 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
 
         <div
           className={cn(
-            "relative min-h-[240px] overflow-hidden bg-gradient-to-br p-6 lg:min-h-full",
+            "relative hidden min-h-[240px] overflow-hidden bg-gradient-to-br p-6 lg:block lg:min-h-full",
             caseStudy.accent
           )}
         >

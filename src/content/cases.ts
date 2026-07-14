@@ -56,6 +56,10 @@ export interface CaseStudy {
   featured: boolean;
   comingSoon?: boolean;
   liveUrl?: string;
+  /** Ideation chapter title override */
+  ideationTitle?: string;
+  /** Final design chapter title override */
+  finalDesignTitle?: string;
   /** Nicole-format overview paragraphs */
   overview: string[];
   goals: string[];
@@ -117,6 +121,8 @@ export const cases: CaseStudy[] = [
     featured: true,
     liveUrl: "https://www.buildclock.io/",
     thumbnail: "/cases/buildclock/active-workers.png",
+    ideationTitle: "From problem to MVP shape",
+    finalDesignTitle: "The MVP flow",
     overview: [
       "Canadian contractors lose hours every week to timesheet chase: forgotten clock-outs, spreadsheets that don't match the field, and midnight math before billing deadlines.",
       "As Founder & Product Designer I owned problem framing, dual-persona experience design, MVP scope, and interaction design — partnering with one engineer to ship the live product at buildclock.io.",
@@ -302,6 +308,8 @@ export const cases: CaseStudy[] = [
     previewVariant: "community",
     thumbnail: "/cases/yethos/hifi-channels.png",
     featured: true,
+    ideationTitle: "Architecture, flows, and priorities",
+    finalDesignTitle: "The redesigned community experience",
     overview: [
       "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
       "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
@@ -381,7 +389,28 @@ export const cases: CaseStudy[] = [
         body: "Visible discussions drove trust more than promotional descriptions.",
       },
     ],
-    process: [],
+    process: [
+      {
+        title: "Map the discovery problem",
+        description:
+          "Framed why users couldn't judge community value — fragmented info and weak activity signals blocked join confidence.",
+      },
+      {
+        title: "Restructure information architecture",
+        description:
+          "Reorganized platform elements into a scannable hierarchy with community discovery and the community page as primary evaluation surfaces.",
+      },
+      {
+        title: "Design conversation-first flows",
+        description:
+          "Prioritized activity, scope, and discussions before promotional copy so trust forms before the join decision.",
+      },
+      {
+        title: "Validate with usability testing",
+        description:
+          "Tested clarity and pre-join confidence; refined hierarchy and signals based on observed evaluation behavior.",
+      },
+    ],
     figures: {
       roadmap: {
         src: "/cases/yethos/roadmap.png",
@@ -466,7 +495,7 @@ export const cases: CaseStudy[] = [
     title: "Leaf — HR management for large teams and Team Network Health",
     company: "Leaf",
     role: "Product Designer",
-    year: "—",
+    year: "2019 – 2021",
     tags: ["B2B SaaS", "HR Tech", "Dashboards", "Team health"],
     summary:
       "Designed Leaf, an HR platform for large corporate teams — streamlining team creation, communication, and manager insights, with Team Network Health as a key differentiator.",
@@ -477,6 +506,8 @@ export const cases: CaseStudy[] = [
     featured: true,
     thumbnail: "/cases/leaf/thumbnail.png",
     thumbnailZoom: 1.12,
+    ideationTitle: "From structure to wireframes",
+    finalDesignTitle: "Final design — Team Network Health",
     overview: [
       "Leaf is a human resources management application designed for companies with large teams. The platform simplifies management across departments within large corporate accounts — enabling teams creation, information sharing, and management of direct reports.",
       "As Product Designer I shaped core experiences across calendars and scheduling, chat, health checks, and performance insights for teams and members — with special focus on Team Network Health.",
@@ -493,8 +524,8 @@ export const cases: CaseStudy[] = [
       "Wireframes to high-fidelity UI",
       "Team Network Health feature design",
     ],
-    collaborators: "Product and engineering partners (details not documented in source board)",
-    timeline: "Product design project",
+    collaborators: "Product Designer with product and engineering partners",
+    timeline: "Jan 2019 – Jun 2021",
     businessNeed:
       "Large corporate accounts needed one platform to organize teams, share information, and manage direct reports at scale.",
     userNeed:

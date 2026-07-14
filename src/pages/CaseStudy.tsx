@@ -186,7 +186,11 @@ export default function CaseStudyPage() {
       ) : null}
 
       {/* Ideation / Process */}
-      <CaseChapter iconLabel="Ideation" title="Multiple iterations" tone="soft">
+      <CaseChapter
+        iconLabel="Ideation"
+        title={caseStudy.ideationTitle ?? "Exploring the solution"}
+        tone="soft"
+      >
         <div className="mb-2 flex items-center gap-2 text-accent-dark">
           <Lightbulb className="size-5" />
           <span className="text-sm font-medium">From problem to structure</span>
@@ -299,7 +303,11 @@ export default function CaseStudyPage() {
       </CaseChapter>
 
       {/* Final design */}
-      <CaseChapter iconLabel="Final Design" title="The MVP flow" tone="white">
+      <CaseChapter
+        iconLabel="Final Design"
+        title={caseStudy.finalDesignTitle ?? "Final design"}
+        tone="white"
+      >
         <CaseBody>{caseStudy.solution}</CaseBody>
         {caseStudy.solutionDetails && caseStudy.solutionDetails.length > 0 ? (
           <ul className="mt-6 space-y-3">

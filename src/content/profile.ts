@@ -6,17 +6,6 @@ export interface Strength {
   icon: "experience" | "design" | "code" | "qa" | "mindset" | "collab";
 }
 
-export interface Testimonial {
-  quote: string;
-  name: string;
-  role: string;
-}
-
-export interface FunStat {
-  value: string;
-  label: string;
-}
-
 export interface ExperienceItem {
   company: string;
   roles: {
@@ -50,15 +39,9 @@ export const profile = {
   bio: [
     "With experience across B2B SaaS and digital products, I specialize in complex workflows, information architecture, and high-impact product experiences that improve usability and drive measurable outcomes.",
     "I've led design for community platforms, discovery flows, and product systems — and founded BuildClock with engineering support, a field time tracking product for Canadian contractors.",
-    "Outside of design, I enjoy soccer, video games, and mentoring designers.",
+    "Outside of design, I enjoy soccer and video games.",
     "I love meeting new people, so feel free to connect!",
   ],
-  funStats: [
-    { value: "[#]", label: "designers mentored" },
-    { value: "[#]", label: "countries visited" },
-    { value: "[#]", label: "projects shipped" },
-    { value: "7+", label: "years designing" },
-  ] satisfies FunStat[],
   experience: [
     {
       company: "BuildClock",
@@ -149,24 +132,4 @@ export const profile = {
       icon: "collab",
     },
   ] satisfies Strength[],
-  testimonials: [
-    {
-      quote:
-        "[Placeholder testimonial — replace with a real quote from a manager or peer about Pedro's collaboration, craft, and impact.]",
-      name: "[Name]",
-      role: "[Title] @ [Company]",
-    },
-    {
-      quote:
-        "[Placeholder testimonial — highlight ownership, attention to detail, and partnership with engineering or product.]",
-      name: "[Name]",
-      role: "[Title] @ [Company]",
-    },
-    {
-      quote:
-        "[Placeholder testimonial — emphasize user advocacy, strategic thinking, and measurable outcomes.]",
-      name: "[Name]",
-      role: "[Title] @ [Company]",
-    },
-  ] satisfies Testimonial[],
 };
