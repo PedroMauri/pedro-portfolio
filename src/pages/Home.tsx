@@ -2,7 +2,6 @@
 import { FeaturedCaseCard } from "@/components/FeaturedCaseCard";
 import { HeroRotator } from "@/components/HeroRotator";
 import { StrengthCard } from "@/components/StrengthCard";
-import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { getFeaturedCases } from "@/content/cases";
 import { profile } from "@/content/profile";
 import { useReveal } from "@/hooks/useReveal";
@@ -12,7 +11,6 @@ export default function Home() {
   const contactRef = useReveal<HTMLElement>();
   const casesRef = useReveal<HTMLElement>();
   const strengthsRef = useReveal<HTMLElement>();
-  const refsRef = useReveal<HTMLElement>();
 
   return (
     <>
@@ -100,25 +98,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      <section ref={refsRef} className="reveal mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">References</p>
-        <h2 className="mt-3 max-w-2xl text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
-          Don't take it from me – hear it from my managers & peers
-        </h2>
-        <div className="mt-10">
-          <TestimonialCarousel testimonials={profile.testimonials} />
-        </div>
-        <a
-          href={profile.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-accent-dark transition-colors hover:text-accent"
-        >
-          More on LinkedIn
-          <ArrowRight className="size-4" />
-        </a>
       </section>
     </>
   );

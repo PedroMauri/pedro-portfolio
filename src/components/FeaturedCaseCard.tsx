@@ -91,18 +91,25 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
           )}
         >
           {caseStudy.thumbnail ? (
-            <img
-              src={caseStudy.thumbnail}
-              alt=""
-              className="h-full w-full rounded-2xl object-cover object-top shadow-lg transition-transform duration-500 group-hover:scale-[1.03]"
-            />
+            <div className="h-full w-full overflow-hidden rounded-2xl shadow-lg">
+              <img
+                src={caseStudy.thumbnail}
+                alt=""
+                className={cn(
+                  "h-full w-full origin-center object-cover object-center transition-transform duration-500",
+                  caseStudy.thumbnailZoom
+                    ? "scale-[1.12] group-hover:scale-[1.15]"
+                    : "group-hover:scale-[1.03]"
+                )}
+              />
+            </div>
           ) : (
             <div className="flex h-full min-h-[240px] items-end rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm">
               <div>
                 <p className="text-sm font-medium uppercase tracking-[0.08em] text-white/70">
                   {caseStudy.company}
                 </p>
-                <p className="mt-2 text-2xl font-medium text-white">{caseStudy.year}</p>
+                <p className="mt-2 text-2xl font-medium text-white">{caseStudy.company}</p>
               </div>
             </div>
           )}

@@ -7,12 +7,12 @@ import {
   CaseH3,
   MetaLabel,
 } from "@/components/case-study/CaseChapter";
-import { cases, getCaseBySlug } from "@/content/cases";
+import { getCaseBySlug, getListedCases } from "@/content/cases";
 
 export default function CaseStudyPage() {
   const { slug } = useParams();
   const caseStudy = slug ? getCaseBySlug(slug) : undefined;
-  const readableCases = cases.filter((item) => !item.comingSoon);
+  const readableCases = getListedCases().filter((item) => !item.comingSoon);
   const currentIndex = caseStudy
     ? readableCases.findIndex((c) => c.slug === caseStudy.slug)
     : -1;
@@ -81,20 +81,16 @@ export default function CaseStudyPage() {
               <p className="mt-2 text-lg font-medium text-foreground">{caseStudy.role}</p>
             </div>
             <div>
-              <MetaLabel>Timeline</MetaLabel>
-              <p className="mt-2 text-lg font-medium text-foreground">{caseStudy.timeline}</p>
+              <MetaLabel>Collaborators</MetaLabel>
+              <p className="mt-2 text-lg leading-relaxed text-muted">{caseStudy.collaborators}</p>
             </div>
-            <div>
+            <div className="sm:col-span-2">
               <MetaLabel>Responsibilities</MetaLabel>
               <ul className="mt-2 space-y-1.5 text-lg text-muted">
                 {caseStudy.responsibilities.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            </div>
-            <div>
-              <MetaLabel>Collaborators</MetaLabel>
-              <p className="mt-2 text-lg leading-relaxed text-muted">{caseStudy.collaborators}</p>
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ export function CaseCard({ caseStudy, featured = false }: CaseCardProps) {
           {caseStudy.title}
         </h3>
         <p className="mt-2 text-sm text-muted">
-          {caseStudy.company} · {caseStudy.role} · {caseStudy.year}
+          {caseStudy.company} · {caseStudy.role}
         </p>
         <p className="mt-4 flex-1 leading-relaxed text-muted">{caseStudy.summary}</p>
         <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent">

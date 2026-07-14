@@ -51,6 +51,8 @@ export interface CaseStudy {
   accent: string;
   previewVariant?: "workflow" | "onboarding" | "community";
   thumbnail?: string;
+  /** Extra cover zoom for thumbnails with unwanted mat/border edges. */
+  thumbnailZoom?: number;
   featured: boolean;
   comingSoon?: boolean;
   liveUrl?: string;
@@ -99,181 +101,7 @@ export interface CaseStudy {
 }
 
 export const cases: CaseStudy[] = [
-  {
-    slug: "yethos-community-discovery",
-    title: "Improving Community Discovery and Engagement",
-    company: "Yethos",
-    role: "Product Designer",
-    year: "2021",
-    tags: ["Research", "IA", "Community", "Prototyping"],
-    summary:
-      "Redesigned the community experience so users can evaluate relevance, activity, and trust before joining.",
-    heroLine:
-      "Clarity, activity signals, and conversation-first layout to answer one question: is this community worth joining?",
-    accent: "from-[#DD6B20] to-[#C45A14]",
-    previewVariant: "community",
-    thumbnail: "/cases/yethos/hifi-channels.png",
-    featured: true,
-    overview: [
-      "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
-      "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
-    ],
-    goals: [
-      "Help users evaluate a community’s value before joining.",
-      "Surface activity, scope, and conversations in one scannable hierarchy.",
-      "Reduce steps and cognitive load between discovery and the join decision.",
-    ],
-    responsibilities: [
-      "End-to-end UX & UI design",
-      "Information architecture & user flows",
-      "Prototyping & usability validation",
-    ],
-    collaborators: "Founder, Product Designer, 2 Engineers",
-    timeline: "2021",
-    businessNeed:
-      "Increase join confidence and engagement by making community value obvious at first glance.",
-    userNeed:
-      "Quickly understand what a community is about, how active it is, and whether it is worth joining.",
-    problemStatement:
-      "Users struggle to quickly understand a community’s value, leading to slow discovery, fragmented evaluation, and uncertain join decisions.",
-    howMightWe:
-      "How might we help users evaluate relevance, activity, and trust before joining — without forcing them across multiple pages?",
-    learnings: [
-      {
-        title: "Clarity beats polish",
-        description:
-          "Users join when they quickly understand the value — not when the page looks polished.",
-      },
-      {
-        title: "Activity signals build trust",
-        description:
-          "Follower counts, comments, and live discussions outperformed promotional copy.",
-      },
-      {
-        title: "Architecture is the product",
-        description:
-          "Information hierarchy and conversation-first layout mattered more than visual decoration.",
-      },
-    ],
-    meta: {
-      team: "Founder, Product Designer, 2 Engineers",
-      platform: "Mobile web application",
-      methods: "Competitive analysis, research, IA, user flows, prototyping, usability testing",
-    },
-    context:
-      "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
-    statCallout:
-      "Users had to explore several screens before understanding a community's value.",
-    myRole:
-      "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
-    problemBefore: {
-      description:
-        "Evaluation was fragmented. Users could not quickly see what a community was about, how active it was, who participated, or whether premium access was justified.",
-      pains: [
-        "No at-a-glance view of community activity or health",
-        "Scope and topics hidden behind extra navigation",
-        "Promotional copy outweighed visible conversations",
-        "Join decision required too many steps",
-      ],
-    },
-    insights: [
-      {
-        type: "data",
-        label: "Community health",
-        body: "Activity, member count, and discussions built confidence faster than descriptions alone.",
-      },
-      {
-        type: "opportunity",
-        label: "Fragmented navigation",
-        body: "Users visited multiple pages before understanding scope, activity, or premium pricing.",
-      },
-      {
-        type: "quote",
-        label: "Conversations over copy",
-        body: "Visible discussions drove trust more than promotional descriptions.",
-      },
-    ],
-    process: [],
-    figures: {
-      roadmap: {
-        src: "/cases/yethos/roadmap.png",
-        alt: "Yethos product roadmap from vision to prioritized initiatives",
-        caption:
-          "Product roadmap linking vision to goals, initiatives, and resources — UX foundations prioritized first to unlock community growth.",
-      },
-      sitemap: {
-        src: "/cases/yethos/information-architecture.png",
-        alt: "Information architecture from platform elements to core pages",
-        caption:
-          "From platform elements to hierarchy and core pages — community discovery and the community page as the primary evaluation surface.",
-      },
-      userFlow: {
-        src: "/cases/yethos/user-flow.png",
-        alt: "Community user flow for members and managers",
-        caption:
-          "Primary flows for members and community managers — discover, join, engage, explore topics, and manage settings.",
-      },
-      wireframe: {
-        src: "/cases/yethos/wireframe-homepage.png",
-        alt: "Community homepage wireframe",
-        caption:
-          "Early wireframe prioritizing engagement metrics, community metadata, and feed hierarchy.",
-      },
-      solutions: [
-        {
-          src: "/cases/yethos/hifi-channels.png",
-          alt: "Final community channels designs — mobile",
-          caption:
-            "Mobile — community channels with follow state, activity stats, channel list, and channel feed with composer.",
-        },
-        {
-          src: "/cases/yethos/hifi-web.png",
-          alt: "Final community homepage design — web",
-          caption:
-            "Web — community homepage with cover, join CTA, favorites, interactions, discussions table, files, and members.",
-        },
-      ],
-    },
-    keyDecisions: [
-      {
-        title: "Surface community health first",
-        description:
-          "Engagement metrics appear before decorative content so users immediately read activity signals.",
-      },
-      {
-        title: "Prioritize conversations",
-        description:
-          "Recent discussions sit below the overview — authentic posts beat promotional copy for trust.",
-      },
-      {
-        title: "Expose community scope",
-        description: "Topic tags summarize what the community covers before a user commits to join.",
-      },
-      {
-        title: "Support quick scanning",
-        description:
-          "Progressive disclosure lets users grasp value in seconds while deeper content stays one scroll away.",
-      },
-    ],
-    solution:
-      "The final design helps users evaluate a community before committing. Overview stats, topic scope, and live conversations sit in one scannable hierarchy — from unfollowed to followed states through to topic-level discussion.",
-    impact: [
-      "Faster community evaluation in moderated usability sessions",
-      "Clearer navigation hierarchy vs. the previous structure",
-      "Higher confidence before joining in post-task interviews",
-      "Lower cognitive load on first visit",
-    ],
-    impactMetrics: [
-      { value: "Faster", label: "Community evaluation" },
-      { value: "Clearer", label: "Navigation hierarchy" },
-      { value: "Higher", label: "Pre-join confidence" },
-    ],
-    impactCaveat:
-      "Findings from usability validation during product development; production metrics were not available.",
-    reflection:
-      "Users join when they quickly understand the value — not when the page looks polished. Clarity, activity signals, and information architecture mattered more than visual decoration.",
-  },
-  {
+{
     slug: "buildclock-field-time-tracking",
     title: "Stop chasing timesheets — field time tracking for Canadian contractors",
     company: "BuildClock",
@@ -459,7 +287,181 @@ export const cases: CaseStudy[] = [
     reflection:
       "For field SaaS, clarity for two personas beats feature depth. Closing the week — approve and export — was the real product; GPS clock-in was the entry point that made that week trustworthy.",
   },
-  {
+{
+    slug: "yethos-community-discovery",
+    title: "Improving Community Discovery and Engagement",
+    company: "Yethos",
+    role: "Product Designer",
+    year: "2021",
+    tags: ["Research", "IA", "Community", "Prototyping"],
+    summary:
+      "Redesigned the community experience so users can evaluate relevance, activity, and trust before joining.",
+    heroLine:
+      "Clarity, activity signals, and conversation-first layout to answer one question: is this community worth joining?",
+    accent: "from-[#DD6B20] to-[#C45A14]",
+    previewVariant: "community",
+    thumbnail: "/cases/yethos/hifi-channels.png",
+    featured: true,
+    overview: [
+      "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
+      "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
+    ],
+    goals: [
+      "Help users evaluate a community’s value before joining.",
+      "Surface activity, scope, and conversations in one scannable hierarchy.",
+      "Reduce steps and cognitive load between discovery and the join decision.",
+    ],
+    responsibilities: [
+      "End-to-end UX & UI design",
+      "Information architecture & user flows",
+      "Prototyping & usability validation",
+    ],
+    collaborators: "Founder, Product Designer, 2 Engineers",
+    timeline: "2021",
+    businessNeed:
+      "Increase join confidence and engagement by making community value obvious at first glance.",
+    userNeed:
+      "Quickly understand what a community is about, how active it is, and whether it is worth joining.",
+    problemStatement:
+      "Users struggle to quickly understand a community’s value, leading to slow discovery, fragmented evaluation, and uncertain join decisions.",
+    howMightWe:
+      "How might we help users evaluate relevance, activity, and trust before joining — without forcing them across multiple pages?",
+    learnings: [
+      {
+        title: "Clarity beats polish",
+        description:
+          "Users join when they quickly understand the value — not when the page looks polished.",
+      },
+      {
+        title: "Activity signals build trust",
+        description:
+          "Follower counts, comments, and live discussions outperformed promotional copy.",
+      },
+      {
+        title: "Architecture is the product",
+        description:
+          "Information hierarchy and conversation-first layout mattered more than visual decoration.",
+      },
+    ],
+    meta: {
+      team: "Founder, Product Designer, 2 Engineers",
+      platform: "Mobile web application",
+      methods: "Competitive analysis, research, IA, user flows, prototyping, usability testing",
+    },
+    context:
+      "Yethos lets creators build public, private, and paid communities. Users struggled to judge whether a community was worth joining — key information lived across multiple pages, so discovery felt slow and uncertain.",
+    statCallout:
+      "Users had to explore several screens before understanding a community's value.",
+    myRole:
+      "I led end-to-end product design for the Community experience: discovery, information architecture, interaction design, high-fidelity UI, and usability validation — working directly with founders and engineering.",
+    problemBefore: {
+      description:
+        "Evaluation was fragmented. Users could not quickly see what a community was about, how active it was, who participated, or whether premium access was justified.",
+      pains: [
+        "No at-a-glance view of community activity or health",
+        "Scope and topics hidden behind extra navigation",
+        "Promotional copy outweighed visible conversations",
+        "Join decision required too many steps",
+      ],
+    },
+    insights: [
+      {
+        type: "data",
+        label: "Community health",
+        body: "Activity, member count, and discussions built confidence faster than descriptions alone.",
+      },
+      {
+        type: "opportunity",
+        label: "Fragmented navigation",
+        body: "Users visited multiple pages before understanding scope, activity, or premium pricing.",
+      },
+      {
+        type: "quote",
+        label: "Conversations over copy",
+        body: "Visible discussions drove trust more than promotional descriptions.",
+      },
+    ],
+    process: [],
+    figures: {
+      roadmap: {
+        src: "/cases/yethos/roadmap.png",
+        alt: "Yethos product roadmap from vision to prioritized initiatives",
+        caption:
+          "Product roadmap linking vision to goals, initiatives, and resources — UX foundations prioritized first to unlock community growth.",
+      },
+      sitemap: {
+        src: "/cases/yethos/information-architecture.png",
+        alt: "Information architecture from platform elements to core pages",
+        caption:
+          "From platform elements to hierarchy and core pages — community discovery and the community page as the primary evaluation surface.",
+      },
+      userFlow: {
+        src: "/cases/yethos/user-flow.png",
+        alt: "Community user flow for members and managers",
+        caption:
+          "Primary flows for members and community managers — discover, join, engage, explore topics, and manage settings.",
+      },
+      wireframe: {
+        src: "/cases/yethos/wireframe-homepage.png",
+        alt: "Community homepage wireframe",
+        caption:
+          "Early wireframe prioritizing engagement metrics, community metadata, and feed hierarchy.",
+      },
+      solutions: [
+        {
+          src: "/cases/yethos/hifi-channels.png",
+          alt: "Final community channels designs — mobile",
+          caption:
+            "Mobile — community channels with follow state, activity stats, channel list, and channel feed with composer.",
+        },
+        {
+          src: "/cases/yethos/hifi-web.png",
+          alt: "Final community homepage design — web",
+          caption:
+            "Web — community homepage with cover, join CTA, favorites, interactions, discussions table, files, and members.",
+        },
+      ],
+    },
+    keyDecisions: [
+      {
+        title: "Surface community health first",
+        description:
+          "Engagement metrics appear before decorative content so users immediately read activity signals.",
+      },
+      {
+        title: "Prioritize conversations",
+        description:
+          "Recent discussions sit below the overview — authentic posts beat promotional copy for trust.",
+      },
+      {
+        title: "Expose community scope",
+        description: "Topic tags summarize what the community covers before a user commits to join.",
+      },
+      {
+        title: "Support quick scanning",
+        description:
+          "Progressive disclosure lets users grasp value in seconds while deeper content stays one scroll away.",
+      },
+    ],
+    solution:
+      "The final design helps users evaluate a community before committing. Overview stats, topic scope, and live conversations sit in one scannable hierarchy — from unfollowed to followed states through to topic-level discussion.",
+    impact: [
+      "Faster community evaluation in moderated usability sessions",
+      "Clearer navigation hierarchy vs. the previous structure",
+      "Higher confidence before joining in post-task interviews",
+      "Lower cognitive load on first visit",
+    ],
+    impactMetrics: [
+      { value: "Faster", label: "Community evaluation" },
+      { value: "Clearer", label: "Navigation hierarchy" },
+      { value: "Higher", label: "Pre-join confidence" },
+    ],
+    impactCaveat:
+      "Findings from usability validation during product development; production metrics were not available.",
+    reflection:
+      "Users join when they quickly understand the value — not when the page looks polished. Clarity, activity signals, and information architecture mattered more than visual decoration.",
+  },
+{
     slug: "leaf-team-network-health",
     title: "Leaf — HR management for large teams and Team Network Health",
     company: "Leaf",
@@ -474,6 +476,7 @@ export const cases: CaseStudy[] = [
     previewVariant: "workflow",
     featured: true,
     thumbnail: "/cases/leaf/thumbnail.png",
+    thumbnailZoom: 1.12,
     overview: [
       "Leaf is a human resources management application designed for companies with large teams. The platform simplifies management across departments within large corporate accounts — enabling teams creation, information sharing, and management of direct reports.",
       "As Product Designer I shaped core experiences across calendars and scheduling, chat, health checks, and performance insights for teams and members — with special focus on Team Network Health.",
@@ -637,16 +640,32 @@ export const cases: CaseStudy[] = [
   },
 ];
 
+/** Display order on Home and Case Studies. */
+const CASE_DISPLAY_ORDER = [
+  "buildclock-field-time-tracking",
+  "yethos-community-discovery",
+  "leaf-team-network-health",
+] as const;
+
+function sortCasesByDisplayOrder(list: CaseStudy[]): CaseStudy[] {
+  const rank = new Map(CASE_DISPLAY_ORDER.map((slug, index) => [slug, index]));
+  return [...list].sort((a, b) => {
+    const aRank = rank.get(a.slug) ?? Number.MAX_SAFE_INTEGER;
+    const bRank = rank.get(b.slug) ?? Number.MAX_SAFE_INTEGER;
+    return aRank - bRank;
+  });
+}
+
 export function getCaseBySlug(slug: string): CaseStudy | undefined {
   return cases.find((item) => item.slug === slug);
 }
 
 export function getFeaturedCases(): CaseStudy[] {
-  return cases.filter((item) => item.featured);
+  return sortCasesByDisplayOrder(cases.filter((item) => item.featured));
 }
 
 export function getListedCases(): CaseStudy[] {
-  return cases;
+  return sortCasesByDisplayOrder(cases);
 }
 
 export function getCaseThumbnail(caseStudy: CaseStudy): string | undefined {

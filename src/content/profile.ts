@@ -55,7 +55,7 @@ export const profile = {
     { value: "[#]", label: "designers mentored" },
     { value: "[#]", label: "countries visited" },
     { value: "[#]", label: "projects shipped" },
-    { value: "[#]", label: "years designing" },
+    { value: "7+", label: "years designing" },
   ] satisfies FunStat[],
   experience: [
     {
@@ -91,7 +91,7 @@ export const profile = {
   ] satisfies ExperienceItem[],
   strengths: [
     {
-      title: "[X]+ Years of Experience",
+      title: "7+ Years of Experience",
       description:
         "My background spans B2B SaaS and digital products, including complex workflows, community platforms, and product systems.",
       icon: "experience",
