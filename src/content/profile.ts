@@ -66,7 +66,7 @@ export const profile = {
         {
           title: "Senior Product Designer",
           period: "Dec 2024 – Present",
-          tags: ["Startup", "Remote", "Part-time"],
+          tags: ["Part-time", "Remote"],
         },
       ],
     },
@@ -86,7 +86,7 @@ export const profile = {
         {
           title: "Product Designer",
           period: "Jul 2021 – Jul 2023",
-          tags: ["Remote", "Part-time"],
+          tags: ["Part-time", "Remote"],
         },
       ],
     },
@@ -96,7 +96,7 @@ export const profile = {
         {
           title: "Product Designer",
           period: "Jan 2019 – Jun 2021",
-          tags: ["Remote", "Part-time"],
+          tags: ["Part-time", "Remote"],
         },
       ],
     },
