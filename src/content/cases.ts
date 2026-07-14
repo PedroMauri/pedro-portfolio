@@ -645,10 +645,12 @@ const CASE_DISPLAY_ORDER = [
   "buildclock-field-time-tracking",
   "yethos-community-discovery",
   "leaf-team-network-health",
-] as const;
+];
 
 function sortCasesByDisplayOrder(list: CaseStudy[]): CaseStudy[] {
-  const rank = new Map(CASE_DISPLAY_ORDER.map((slug, index) => [slug, index]));
+  const rank = new Map<string, number>(
+    CASE_DISPLAY_ORDER.map((slug, index) => [slug, index]),
+  );
   return [...list].sort((a, b) => {
     const aRank = rank.get(a.slug) ?? Number.MAX_SAFE_INTEGER;
     const bRank = rank.get(b.slug) ?? Number.MAX_SAFE_INTEGER;
