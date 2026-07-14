@@ -1,4 +1,6 @@
-﻿export interface Strength {
+﻿import pedroPhoto from "@/assets/pedro-mauri.jpg";
+
+export interface Strength {
   title: string;
   description: string;
   icon: "experience" | "design" | "code" | "qa" | "mindset" | "collab";
@@ -34,7 +36,7 @@ export const profile = {
   email: "hello@pedromauri.com",
   linkedin: "https://www.linkedin.com/in/pedro-mauri/",
   location: "Canada",
-  photo: "/pedro-mauri.jpg",
+  photo: pedroPhoto,
   resumeUrl: "#", // Placeholder — replace with PDF URL
   currentRole: "I am a product designer",
   heroLines: [
