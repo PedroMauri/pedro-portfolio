@@ -1,4 +1,4 @@
-﻿import { Globe, IdCard, MapPin, Phone } from "lucide-react";
+﻿import { IdCard, MapPin } from "lucide-react";
 import { FeaturedCaseCard } from "@/components/FeaturedCaseCard";
 import { HeroRotator } from "@/components/HeroRotator";
 import { StrengthCard } from "@/components/StrengthCard";
@@ -19,8 +19,6 @@ export default function Home() {
   const contactRef = useReveal<HTMLElement>();
   const casesRef = useReveal<HTMLElement>();
   const strengthsRef = useReveal<HTMLElement>();
-
-  const websiteLabel = profile.website.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   return (
     <>
@@ -47,65 +45,32 @@ export default function Home() {
         ref={contactRef}
         className="reveal border-y border-border bg-cream"
       >
-        <div className="mx-auto grid max-w-6xl gap-4 px-5 py-10 sm:gap-5 sm:px-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mx-auto grid max-w-6xl gap-4 px-5 py-10 sm:gap-5 sm:px-8 sm:grid-cols-2 lg:grid-cols-3">
           <a
             href={`mailto:${profile.email}`}
-            className="group flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center transition-transform hover:-translate-y-0.5 lg:items-start lg:text-left"
+            aria-label="Email"
+            className="group flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center transition-transform hover:-translate-y-0.5"
           >
             <IdCard className="size-5 shrink-0 text-accent-dark" />
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.08em] text-muted">Email</p>
-              <p className="mt-1 break-all font-medium text-foreground group-hover:text-accent-dark">
-                {profile.email}
-              </p>
-            </div>
-          </a>
-          <a
-            href={`tel:${profile.phone.replace(/[^\d+]/g, "")}`}
-            className="group flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center transition-transform hover:-translate-y-0.5 lg:items-start lg:text-left"
-          >
-            <Phone className="size-5 shrink-0 text-accent-dark" />
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.08em] text-muted">Phone</p>
-              <p className="mt-1 font-medium text-foreground group-hover:text-accent-dark">
-                {profile.phone}
-              </p>
-            </div>
+            <p className="break-all font-medium text-foreground group-hover:text-accent-dark">
+              {profile.email}
+            </p>
           </a>
           <a
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="group flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center transition-transform hover:-translate-y-0.5 lg:items-start lg:text-left"
+            aria-label="LinkedIn"
+            className="group flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center transition-transform hover:-translate-y-0.5"
           >
             <LinkedInIcon className="size-5 shrink-0 text-accent-dark" />
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.08em] text-muted">LinkedIn</p>
-              <p className="mt-1 font-medium text-foreground group-hover:text-accent-dark">
-                Connect on LinkedIn
-              </p>
-            </div>
+            <p className="font-medium text-foreground group-hover:text-accent-dark">
+              Connect on LinkedIn
+            </p>
           </a>
-          <a
-            href={profile.website}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center transition-transform hover:-translate-y-0.5 lg:items-start lg:text-left"
-          >
-            <Globe className="size-5 shrink-0 text-accent-dark" />
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.08em] text-muted">Website</p>
-              <p className="mt-1 font-medium text-foreground group-hover:text-accent-dark">
-                {websiteLabel}
-              </p>
-            </div>
-          </a>
-          <div className="flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center sm:col-span-2 lg:col-span-1 lg:items-start lg:text-left">
-            <MapPin className="size-5 shrink-0 text-accent-dark" />
-            <div>
-              <p className="text-sm font-medium uppercase tracking-[0.08em] text-muted">Location</p>
-              <p className="mt-1 font-medium text-foreground">{profile.location}</p>
-            </div>
+          <div className="flex flex-col items-center gap-2 rounded-2xl bg-white/70 p-5 text-center sm:col-span-2 lg:col-span-1">
+            <MapPin className="size-5 shrink-0 text-accent-dark" aria-hidden="true" />
+            <p className="font-medium text-foreground">{profile.location}</p>
           </div>
         </div>
       </section>
