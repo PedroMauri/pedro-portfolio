@@ -32,7 +32,7 @@ export const profile = {
   aboutGreeting: "Hello! Nice to meet you.",
   aboutHeadline: "I'm Pedro, a product designer and strategic problem solver.",
   email: "hello@pedromauri.com",
-  linkedin: "https://linkedin.com/in/pedromauri",
+  linkedin: "https://www.linkedin.com/in/pedro-mauri/",
   location: "Canada",
   resumeUrl: "#", // Placeholder — replace with PDF URL
   currentRole: "I am a product designer",
