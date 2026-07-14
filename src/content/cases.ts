@@ -473,7 +473,7 @@ export const cases: CaseStudy[] = [
     accent: "from-[#548C7C] to-[#3F6B5E]",
     previewVariant: "workflow",
     featured: true,
-    thumbnail: "/cases/leaf/overview.png",
+    thumbnail: "/cases/leaf/wireframes-hifi.png",
     overview: [
       "Leaf is a human resources management application designed for companies with large teams. The platform simplifies management across departments within large corporate accounts — enabling teams creation, information sharing, and management of direct reports.",
       "As Product Designer I shaped core experiences across calendars and scheduling, chat, health checks, and performance insights for teams and members — with special focus on Team Network Health.",
@@ -578,12 +578,18 @@ export const cases: CaseStudy[] = [
       },
     ],
     figures: {
+      wireframe: {
+        src: "/cases/leaf/wireframes-lofi.png",
+        alt: "Leaf low-fidelity wireframes",
+        caption:
+          "Low-fidelity exploration — edit achievement, Team Network Health graph, profile quick-view, notes, healthcheck survey, and achievements.",
+      },
       solutions: [
         {
-          src: "/cases/leaf/overview.png",
-          alt: "Leaf product design case board overview",
+          src: "/cases/leaf/wireframes-hifi.png",
+          alt: "Leaf high-fidelity UI screens",
           caption:
-            "Case board overview — goals, research themes, wireframes, visual design, and Team Network Health collaboration.",
+            "High-fidelity product UI — Team Network Health graphs, dashboard with Health Score, employee profiles, NPS cards, and explanatory modal.",
         },
       ],
     },
