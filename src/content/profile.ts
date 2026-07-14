@@ -24,7 +24,7 @@ export const profile = {
   aboutHeadline: "I'm Pedro, a product designer and strategic problem solver.",
   email: "contact@pedromauri.com",
   phone: "+1 (368) 299-6803",
-  website: "https://www.pedromauri.com",
+  website: "https://pedromauri.com",
   linkedin: "https://www.linkedin.com/in/pedromauri/",
   location: "Calgary, Canada",
   photo: pedroPhoto,

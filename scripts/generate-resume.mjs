@@ -73,7 +73,7 @@ doc
   .fontSize(9.5)
   .fillColor(muted)
   .text("Calgary, Canada  |  +1 (368) 299-6803  |  contact@pedromauri.com");
-doc.text("www.pedromauri.com  |  linkedin.com/in/pedromauri");
+doc.text("pedromauri.com  |  linkedin.com/in/pedromauri");
 
 sectionTitle("Summary");
 doc
