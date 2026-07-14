@@ -33,11 +33,13 @@ export const profile = {
   welcome: "Welcome! I'm Pedro",
   aboutGreeting: "Hello! Nice to meet you.",
   aboutHeadline: "I'm Pedro, a product designer and strategic problem solver.",
-  email: "hello@pedromauri.com",
+  email: "contact@pedromauri.com",
+  phone: "+1 (368) 299-6803",
+  website: "https://www.pedromauri.com",
   linkedin: "https://www.linkedin.com/in/pedro-mauri/",
-  location: "Canada",
+  location: "Calgary, Canada",
   photo: pedroPhoto,
-  resumeUrl: "#", // Placeholder — replace with PDF URL
+  resumeUrl: "/pedro-mauri-resume.pdf",
   currentRole: "I am a product designer",
   heroLines: [
     "I am a product designer",
@@ -48,7 +50,7 @@ export const profile = {
   bio: [
     "With experience across B2B SaaS and digital products, I specialize in complex workflows, information architecture, and high-impact product experiences that improve usability and drive measurable outcomes.",
     "I've led design for community platforms, discovery flows, and product systems — and founded BuildClock with engineering support, a field time tracking product for Canadian contractors.",
-    "Outside of design, I enjoy [hobby], [hobby], and mentoring designers.",
+    "Outside of design, I enjoy soccer, video games, and mentoring designers.",
     "I love meeting new people, so feel free to connect!",
   ],
   funStats: [
@@ -62,9 +64,19 @@ export const profile = {
       company: "BuildClock",
       roles: [
         {
-          title: "Founder & Product Designer",
-          period: "2026 - Present",
-          tags: ["B2B SaaS", "Field ops", "0 to 1"],
+          title: "Senior Product Designer",
+          period: "Dec 2024 – Present",
+          tags: ["Startup", "Remote", "Part-time"],
+        },
+      ],
+    },
+    {
+      company: "Mattali Drywall Inc.",
+      roles: [
+        {
+          title: "Product Experience & Growth Strategist",
+          period: "Aug 2023 – Present",
+          tags: ["Full-time", "Hybrid"],
         },
       ],
     },
@@ -73,18 +85,28 @@ export const profile = {
       roles: [
         {
           title: "Product Designer",
-          period: "2021",
-          tags: ["Community", "Mobile web", "B2C"],
+          period: "Jul 2021 – Jul 2023",
+          tags: ["Remote", "Part-time"],
         },
       ],
     },
     {
-      company: "[Previous Company]",
+      company: "Leaf",
       roles: [
         {
-          title: "[Role Title]",
-          period: "[Month Year] - [Month Year]",
-          tags: ["Placeholder"],
+          title: "Product Designer",
+          period: "Jan 2019 – Jun 2021",
+          tags: ["Remote", "Part-time"],
+        },
+      ],
+    },
+    {
+      company: "Upsigns Digital Communication",
+      roles: [
+        {
+          title: "Senior Product Designer",
+          period: "Apr 2019 – Jul 2023",
+          tags: ["Full-time"],
         },
       ],
     },

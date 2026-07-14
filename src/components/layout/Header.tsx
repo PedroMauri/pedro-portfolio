@@ -15,7 +15,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-accent-softer">
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link
           to="/"
@@ -56,7 +56,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-border bg-white px-5 py-4 md:hidden">
+        <div className="bg-accent-softer px-5 py-4 md:hidden">
           <nav className="flex flex-col gap-1">
             {navItems.map((item) => (
               <NavLink
