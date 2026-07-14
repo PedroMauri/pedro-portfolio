@@ -6,10 +6,19 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-accent-softer">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between">
+        <div className="flex items-center gap-4">
+          <img
+            src={profile.photo}
+            alt=""
+            className="size-12 rounded-full object-cover ring-2 ring-white"
+          />
+          <div>
+            <p className="text-xl font-medium tracking-tight text-foreground">{profile.name}</p>
+            <p className="mt-1 text-muted">{profile.title}</p>
+          </div>
+        </div>
         <div>
-          <p className="text-xl font-medium tracking-tight text-foreground">{profile.name}</p>
-          <p className="mt-1 text-muted">{profile.title}</p>
-          <div className="mt-6 flex flex-wrap gap-5 text-sm font-medium">
+          <div className="flex flex-wrap gap-5 text-sm font-medium md:justify-end">
             <Link to="/" className="text-muted transition-colors hover:text-accent-dark">
               Home
             </Link>
@@ -23,16 +32,16 @@ export function Footer() {
               Resume
             </Link>
           </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <a
-            href={`mailto:${profile.email}`}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
-            aria-label="Email"
-          >
-            <Mail className="size-4" />
-          </a>
-          <p className="text-sm text-muted-soft">© {new Date().getFullYear()} – {profile.name}</p>
+          <div className="mt-6 flex items-center gap-4 md:justify-end">
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-flex size-10 items-center justify-center rounded-full bg-white text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
+              aria-label="Email"
+            >
+              <Mail className="size-4" />
+            </a>
+            <p className="text-sm text-muted-soft">© {new Date().getFullYear()} – {profile.name}</p>
+          </div>
         </div>
       </div>
     </footer>

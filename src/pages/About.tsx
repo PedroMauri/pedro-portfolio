@@ -12,6 +12,11 @@ export default function About() {
     <>
       <section ref={introRef} className="reveal border-b border-border bg-gradient-to-b from-accent-softer to-white">
         <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 sm:py-24">
+          <img
+            src={profile.photo}
+            alt={profile.name}
+            className="mb-8 size-36 rounded-[1.75rem] object-cover shadow-[0_16px_50px_rgba(11,11,11,0.12)] sm:size-44"
+          />
           <p className="text-lg font-medium text-accent-dark">{profile.aboutGreeting}</p>
           <h1 className="mt-4 text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
             {profile.aboutHeadline}

@@ -34,6 +34,7 @@ export const profile = {
   email: "hello@pedromauri.com",
   linkedin: "https://www.linkedin.com/in/pedro-mauri/",
   location: "Canada",
+  photo: "/pedro-mauri.jpg",
   resumeUrl: "#", // Placeholder — replace with PDF URL
   currentRole: "I am a product designer",
   heroLines: [

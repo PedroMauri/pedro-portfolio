@@ -20,6 +20,11 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,149,159,0.16),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent-soft/40 via-transparent to-accent-softer" />
         <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-5 py-16 text-center sm:px-8">
+          <img
+            src={profile.photo}
+            alt={profile.name}
+            className="mb-8 size-28 rounded-full object-cover shadow-[0_12px_40px_rgba(11,11,11,0.12)] ring-4 ring-white sm:size-32"
+          />
           <p className="shrink-0 text-lg font-medium text-accent-dark sm:text-xl">
             {profile.welcome}
           </p>
