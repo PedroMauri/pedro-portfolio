@@ -460,39 +460,174 @@ export const cases: CaseStudy[] = [
       "For field SaaS, clarity for two personas beats feature depth. Closing the week — approve and export — was the real product; GPS clock-in was the entry point that made that week trustworthy.",
   },
   {
-    slug: "case-placeholder-2",
-    title: "[Case title] — [outcome for users or business]",
-    company: "[Company]",
+    slug: "leaf-team-network-health",
+    title: "Leaf — HR management for large teams and Team Network Health",
+    company: "Leaf",
     role: "Product Designer",
-    year: "[Year]",
-    tags: ["Full redesign", "Placeholder", "Web & App"],
+    year: "—",
+    tags: ["B2B SaaS", "HR Tech", "Dashboards", "Team health"],
     summary:
-      "[Placeholder summary — consolidating friction, clarifying flows, and shipping measurable improvement.]",
-    accent: "from-slate-600 to-slate-800",
+      "Designed Leaf, an HR platform for large corporate teams — streamlining team creation, communication, and manager insights, with Team Network Health as a key differentiator.",
+    heroLine:
+      "Help managers see team dynamics early — through clear structure, communication, and a health score grounded in employee feedback.",
+    accent: "from-[#548C7C] to-[#3F6B5E]",
+    previewVariant: "workflow",
     featured: true,
-    comingSoon: true,
-    overview: ["[Placeholder overview]"],
-    goals: ["[Goal 1]", "[Goal 2]", "[Goal 3]"],
-    responsibilities: ["[Responsibility]"],
-    collaborators: "[Collaborators]",
-    timeline: "[Timeline]",
-    businessNeed: "[Business need]",
-    userNeed: "[User need]",
-    problemStatement: "[Problem statement]",
-    howMightWe: "[How might we…]",
+    thumbnail: "/cases/leaf/overview.png",
+    overview: [
+      "Leaf is a human resources management application designed for companies with large teams. The platform simplifies management across departments within large corporate accounts — enabling teams creation, information sharing, and management of direct reports.",
+      "As Product Designer I shaped core experiences across calendars and scheduling, chat, health checks, and performance insights for teams and members — with special focus on Team Network Health.",
+    ],
+    goals: [
+      "Streamline management of large teams with an intuitive interface for creating and managing teams and sub-teams.",
+      "Give managers actionable insight into employee well-being and performance through dashboards, planning tools, and interaction history.",
+      "Facilitate seamless communication between team members and managers via integrated chat and engagement features.",
+      "Develop Team Network Health so organizations can understand team dynamics and address challenges early.",
+    ],
+    responsibilities: [
+      "End-to-end product design",
+      "Information architecture",
+      "Wireframes to high-fidelity UI",
+      "Team Network Health feature design",
+    ],
+    collaborators: "Product and engineering partners (details not documented in source board)",
+    timeline: "Product design project",
+    businessNeed:
+      "Large corporate accounts needed one platform to organize teams, share information, and manage direct reports at scale.",
+    userNeed:
+      "Managers need clear roles, better communication with teams, and early signals when team dynamics are unhealthy.",
+    problemStatement:
+      "In large organizations, overlapping responsibilities, weak communication lines, and invisible team dynamics make people management reactive instead of proactive.",
+    howMightWe:
+      "How might we help managers understand Team Network Health and act early — without adding more process overhead?",
     learnings: [
-      { title: "[Learning]", description: "[Description]" },
+      {
+        title: "Complex systems need clear IA",
+        description:
+          "Roles & Responsibilities pages taught how critical information architecture is when many teams and reporting lines overlap.",
+      },
+      {
+        title: "Health needs a signal managers can trust",
+        description:
+          "Team Network Health only works when employee feedback becomes a readable score and graph — not a raw data dump.",
+      },
+      {
+        title: "Low-fi first, branded UI second",
+        description:
+          "Moving from grayscale flows to teal branded hi-fi kept exploration fast before committing to visual polish.",
+      },
     ],
-    context: "[Placeholder]",
-    myRole: "[Placeholder]",
-    process: [],
-    solution: "[Placeholder]",
-    impact: ["[Placeholder impact]"],
+    meta: {
+      team: "Product Designer + product/engineering partners",
+      platform: "Web application",
+      methods: "Research, brainstorming, wireframing, visual design, feature collaboration",
+    },
+    context:
+      "Leaf serves companies with large teams that need to create teams, share information, and manage direct reports — including calendars, chat, health checks, and performance insights.",
+    statCallout:
+      "Managers needed earlier visibility into team dynamics — not just task lists and org charts.",
+    myRole:
+      "As Product Designer I owned the UX for core Leaf management flows and co-designed Team Network Health — from research themes through wireframes, branded UI, and collaboration on the health-score experience.",
+    problemBefore: {
+      description:
+        "Large-team HR tools often left managers without a clear view of communication gaps, overlapping responsibilities, or early relationship friction inside their teams.",
+      pains: [
+        "Communication lines between managers and teams were unclear",
+        "Roles overlapped, reducing accountability",
+        "No early signal when team dynamics were degrading",
+        "Managers lacked a single place for insights, planning, and history",
+      ],
+    },
+    insights: [
+      {
+        type: "opportunity",
+        label: "Communication",
+        body: "Improving the line of communication between managers and their teams was a primary research focus.",
+      },
+      {
+        type: "data",
+        label: "Roles & responsibilities",
+        body: "Clear role definition was needed to avoid overlapping duties and improve accountability.",
+      },
+      {
+        type: "quote",
+        label: "Team Network Health",
+        body: "A feature to visualize team dynamics from employee feedback — using a custom algorithm — became the strategic differentiator.",
+      },
+    ],
+    process: [
+      {
+        title: "Research & brainstorm",
+        description:
+          "Focused on communication, roles & responsibilities, and Team Network Health as the core opportunity areas.",
+      },
+      {
+        title: "Low-fidelity wireframes",
+        description:
+          "Explored Team Creation flow, Team Member Profiles, and Roles & Responsibilities pages in grayscale.",
+      },
+      {
+        title: "High-fidelity visual design",
+        description:
+          "Brought the product into a teal-green branded system: dashboards, profiles, lists, and interactive feedback states.",
+      },
+      {
+        title: "Collaborate on Team Network Health",
+        description:
+          "Designed dynamic employee questions, health-score presentation, and color-coded relationship graphs for managers.",
+      },
+    ],
+    figures: {
+      solutions: [
+        {
+          src: "/cases/leaf/overview.png",
+          alt: "Leaf product design case board overview",
+          caption:
+            "Case board overview — goals, research themes, wireframes, visual design, and Team Network Health collaboration.",
+        },
+      ],
+    },
+    keyDecisions: [
+      {
+        title: "Team Network Health as a first-class feature",
+        description:
+          "Employee feedback feeds an algorithm that produces a Health Score managers can explore through a network graph.",
+      },
+      {
+        title: "Separate structure from sentiment",
+        description:
+          "Roles & Responsibilities clarify ownership, while Network Health surfaces relationship dynamics — two different jobs.",
+      },
+      {
+        title: "Dashboards for action, not decoration",
+        description:
+          "Profiles, health scores, and interaction histories were designed to help managers plan and intervene earlier.",
+      },
+    ],
+    solution:
+      "The final Leaf experience helps large teams organize and communicate — with Team Network Health giving managers a color-coded view of relationship strength, feedback context, and a Health Score based on employee input.",
+    solutionDetails: [
+      "Team creation and management for teams and sub-teams",
+      "Team member profiles with role and Health Score",
+      "Network graph visualization of team connections",
+      "Feedback and task-assignment interaction patterns",
+      "Roles & Responsibilities pages with clearer accountability",
+    ],
+    impact: [
+      "Established a design system language in teal-green for Leaf’s web product",
+      "Delivered wire-to-hi-fi coverage for team creation, profiles, and roles",
+      "Defined Team Network Health as a measurable, manager-facing insight surface",
+      "Strengthened learning on complex IA and algorithm-informed UX",
+    ],
     impactMetrics: [
-      { value: "[-X%]", label: "[Metric label]" },
-      { value: "[+Yx]", label: "[Metric label]" },
+      { value: "Health", label: "Score model" },
+      { value: "Network", label: "Dynamics graph" },
+      { value: "IA", label: "Roles clarity" },
     ],
-    reflection: "[Placeholder]",
+    impactCaveat:
+      "Outcomes described from the design case board; production business metrics were not included in the source material.",
+    reflection:
+      "Leaf was a strong learning project — especially Team Network Health and the information architecture behind Roles & Responsibilities. Complex people systems need both clear structure and trustworthy signals.",
   },
 ];
 
