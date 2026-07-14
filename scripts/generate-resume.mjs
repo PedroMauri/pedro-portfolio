@@ -171,16 +171,6 @@ doc
     { width: pageWidth, lineGap: 2 },
   );
 
-sectionTitle("Tools");
-doc
-  .font("Helvetica")
-  .fontSize(9.5)
-  .fillColor(ink)
-  .text("Figma  |  FigJam  |  Prototyping  |  Design systems  |  Product & engineering collaboration", {
-    width: pageWidth,
-    lineGap: 2,
-  });
-
 doc.end();
 
 await new Promise((resolve, reject) => {
