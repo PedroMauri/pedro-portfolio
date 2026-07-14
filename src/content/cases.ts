@@ -473,7 +473,7 @@ export const cases: CaseStudy[] = [
     accent: "from-[#548C7C] to-[#3F6B5E]",
     previewVariant: "workflow",
     featured: true,
-    thumbnail: "/cases/leaf/wireframes-hifi.png",
+    thumbnail: "/cases/leaf/thumbnail.png",
     overview: [
       "Leaf is a human resources management application designed for companies with large teams. The platform simplifies management across departments within large corporate accounts — enabling teams creation, information sharing, and management of direct reports.",
       "As Product Designer I shaped core experiences across calendars and scheduling, chat, health checks, and performance insights for teams and members — with special focus on Team Network Health.",
