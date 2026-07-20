@@ -1,4 +1,5 @@
-﻿import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
+﻿import { Analytics } from "@vercel/analytics/react";
+import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageLayout } from "@/components/layout/PageLayout";
 import About from "@/pages/About";
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/contact" element={<Navigate to="/#get-in-touch" replace />} />
         </Routes>
       </PageLayout>
+      <Analytics />
     </BrowserRouter>
   );
 }
