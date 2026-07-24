@@ -27,7 +27,7 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
           <h3 className="mt-3 text-balance text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl">
             {caseStudy.title}
           </h3>
-          <p className="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-muted lg:mx-0 mx-auto">
+          <p className="mt-4 mx-auto max-w-xl text-[1.05rem] leading-relaxed text-muted lg:mx-0">
             {caseStudy.summary}
           </p>
 
@@ -90,7 +90,7 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
 
         <div
           className={cn(
-            "relative hidden min-h-[240px] overflow-hidden bg-gradient-to-br p-6 lg:block lg:min-h-full",
+            "relative min-h-[200px] overflow-hidden bg-gradient-to-br p-4 sm:min-h-[240px] sm:p-6 lg:min-h-full",
             caseStudy.accent
           )}
         >
@@ -99,6 +99,10 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
               <img
                 src={caseStudy.thumbnail}
                 alt=""
+                width={960}
+                height={720}
+                loading="lazy"
+                decoding="async"
                 className={cn(
                   "h-full w-full origin-center object-cover object-center transition-transform duration-500",
                   caseStudy.thumbnailZoom
@@ -108,7 +112,7 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
               />
             </div>
           ) : (
-            <div className="flex h-full min-h-[240px] items-end rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm">
+            <div className="flex h-full min-h-[200px] items-end rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm sm:min-h-[240px]">
               <div>
                 <p className="text-sm font-medium uppercase tracking-[0.08em] text-white/70">
                   {caseStudy.company}

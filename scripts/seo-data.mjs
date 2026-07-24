@@ -112,6 +112,15 @@ export const pages = [
     type: "website",
     jsonLd: [website],
   },
+  {
+    path: "/privacy",
+    title: "Privacy | Pedro Mauri",
+    description:
+      "How pedromauri.com uses Vercel Web Analytics — privacy-friendly, cookie-free traffic measurement.",
+    image: DEFAULT_OG_IMAGE,
+    type: "website",
+    jsonLd: [],
+  },
   ...cases.map((item) => ({
     path: `/case-studies/${item.slug}`,
     title: `${item.title} | Pedro Mauri`,

@@ -32,6 +32,9 @@ export default function Home() {
           <img
             src={profile.photo}
             alt={profile.name}
+            width={128}
+            height={128}
+            decoding="async"
             className="mb-8 size-28 rounded-full object-cover shadow-[0_12px_40px_rgba(11,11,11,0.12)] ring-4 ring-white sm:size-32"
           />
           <p className="shrink-0 text-lg font-medium text-accent-dark sm:text-xl">

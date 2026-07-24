@@ -44,6 +44,9 @@ export function Footer() {
             <Link to="/resume" className="text-muted transition-colors hover:text-accent-dark">
               Resume
             </Link>
+            <Link to="/privacy" className="text-muted transition-colors hover:text-accent-dark">
+              Privacy
+            </Link>
           </div>
           <div className="mt-6 flex items-center justify-center gap-3 md:justify-end">
             <a

@@ -2,18 +2,34 @@ import { useEffect, useState } from "react";
 import { profile } from "@/content/profile";
 import { cn } from "@/lib/utils";
 
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function HeroRotator({ className }: { className?: string }) {
   const lines = profile.heroLines;
   const [index, setIndex] = useState(0);
   const [key, setKey] = useState(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
+    setReduceMotion(prefersReducedMotion());
+
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onChange = () => setReduceMotion(media.matches);
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+
     const id = window.setInterval(() => {
       setIndex((current) => (current + 1) % lines.length);
       setKey((current) => current + 1);
     }, 3200);
     return () => window.clearInterval(id);
-  }, [lines.length]);
+  }, [lines.length, reduceMotion]);
 
   return (
     <div
@@ -25,10 +41,13 @@ export function HeroRotator({ className }: { className?: string }) {
       )}
     >
       <h1
-        key={key}
-        className="animate-fade-swap absolute inset-x-0 top-0 text-balance text-center text-3xl font-medium leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.35rem]"
+        key={reduceMotion ? "static" : key}
+        className={cn(
+          "absolute inset-x-0 top-0 text-balance text-center text-3xl font-medium leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.35rem]",
+          !reduceMotion && "animate-fade-swap"
+        )}
       >
-        {lines[index]}
+        {reduceMotion ? lines[0] : lines[index]}
       </h1>
     </div>
   );

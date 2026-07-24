@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Expand, ImageIcon, X } from "lucide-react";
 import type { CaseFigure as CaseFigureType } from "@/content/cases";
 import { cn } from "@/lib/utils";
@@ -12,21 +12,45 @@ interface CaseFigureProps {
 
 /** Shared frame — tall enough for MVP and portrait sketches at the same visual scale. */
 const FRAME =
-  "relative flex h-[560px] w-full items-center justify-center bg-white p-4 sm:h-[640px] sm:p-6";
+  "relative flex h-[min(70vh,560px)] w-full items-center justify-center bg-white p-4 sm:h-[640px] sm:p-6";
 
-export function CaseFigure({
-  figure,
-  className,
-}: CaseFigureProps) {
+export function CaseFigure({ figure, className }: CaseFigureProps) {
   const [failed, setFailed] = useState(false);
   const [open, setOpen] = useState(false);
   const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
 
+    const previouslyFocused = triggerRef.current;
+    closeRef.current?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     const previousOverflow = document.body.style.overflow;
@@ -36,6 +60,7 @@ export function CaseFigure({
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
     };
   }, [open]);
 
@@ -50,6 +75,7 @@ export function CaseFigure({
         <div className={FRAME}>
           {!failed ? (
             <button
+              ref={triggerRef}
               type="button"
               onClick={() => setOpen(true)}
               aria-label={`Expand image: ${figure.alt}`}
@@ -86,6 +112,7 @@ export function CaseFigure({
 
       {open && !failed ? (
         <div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
@@ -106,6 +133,7 @@ export function CaseFigure({
                 ) : null}
               </div>
               <button
+                ref={closeRef}
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close expanded image"

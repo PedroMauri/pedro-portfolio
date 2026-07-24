@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import { useEffect, useId, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/content/profile";
@@ -13,6 +13,18 @@ const navItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const menuId = useId();
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 bg-accent-softer">
@@ -25,7 +37,7 @@ export function Header() {
           {profile.name}
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -49,6 +61,8 @@ export function Header() {
           type="button"
           className="inline-flex size-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls={menuId}
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -56,8 +70,8 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="bg-accent-softer px-5 py-4 md:hidden">
-          <nav className="flex flex-col items-end gap-1">
+        <div id={menuId} className="bg-accent-softer px-5 py-4 md:hidden">
+          <nav className="flex flex-col items-end gap-1" aria-label="Mobile">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}

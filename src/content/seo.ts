@@ -14,6 +14,7 @@ export interface SeoPage {
   description: string;
   image?: string;
   type?: "website" | "article";
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -123,6 +124,24 @@ export const caseStudiesSeo: SeoPage = {
   jsonLd: websiteJsonLd(),
 };
 
+export const privacySeo: SeoPage = {
+  path: "/privacy",
+  title: `Privacy | ${profile.name}`,
+  description:
+    "How pedromauri.com uses Vercel Web Analytics — privacy-friendly, cookie-free traffic measurement.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+};
+
+export const notFoundSeo: SeoPage = {
+  path: "/404",
+  title: `Page not found | ${profile.name}`,
+  description: "The page you requested could not be found.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export function getCaseSeo(slug: string): SeoPage | undefined {
   const caseStudy = cases.find((item) => item.slug === slug);
   return caseStudy ? casePage(caseStudy) : undefined;
@@ -130,5 +149,5 @@ export function getCaseSeo(slug: string): SeoPage | undefined {
 
 export function getIndexableSeoPages(): SeoPage[] {
   const listed = cases.filter((item) => !item.comingSoon);
-  return [homeSeo, aboutSeo, resumeSeo, caseStudiesSeo, ...listed.map(casePage)];
+  return [homeSeo, aboutSeo, resumeSeo, caseStudiesSeo, privacySeo, ...listed.map(casePage)];
 }

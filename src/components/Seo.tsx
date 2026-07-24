@@ -25,6 +25,7 @@ export function Seo({ page }: SeoProps) {
     <Helmet>
       <title>{page.title}</title>
       <meta name="description" content={page.description} />
+      {page.noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
       <link rel="canonical" href={url} />
 
       <meta property="og:type" content={type} />
