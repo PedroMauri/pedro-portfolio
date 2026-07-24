@@ -1,12 +1,16 @@
 ﻿import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { profile } from "@/content/profile";
+import { aboutSeo } from "@/content/seo";
 import { useReveal } from "@/hooks/useReveal";
 
 export default function About() {
   const introRef = useReveal<HTMLElement>();
 
   return (
+    <>
+    <Seo page={aboutSeo} />
     <section ref={introRef} className="reveal border-b border-border bg-gradient-to-b from-accent-softer to-white">
       <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 sm:py-24">
         <img
@@ -45,5 +49,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </>
   );
 }

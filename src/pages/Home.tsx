@@ -1,9 +1,11 @@
 ﻿import { IdCard, MapPin } from "lucide-react";
 import { FeaturedCaseCard } from "@/components/FeaturedCaseCard";
 import { HeroRotator } from "@/components/HeroRotator";
+import { Seo } from "@/components/Seo";
 import { StrengthCard } from "@/components/StrengthCard";
 import { getFeaturedCases } from "@/content/cases";
 import { profile } from "@/content/profile";
+import { homeSeo } from "@/content/seo";
 import { useReveal } from "@/hooks/useReveal";
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -22,6 +24,7 @@ export default function Home() {
 
   return (
     <>
+      <Seo page={homeSeo} />
       <section className="relative flex min-h-[calc(100svh-4.25rem)] items-center justify-center overflow-hidden bg-accent-softer">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,149,159,0.16),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent-soft/40 via-transparent to-accent-softer" />

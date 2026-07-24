@@ -24,12 +24,12 @@ export function HeroRotator({ className }: { className?: string }) {
         className
       )}
     >
-      <p
+      <h1
         key={key}
         className="animate-fade-swap absolute inset-x-0 top-0 text-balance text-center text-3xl font-medium leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.35rem]"
       >
         {lines[index]}
-      </p>
+      </h1>
     </div>
   );
 }

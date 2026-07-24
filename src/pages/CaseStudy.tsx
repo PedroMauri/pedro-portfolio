@@ -7,7 +7,9 @@ import {
   CaseH3,
   MetaLabel,
 } from "@/components/case-study/CaseChapter";
+import { Seo } from "@/components/Seo";
 import { getCaseBySlug, getListedCases } from "@/content/cases";
+import { caseStudiesSeo, getCaseSeo, homeSeo } from "@/content/seo";
 
 export default function CaseStudyPage() {
   const { slug } = useParams();
@@ -22,6 +24,7 @@ export default function CaseStudyPage() {
   if (!caseStudy || caseStudy.comingSoon) {
     return (
       <section className="mx-auto max-w-4xl px-5 py-20 sm:px-8">
+        <Seo page={caseStudiesSeo} />
         <h1 className="text-3xl font-medium">
           {caseStudy?.comingSoon ? "Case study coming soon" : "Case study not found"}
         </h1>
@@ -32,8 +35,11 @@ export default function CaseStudyPage() {
     );
   }
 
+  const seo = getCaseSeo(caseStudy.slug) ?? homeSeo;
+
   return (
     <article className="bg-white">
+      <Seo page={seo} />
       {/* Title block — matches Nicole: light, company eyebrow, large title */}
       <header className="border-b border-border bg-accent-softer">
         <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20">

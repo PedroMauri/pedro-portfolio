@@ -1,8 +1,12 @@
 import { ArrowRight, FileText } from "lucide-react";
+import { Seo } from "@/components/Seo";
 import { profile } from "@/content/profile";
+import { resumeSeo } from "@/content/seo";
 
 export default function Resume() {
   return (
+    <>
+    <Seo page={resumeSeo} />
     <section className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8 sm:py-24">
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Resume</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
@@ -31,5 +35,6 @@ export default function Resume() {
         </a>
       </div>
     </section>
+    </>
   );
 }

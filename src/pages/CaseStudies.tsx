@@ -1,5 +1,7 @@
 import { FeaturedCaseCard } from "@/components/FeaturedCaseCard";
+import { Seo } from "@/components/Seo";
 import { getListedCases } from "@/content/cases";
+import { caseStudiesSeo } from "@/content/seo";
 import { useReveal } from "@/hooks/useReveal";
 
 export default function CaseStudies() {
@@ -7,6 +9,8 @@ export default function CaseStudies() {
   const ref = useReveal<HTMLElement>();
 
   return (
+    <>
+    <Seo page={caseStudiesSeo} />
     <section ref={ref} className="reveal mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
       <div className="text-center lg:text-left">
         <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Case Studies</p>
@@ -23,5 +27,6 @@ export default function CaseStudies() {
         ))}
       </div>
     </section>
+    </>
   );
 }
