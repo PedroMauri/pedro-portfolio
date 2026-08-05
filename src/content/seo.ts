@@ -142,6 +142,15 @@ export const notFoundSeo: SeoPage = {
   noindex: true,
 };
 
+export const kanopiShareSeo: SeoPage = {
+  path: "/share/kanopi",
+  title: `Private share | ${profile.name}`,
+  description: "Password-protected application materials.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export function getCaseSeo(slug: string): SeoPage | undefined {
   const caseStudy = cases.find((item) => item.slug === slug);
   return caseStudy ? casePage(caseStudy) : undefined;

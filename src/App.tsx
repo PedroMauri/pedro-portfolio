@@ -6,6 +6,7 @@ import About from "@/pages/About";
 import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
 import Home from "@/pages/Home";
+import KanopiShare from "@/pages/KanopiShare";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import Resume from "@/pages/Resume";
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/share/kanopi" element={<KanopiShare />} />
           <Route path="/work" element={<Navigate to="/case-studies" replace />} />
           <Route path="/work/:slug" element={<LegacyWorkRedirect />} />
           <Route path="/contact" element={<Navigate to="/#get-in-touch" replace />} />
