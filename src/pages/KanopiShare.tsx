@@ -86,11 +86,20 @@ function P({ children }: { children: ReactNode }) {
   return <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">{children}</p>;
 }
 
-function Skill({ title, body }: { title: string; body: string }) {
+function Skill({
+  title,
+  body,
+  children,
+}: {
+  title: string;
+  body: string;
+  children?: ReactNode;
+}) {
   return (
     <div className="mt-5">
       <p className="font-medium text-foreground">{title}</p>
       <p className="mt-1 text-base leading-relaxed text-muted">{body}</p>
+      {children}
     </div>
   );
 }
@@ -296,8 +305,13 @@ function Content() {
       />
       <Skill
         title="Collaborating with strategists, developers, content, PMs — 4"
-        body="Worked closely with the PM on Yethos to keep UX aligned to goals; regular collaboration with engineering/brand in other roles."
-      />
+        body="Worked closely with the PM on Yethos to keep UX aligned to goals; regular collaboration with engineering/brand in other roles. For every important component, I documented behavior, constraints, and specs like the example below—and shared it with the team, especially the PM, for review and approval before build."
+      >
+        <Figure
+          src="/share/kanopi/09-community-box-spec.png"
+          caption="Example: Community Box component spec shared with PM and engineering for approval"
+        />
+      </Skill>
 
       <SectionTitle>3) Impact at Kanopi</SectionTitle>
       <P>
