@@ -250,13 +250,18 @@ function Content() {
       </P>
       <P>
         <strong className="text-foreground">Activities:</strong> Logo and brand system (orange “Y”, dark/navy +
-        white). High-fidelity UI for web and mobile. Collaborated with the project manager so design stayed
-        tied to business goals for a scalable MVP.
+        white). First high-fidelity community page wire (annotated structure), then polished UI for web and
+        mobile. Collaborated with the project manager so design stayed tied to business goals for a scalable
+        MVP.
       </P>
       <P>
         <strong className="text-foreground">Deliverables:</strong> Brand guidelines, hi-fi UI, presentation-ready
         prototype.
       </P>
+      <Figure
+        src="/share/kanopi/08-first-hifi-wire-community.png"
+        caption="First hi-fi wire — community page (annotated layout, cover 6:1, profile 16:9, favorites, discussions, files, people)"
+      />
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <Figure src="/share/kanopi/07-conclusion.png" caption="Project conclusion" />
 
