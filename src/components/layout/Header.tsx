@@ -8,7 +8,6 @@ const navItems = [
   { to: "/", label: "Home", end: true },
   { to: "/case-studies", label: "Case Studies" },
   { to: "/about", label: "About" },
-  { to: "/resume", label: "Resume" },
 ];
 
 export function Header() {

@@ -1,5 +1,4 @@
 ﻿import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { profile } from "@/content/profile";
 import { aboutSeo } from "@/content/seo";
@@ -39,13 +38,6 @@ export default function About() {
             View LinkedIn
             <ArrowRight className="size-4" />
           </a>
-          <Link
-            to="/resume"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-2.5 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
-          >
-            View resume
-            <ArrowRight className="size-4" />
-          </Link>
         </div>
       </div>
     </section>

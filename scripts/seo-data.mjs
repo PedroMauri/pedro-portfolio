@@ -95,15 +95,6 @@ export const pages = [
     jsonLd: [person],
   },
   {
-    path: "/resume",
-    title: "Resume | Pedro Mauri",
-    description:
-      "Download the resume of Pedro Mauri, Product designer (UX & UI) based in Calgary, Canada.",
-    image: DEFAULT_OG_IMAGE,
-    type: "website",
-    jsonLd: [person],
-  },
-  {
     path: "/case-studies",
     title: "Case Studies | Pedro Mauri",
     description:

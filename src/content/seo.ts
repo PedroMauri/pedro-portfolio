@@ -158,5 +158,5 @@ export function getCaseSeo(slug: string): SeoPage | undefined {
 
 export function getIndexableSeoPages(): SeoPage[] {
   const listed = cases.filter((item) => !item.comingSoon);
-  return [homeSeo, aboutSeo, resumeSeo, caseStudiesSeo, privacySeo, ...listed.map(casePage)];
+  return [homeSeo, aboutSeo, caseStudiesSeo, privacySeo, ...listed.map(casePage)];
 }

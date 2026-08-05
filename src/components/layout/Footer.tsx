@@ -41,9 +41,6 @@ export function Footer() {
             <Link to="/about" className="text-muted transition-colors hover:text-accent-dark">
               About
             </Link>
-            <Link to="/resume" className="text-muted transition-colors hover:text-accent-dark">
-              Resume
-            </Link>
             <Link to="/privacy" className="text-muted transition-colors hover:text-accent-dark">
               Privacy
             </Link>
