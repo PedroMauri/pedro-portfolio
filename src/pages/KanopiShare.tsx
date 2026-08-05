@@ -277,82 +277,78 @@ function Content() {
       <SectionTitle>2) Self-assessment</SectionTitle>
       <Skill
         title="Facilitating client meetings and presenting — 4"
-        body="Presented process and recommendations through structured decks and stakeholder alignment with the PM on Yethos; also client-facing work in agency settings."
+        body="Comfortable running and presenting in client/stakeholder meetings—walking through process, recommendations, and design decisions clearly."
       />
       <Skill
         title="Figma — 4"
-        body="Wires, prototypes, and hi-fi UI systems for Yethos end-to-end."
+        body="Primary tool for wires, interactive prototypes, and hi-fi UI systems day to day."
       />
       <Skill
         title="Interaction design & prototyping — 4"
-        body="Role-based flows and prototypes for community/channel/topic creation; iterated after usability tests."
+        body="Strong at mapping complex flows and building clickable prototypes, then iterating from usability feedback."
       />
       <Skill
         title="User research & usability testing — 4"
-        body="Competitive research, Lean persona validation with influencers, usability testing and adjustments."
+        body="Experience with competitive research, persona work, and usability testing to inform and validate design decisions."
       />
       <Skill
         title="Content strategy & information architecture — 4"
-        body="Defined Community → Channel → Topic hierarchy, core pages, and navigation—central to the product."
+        body="Confident structuring content hierarchies, page jobs, and navigation so products stay clear and scalable."
       />
       <Skill
         title="Accessible design / WCAG — 3"
-        body="Designed for clarity, hierarchy, and usable controls across devices; I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely."
+        body="Design with clarity, hierarchy, and usable controls in mind; I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely."
       />
       <Skill
         title="Managing multiple projects — 4"
-        body="Agency experience (Upsigns) delivering parallel client work alongside product projects."
+        body="Agency experience delivering parallel client work without dropping quality or communication."
       />
       <Skill
         title="Collaborating with strategists, developers, content, PMs — 4"
-        body="Worked closely with the PM on Yethos to keep UX aligned to goals; regular collaboration with engineering/brand in other roles. For every important component, I documented behavior, constraints, and specs like the example below—and shared it with the team, especially the PM, for review and approval before build."
+        body="Work closely with PMs and cross-functional partners; for important components I document behavior and constraints and share with the team—especially the PM—for review before build."
       >
         <Figure
           src="/share/kanopi/09-community-box-spec.png"
-          caption="Example: Community Box component spec shared with PM and engineering for approval"
+          caption="Example of how I document important components for PM and engineering review"
         />
       </Skill>
 
       <SectionTitle>3) Impact at Kanopi</SectionTitle>
       <P>
-        <strong className="text-foreground">Immediate impact:</strong> Bringing a clear discovery →
-        IA/content structure → UX → visual path to client website work—especially when information is
-        scattered and users need to evaluate or act quickly.
+        <strong className="text-foreground">Immediate impact:</strong> I can jump into client website work
+        with a clear path from discovery to IA/content structure, UX, and visual design—especially when
+        information is scattered and users need to evaluate or act quickly.
       </P>
       <P>
-        <strong className="text-foreground">Challenges I fit:</strong> Complex navigation/IA, multi-role
-        experiences, research-backed prioritization, turning strategy into testable prototypes and polished
-        UI.
+        <strong className="text-foreground">Challenges I fit:</strong> Complex navigation and information
+        architecture, multi-role experiences, research-backed prioritization, and turning strategy into
+        testable prototypes and polished UI.
       </P>
       <P>
-        <strong className="text-foreground">Balancing goals:</strong> On Yethos we balanced business goals
-        (engagement, monetization options, scalable MVP) with audience needs (privacy, ease of use,
-        meaningful community interaction) and technical MVP scope (explicit “not yet” features in flows).
+        <strong className="text-foreground">Balancing goals:</strong> I treat business goals, user needs, and
+        technical scope as constraints to negotiate early—not trade-offs to discover late. I surface what’s
+        in / out for the MVP so the experience stays focused and shippable.
       </P>
       <P>
-        <strong className="text-foreground">Meaningful decision:</strong> Structuring the product as Community
-        → Channel → Topic and leading community pages with activity/overview signals—so users could
-        understand value faster. Usability feedback reinforced clarity over decorative complexity.
+        <strong className="text-foreground">Meaningful decision:</strong> I prioritize structural clarity
+        (hierarchy, page jobs, what users see first) over decorative complexity. When usability feedback
+        points to confusion, I simplify the model before adding more UI.
       </P>
 
       <SectionTitle>4) Additional questions</SectionTitle>
       <SubTitle>When research/feedback changed my recommendation</SubTitle>
       <P>
-        Competitor and persona work initially pushed a broad “social + community” feature set. Usability
-        testing with influencers showed we needed a tighter MVP: clearer hierarchy and creation flows first,
-        with some admin features marked not-yet. I refined personas and deferred scope so the prototype
-        stayed focused on meaningful community interaction.
+        I start with a direction from research, then treat usability feedback as a forcing function to cut
+        scope. When testing shows users struggle, I tighten the MVP—clearer hierarchy and core flows first,
+        defer secondary features—rather than defending a broader feature set.
       </P>
-      <Figure src="/share/kanopi/03-personas.png" caption="Lean UX refine loop (personas)" />
 
       <SubTitle>Defending a recommendation with a stakeholder</SubTitle>
       <P>
-        I collaborated closely with the project manager when feature appetite grew. Using research synthesis
-        (privacy, moderation, community-centric structure) and the IA/flows, I argued for a scalable
-        foundation over packing every competitor feature into v1. We aligned on a prototype that
-        demonstrated the core experience and left room for growth.
+        When feature appetite grows, I bring research synthesis and the IA/flows back to the table and argue
+        for a scalable foundation over packing every request into v1. I collaborate closely with the PM so we
+        align on a prototype that proves the core experience and leaves room to grow.
       </P>
-      <Figure src="/share/kanopi/07-conclusion.png" caption="Project conclusion / alignment" />
 
       <p className="mt-16 text-sm text-muted-soft">
         Confidential application materials · Not listed in site navigation or search indexes.

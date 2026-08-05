@@ -81,40 +81,42 @@ Market research → Personas → Information architecture → Brand → Wirefram
 ## 2) Self-assessment
 
 **Facilitating client meetings / presenting — 4**  
-Presented process and recommendations through structured decks (workflow, research, IA) and stakeholder alignment with the PM on Yethos; also client-facing work in agency settings.
+Comfortable running and presenting in client/stakeholder meetings—walking through process, recommendations, and design decisions clearly.
 
 **Figma — 4**  
-Wires, prototypes, and hi-fi UI systems for Yethos end-to-end.
+Primary tool for wires, interactive prototypes, and hi-fi UI systems day to day.
 
 **Interaction design & prototyping — 4**  
-Role-based flows and prototypes for community/channel/topic creation; iterated after usability tests.
+Strong at mapping complex flows and building clickable prototypes, then iterating from usability feedback.
 
 **User research & usability testing — 4**  
-Competitive research, Lean persona validation with influencers, usability testing and adjustments.
+Experience with competitive research, persona work, and usability testing to inform and validate design decisions.
 
 **Content strategy & information architecture — 4**  
-Defined Community → Channel → Topic hierarchy, core pages, and navigation—central to the product.
+Confident structuring content hierarchies, page jobs, and navigation so products stay clear and scalable.
 
 **Accessible design / WCAG — 3**  
-Designed for clarity, hierarchy, and usable controls across devices; I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
+Design with clarity, hierarchy, and usable controls in mind; I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
 
 **Managing multiple projects — 4**  
-Agency experience (Upsigns) delivering parallel client work alongside product projects.
+Agency experience delivering parallel client work without dropping quality or communication.
 
 **Collaborating with strategists, developers, content, PMs — 4**  
-Worked closely with the PM on Yethos to keep UX aligned to goals; regular collaboration with engineering/brand in other roles.
+Work closely with PMs and cross-functional partners; for important components I document behavior and constraints and share with the team—especially the PM—for review before build.
+
+*[IMAGE: 09-community-box-spec.png — Example of how I document important components for PM and engineering review]*
 
 ---
 
 ## 3) Impact at Kanopi
 
-**Immediate impact:** Bringing a clear discovery → IA/content structure → UX → visual path to client website work—especially when information is scattered and users need to evaluate or act quickly.
+**Immediate impact:** I can jump into client website work with a clear path from discovery to IA/content structure, UX, and visual design—especially when information is scattered and users need to evaluate or act quickly.
 
-**Challenges I fit:** Complex navigation/IA, multi-role experiences (admin/mod/member), research-backed prioritization, turning strategy into testable prototypes and polished UI.
+**Challenges I fit:** Complex navigation and information architecture, multi-role experiences, research-backed prioritization, and turning strategy into testable prototypes and polished UI.
 
-**Balancing goals:** On Yethos we balanced business goals (engagement, monetization options, scalable MVP) with audience needs (privacy, ease of use, meaningful community interaction) and technical MVP scope (explicit “not yet” features in flows).
+**Balancing goals:** I treat business goals, user needs, and technical scope as constraints to negotiate early—not trade-offs to discover late. I surface what’s in / out for the MVP so the experience stays focused and shippable.
 
-**Meaningful decision:** Structuring the product as **Community → Channel → Topic** and leading community pages with activity/overview signals—so users could understand value faster. Usability feedback reinforced clarity over decorative complexity (detailed on the live case study).
+**Meaningful decision:** I prioritize structural clarity (hierarchy, page jobs, what users see first) over decorative complexity. When usability feedback points to confusion, I simplify the model before adding more UI.
 
 ---
 
@@ -122,17 +124,11 @@ Worked closely with the PM on Yethos to keep UX aligned to goals; regular collab
 
 ### When research/feedback changed my recommendation
 
-Competitor and persona work initially pushed a broad “social + community” feature set. Usability testing with influencers and iteration on prototypes showed we needed a tighter MVP: clearer hierarchy and creation flows first, with some admin features marked not-yet rather than shipping everything. I refined personas and cut/deferred scope so the prototype stayed focused on meaningful community interaction.
-
-*[IMAGE: 03-personas.png — Lean UX refine loop]*  
-*[IMAGE: 06-prototypes.png]*
+I start with a direction from research, then treat usability feedback as a forcing function to cut scope. When testing shows users struggle, I tighten the MVP—clearer hierarchy and core flows first, defer secondary features—rather than defending a broader feature set.
 
 ### Defending a recommendation with a stakeholder
 
-I collaborated closely with the project manager to keep the MVP aligned to original goals when feature appetite grew. I used the research synthesis (privacy, moderation, community-centric structure) and the IA/flows to argue for a scalable foundation over packing every competitor feature into v1. We aligned on a prototype that demonstrated the core experience and left room for growth—documented in the project conclusion.
-
-*[IMAGE: 07-conclusion.png]*  
-*[IMAGE: 01-goal-workflow.png]*
+When feature appetite grows, I bring research synthesis and the IA/flows back to the table and argue for a scalable foundation over packing every request into v1. I collaborate closely with the PM so we align on a prototype that proves the core experience and leaves room to grow.
 
 ---
 
