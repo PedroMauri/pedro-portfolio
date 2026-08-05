@@ -1,11 +1,59 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
+import { ShareCarousel } from "@/components/ShareCarousel";
 import {
   KANOPI_SHARE_PASSWORD,
   KANOPI_SHARE_STORAGE_KEY,
 } from "@/content/kanopiShare";
 import { kanopiShareSeo } from "@/content/seo";
+
+const BRANDING_SLIDES = [
+  {
+    src: "/share/kanopi/branding/01-brand-guidelines-cover.png",
+    caption: "Brand guidelines cover",
+  },
+  {
+    src: "/share/kanopi/branding/02-logomark-wordmark.png",
+    caption: "Logomark and wordmark construction",
+  },
+  {
+    src: "/share/kanopi/branding/03-logo-construction.png",
+    caption: "Logo construction and proportions",
+  },
+  {
+    src: "/share/kanopi/branding/04-clearspace.png",
+    caption: "Clearspace",
+  },
+  {
+    src: "/share/kanopi/branding/05-minimum-size.png",
+    caption: "Minimum size",
+  },
+  {
+    src: "/share/kanopi/branding/06-logo-donts.png",
+    caption: "Logo don’ts",
+  },
+  {
+    src: "/share/kanopi/branding/07-alternative-backgrounds.png",
+    caption: "Logo on alternative backgrounds",
+  },
+  {
+    src: "/share/kanopi/branding/08-mono-color.png",
+    caption: "Mono color logo",
+  },
+  {
+    src: "/share/kanopi/branding/09-color-palette.png",
+    caption: "Color palette",
+  },
+  {
+    src: "/share/kanopi/branding/10-typography.png",
+    caption: "Typography",
+  },
+  {
+    src: "/share/kanopi/branding/11-watermark.png",
+    caption: "Imagery watermark guidelines",
+  },
+] as const;
 
 function Figure({
   src,
@@ -209,7 +257,7 @@ function Content() {
         <strong className="text-foreground">Deliverables:</strong> Brand guidelines, hi-fi UI, presentation-ready
         prototype.
       </P>
-      <Figure src="/share/kanopi/05-brand-ui.png" caption="Brand system and UI screens" />
+      <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <Figure src="/share/kanopi/07-conclusion.png" caption="Project conclusion" />
 
       <SectionTitle>2) Self-assessment</SectionTitle>
