@@ -258,11 +258,11 @@ function Content() {
         <strong className="text-foreground">Deliverables:</strong> Brand guidelines, hi-fi UI, presentation-ready
         prototype.
       </P>
+      <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <Figure
         src="/share/kanopi/08-first-hifi-wire-community.png"
         caption="First hi-fi wire — community page (annotated layout, cover 6:1, profile 16:9, favorites, discussions, files, people)"
       />
-      <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <Figure src="/share/kanopi/07-conclusion.png" caption="Project conclusion" />
 
       <SectionTitle>2) Self-assessment</SectionTitle>
