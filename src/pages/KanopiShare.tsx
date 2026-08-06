@@ -273,6 +273,14 @@ function Content() {
         prototype was completed, we conducted quick tests with influencers to validate our assumptions and
         refine the personas based on their feedback.
       </P>
+      <P>
+        <strong className="text-foreground">Lean UX Flow for Persona Development</strong>
+      </P>
+      <P>Below is a flowchart illustrating how research and iterations were applied:</P>
+      <Figure
+        src="/share/kanopi/03b-persona-flow.png"
+        caption="Persona development flow"
+      />
       <Figure src="/share/kanopi/03-personas.png" caption="Persona structure" />
 
       <SubTitle>Content Strategy</SubTitle>

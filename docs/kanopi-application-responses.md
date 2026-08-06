@@ -51,6 +51,10 @@ Our goal was to validate key design hypotheses, ensuring that the product’s fe
 
 2. **Rapid Development and User Testing:** After the prototype was completed, we conducted quick tests with influencers to validate our assumptions and refine the personas based on their feedback.
 
+**Lean UX Flow for Persona Development**  
+Below is a flowchart illustrating how research and iterations were applied:
+
+*[IMAGE: 03b-persona-flow.png — Persona development flow]*  
 *[IMAGE: 03-personas.png — Persona structure]*
 
 ### Content Strategy
