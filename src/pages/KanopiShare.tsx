@@ -14,19 +14,6 @@ import { kanopiShareSeo } from "@/content/seo";
 import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
 
-function LinkedInIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden
-      className={className}
-      fill="currentColor"
-    >
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
-
 const BRANDING_SLIDES = [
   {
     src: "/share/kanopi/branding/01-brand-guidelines-cover.png",
@@ -444,75 +431,6 @@ function HoverPreviewPortal({
   );
 }
 
-function LinkedInHoverCard({
-  href,
-  name,
-  headline,
-  location,
-}: {
-  href: string;
-  name: string;
-  headline: string;
-  location: string;
-}) {
-  const preview = useHoverPreview();
-
-  return (
-    <span
-      ref={preview.triggerRef}
-      className="relative inline-block"
-      onMouseEnter={preview.show}
-      onMouseLeave={preview.hide}
-    >
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        aria-describedby={preview.open ? preview.cardId : undefined}
-        className="font-medium text-accent-dark underline-offset-2 hover:underline"
-        onFocus={preview.show}
-        onBlur={preview.hide}
-      >
-        {name}
-      </a>
-      <HoverPreviewPortal
-        open={preview.open}
-        coords={preview.coords}
-        placeBelow={preview.placeBelow}
-        cardId={preview.cardId}
-        widthClass="w-72"
-        onShow={preview.show}
-        onHide={preview.hide}
-      >
-        <div className="p-4">
-          <div className="flex items-start gap-3">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#0A66C2] text-sm font-semibold text-white">
-              FP
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-1.5">
-                <p className="truncate text-sm font-semibold text-foreground">{name}</p>
-                <LinkedInIcon className="size-3.5 shrink-0 text-[#0A66C2]" />
-              </div>
-              <p className="mt-0.5 text-xs leading-snug text-muted">{headline}</p>
-              <p className="mt-1 text-xs text-muted-soft">{location}</p>
-            </div>
-          </div>
-          <a
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0A66C2] px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90"
-          >
-            <LinkedInIcon className="size-3.5" />
-            View LinkedIn profile
-          </a>
-        </div>
-      </HoverPreviewPortal>
-    </span>
-  );
-}
-
 function ProductHoverCard({
   href,
   label,
@@ -778,25 +696,6 @@ function Content() {
         discovery through visual design for a community-focused platform. It’s the clearest example of my
         process for website/product strategy work.
       </P>
-
-      <div className="mt-8 rounded-2xl border border-border bg-cream px-5 py-5 sm:px-6">
-        <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">
-          Client reference
-        </p>
-        <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">
-          For a client reference, you can reach{" "}
-          <LinkedInHoverCard
-            href="https://www.linkedin.com/in/felipepuddu/"
-            name="Felipe Puddu"
-            headline="Senior Engineering Manager at Luma Health"
-            location="Milan, Lombardy, Italy"
-          />
-          — the stakeholder who hired me on Yethos. I worked with him from{" "}
-          <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. All
-          images in this share were produced and used on the real project. He&apos;s based in Italy and
-          happy to confirm.
-        </p>
-      </div>
 
       <P>
         Below I walk through Discovery, Content Strategy, UX Strategy, and Visual Design using Yethos as the

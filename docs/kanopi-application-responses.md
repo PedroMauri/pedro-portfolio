@@ -13,8 +13,6 @@ Hi Vicki,
 
 Thank you for getting back to me. I’ve answered the questions using **Yethos**, an end-to-end UX/UI project where I led discovery through visual design for a community-focused platform. It’s the clearest example of my process for website/product strategy work.
 
-**Client reference:** For a client reference, you can reach [Felipe Puddu](https://www.linkedin.com/in/felipepuddu/) — the stakeholder who hired me on Yethos. I worked with him from **2021 to 2023** as product/visual designer. All images in this share were produced and used on the real project. He’s based in Italy and happy to confirm.
-
 Best,  
 Pedro Mauri
 
