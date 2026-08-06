@@ -223,9 +223,10 @@ function Content() {
         Market research → Personas → Information architecture → Brand → Wireframes/prototypes → UI →
         Usability testing → Presentation.
       </P>
+      <SubTitle>Project Scope / Workflow</SubTitle>
       <Figure
         src="/share/kanopi/01-goal-workflow.png"
-        caption="Goal and full project workflow"
+        caption="Project Scope / Workflow"
       />
 
       <SubTitle>Discovery</SubTitle>

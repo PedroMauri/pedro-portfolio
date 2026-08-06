@@ -27,7 +27,7 @@ I follow a structured path similar to how Kanopi frames website work. On Yethos 
 
 Market research → Personas → Information architecture → Brand → Wireframes/prototypes → UI → Usability testing → Presentation
 
-*[IMAGE: 01-goal-workflow.png — Goal + full project workflow]*
+*[IMAGE: 01-goal-workflow.png — Project Scope / Workflow]*
 
 ### Discovery
 
