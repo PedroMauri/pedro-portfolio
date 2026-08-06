@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { Expand, Linkedin, X } from "lucide-react";
+import { Expand, Linkedin, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
@@ -7,6 +7,7 @@ import {
   KANOPI_SHARE_PASSWORD,
   KANOPI_SHARE_STORAGE_KEY,
 } from "@/content/kanopiShare";
+import { getCaseBySlug } from "@/content/cases";
 import { kanopiShareSeo } from "@/content/seo";
 import { cn } from "@/lib/utils";
 
@@ -375,6 +376,119 @@ function LinkedInHoverCard({
   );
 }
 
+function CaseStudyHoverCard({
+  to,
+  label,
+  title,
+  company,
+  role,
+  year,
+  summary,
+  image,
+  tags,
+}: {
+  to: string;
+  label: string;
+  title: string;
+  company: string;
+  role: string;
+  year: string;
+  summary: string;
+  image: string;
+  tags: string[];
+}) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+  const cardId = useId();
+
+  function clearClose() {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+
+  function show() {
+    clearClose();
+    setOpen(true);
+  }
+
+  function hide() {
+    clearClose();
+    closeTimer.current = window.setTimeout(() => setOpen(false), 180);
+  }
+
+  useEffect(() => () => clearClose(), []);
+
+  return (
+    <span
+      className="relative inline-block"
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+    >
+      <Link
+        to={to}
+        aria-describedby={open ? cardId : undefined}
+        className="font-medium text-accent-dark underline-offset-2 hover:underline"
+      >
+        {label}
+      </Link>
+      <span
+        id={cardId}
+        role="tooltip"
+        className={cn(
+          "absolute bottom-[calc(100%+0.6rem)] left-1/2 z-50 w-80 -translate-x-1/2 overflow-hidden rounded-xl border border-border bg-white shadow-lg transition-all duration-150",
+          open
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-1 opacity-0"
+        )}
+        onMouseEnter={show}
+        onMouseLeave={hide}
+      >
+        <span className="absolute -bottom-1.5 left-1/2 z-10 size-3 -translate-x-1/2 rotate-45 border-b border-r border-border bg-white" />
+        <span className="relative block aspect-[16/9] overflow-hidden bg-cream">
+          <img
+            src={image}
+            alt=""
+            className="h-full w-full object-cover object-top"
+            loading="lazy"
+            decoding="async"
+          />
+        </span>
+        <span className="relative block p-4">
+          <span className="block text-[11px] font-medium uppercase tracking-[0.08em] text-accent-dark">
+            Case study · {company}
+          </span>
+          <span className="mt-1 block text-sm font-semibold leading-snug text-foreground">{title}</span>
+          <span className="mt-1 block text-xs text-muted-soft">
+            {role} · {year}
+          </span>
+          <span className="mt-2 block text-xs leading-relaxed text-muted">{summary}</span>
+          <span className="mt-2 flex flex-wrap gap-1">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-border bg-cream px-2 py-0.5 text-[10px] font-medium text-muted"
+              >
+                {tag}
+              </span>
+            ))}
+          </span>
+          <Link
+            to={to}
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
+          >
+            Open case study
+            <ArrowRight className="size-3.5" aria-hidden />
+          </Link>
+        </span>
+      </span>
+    </span>
+  );
+}
+
 function Gate({ onUnlock }: { onUnlock: () => void }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
@@ -424,6 +538,8 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
 }
 
 function Content() {
+  const yethos = getCaseBySlug("yethos-community-discovery");
+
   return (
     <article className="relative mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24 xl:mr-[13.5rem] 2xl:mr-[15rem]">
       <Seo page={kanopiShareSeo} />
@@ -434,12 +550,26 @@ function Content() {
       </h1>
       <p className="mt-4 text-lg text-muted">
         Pedro Mauri · Primary example:{" "}
-        <Link
-          to="/case-studies/yethos-community-discovery"
-          className="font-medium text-accent-dark underline-offset-2 hover:underline"
-        >
-          Yethos
-        </Link>{" "}
+        {yethos ? (
+          <CaseStudyHoverCard
+            to={`/case-studies/${yethos.slug}`}
+            label="Yethos"
+            title={yethos.title}
+            company={yethos.company}
+            role={yethos.role}
+            year={yethos.year}
+            summary={yethos.summary}
+            image={yethos.thumbnail ?? "/cases/yethos/hifi-channels.png"}
+            tags={yethos.tags}
+          />
+        ) : (
+          <Link
+            to="/case-studies/yethos-community-discovery"
+            className="font-medium text-accent-dark underline-offset-2 hover:underline"
+          >
+            Yethos
+          </Link>
+        )}{" "}
         (research → IA → prototype → UI → usability)
       </p>
 
