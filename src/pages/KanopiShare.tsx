@@ -243,7 +243,7 @@ function Skill({
 }
 
 const CHAPTERS = [
-  { id: "ch-home", label: "0. Home" },
+  { id: "ch-home", label: "0. Overview" },
   { id: "ch-discovery", label: "1. Discovery" },
   { id: "ch-content-strategy", label: "2. Content Strategy" },
   { id: "ch-ux-strategy", label: "3. UX Strategy" },
