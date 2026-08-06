@@ -243,6 +243,7 @@ function Skill({
 }
 
 const CHAPTERS = [
+  { id: "ch-home", label: "0. Home" },
   { id: "ch-discovery", label: "1. Discovery" },
   { id: "ch-content-strategy", label: "2. Content Strategy" },
   { id: "ch-ux-strategy", label: "3. UX Strategy" },
@@ -254,6 +255,10 @@ const CHAPTERS = [
 
 function ChapterNav() {
   function scrollTo(id: string) {
+    if (id === "ch-home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
