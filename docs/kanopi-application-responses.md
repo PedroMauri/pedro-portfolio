@@ -126,7 +126,7 @@ Design for clarity and usable controls—e.g. [BuildClock](https://pedromauri.co
 Balanced [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) with parallel client and agency work without dropping communication or quality.
 
 **Collaborating with strategists, developers, content, PMs — 4**  
-Close daily loop with engineers and brand on [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking); for complex UI I document behavior and constraints for PM and engineering review before build.
+For complex UI I document behavior and constraints and share with the team—especially the PM—for review before build. The example below is from Yethos: a Community Box spec written so design, PM, and engineering stay aligned.
 
 *[IMAGE: 09-community-box-spec.png — Example of how I document important components for PM and engineering review]*
 

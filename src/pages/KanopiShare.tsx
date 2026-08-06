@@ -1038,12 +1038,7 @@ function Content() {
       />
       <Skill
         title="Collaborating with strategists, developers, content, PMs — 4"
-        body={
-          <>
-            Close daily loop with engineers and brand on <BuildClockLink />; for complex UI I document
-            behavior and constraints for PM and engineering review before build.
-          </>
-        }
+        body="For complex UI I document behavior and constraints and share with the team—especially the PM—for review before build. The example below is from Yethos: a Community Box spec written so design, PM, and engineering stay aligned."
       >
         <Figure
           src="/share/kanopi/09-community-box-spec.png"
