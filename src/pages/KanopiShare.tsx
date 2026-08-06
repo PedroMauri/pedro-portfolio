@@ -639,21 +639,18 @@ function BuildClockLink() {
   const buildClock = getCaseBySlug("buildclock-field-time-tracking");
   if (!buildClock) {
     return (
-      <a
-        href="https://www.buildclock.io/"
-        target="_blank"
-        rel="noreferrer"
+      <Link
+        to="/case-studies/buildclock-field-time-tracking"
         className="font-medium text-accent-dark underline-offset-2 hover:underline"
       >
         BuildClock
-      </a>
+      </Link>
     );
   }
 
   return (
     <ProductHoverCard
-      href={buildClock.liveUrl ?? "https://www.buildclock.io/"}
-      external
+      href={`/case-studies/${buildClock.slug}`}
       label="BuildClock"
       title={buildClock.title}
       company={buildClock.company}
@@ -662,8 +659,8 @@ function BuildClockLink() {
       summary={buildClock.summary}
       image={buildClock.thumbnail ?? "/cases/buildclock/active-workers.png"}
       tags={buildClock.tags}
-      ctaLabel="Visit buildclock.io"
-      eyebrow="Live product"
+      ctaLabel="Open case study"
+      eyebrow="Case study"
     />
   );
 }
