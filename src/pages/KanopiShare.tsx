@@ -60,7 +60,7 @@ const WEB_HIFI_SLIDES = [
   {
     src: "/cases/yethos/hifi-channels.png",
     caption:
-      "Phase 3: Mobile hi-fi: community channels with follow state, activity stats, channel list, and feed with composer",
+      "Phase 3: Mobile hi-fi: community channels with follow state, activity stats, channel list, and more",
   },
 ] as const;
 
