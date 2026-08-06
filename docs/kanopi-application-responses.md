@@ -148,7 +148,7 @@ Work closely with PMs and cross-functional partners; for important components I 
 
 ### When research/feedback changed my recommendation
 
-On Yethos, competitive research and early persona work pushed toward a broad “social + community” feature set. Usability testing with influencers showed people struggled when creation and hierarchy weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic and core creation flows first, and mark secondary admin features as “not yet.” That kept the prototype focused on meaningful participation instead of shipping every competitor pattern.
+On Yethos, competitive research and early persona work pushed toward a broad “social + community” feature set. Usability testing with influencers showed people struggled when creation and hierarchy weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic and core creation flows first. That kept the prototype focused on meaningful participation instead of shipping every competitor pattern.
 
 ### Defending a recommendation with a stakeholder
 

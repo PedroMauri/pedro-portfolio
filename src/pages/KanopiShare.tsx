@@ -850,6 +850,7 @@ function Content() {
       <Figure
         src="/share/kanopi/04b-user-flow-dashboard.png"
         caption="User flow — Community Dashboard"
+        expandable
       />
       <PrototypeEmbed
         src="https://embed.figma.com/proto/H5HP7S1xWwoWA9gotybIC0/Yethos---Screens?node-id=3216-60979&node-type=frame&scaling=min-zoom&content-scaling=fixed&page-id=707%3A9176&starting-point-node-id=3216%3A60979&embed-host=share"
@@ -954,7 +955,7 @@ function Content() {
         On Yethos, competitive research and early persona work pushed toward a broad “social + community”
         feature set. Usability testing with influencers showed people struggled when creation and hierarchy
         weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic
-        and core creation flows first, and mark secondary admin features as “not yet.” That kept the
+        and core creation flows first. That kept the
         prototype focused on meaningful participation instead of shipping every competitor pattern.
       </P>
 
