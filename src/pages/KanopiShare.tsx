@@ -51,16 +51,16 @@ const MARKET_RESEARCH_SLIDES = [
 const WEB_HIFI_SLIDES = [
   {
     src: "/cases/yethos/hifi-web.png",
-    caption: "Phase 1 — Early web hi-fi: community homepage structure (cover, join, discussions, files, members)",
+    caption: "Phase 1: Early web hi-fi: community homepage structure (cover, join, discussions, files, members)",
   },
   {
     src: "/share/kanopi/10b-hifi-web-channels-annotated.png",
-    caption: "Phase 2 — Channels become the primary surface (nested nav + annotated IA decisions)",
+    caption: "Phase 2: Channels become the primary surface (nested nav + annotated IA decisions)",
   },
   {
     src: "/cases/yethos/hifi-channels.png",
     caption:
-      "Phase 3 — Mobile hi-fi: community channels with follow state, activity stats, channel list, and feed with composer",
+      "Phase 3: Mobile hi-fi: community channels with follow state, activity stats, channel list, and feed with composer",
   },
 ] as const;
 
@@ -78,7 +78,7 @@ function PrototypeEmbed({
       <div className="border-b border-border bg-card px-4 py-2.5">
         <p className="text-xs font-medium text-muted sm:text-sm">
           Tip: use the expand icon in the prototype toolbar to view fullscreen. There&apos;s a
-          small bug — if screens don&apos;t advance, press the{" "}
+          small bug: if screens don&apos;t advance, press the{" "}
           <span className="text-foreground">Criar</span> button to continue to the next page.
         </p>
       </div>
@@ -691,9 +691,9 @@ function Content() {
       </p>
 
       <P>
-        Hi Vicki — thank you for getting back to me. I chose{" "}
+        Hi Vicki. Thank you for getting back to me. I chose{" "}
         <strong className="text-foreground">Yethos</strong> as my example because it follows the same
-        phase structure you asked about—Discovery, Content Strategy, UX Strategy, and Visual Design—end to
+        phase structure you asked about (Discovery, Content Strategy, UX Strategy, and Visual Design), end to
         end on a community-focused platform where I led from research through polished UI. It’s the clearest
         demonstration of how I approach website and product strategy work.
       </P>
@@ -715,7 +715,7 @@ function Content() {
         for before defining structure or UI.
       </P>
       <P>
-        <strong className="text-foreground">Activities:</strong> Competitor analysis—features, strengths,
+        <strong className="text-foreground">Activities:</strong> Competitor analysis: features, strengths,
         weaknesses, and gaps. Identified needs around privacy,
         ease of use, moderation, and community-centric design. Defined Lean UX personas
         (Influencer/Admin, Moderator, Active Member) with motivations, behaviors, and use scenarios, then
@@ -727,7 +727,7 @@ function Content() {
       </P>
       <P>
         <strong className="text-foreground">Into the next phase:</strong> Research showed differentiation
-        should come from a clearer community hierarchy and stronger privacy/moderation—not more “social
+        should come from a clearer community hierarchy and stronger privacy/moderation, not more “social
         network” noise. That fed IA and content structure.
       </P>
       <SubTitle>Market research and analysis</SubTitle>
@@ -752,7 +752,7 @@ function Content() {
       <P>
         <strong className="text-foreground">2. Validate later in the loop:</strong> After the first
         prototype existed, we ran quick tests with influencers and refined the personas from that feedback
-        (Lean UX)—so Discovery hypotheses were checked before locking Visual Design.
+        (Lean UX), so Discovery hypotheses were checked before locking Visual Design.
       </P>
       <Figure src="/share/kanopi/03-personas.png" caption="Persona structure" />
 
@@ -814,12 +814,12 @@ function Content() {
       </P>
       <Figure
         src="/share/kanopi/04b-user-flow-dashboard.png"
-        caption="User flow — Community Dashboard"
+        caption="User flow: Community Dashboard"
         expandable
       />
       <PrototypeEmbed
         src="https://embed.figma.com/proto/H5HP7S1xWwoWA9gotybIC0/Yethos---Screens?node-id=3216-60979&node-type=frame&scaling=min-zoom&content-scaling=fixed&page-id=707%3A9176&starting-point-node-id=3216%3A60979&embed-host=share"
-        caption="Interactive Figma prototype — create community, channels, and topics"
+        caption="Interactive Figma prototype: create community, channels, and topics"
       />
 
       <ChapterTitle id="ch-visual-design">1d. Visual Design</ChapterTitle>
@@ -838,7 +838,7 @@ function Content() {
       </P>
       <P>
         <strong className="text-foreground">Into the next phase:</strong> Usability feedback and PM alignment
-        shaped what shipped in the presentation prototype versus what stayed marked for later—so Visual
+        shaped what shipped in the presentation prototype versus what stayed marked for later, so Visual
         Design supported a focused MVP handoff, not an endless feature surface.
       </P>
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
@@ -854,29 +854,29 @@ function Content() {
 
       <ChapterTitle id="ch-self-assessment">2. Self-assessment</ChapterTitle>
       <Skill
-        title="Facilitating client meetings and presenting — 4"
+        title="Facilitating client meetings and presenting: 4"
         body={
           <>
             Regularly ran client and stakeholder sessions on{" "}
-            <BuildClockLink withCard /> (a live field time-tracking product for Canadian contractors)—with
-            owners and PMs on job sites—walking through product decisions, recommendations, and next steps.
+            <BuildClockLink withCard /> (a live field time-tracking product for Canadian contractors), with
+            owners and PMs on job sites, walking through product decisions, recommendations, and next steps.
           </>
         }
       />
       <Skill
-        title="Figma — 4"
+        title="Figma: 4"
         body="Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end."
       />
       <Skill
-        title="Interaction design & prototyping — 4"
-        body="On Yethos, clickable prototypes made influencer meetings and shadowing actionable—we adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI."
+        title="Interaction design & prototyping: 4"
+        body="On Yethos, clickable prototypes made influencer meetings and shadowing actionable. We adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI."
       />
       <Skill
-        title="User research & usability testing — 4"
-        body="Field research on BuildClock—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope."
+        title="User research & usability testing: 4"
+        body="Field research on BuildClock: site visits, observation, and competitive teardown, plus MVP testing with early contractor customers that changed scope."
       />
       <Skill
-        title="Content strategy & information architecture — 4"
+        title="Content strategy & information architecture: 4"
         body={
           <>
             On <LeafLink withCard /> (an HR platform for large corporate teams) structured information
@@ -886,16 +886,16 @@ function Content() {
         }
       />
       <Skill
-        title="Accessible design / WCAG — 3"
-        body="Design for clarity and usable controls—e.g. BuildClock mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely."
+        title="Accessible design / WCAG: 3"
+        body="Design for clarity and usable controls, e.g. BuildClock mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely."
       />
       <Skill
-        title="Managing multiple projects — 4"
+        title="Managing multiple projects: 4"
         body="Balanced BuildClock with parallel client and agency work without dropping communication or quality."
       />
       <Skill
-        title="Collaborating with strategists, developers, content, PMs — 4"
-        body="For complex UI I document behavior and constraints and share with the team—especially the PM—for review before build. The example below is from Yethos: a Community Box spec written so design, PM, and engineering stay aligned."
+        title="Collaborating with strategists, developers, content, PMs: 4"
+        body="For complex UI I document behavior and constraints and share with the team, especially the PM, for review before build. The example below is from Yethos: a Community Box spec written so design, PM, and engineering stay aligned."
       >
         <Figure
           src="/share/kanopi/09-community-box-spec.png"
@@ -906,7 +906,7 @@ function Content() {
       <ChapterTitle id="ch-impact">3. Impact at Kanopi</ChapterTitle>
       <P>
         <strong className="text-foreground">Most immediate impact for Kanopi’s clients:</strong> I can take
-        a website from zero to launch with confidence—discovery through IA/content structure, UX, and visual
+        a website from zero to launch with confidence: discovery through IA/content structure, UX, and visual
         design, including WordPress builds when that’s the right stack. I’m especially useful when information
         is scattered and users need to evaluate or act quickly.
       </P>
@@ -914,7 +914,7 @@ function Content() {
         <strong className="text-foreground">
           The types of challenges you are especially well suited to solve:
         </strong>{" "}
-        Taking a client’s early vision—sketches, references, or rough ideas—and turning it into a clear
+        Taking a client’s early vision (sketches, references, or rough ideas) and turning it into a clear
         structure on paper, then into screens that still honor what they want while staying logical toward
         the end goal.
       </P>
@@ -923,7 +923,7 @@ function Content() {
           How you would balance client goals, audience needs, accessibility, and technical constraints:
         </strong>{" "}
         I treat client goals, audience needs, accessibility, and technical constraints as things to
-        negotiate early—not trade-offs to discover late. On products like BuildClock that meant readable
+        negotiate early, not trade-offs to discover late. On products like BuildClock that meant readable
         field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in /
         out so the experience stays shippable.
       </P>
@@ -933,7 +933,7 @@ function Content() {
         </strong>{" "}
         On BuildClock I initially pushed a robust Finance area so punches could feed invoice workflows.
         Early MVP use with contractor customers showed they already used external finance tools and got
-        confused by punches “disappearing” across reports—so I changed the recommendation to a simpler
+        confused by punches “disappearing” across reports, so I changed the recommendation to a simpler
         Reports export (period / jobsite / rates) and aligned with the co-founder to drop the heavier model.
         Outcome: a clearer admin path to billing without overbuilding.
       </P>
@@ -946,12 +946,12 @@ function Content() {
       <P>
         On Yethos, competitive research and early persona work pushed toward a broad “social + community”
         feature set. Usability testing with influencers showed people struggled when creation and hierarchy
-        weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic
+        weren’t clear, so I changed the recommendation: tighten the MVP around Community → Channel → Topic
         and core creation flows first.
       </P>
       <P>
         <strong className="text-foreground">What I learned:</strong> competitor breadth is not the same as
-        user clarity—more features early made the product harder to understand, not more valuable.
+        user clarity. More features early made the product harder to understand, not more valuable.
       </P>
       <P>
         <strong className="text-foreground">What I did differently:</strong> I cut the presentation scope to
@@ -965,12 +965,12 @@ function Content() {
       </SubTitle>
       <P>
         When feature appetite grew beyond the original MVP goals, the project manager wanted more of the
-        wishlist in v1. I argued for a scalable foundation—privacy, moderation, and community-centric
-        structure—over packing every request into the first release.
+        wishlist in v1. I argued for a scalable foundation (privacy, moderation, and community-centric
+        structure) over packing every request into the first release.
       </P>
       <P>
         <strong className="text-foreground">How I built alignment:</strong> I sat with the project manager
-        and walked through the research synthesis, IA, and flows side by side—so the trade-offs were visible:
+        and walked through the research synthesis, IA, and flows side by side, so the trade-offs were visible:
         what users needed to understand first versus what would crowd the first release. We agreed to prove
         the core experience in a presentation prototype first, then grow from that foundation once it was
         clear and testable.
