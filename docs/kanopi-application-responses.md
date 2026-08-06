@@ -142,11 +142,11 @@ For complex UI I document behavior and constraints and share with the team, espe
 
 ### Tell us about a time research, user feedback, or analytics changed your original design recommendation. What did you learn, and what did you do differently?
 
-On [BuildClock](https://pedromauri.com/projects/buildclock-field-time-tracking), early MVP punch data showed that about 87% of clock-ins happened at the same jobsite and area as the previous day. Workers still had to re-select location every time, which was friction we had designed for the general case, not the real pattern.
+On [BuildClock](https://pedromauri.com/projects/buildclock-field-time-tracking), day-to-day conversations with workers showed the clock-in path was too long: three taps before they could punch. I asked engineering for usage data on how often workers clocked into the same jobsite as the day before. Answer: about 87%.
 
-**What I learned:** field habits show up in usage data faster than in interviews alone. Optimizing for the rare jobsite switch made the everyday path slower.
+**What I learned:** field talk spots friction early; product data shows which shortcut is worth shipping.
 
-**What I did differently:** I added a Fast clock-in control: a large primary action on the worker screen to punch into yesterday’s location in one tap, with the full location picker kept as a secondary path when they needed to switch.
+**What I did differently:** I added a secondary Fast clock-in control under the jobsite picker, prefilled with the last jobsite. That’s now how most workers punch in.
 
 ### Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder who saw the problem differently. How did you build alignment?
 

@@ -1005,18 +1005,18 @@ function Content() {
         recommendation. What did you learn, and what did you do differently?
       </SubTitle>
       <P>
-        On <BuildClockLink withCard />, early MVP punch data showed that about 87% of clock-ins happened at
-        the same jobsite and area as the previous day. Workers still had to re-select location every time,
-        which was friction we had designed for the general case, not the real pattern.
+        On <BuildClockLink withCard />, day-to-day conversations with workers showed the clock-in path was
+        too long: three taps before they could punch. I asked engineering for usage data on how often
+        workers clocked into the same jobsite as the day before. Answer: about 87%.
       </P>
       <P>
-        <strong className="text-foreground">What I learned:</strong> field habits show up in usage data faster
-        than in interviews alone. Optimizing for the rare jobsite switch made the everyday path slower.
+        <strong className="text-foreground">What I learned:</strong> field talk spots friction early;
+        product data shows which shortcut is worth shipping.
       </P>
       <P>
-        <strong className="text-foreground">What I did differently:</strong> I added a Fast clock-in control:
-        a large primary action on the worker screen to punch into yesterday’s location in one tap, with the
-        full location picker kept as a secondary path when they needed to switch.
+        <strong className="text-foreground">What I did differently:</strong> I added a secondary Fast
+        clock-in control under the jobsite picker, prefilled with the last jobsite. That’s now how most
+        workers punch in.
       </P>
 
       <SubTitle>
