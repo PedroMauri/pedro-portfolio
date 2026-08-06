@@ -76,6 +76,11 @@ const WEB_HIFI_SLIDES = [
     src: "/share/kanopi/10c-hifi-web-channels-card.png",
     caption: "Phase 4 — Later UI polish: channel cards and community header patterns",
   },
+  {
+    src: "/cases/yethos/hifi-channels.png",
+    caption:
+      "Phase 5 — Mobile hi-fi: community channels with follow state, activity stats, channel list, and feed with composer",
+  },
 ] as const;
 
 function Figure({
@@ -832,10 +837,6 @@ function Content() {
       </P>
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Web hi-fi evolution" />
-      <Figure
-        src="/cases/yethos/hifi-channels.png"
-        caption="Mobile hi-fi — community channels with follow state, activity stats, channel list, and channel feed with composer"
-      />
       <SubTitle>Conclusion</SubTitle>
       <P>
         Yethos is a dynamic and flexible social platform that allows for deep interaction within niche-based
