@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { Expand, Linkedin, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
@@ -284,6 +285,121 @@ function ChapterNav() {
   );
 }
 
+function useHoverPreview() {
+  const [open, setOpen] = useState(false);
+  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const closeTimer = useRef<number | null>(null);
+  const triggerRef = useRef<HTMLSpanElement>(null);
+  const cardId = useId();
+
+  function clearClose() {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+
+  function updatePosition() {
+    const rect = triggerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const width = 320;
+    const left = Math.min(
+      Math.max(12, rect.left + rect.width / 2 - width / 2),
+      window.innerWidth - width - 12
+    );
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const placeBelow = spaceBelow > 280 || rect.top < 280;
+    setCoords({
+      top: placeBelow ? rect.bottom + 10 : rect.top - 10,
+      left,
+    });
+    return placeBelow;
+  }
+
+  const [placeBelow, setPlaceBelow] = useState(true);
+
+  function show() {
+    clearClose();
+    const below = updatePosition();
+    if (typeof below === "boolean") setPlaceBelow(below);
+    setOpen(true);
+  }
+
+  function hide() {
+    clearClose();
+    closeTimer.current = window.setTimeout(() => setOpen(false), 160);
+  }
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    const onMove = () => {
+      const below = updatePosition();
+      if (typeof below === "boolean") setPlaceBelow(below);
+    };
+    window.addEventListener("scroll", onMove, true);
+    window.addEventListener("resize", onMove);
+    return () => {
+      window.removeEventListener("scroll", onMove, true);
+      window.removeEventListener("resize", onMove);
+    };
+  }, [open]);
+
+  useEffect(() => () => clearClose(), []);
+
+  return {
+    open,
+    coords,
+    placeBelow,
+    triggerRef,
+    cardId,
+    show,
+    hide,
+  };
+}
+
+function HoverPreviewPortal({
+  open,
+  coords,
+  placeBelow,
+  cardId,
+  widthClass,
+  onShow,
+  onHide,
+  children,
+}: {
+  open: boolean;
+  coords: { top: number; left: number };
+  placeBelow: boolean;
+  cardId: string;
+  widthClass: string;
+  onShow: () => void;
+  onHide: () => void;
+  children: ReactNode;
+}) {
+  if (!open || typeof document === "undefined") return null;
+
+  return createPortal(
+    <div
+      id={cardId}
+      role="tooltip"
+      className={cn(
+        "fixed z-[200] overflow-hidden rounded-xl border border-border bg-white shadow-xl",
+        widthClass
+      )}
+      style={{
+        top: coords.top,
+        left: coords.left,
+        transform: placeBelow ? "none" : "translateY(-100%)",
+      }}
+      onMouseEnter={onShow}
+      onMouseLeave={onHide}
+    >
+      {children}
+    </div>,
+    document.body
+  );
+}
+
 function LinkedInHoverCard({
   href,
   name,
@@ -295,85 +411,63 @@ function LinkedInHoverCard({
   headline: string;
   location: string;
 }) {
-  const [open, setOpen] = useState(false);
-  const closeTimer = useRef<number | null>(null);
-  const cardId = useId();
-
-  function clearClose() {
-    if (closeTimer.current !== null) {
-      window.clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-  }
-
-  function show() {
-    clearClose();
-    setOpen(true);
-  }
-
-  function hide() {
-    clearClose();
-    closeTimer.current = window.setTimeout(() => setOpen(false), 180);
-  }
-
-  useEffect(() => () => clearClose(), []);
+  const preview = useHoverPreview();
 
   return (
     <span
+      ref={preview.triggerRef}
       className="relative inline-block"
-      onMouseEnter={show}
-      onMouseLeave={hide}
-      onFocus={show}
-      onBlur={hide}
+      onMouseEnter={preview.show}
+      onMouseLeave={preview.hide}
     >
       <a
         href={href}
         target="_blank"
         rel="noreferrer"
-        aria-describedby={open ? cardId : undefined}
+        aria-describedby={preview.open ? preview.cardId : undefined}
         className="font-medium text-accent-dark underline-offset-2 hover:underline"
+        onFocus={preview.show}
+        onBlur={preview.hide}
       >
         {name}
       </a>
-      <span
-        id={cardId}
-        role="tooltip"
-        className={cn(
-          "absolute bottom-[calc(100%+0.6rem)] left-1/2 z-50 w-72 -translate-x-1/2 rounded-xl border border-border bg-white p-4 shadow-lg transition-all duration-150",
-          open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-1 opacity-0"
-        )}
-        onMouseEnter={show}
-        onMouseLeave={hide}
+      <HoverPreviewPortal
+        open={preview.open}
+        coords={preview.coords}
+        placeBelow={preview.placeBelow}
+        cardId={preview.cardId}
+        widthClass="w-72"
+        onShow={preview.show}
+        onHide={preview.hide}
       >
-        <span className="absolute -bottom-1.5 left-1/2 size-3 -translate-x-1/2 rotate-45 border-b border-r border-border bg-white" />
-        <span className="relative flex items-start gap-3">
-          <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#0A66C2] text-sm font-semibold text-white">
-            FP
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="flex items-center gap-1.5">
-              <span className="truncate text-sm font-semibold text-foreground">{name}</span>
-              <Linkedin className="size-3.5 shrink-0 text-[#0A66C2]" aria-hidden />
-            </span>
-            <span className="mt-0.5 block text-xs leading-snug text-muted">{headline}</span>
-            <span className="mt-1 block text-xs text-muted-soft">{location}</span>
-          </span>
-        </span>
-        <span className="mt-3 block text-xs leading-relaxed text-muted">
-          Yethos stakeholder &amp; contractor reference
-        </span>
-        <a
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0A66C2] px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90"
-        >
-          <Linkedin className="size-3.5" aria-hidden />
-          View LinkedIn profile
-        </a>
-      </span>
+        <div className="p-4">
+          <div className="flex items-start gap-3">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#0A66C2] text-sm font-semibold text-white">
+              FP
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5">
+                <p className="truncate text-sm font-semibold text-foreground">{name}</p>
+                <Linkedin className="size-3.5 shrink-0 text-[#0A66C2]" aria-hidden />
+              </div>
+              <p className="mt-0.5 text-xs leading-snug text-muted">{headline}</p>
+              <p className="mt-1 text-xs text-muted-soft">{location}</p>
+            </div>
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-muted">
+            Yethos stakeholder &amp; contractor reference
+          </p>
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0A66C2] px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+          >
+            <Linkedin className="size-3.5" aria-hidden />
+            View LinkedIn profile
+          </a>
+        </div>
+      </HoverPreviewPortal>
     </span>
   );
 }
@@ -399,58 +493,34 @@ function CaseStudyHoverCard({
   image: string;
   tags: string[];
 }) {
-  const [open, setOpen] = useState(false);
-  const closeTimer = useRef<number | null>(null);
-  const cardId = useId();
-
-  function clearClose() {
-    if (closeTimer.current !== null) {
-      window.clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-  }
-
-  function show() {
-    clearClose();
-    setOpen(true);
-  }
-
-  function hide() {
-    clearClose();
-    closeTimer.current = window.setTimeout(() => setOpen(false), 180);
-  }
-
-  useEffect(() => () => clearClose(), []);
+  const preview = useHoverPreview();
 
   return (
     <span
+      ref={preview.triggerRef}
       className="relative inline-block"
-      onMouseEnter={show}
-      onMouseLeave={hide}
-      onFocus={show}
-      onBlur={hide}
+      onMouseEnter={preview.show}
+      onMouseLeave={preview.hide}
     >
       <Link
         to={to}
-        aria-describedby={open ? cardId : undefined}
+        aria-describedby={preview.open ? preview.cardId : undefined}
         className="font-medium text-accent-dark underline-offset-2 hover:underline"
+        onFocus={preview.show}
+        onBlur={preview.hide}
       >
         {label}
       </Link>
-      <span
-        id={cardId}
-        role="tooltip"
-        className={cn(
-          "absolute bottom-[calc(100%+0.6rem)] left-1/2 z-50 w-80 -translate-x-1/2 overflow-hidden rounded-xl border border-border bg-white shadow-lg transition-all duration-150",
-          open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-1 opacity-0"
-        )}
-        onMouseEnter={show}
-        onMouseLeave={hide}
+      <HoverPreviewPortal
+        open={preview.open}
+        coords={preview.coords}
+        placeBelow={preview.placeBelow}
+        cardId={preview.cardId}
+        widthClass="w-80"
+        onShow={preview.show}
+        onHide={preview.hide}
       >
-        <span className="absolute -bottom-1.5 left-1/2 z-10 size-3 -translate-x-1/2 rotate-45 border-b border-r border-border bg-white" />
-        <span className="relative block aspect-[16/9] overflow-hidden bg-cream">
+        <div className="aspect-[16/9] overflow-hidden bg-cream">
           <img
             src={image}
             alt=""
@@ -458,17 +528,17 @@ function CaseStudyHoverCard({
             loading="lazy"
             decoding="async"
           />
-        </span>
-        <span className="relative block p-4">
-          <span className="block text-[11px] font-medium uppercase tracking-[0.08em] text-accent-dark">
+        </div>
+        <div className="p-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-accent-dark">
             Case study · {company}
-          </span>
-          <span className="mt-1 block text-sm font-semibold leading-snug text-foreground">{title}</span>
-          <span className="mt-1 block text-xs text-muted-soft">
+          </p>
+          <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{title}</p>
+          <p className="mt-1 text-xs text-muted-soft">
             {role} · {year}
-          </span>
-          <span className="mt-2 block text-xs leading-relaxed text-muted">{summary}</span>
-          <span className="mt-2 flex flex-wrap gap-1">
+          </p>
+          <p className="mt-2 text-xs leading-relaxed text-muted">{summary}</p>
+          <div className="mt-2 flex flex-wrap gap-1">
             {tags.map((tag) => (
               <span
                 key={tag}
@@ -477,7 +547,7 @@ function CaseStudyHoverCard({
                 {tag}
               </span>
             ))}
-          </span>
+          </div>
           <Link
             to={to}
             className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
@@ -485,8 +555,8 @@ function CaseStudyHoverCard({
             Open case study
             <ArrowRight className="size-3.5" aria-hidden />
           </Link>
-        </span>
-      </span>
+        </div>
+      </HoverPreviewPortal>
     </span>
   );
 }
