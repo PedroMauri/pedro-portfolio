@@ -189,9 +189,12 @@ function Figure({
   );
 }
 
-function SectionTitle({ children }: { children: string }) {
+function ChapterTitle({ id, children }: { id: string; children: string }) {
   return (
-    <h2 className="mt-14 text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+    <h2
+      id={id}
+      className="mt-20 scroll-mt-28 border-b border-border pb-4 text-3xl font-medium tracking-tight text-foreground sm:text-4xl"
+    >
       {children}
     </h2>
   );
@@ -220,6 +223,60 @@ function Skill({
       <p className="mt-1 text-base leading-relaxed text-muted">{body}</p>
       {children}
     </div>
+  );
+}
+
+const CHAPTERS = [
+  { id: "ch-discovery", label: "1. Discovery" },
+  { id: "ch-content-strategy", label: "2. Content Strategy" },
+  { id: "ch-ux-strategy", label: "3. UX Strategy" },
+  { id: "ch-visual-design", label: "4. Visual Design" },
+  { id: "ch-self-assessment", label: "5. Self-assessment" },
+  { id: "ch-impact", label: "6. Impact at Kanopi" },
+  { id: "ch-additional", label: "7. Additional questions" },
+] as const;
+
+function ChapterNav() {
+  function scrollTo(id: string) {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  return (
+    <>
+      <nav
+        aria-label="Chapters"
+        className="sticky top-0 z-30 -mx-5 mb-8 border-b border-border bg-white/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 xl:hidden"
+      >
+        <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {CHAPTERS.map((chapter) => (
+            <button
+              key={chapter.id}
+              type="button"
+              onClick={() => scrollTo(chapter.id)}
+              className="shrink-0 rounded-full border border-border bg-cream px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent hover:bg-accent-soft"
+            >
+              {chapter.label}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      <nav
+        aria-label="Chapters"
+        className="fixed right-4 top-1/2 z-40 hidden w-44 -translate-y-1/2 flex-col gap-1.5 xl:flex 2xl:right-8 2xl:w-52"
+      >
+        {CHAPTERS.map((chapter) => (
+          <button
+            key={chapter.id}
+            type="button"
+            onClick={() => scrollTo(chapter.id)}
+            className="rounded-xl border border-border bg-white/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft 2xl:text-sm"
+          >
+            {chapter.label}
+          </button>
+        ))}
+      </nav>
+    </>
   );
 }
 
@@ -273,8 +330,9 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
 
 function Content() {
   return (
-    <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+    <article className="relative mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24 xl:mr-[13.5rem] 2xl:mr-[15rem]">
       <Seo page={kanopiShareSeo} />
+      <ChapterNav />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
       <h1 className="mt-3 text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
         Kanopi application responses
@@ -325,11 +383,9 @@ function Content() {
         </p>
       </div>
 
-      <SectionTitle>1) Approach across a project</SectionTitle>
       <P>
-        I follow a structured path similar to how Kanopi frames website work. On Yethos the workflow was:
-        Market research → Personas → Information architecture → Brand → Wireframes/prototypes → UI →
-        Usability testing → Presentation.
+        Below I walk through Discovery, Content Strategy, UX Strategy, and Visual Design using Yethos as the
+        example—goals and activities, deliverables, and how research/feedback informed the next phase.
       </P>
       <SubTitle>Project Scope / Workflow</SubTitle>
       <Figure
@@ -338,7 +394,7 @@ function Content() {
         expandable
       />
 
-      <SubTitle>Discovery</SubTitle>
+      <ChapterTitle id="ch-discovery">1. Discovery</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> Understand the market and who we were designing
         for before defining structure or UI.
@@ -393,7 +449,7 @@ function Content() {
       />
       <Figure src="/share/kanopi/03-personas.png" caption="Persona structure" />
 
-      <SubTitle>Content Strategy</SubTitle>
+      <ChapterTitle id="ch-content-strategy">2. Content Strategy</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> Define what content and structure users need to
         evaluate and participate in a community without hunting across pages.
@@ -425,16 +481,7 @@ function Content() {
         caption="Platform elements, information hierarchy, and core pages"
       />
 
-      <SubTitle>User Flow Mapping</SubTitle>
-      <P>
-        The following is a key user flow developed for the web MVP to ensure intuitive user interaction:
-      </P>
-      <Figure
-        src="/share/kanopi/04b-user-flow-dashboard.png"
-        caption="User flow — Community Dashboard"
-      />
-
-      <SubTitle>UX Strategy</SubTitle>
+      <ChapterTitle id="ch-ux-strategy">3. UX Strategy</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> Make creation and participation flows intuitive
         for admins, moderators, and members.
@@ -448,9 +495,22 @@ function Content() {
         <strong className="text-foreground">Deliverables:</strong> User flows, clickable prototypes, usability
         revisions.
       </P>
+      <P>
+        <strong className="text-foreground">Into the next phase:</strong> Testing validated what to keep in the
+        MVP vs mark “not yet,” and which interactions needed clearer hierarchy in UI.
+      </P>
+
+      <SubTitle>User Flow Mapping</SubTitle>
+      <P>
+        The following is a key user flow developed for the web MVP to ensure intuitive user interaction:
+      </P>
+      <Figure
+        src="/share/kanopi/04b-user-flow-dashboard.png"
+        caption="User flow — Community Dashboard"
+      />
       <Figure src="/share/kanopi/06-prototypes.png" caption="Prototype scenarios" />
 
-      <SubTitle>Visual Design</SubTitle>
+      <ChapterTitle id="ch-visual-design">4. Visual Design</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> A distinct, community-first brand and UI that
         supports clear CTAs and long sessions.
@@ -479,7 +539,7 @@ function Content() {
         business goals in focus.
       </P>
 
-      <SectionTitle>2) Self-assessment</SectionTitle>
+      <ChapterTitle id="ch-self-assessment">5. Self-assessment</ChapterTitle>
       <Skill
         title="Facilitating client meetings and presenting — 4"
         body="Comfortable running and presenting in client/stakeholder meetings—walking through process, recommendations, and design decisions clearly."
@@ -518,7 +578,7 @@ function Content() {
         />
       </Skill>
 
-      <SectionTitle>3) Impact at Kanopi</SectionTitle>
+      <ChapterTitle id="ch-impact">6. Impact at Kanopi</ChapterTitle>
       <P>
         <strong className="text-foreground">Immediate impact:</strong> I can jump into client website work
         with a clear path from discovery to IA/content structure, UX, and visual design—especially when
@@ -540,7 +600,7 @@ function Content() {
         points to confusion, I simplify the model before adding more UI.
       </P>
 
-      <SectionTitle>4) Additional questions</SectionTitle>
+      <ChapterTitle id="ch-additional">7. Additional questions</ChapterTitle>
       <SubTitle>When research/feedback changed my recommendation</SubTitle>
       <P>
         I start with a direction from research, then treat usability feedback as a forcing function to cut
