@@ -1049,7 +1049,7 @@ function Content() {
 
       <div className="mt-16 space-y-3 border-t border-border pt-8">
         <p className="text-sm leading-relaxed text-foreground/80">
-          This share page was reviewed for WCAG 2.2 AA practices used across the experience
+          This share page was designed with WCAG 2.2 AA practices in mind.
         </p>
       </div>
     </article>
