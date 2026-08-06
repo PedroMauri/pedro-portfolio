@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { Expand, X } from "lucide-react";
+import { Expand, Linkedin, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
@@ -8,6 +8,7 @@ import {
   KANOPI_SHARE_STORAGE_KEY,
 } from "@/content/kanopiShare";
 import { kanopiShareSeo } from "@/content/seo";
+import { cn } from "@/lib/utils";
 
 const BRANDING_SLIDES = [
   {
@@ -280,6 +281,100 @@ function ChapterNav() {
   );
 }
 
+function LinkedInHoverCard({
+  href,
+  name,
+  headline,
+  location,
+}: {
+  href: string;
+  name: string;
+  headline: string;
+  location: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+  const cardId = useId();
+
+  function clearClose() {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+
+  function show() {
+    clearClose();
+    setOpen(true);
+  }
+
+  function hide() {
+    clearClose();
+    closeTimer.current = window.setTimeout(() => setOpen(false), 180);
+  }
+
+  useEffect(() => () => clearClose(), []);
+
+  return (
+    <span
+      className="relative inline-block"
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+    >
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-describedby={open ? cardId : undefined}
+        className="font-medium text-accent-dark underline-offset-2 hover:underline"
+      >
+        {name}
+      </a>
+      <span
+        id={cardId}
+        role="tooltip"
+        className={cn(
+          "absolute bottom-[calc(100%+0.6rem)] left-1/2 z-50 w-72 -translate-x-1/2 rounded-xl border border-border bg-white p-4 shadow-lg transition-all duration-150",
+          open
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-1 opacity-0"
+        )}
+        onMouseEnter={show}
+        onMouseLeave={hide}
+      >
+        <span className="absolute -bottom-1.5 left-1/2 size-3 -translate-x-1/2 rotate-45 border-b border-r border-border bg-white" />
+        <span className="relative flex items-start gap-3">
+          <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#0A66C2] text-sm font-semibold text-white">
+            FP
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="flex items-center gap-1.5">
+              <span className="truncate text-sm font-semibold text-foreground">{name}</span>
+              <Linkedin className="size-3.5 shrink-0 text-[#0A66C2]" aria-hidden />
+            </span>
+            <span className="mt-0.5 block text-xs leading-snug text-muted">{headline}</span>
+            <span className="mt-1 block text-xs text-muted-soft">{location}</span>
+          </span>
+        </span>
+        <span className="mt-3 block text-xs leading-relaxed text-muted">
+          Yethos stakeholder &amp; contractor reference
+        </span>
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0A66C2] px-3 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+        >
+          <Linkedin className="size-3.5" aria-hidden />
+          View LinkedIn profile
+        </a>
+      </span>
+    </span>
+  );
+}
+
 function Gate({ onUnlock }: { onUnlock: () => void }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
@@ -360,14 +455,12 @@ function Content() {
         </p>
         <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">
           Stakeholder and my contractor on Yethos:{" "}
-          <a
+          <LinkedInHoverCard
             href="https://www.linkedin.com/in/felipepuddu/"
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium text-accent-dark underline-offset-2 hover:underline"
-          >
-            Felipe Puddu
-          </a>
+            name="Felipe Puddu"
+            headline="Senior Engineering Manager at Luma Health"
+            location="Milan, Lombardy, Italy"
+          />
           . I was hired full-time on this project from{" "}
           <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. The team
           also included 2 frontend developers, 1 backend developer, 1 PM, and 1 marketing person. All
