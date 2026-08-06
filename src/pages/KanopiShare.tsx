@@ -1,6 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { Expand, ArrowRight, X } from "lucide-react";
+import { Expand, ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
@@ -96,6 +96,18 @@ function PrototypeEmbed({
 }) {
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
+      <div className="flex items-center justify-end gap-2 border-b border-border bg-card px-4 py-2.5">
+        <p className="text-xs font-medium text-muted sm:text-sm">
+          Tip: use the expand icon in the prototype toolbar to view fullscreen
+        </p>
+        <span
+          className="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-background text-foreground shadow-sm"
+          aria-hidden="true"
+        >
+          <Expand className="size-3.5" />
+        </span>
+        <ArrowUpRight className="size-4 shrink-0 text-accent-dark" aria-hidden="true" />
+      </div>
       <div className="relative aspect-[16/9] w-full bg-card">
         <iframe
           title={title}
