@@ -1049,9 +1049,18 @@ function Content() {
         clear and testable.
       </P>
 
-      <p className="mt-16 text-sm text-muted-soft">
-        Confidential application materials · Not listed in site navigation or search indexes.
-      </p>
+      <div className="mt-16 space-y-3 border-t border-border pt-8">
+        <p className="text-sm font-medium text-foreground">Accessibility note</p>
+        <p className="text-sm leading-relaxed text-foreground/80">
+          This share page was reviewed for WCAG 2.2 AA practices used across the experience: labeled
+          password field with announced errors, keyboard-friendly chapter navigation and carousels
+          (arrows only when focused), expandable images with dialog focus management, case previews
+          usable with keyboard (Escape to dismiss), and respect for reduced motion preferences.
+        </p>
+        <p className="text-sm text-muted-soft">
+          Confidential application materials · Not listed in site navigation or search indexes.
+        </p>
+      </div>
     </article>
   );
 }
