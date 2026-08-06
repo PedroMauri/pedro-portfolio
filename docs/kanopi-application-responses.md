@@ -142,11 +142,11 @@ For complex UI I document behavior and constraints and share with the team, espe
 
 ### Tell us about a time research, user feedback, or analytics changed your original design recommendation. What did you learn, and what did you do differently?
 
-On Yethos (covered in Discovery and UX Strategy above), competitive research pushed a broad “social + community” feature set. Usability with influencers showed creation and hierarchy weren’t clear, so I tightened the MVP around Community → Channel → Topic and core creation flows first.
+On [BuildClock](https://pedromauri.com/projects/buildclock-field-time-tracking), early MVP punch data showed that about 87% of clock-ins happened at the same jobsite and area as the previous day. Workers still had to re-select location every time, which was friction we had designed for the general case, not the real pattern.
 
-**What I learned:** competitor breadth is not the same as user clarity.
+**What I learned:** field habits show up in usage data faster than in interviews alone. Optimizing for the rare jobsite switch made the everyday path slower.
 
-**What I did differently:** I cut presentation scope to the hierarchy and creation paths that tested well, and marked secondary admin ideas for later.
+**What I did differently:** I added a Fast clock-in control: a large primary action on the worker screen to punch into yesterday’s location in one tap, with the full location picker kept as a secondary path when they needed to switch.
 
 ### Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder who saw the problem differently. How did you build alignment?
 
