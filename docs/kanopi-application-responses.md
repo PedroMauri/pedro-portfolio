@@ -94,10 +94,6 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 *[IMAGE carousel: brand guidelines: cover, logomark, color, typography, logo on backgrounds]*  
 *[IMAGE carousel: hi-fi evolution: early web, channels annotated, mobile]*
 
-#### Conclusion
-
-We landed on a focused presentation MVP: a clear Community → Channel → Topic hierarchy, brand system, and hi-fi UI, scoped with the project manager around what tested well versus what stayed for later. That kept the original goals intact without bloating the first release.
-
 ---
 
 ## 2) Self-assessment

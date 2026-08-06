@@ -912,12 +912,6 @@ function Content() {
       </P>
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Hi-fi evolution" />
-      <SubTitle>Conclusion</SubTitle>
-      <P>
-        We landed on a focused presentation MVP: a clear Community → Channel → Topic hierarchy, brand
-        system, and hi-fi UI, scoped with the project manager around what tested well versus what stayed for
-        later. That kept the original goals intact without bloating the first release.
-      </P>
 
       <ChapterTitle id="ch-self-assessment">2. Self-assessment</ChapterTitle>
       <Skill
