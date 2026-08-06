@@ -117,7 +117,7 @@ On [BuildClock](https://www.buildclock.io/) designed dual-persona flows (worker 
 Field research on [BuildClock](https://www.buildclock.io/)—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope.
 
 **Content strategy & information architecture — 4**  
-On Leaf (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
+On [Leaf](https://pedromauri.com/case-studies/leaf-team-network-health) (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
 
 **Accessible design / WCAG — 3**  
 Design for clarity and usable controls—e.g. [BuildClock](https://www.buildclock.io/) mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.

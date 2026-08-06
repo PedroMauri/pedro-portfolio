@@ -663,6 +663,36 @@ function BuildClockLink() {
   );
 }
 
+function LeafLink() {
+  const leaf = getCaseBySlug("leaf-team-network-health");
+  if (!leaf) {
+    return (
+      <Link
+        to="/case-studies/leaf-team-network-health"
+        className="font-medium text-accent-dark underline-offset-2 hover:underline"
+      >
+        Leaf
+      </Link>
+    );
+  }
+
+  return (
+    <ProductHoverCard
+      href={`/case-studies/${leaf.slug}`}
+      label="Leaf"
+      title={leaf.title}
+      company={leaf.company}
+      role={leaf.role}
+      year={leaf.year}
+      summary={leaf.summary}
+      image={leaf.thumbnail ?? "/cases/leaf/thumbnail.png"}
+      tags={leaf.tags}
+      ctaLabel="Open case study"
+      eyebrow="Case study"
+    />
+  );
+}
+
 function KanopiThemeMount({ children }: { children: ReactNode }) {
   useTheme();
   return <>{children}</>;
@@ -976,7 +1006,13 @@ function Content() {
       />
       <Skill
         title="Content strategy & information architecture — 4"
-        body="On Leaf (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump."
+        body={
+          <>
+            On <LeafLink /> (an HR platform for large corporate teams) structured information architecture
+            for roles and responsibilities and made Team Network Health readable as manager-facing signals,
+            not a raw data dump.
+          </>
+        }
       />
       <Skill
         title="Accessible design / WCAG — 3"
