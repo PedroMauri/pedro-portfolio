@@ -821,8 +821,8 @@ function Content() {
         supports clear CTAs and long sessions.
       </P>
       <P>
-        <strong className="text-foreground">Activities:</strong> Logo and brand system (orange “Y”, dark/navy +
-        white). First high-fidelity community page wire (annotated structure), then polished UI for web and
+        <strong className="text-foreground">Activities:</strong> Logo and brand system. First
+        high-fidelity community page wire (annotated structure), then polished UI for web and
         mobile. Collaborated with the project manager so design stayed tied to business goals for a scalable
         MVP.
       </P>

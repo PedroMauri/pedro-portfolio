@@ -96,7 +96,7 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 
 **Goals:** A distinct, community-first brand and UI that supports long sessions and clear CTAs.
 
-**Activities:** Logo and brand system (orange “Y”, dark/navy + white). High-fidelity UI for web and mobile—sidebar navigation, community banners, feeds, member cards, join/CTA patterns. Collaborated with the project manager so design stayed tied to business goals for a scalable MVP.
+**Activities:** Logo and brand system. High-fidelity UI for web and mobile—sidebar navigation, community banners, feeds, member cards, join/CTA patterns. Collaborated with the project manager so design stayed tied to business goals for a scalable MVP.
 
 **Deliverables:** Brand guidelines, hi-fi UI, presentation-ready prototype.
 
