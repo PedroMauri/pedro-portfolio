@@ -152,7 +152,7 @@ On [BuildClock](https://pedromauri.com/projects/buildclock-field-time-tracking),
 
 ### Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder who saw the problem differently. How did you build alignment?
 
-On Yethos, the main stakeholder wanted paid communities only, similar to Circle. I recommended the opposite shape: keep the community free so influencers could bring followers in, and let admins monetize through a paid channel inside it, with flexible pricing per admin.
+On Yethos, the main stakeholder wanted paid communities only, similar to Circle. I recommended the opposite shape: keep the community free so influencers could bring followers in, and let admins monetize through a paid channel inside it.
 
 Interviews backed that. Most influencers wanted maximum reach first, then a clear place to monetize once people were already in.
 

@@ -1033,7 +1033,7 @@ function Content() {
       <P>
         On Yethos, the main stakeholder wanted paid communities only, similar to Circle. I recommended the
         opposite shape: keep the community free so influencers could bring followers in, and let admins
-        monetize through a paid channel inside it, with flexible pricing per admin.
+        monetize through a paid channel inside it.
       </P>
       <P>
         Interviews backed that. Most influencers wanted maximum reach first, then a clear place to monetize
