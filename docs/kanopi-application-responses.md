@@ -81,7 +81,7 @@ This section outlines the structure and organization of the platform, focusing i
 The following is a key user flow developed for the web MVP to ensure intuitive user interaction:
 
 *[IMAGE: 04b-user-flow-dashboard.png — User flow — Community Dashboard]*  
-*[IMAGE: 06-prototypes.png — Prototype scenarios]*
+*[EMBED: Figma prototype — https://www.figma.com/proto/H5HP7S1xWwoWA9gotybIC0/Yethos---Screens ]*
 
 ### 1d. Visual Design
 

@@ -83,6 +83,31 @@ const WEB_HIFI_SLIDES = [
   },
 ] as const;
 
+function PrototypeEmbed({
+  src,
+  caption,
+  title = "Yethos interactive prototype",
+}: {
+  src: string;
+  caption: string;
+  title?: string;
+}) {
+  return (
+    <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
+      <div className="relative aspect-[16/9] w-full bg-card">
+        <iframe
+          title={title}
+          src={src}
+          allowFullScreen
+          loading="lazy"
+          className="absolute inset-0 h-full w-full border-0"
+        />
+      </div>
+      <figcaption className="border-t border-border px-4 py-3 text-sm text-muted">{caption}</figcaption>
+    </figure>
+  );
+}
+
 function Figure({
   src,
   caption,
@@ -810,9 +835,9 @@ function Content() {
         src="/share/kanopi/04b-user-flow-dashboard.png"
         caption="User flow — Community Dashboard"
       />
-      <Figure
-        src="/share/kanopi/06-prototypes.png"
-        caption="Prototype scenarios — create community, channels, and topics"
+      <PrototypeEmbed
+        src="https://embed.figma.com/proto/H5HP7S1xWwoWA9gotybIC0/Yethos---Screens?node-id=3216-60979&node-type=frame&scaling=min-zoom&content-scaling=fixed&page-id=707%3A9176&starting-point-node-id=3216%3A60979&embed-host=share"
+        caption="Interactive Figma prototype — create community, channels, and topics"
       />
 
       <ChapterTitle id="ch-visual-design">1d. Visual Design</ChapterTitle>
