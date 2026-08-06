@@ -60,7 +60,7 @@ Our goal was to validate key design hypotheses, ensuring that the product’s fe
 
 #### Information Architecture
 
-This section outlines the structure and organization of the platform, focusing initially on the web version for MVP development. Our goal was to conduct research and gather user feedback after the prototype was completed. Based on the insights collected during testing, we planned to iterate and refine the web experience, followed by the adaptation of the platform for mobile devices.
+We organized the web MVP around Community → Channel → Topic so discovery and participation had a clear home before mobile adaptation. The hierarchy below became the brief for flows and UI.
 
 *[IMAGE: 04-ia-structure.png: Platform elements, information hierarchy, and core pages]*
 
