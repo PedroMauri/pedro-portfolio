@@ -599,7 +599,7 @@ function CaseStudyHoverCard({
           </div>
           <Link
             to={to}
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5"
           >
             Open case study
             <ArrowRight className="size-3.5" aria-hidden />
@@ -655,7 +655,7 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
         {error ? <p className="text-sm text-red-700">Incorrect password. Please try again.</p> : null}
         <button
           type="submit"
-          className="inline-flex rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+          className="inline-flex rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
         >
           Unlock
         </button>
@@ -697,8 +697,7 @@ function Content() {
           >
             Yethos
           </Link>
-        )}{" "}
-        (research → IA → prototype → UI → usability)
+        )}
       </p>
 
       <P>
