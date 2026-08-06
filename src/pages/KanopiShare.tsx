@@ -467,9 +467,6 @@ function LinkedInHoverCard({
               <p className="mt-1 text-xs text-muted-soft">{location}</p>
             </div>
           </div>
-          <p className="mt-3 text-xs leading-relaxed text-muted">
-            Yethos stakeholder &amp; contractor reference
-          </p>
           <a
             href={href}
             target="_blank"
