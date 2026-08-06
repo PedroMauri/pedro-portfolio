@@ -11,7 +11,7 @@ Private share: https://pedromauri.com/share/kanopi
 
 Hi Vicki,
 
-Thank you for the questions. I’ve answered them using **Yethos**, an end-to-end UX/UI project where I led discovery through visual design for a community-focused platform. It’s the clearest example of my process for website/product strategy work.
+Thank you for getting back to me. I’ve answered the questions using **Yethos**, an end-to-end UX/UI project where I led discovery through visual design for a community-focused platform. It’s the clearest example of my process for website/product strategy work.
 
 **Client reference:** Stakeholder and my contractor on Yethos — [Felipe Puddu](https://www.linkedin.com/in/felipepuddu/). I was hired on this project from **2021 to 2023** as product/visual designer. The team also included 2 frontend developers, 1 backend developer, 1 PM, and 1 marketing person. All images used in this share were produced and used in the real project. You’re welcome to contact him as a reference for confirmation — he is based in Italy: **+39 333 994 0143**.
 

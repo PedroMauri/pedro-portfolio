@@ -695,9 +695,10 @@ function Content() {
       </p>
 
       <P>
-        Thank you for the questions. I’ve answered them using <strong className="text-foreground">Yethos</strong>
-        , an end-to-end UX/UI project where I led discovery through visual design for a community-focused
-        platform. It’s the clearest example of my process for website/product strategy work.
+        Hi Vicki — thank you for getting back to me. I’ve answered the questions using{" "}
+        <strong className="text-foreground">Yethos</strong>, an end-to-end UX/UI project where I led
+        discovery through visual design for a community-focused platform. It’s the clearest example of my
+        process for website/product strategy work.
       </P>
 
       <div className="mt-8 rounded-2xl border border-border bg-cream px-5 py-5 sm:px-6">
