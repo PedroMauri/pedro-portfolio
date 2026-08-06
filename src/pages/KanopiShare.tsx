@@ -192,9 +192,10 @@ function Content() {
             Felipe Puddu
           </a>
           . I was hired full-time on this project from{" "}
-          <strong className="text-foreground">2021 to 2023</strong>. All images used in this share were
-          produced and used in the real project. You’re welcome to contact him as a reference for
-          confirmation — he is based in Italy:{" "}
+          <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. The team
+          also included 2 frontend developers, 1 backend developer, 1 PM, and 1 marketing person. All
+          images used in this share were produced and used in the real project. You’re welcome to contact
+          him as a reference for confirmation — he is based in Italy:{" "}
           <a
             href="tel:+393339940143"
             className="font-medium text-accent-dark underline-offset-2 hover:underline"
