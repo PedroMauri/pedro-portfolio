@@ -624,12 +624,10 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
   }
 
   return (
-    <section className="relative mx-auto max-w-md px-5 py-20 sm:px-8 sm:py-28">
-      <div className="absolute right-5 top-6 sm:right-8">
-        <ThemeToggle />
-      </div>
+    <section className="mx-auto max-w-md px-5 py-20 sm:px-8 sm:py-28">
       <Seo page={kanopiShareSeo} />
-      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
+      <ThemeToggle />
+      <p className="mt-4 text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
       <h1 className="mt-3 text-3xl font-medium tracking-tight text-foreground">Kanopi application</h1>
       <p className="mt-4 text-muted">Enter the password shared with you to view this page.</p>
       <form onSubmit={onSubmit} className="mt-8 space-y-4">
@@ -665,11 +663,9 @@ function Content() {
   return (
     <article className="relative mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={kanopiShareSeo} />
-      <div className="fixed right-4 top-[5.25rem] z-40 xl:right-8">
-        <ThemeToggle />
-      </div>
       <ChapterNav />
-      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
+      <ThemeToggle />
+      <p className="mt-4 text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
       <h1 className="mt-3 text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
         Kanopi application responses
       </h1>
