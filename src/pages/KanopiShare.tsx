@@ -1,6 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type FocusEvent as ReactFocusEvent } from "react";
 import { createPortal } from "react-dom";
-import { Expand, ArrowRight, ArrowUp, X } from "lucide-react";
+import { Expand, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
@@ -291,44 +291,24 @@ function ChapterNav() {
     }
   }
 
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: prefersReducedMotion() ? "auto" : "smooth",
-    });
-  }
-
   return (
-    <>
-      {/* Desktop sidebar */}
-      <nav
-        aria-label="Chapters"
-        className="pointer-events-none fixed inset-y-0 right-0 z-40 hidden w-52 items-center justify-end pr-4 xl:flex 2xl:pr-8"
-      >
-        <div className="pointer-events-auto flex w-44 flex-col gap-1.5 2xl:w-52">
-          {CHAPTERS.map((chapter) => (
-            <button
-              key={chapter.id}
-              type="button"
-              onClick={() => scrollTo(chapter.id)}
-              className="rounded-xl border border-border bg-card/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 2xl:text-sm"
-            >
-              {chapter.label}
-            </button>
-          ))}
-        </div>
-      </nav>
-
-      {/* Mobile back-to-top */}
-      <button
-        type="button"
-        className="fixed bottom-5 right-5 z-40 inline-flex size-12 items-center justify-center rounded-full border border-border bg-foreground text-background shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 xl:hidden"
-        aria-label="Back to top"
-        onClick={scrollToTop}
-      >
-        <ArrowUp className="size-5" aria-hidden="true" />
-      </button>
-    </>
+    <nav
+      aria-label="Chapters"
+      className="pointer-events-none fixed inset-y-0 right-0 z-40 hidden w-52 items-center justify-end pr-4 xl:flex 2xl:pr-8"
+    >
+      <div className="pointer-events-auto flex w-44 flex-col gap-1.5 2xl:w-52">
+        {CHAPTERS.map((chapter) => (
+          <button
+            key={chapter.id}
+            type="button"
+            onClick={() => scrollTo(chapter.id)}
+            className="rounded-xl border border-border bg-card/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 2xl:text-sm"
+          >
+            {chapter.label}
+          </button>
+        ))}
+      </div>
+    </nav>
   );
 }
 
