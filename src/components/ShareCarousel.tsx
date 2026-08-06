@@ -41,7 +41,7 @@ export function ShareCarousel({ slides, label = "Brand guidelines" }: ShareCarou
 
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
-      <div className="relative h-[min(70vh,560px)] bg-card sm:h-[640px]">
+      <div className="relative aspect-[4/3] w-full bg-card sm:aspect-[16/10]">
         {slides.map((slide, slideIndex) => (
           <img
             key={slide.src}
@@ -52,7 +52,7 @@ export function ShareCarousel({ slides, label = "Brand guidelines" }: ShareCarou
             fetchPriority={slideIndex === 0 ? "high" : "low"}
             aria-hidden={slideIndex !== index}
             className={cn(
-              "absolute inset-0 z-0 m-auto h-full w-full object-contain p-2 transition-opacity duration-150 sm:p-4",
+              "absolute inset-0 z-0 m-auto h-full w-full object-contain p-3 transition-opacity duration-150 sm:p-4",
               slideIndex === index ? "z-10 opacity-100" : "pointer-events-none opacity-0"
             )}
           />
