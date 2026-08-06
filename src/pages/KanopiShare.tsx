@@ -818,7 +818,6 @@ function Content() {
         src="/share/kanopi/04b-user-flow-dashboard.png"
         caption="User flow — Community Dashboard"
       />
-      <Figure src="/share/kanopi/06-prototypes.png" caption="Prototype scenarios" />
 
       <ChapterTitle id="ch-visual-design">4. Visual Design</ChapterTitle>
       <P>
