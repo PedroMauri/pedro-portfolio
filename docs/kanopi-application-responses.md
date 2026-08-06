@@ -95,7 +95,7 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 
 *[IMAGE carousel: brand guidelines — cover, logomark, color, typography, logo on backgrounds]*  
 *[IMAGE: 08-first-hifi-wire-community.png — First hi-fi wire — community page]*  
-*[IMAGE: /cases/yethos/hifi-web.png — Web hi-fi]*  
+*[IMAGE carousel: web hi-fi — hifi-web.png + 10a/10b/10c]*  
 *[IMAGE: /cases/yethos/hifi-channels.png — Mobile hi-fi]*
 
 #### Conclusion
