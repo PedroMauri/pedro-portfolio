@@ -134,7 +134,7 @@ For complex UI I document behavior and constraints and share with the team—esp
 
 ## 3) Impact at Kanopi
 
-**Most immediate impact for Kanopi’s clients:** I can jump into client website work with a clear path from discovery to IA/content structure, UX, and visual design—especially when information is scattered and users need to evaluate or act quickly.
+**Most immediate impact for Kanopi’s clients:** I can take a website from zero to launch with confidence—discovery through IA/content structure, UX, and visual design, including WordPress builds when that’s the right stack. I’m especially useful when information is scattered and users need to evaluate or act quickly.
 
 **The types of challenges you are especially well suited to solve:** Complex navigation and information architecture, multi-role experiences, research-backed prioritization, and turning strategy into testable prototypes and polished UI.
 

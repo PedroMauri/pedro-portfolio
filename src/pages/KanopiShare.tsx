@@ -1005,9 +1005,10 @@ function Content() {
 
       <ChapterTitle id="ch-impact">3. Impact at Kanopi</ChapterTitle>
       <P>
-        <strong className="text-foreground">Most immediate impact for Kanopi’s clients:</strong> I can jump
-        into client website work with a clear path from discovery to IA/content structure, UX, and visual
-        design—especially when information is scattered and users need to evaluate or act quickly.
+        <strong className="text-foreground">Most immediate impact for Kanopi’s clients:</strong> I can take
+        a website from zero to launch with confidence—discovery through IA/content structure, UX, and visual
+        design, including WordPress builds when that’s the right stack. I’m especially useful when information
+        is scattered and users need to evaluate or act quickly.
       </P>
       <P>
         <strong className="text-foreground">
