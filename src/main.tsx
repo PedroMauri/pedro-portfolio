@@ -7,9 +7,6 @@ import "@fontsource/afacad/latin-600.css";
 import "@fontsource/afacad/latin-700.css";
 import "./index.css";
 import App from "./App.tsx";
-import { applyTheme, resolveTheme } from "@/lib/theme";
-
-applyTheme(resolveTheme());
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

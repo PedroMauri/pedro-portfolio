@@ -1,7 +1,6 @@
 ﻿import { useEffect, useId, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { profile } from "@/content/profile";
 import { cn } from "@/lib/utils";
 
@@ -57,8 +56,6 @@ export function Header() {
               </NavLink>
             ))}
           </nav>
-
-          <ThemeToggle />
 
           <button
             type="button"

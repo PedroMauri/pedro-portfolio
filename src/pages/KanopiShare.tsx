@@ -4,12 +4,14 @@ import { Expand, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   KANOPI_SHARE_PASSWORD,
   KANOPI_SHARE_STORAGE_KEY,
 } from "@/content/kanopiShare";
 import { getCaseBySlug } from "@/content/cases";
 import { kanopiShareSeo } from "@/content/seo";
+import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -601,6 +603,11 @@ function CaseStudyHoverCard({
   );
 }
 
+function KanopiThemeMount({ children }: { children: ReactNode }) {
+  useTheme();
+  return <>{children}</>;
+}
+
 function Gate({ onUnlock }: { onUnlock: () => void }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
@@ -617,7 +624,10 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
   }
 
   return (
-    <section className="mx-auto max-w-md px-5 py-20 sm:px-8 sm:py-28">
+    <section className="relative mx-auto max-w-md px-5 py-20 sm:px-8 sm:py-28">
+      <div className="absolute right-5 top-6 sm:right-8">
+        <ThemeToggle />
+      </div>
       <Seo page={kanopiShareSeo} />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
       <h1 className="mt-3 text-3xl font-medium tracking-tight text-foreground">Kanopi application</h1>
@@ -655,6 +665,9 @@ function Content() {
   return (
     <article className="relative mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={kanopiShareSeo} />
+      <div className="fixed right-4 top-[5.25rem] z-40 xl:right-8">
+        <ThemeToggle />
+      </div>
       <ChapterNav />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
       <h1 className="mt-3 text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
@@ -963,9 +976,9 @@ export default function KanopiShare() {
     () => sessionStorage.getItem(KANOPI_SHARE_STORAGE_KEY) === "1"
   );
 
-  if (!unlocked) {
-    return <Gate onUnlock={() => setUnlocked(true)} />;
-  }
-
-  return <Content />;
+  return (
+    <KanopiThemeMount>
+      {unlocked ? <Content /> : <Gate onUnlock={() => setUnlocked(true)} />}
+    </KanopiThemeMount>
+  );
 }

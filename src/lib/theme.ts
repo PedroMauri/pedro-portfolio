@@ -1,6 +1,7 @@
 export type Theme = "light" | "dark";
 
-export const THEME_STORAGE_KEY = "pedro-theme";
+/** Scoped to the Kanopi share page only. */
+export const THEME_STORAGE_KEY = "kanopi-share-theme";
 
 export function getSystemTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";

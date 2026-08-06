@@ -7,6 +7,7 @@ import {
   type Theme,
 } from "@/lib/theme";
 
+/** Dark mode for the Kanopi share page only — resets to light when the page unmounts. */
 export function useTheme() {
   const [theme, setThemeState] = useState<Theme>(() =>
     typeof window === "undefined" ? "light" : resolveTheme()
@@ -23,7 +24,10 @@ export function useTheme() {
       setThemeState(resolveTheme(null));
     };
     media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
+    return () => {
+      media.removeEventListener("change", onChange);
+      applyTheme("light");
+    };
   }, []);
 
   function setTheme(next: Theme) {

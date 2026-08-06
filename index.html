@@ -63,23 +63,6 @@
       }
     </script>
 
-    <script>
-      (function () {
-        try {
-          var stored = localStorage.getItem("pedro-theme");
-          var theme =
-            stored === "light" || stored === "dark"
-              ? stored
-              : window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
-          var root = document.documentElement;
-          if (theme === "dark") root.classList.add("dark");
-          root.style.colorScheme = theme;
-          root.dataset.theme = theme;
-        } catch (e) {}
-      })();
-    </script>
     <title>Pedro Mauri | UX & Product Design Portfolio</title>
   </head>
   <body>
