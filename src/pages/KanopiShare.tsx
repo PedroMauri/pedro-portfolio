@@ -173,7 +173,7 @@ function Figure({
           onClick={() => setOpen(false)}
         >
           <div
-            className="relative flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            className="relative flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-card shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-3 sm:px-5">
@@ -266,7 +266,7 @@ function ChapterNav() {
     <>
       <nav
         aria-label="Chapters"
-        className="sticky top-0 z-30 -mx-5 mb-8 border-b border-border bg-white/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 xl:hidden"
+        className="sticky top-0 z-30 -mx-5 mb-8 border-b border-border bg-background/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 xl:hidden"
       >
         <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {CHAPTERS.map((chapter) => (
@@ -292,7 +292,7 @@ function ChapterNav() {
               key={chapter.id}
               type="button"
               onClick={() => scrollTo(chapter.id)}
-              className="rounded-xl border border-border bg-white/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft 2xl:text-sm"
+              className="rounded-xl border border-border bg-card/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft 2xl:text-sm"
             >
               {chapter.label}
             </button>
@@ -401,7 +401,7 @@ function HoverPreviewPortal({
       id={cardId}
       role="tooltip"
       className={cn(
-        "fixed z-[200] overflow-hidden rounded-xl border border-border bg-white shadow-xl",
+        "fixed z-[200] overflow-hidden rounded-xl border border-border bg-card shadow-xl",
         widthClass
       )}
       style={{
@@ -610,7 +610,7 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
             setValue(event.target.value);
             setError(false);
           }}
-          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          className="w-full rounded-xl border border-border bg-card px-4 py-3 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-accent"
         />
         {error ? <p className="text-sm text-red-700">Incorrect password. Please try again.</p> : null}
         <button

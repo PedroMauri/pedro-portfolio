@@ -23,7 +23,7 @@ export function Footer() {
           <img
             src={profile.photo}
             alt=""
-            className="size-12 rounded-full object-cover ring-2 ring-white"
+            className="size-12 rounded-full object-cover ring-2 ring-card"
           />
           <div>
             <p className="text-xl font-medium tracking-tight text-foreground">{profile.name}</p>
@@ -48,16 +48,16 @@ export function Footer() {
           <div className="mt-6 flex items-center justify-center gap-3 md:justify-end">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex size-10 items-center justify-center rounded-full bg-white text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
+              className="inline-flex size-10 items-center justify-center rounded-full bg-card text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
               aria-label="Email"
             >
-              <Mail className="size-4" />
+              <Mail className="size-4" aria-hidden="true" />
             </a>
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex size-10 items-center justify-center rounded-full bg-white text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
+              className="inline-flex size-10 items-center justify-center rounded-full bg-card text-accent-dark shadow-sm transition-transform hover:-translate-y-0.5"
               aria-label="LinkedIn"
             >
               <LinkedInIcon className="size-4" />
