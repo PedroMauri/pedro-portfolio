@@ -678,7 +678,7 @@ function Content() {
             headline="Senior Engineering Manager at Luma Health"
             location="Milan, Lombardy, Italy"
           />
-          . I was hired full-time on this project from{" "}
+          . I was hired on this project from{" "}
           <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. The team
           also included 2 frontend developers, 1 backend developer, 1 PM, and 1 marketing person. All
           images used in this share were produced and used in the real project. You’re welcome to contact
