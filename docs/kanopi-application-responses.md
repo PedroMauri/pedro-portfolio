@@ -138,7 +138,7 @@ For complex UI I document behavior and constraints and share with the team—esp
 
 **Challenges I fit:** Complex navigation and information architecture, multi-role experiences, research-backed prioritization, and turning strategy into testable prototypes and polished UI.
 
-**Balancing goals:** I treat client goals, audience needs, accessibility, and technical constraints as things to negotiate early—not trade-offs to discover late. On products like [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) (a live field time-tracking product for Canadian contractors) that meant readable field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
+**Balancing goals:** I treat client goals, audience needs, accessibility, and technical constraints as things to negotiate early—not trade-offs to discover late. On products like [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) that meant readable field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
 
 **Meaningful decision:** On [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) I initially pushed a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor customers showed they already used external finance tools and got confused by punches “disappearing” across reports—so I changed the recommendation to a simpler Reports export (period / jobsite / rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to billing without overbuilding.
 

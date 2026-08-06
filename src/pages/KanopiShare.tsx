@@ -1096,9 +1096,9 @@ function Content() {
       <P>
         <strong className="text-foreground">Balancing goals:</strong> I treat client goals, audience needs,
         accessibility, and technical constraints as things to negotiate early—not trade-offs to discover
-        late. On products like <BuildClockLink /> (a live field time-tracking product for Canadian
-        contractors) that meant readable field UI and a focused MVP (punches + timesheet) instead of a
-        bloated suite. I surface what’s in / out so the experience stays shippable.
+        late. On products like <BuildClockLink /> that meant readable field UI and a focused MVP
+        (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays
+        shippable.
       </P>
       <P>
         <strong className="text-foreground">Meaningful decision:</strong> On <BuildClockLink /> I initially
