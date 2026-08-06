@@ -835,6 +835,10 @@ function Content() {
         src="/share/kanopi/08-first-hifi-wire-community.png"
         caption="First hi-fi wire — community page (annotated layout, cover 6:1, profile 16:9, favorites, discussions, files, people)"
       />
+      <Figure
+        src="/cases/yethos/hifi-channels.png"
+        caption="Mobile hi-fi — community channels with follow state, activity stats, channel list, and channel feed with composer"
+      />
       <SubTitle>Conclusion</SubTitle>
       <P>
         Yethos is a dynamic and flexible social platform that allows for deep interaction within niche-based
