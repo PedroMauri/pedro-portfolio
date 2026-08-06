@@ -831,10 +831,6 @@ function Content() {
         Design supported a focused MVP handoff, not an endless feature surface.
       </P>
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
-      <Figure
-        src="/share/kanopi/08-first-hifi-wire-community.png"
-        caption="First hi-fi wire — community page"
-      />
       <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Web hi-fi evolution" />
       <Figure
         src="/cases/yethos/hifi-channels.png"

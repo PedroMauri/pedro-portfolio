@@ -94,7 +94,6 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 **Into the next phase:** Usability feedback and PM alignment shaped what shipped in the presentation prototype versus what stayed marked for later—so Visual Design supported a focused MVP handoff, not an endless feature surface.
 
 *[IMAGE carousel: brand guidelines — cover, logomark, color, typography, logo on backgrounds]*  
-*[IMAGE: 08-first-hifi-wire-community.png — First hi-fi wire — community page]*  
 *[IMAGE carousel: web hi-fi — hifi-web.png + 10a/10b/10c]*  
 *[IMAGE: /cases/yethos/hifi-channels.png — Mobile hi-fi]*
 
