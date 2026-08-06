@@ -111,7 +111,7 @@ Regularly ran client and stakeholder sessions on [BuildClock](https://pedromauri
 Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end.
 
 **Interaction design & prototyping — 4**  
-On [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) designed dual-persona flows (worker clock-in with GPS/geofence, admin Quick Actions, timesheet review states) and iterated from real field use.
+On [Yethos](https://pedromauri.com/case-studies/yethos-community-discovery), clickable prototypes made influencer meetings and shadowing actionable—we adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI.
 
 **User research & usability testing — 4**  
 Field research on [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking)—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope.

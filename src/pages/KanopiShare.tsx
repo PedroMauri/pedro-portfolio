@@ -696,6 +696,36 @@ function LeafLink() {
   );
 }
 
+function YethosLink() {
+  const yethos = getCaseBySlug("yethos-community-discovery");
+  if (!yethos) {
+    return (
+      <Link
+        to="/case-studies/yethos-community-discovery"
+        className="font-medium text-accent-dark underline-offset-2 hover:underline"
+      >
+        Yethos
+      </Link>
+    );
+  }
+
+  return (
+    <ProductHoverCard
+      href={`/case-studies/${yethos.slug}`}
+      label="Yethos"
+      title={yethos.title}
+      company={yethos.company}
+      role={yethos.role}
+      year={yethos.year}
+      summary={yethos.summary}
+      image={yethos.thumbnail ?? "/cases/yethos/hifi-channels.png"}
+      tags={yethos.tags}
+      ctaLabel="Open case study"
+      eyebrow="Case study"
+    />
+  );
+}
+
 function KanopiThemeMount({ children }: { children: ReactNode }) {
   useTheme();
   return <>{children}</>;
@@ -992,8 +1022,9 @@ function Content() {
         title="Interaction design & prototyping — 4"
         body={
           <>
-            On <BuildClockLink /> designed dual-persona flows (worker clock-in with GPS/geofence, admin
-            Quick Actions, timesheet review states) and iterated from real field use.
+            On <YethosLink />, clickable prototypes made influencer meetings and shadowing actionable—we
+            adapted a large part of the MVP (especially creation flows and hierarchy) before locking final
+            UI.
           </>
         }
       />
