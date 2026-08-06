@@ -30,7 +30,7 @@ Pedro Mauri
 
 **Goals:** Understand the market and who we were designing for before defining structure or UI.
 
-**Activities:** Competitor analysis (Facebook, Twitter, Reddit, Discord, Circle)—features, strengths, weaknesses, and gaps. Identified needs around privacy, ease of use, moderation, and community-centric design. Defined Lean UX personas (Influencer/Admin, Moderator, Active Member) with motivations, behaviors, and use scenarios, then refined them through prototype tests with influencers.
+**Activities:** Competitor analysis—features, strengths, weaknesses, and gaps. Identified needs around privacy, ease of use, moderation, and community-centric design. Defined Lean UX personas (Influencer/Admin, Moderator, Active Member) with motivations, behaviors, and use scenarios, then refined them through prototype tests with influencers.
 
 **Deliverables:** Competitive teardown, opportunity framing, persona set + scenarios.
 

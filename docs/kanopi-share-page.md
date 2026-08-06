@@ -2,7 +2,7 @@
 
 URL (after deploy): https://pedromauri.com/share/kanopi
 
-Default password: `KanopiYethos`
+Default password: `1234`
 
 To change the password, set in Vercel → Project → Settings → Environment Variables:
 
@@ -20,7 +20,7 @@ Short email to Vicki:
 >
 > I’ve put my written responses (with process images) on a private page:
 > https://pedromauri.com/share/kanopi
-> Password: KanopiYethos
+> Password: 1234
 >
 > Best,
 > Pedro

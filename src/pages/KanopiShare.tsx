@@ -750,8 +750,8 @@ function Content() {
         for before defining structure or UI.
       </P>
       <P>
-        <strong className="text-foreground">Activities:</strong> Competitor analysis (Facebook, Twitter,
-        Reddit, Discord, Circle)—features, strengths, weaknesses, and gaps. Identified needs around privacy,
+        <strong className="text-foreground">Activities:</strong> Competitor analysis—features, strengths,
+        weaknesses, and gaps. Identified needs around privacy,
         ease of use, moderation, and community-centric design. Defined Lean UX personas
         (Influencer/Admin, Moderator, Active Member) with motivations, behaviors, and use scenarios, then
         refined them through prototype tests with influencers.
