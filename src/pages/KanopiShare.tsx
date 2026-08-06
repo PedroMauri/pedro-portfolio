@@ -265,18 +265,20 @@ function ChapterNav() {
 
       <nav
         aria-label="Chapters"
-        className="fixed right-4 top-1/2 z-40 hidden w-44 -translate-y-1/2 flex-col gap-1.5 xl:flex 2xl:right-8 2xl:w-52"
+        className="pointer-events-none fixed inset-y-0 right-0 z-40 hidden w-52 items-center justify-end pr-4 xl:flex 2xl:pr-8"
       >
-        {CHAPTERS.map((chapter) => (
-          <button
-            key={chapter.id}
-            type="button"
-            onClick={() => scrollTo(chapter.id)}
-            className="rounded-xl border border-border bg-white/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft 2xl:text-sm"
-          >
-            {chapter.label}
-          </button>
-        ))}
+        <div className="pointer-events-auto flex w-44 flex-col gap-1.5 2xl:w-52">
+          {CHAPTERS.map((chapter) => (
+            <button
+              key={chapter.id}
+              type="button"
+              onClick={() => scrollTo(chapter.id)}
+              className="rounded-xl border border-border bg-white/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft 2xl:text-sm"
+            >
+              {chapter.label}
+            </button>
+          ))}
+        </div>
       </nav>
     </>
   );
@@ -541,7 +543,7 @@ function Content() {
   const yethos = getCaseBySlug("yethos-community-discovery");
 
   return (
-    <article className="relative mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24 xl:mr-[13.5rem] 2xl:mr-[15rem]">
+    <article className="relative mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={kanopiShareSeo} />
       <ChapterNav />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
