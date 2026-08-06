@@ -526,6 +526,7 @@ function ProductHoverCard({
   external = false,
   ctaLabel = "Open case study",
   eyebrow = "Case study",
+  imagePosition = "top",
 }: {
   href: string;
   label: string;
@@ -539,6 +540,7 @@ function ProductHoverCard({
   external?: boolean;
   ctaLabel?: string;
   eyebrow?: string;
+  imagePosition?: "top" | "center";
 }) {
   const preview = useHoverPreview();
   const triggerClass =
@@ -589,7 +591,10 @@ function ProductHoverCard({
           <img
             src={image}
             alt=""
-            className="h-full w-full object-cover object-top"
+            className={cn(
+              "h-full w-full object-cover",
+              imagePosition === "center" ? "object-center" : "object-top"
+            )}
             loading="lazy"
             decoding="async"
           />
@@ -689,6 +694,7 @@ function LeafLink() {
       tags={leaf.tags}
       ctaLabel="Open case study"
       eyebrow="Case study"
+      imagePosition="center"
     />
   );
 }
