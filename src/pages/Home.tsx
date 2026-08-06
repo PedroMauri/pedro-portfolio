@@ -83,7 +83,7 @@ export default function Home() {
 
       <section ref={casesRef} className="reveal mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="text-center lg:text-left">
-          <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Case Studies</p>
+          <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Projects</p>
           <h2 className="mt-3 text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
             What I've designed recently
           </h2>

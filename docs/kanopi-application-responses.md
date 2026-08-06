@@ -4,7 +4,7 @@
 **Subject:** Re: Contract Senior UX/UI Designer: written responses (Pedro Mauri)
 
 Primary example: **Yethos**, community platform redesign (research → IA → prototype → UI → usability).  
-Portfolio: https://pedromauri.com/case-studies/yethos-community-discovery  
+Portfolio: https://pedromauri.com/projects/yethos-community-discovery  
 Private share: https://pedromauri.com/share/kanopi  
 
 ---
@@ -103,7 +103,7 @@ Yethos is a dynamic and flexible social platform that allows for deep interactio
 ## 2) Self-assessment
 
 **Facilitating client meetings / presenting: 4**  
-Regularly ran client and stakeholder sessions on [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) (a live field time-tracking product for Canadian contractors), with owners and PMs on job sites, walking through product decisions, recommendations, and next steps.
+Regularly ran client and stakeholder sessions on [BuildClock](https://pedromauri.com/projects/buildclock-field-time-tracking) (a live field time-tracking product for Canadian contractors), with owners and PMs on job sites, walking through product decisions, recommendations, and next steps.
 
 **Figma: 4**  
 Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end.
@@ -115,7 +115,7 @@ On Yethos, clickable prototypes made influencer meetings and shadowing actionabl
 Field research on BuildClock: site visits, observation, and competitive teardown, plus MVP testing with early contractor customers that changed scope.
 
 **Content strategy & information architecture: 4**  
-On [Leaf](https://pedromauri.com/case-studies/leaf-team-network-health) (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
+On [Leaf](https://pedromauri.com/projects/leaf-team-network-health) (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
 
 **Accessible design / WCAG: 3**  
 Design for clarity and usable controls, e.g. BuildClock mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.

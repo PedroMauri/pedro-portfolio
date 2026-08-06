@@ -1,7 +1,7 @@
 import { FeaturedCaseCard } from "@/components/FeaturedCaseCard";
 import { Seo } from "@/components/Seo";
 import { getListedCases } from "@/content/cases";
-import { caseStudiesSeo } from "@/content/seo";
+import { projectsSeo } from "@/content/seo";
 import { useReveal } from "@/hooks/useReveal";
 
 export default function CaseStudies() {
@@ -10,10 +10,10 @@ export default function CaseStudies() {
 
   return (
     <>
-    <Seo page={caseStudiesSeo} />
+    <Seo page={projectsSeo} />
     <section ref={ref} className="reveal mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
       <div className="text-center lg:text-left">
-        <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Case Studies</p>
+        <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Projects</p>
         <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
           What I've designed recently
         </h1>

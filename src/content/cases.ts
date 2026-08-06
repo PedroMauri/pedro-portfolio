@@ -671,7 +671,7 @@ export const cases: CaseStudy[] = [
   },
 ];
 
-/** Display order on Home and Case Studies. */
+/** Display order on Home and Projects. */
 const CASE_DISPLAY_ORDER = [
   "buildclock-field-time-tracking",
   "yethos-community-discovery",

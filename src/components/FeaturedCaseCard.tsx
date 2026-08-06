@@ -63,14 +63,14 @@ export function FeaturedCaseCard({ caseStudy, index = 0 }: FeaturedCaseCardProps
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
             {caseStudy.comingSoon ? (
               <span className="inline-flex items-center rounded-full bg-surface px-4 py-2 text-sm font-medium text-muted">
-                Case study coming soon
+                Project coming soon
               </span>
             ) : (
               <Link
-                to={`/case-studies/${caseStudy.slug}`}
+                to={`/projects/${caseStudy.slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
               >
-                View case study
+                View project
                 <ArrowRight className="size-4" />
               </Link>
             )}

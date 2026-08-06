@@ -27,7 +27,7 @@ const website = {
   name: SITE_NAME,
   url: SITE_URL,
   description:
-    "Pedro Mauri — Product design (UX & UI) portfolio. Case studies across B2B SaaS and digital products.",
+    "Pedro Mauri — Product design (UX & UI) portfolio. Selected projects across B2B SaaS and digital products.",
   author: { "@type": "Person", name: "Pedro Mauri" },
 };
 
@@ -67,7 +67,7 @@ function caseJsonLd(item) {
     "@type": "CreativeWork",
     name: item.title,
     description: item.summary,
-    url: `${SITE_URL}/case-studies/${item.slug}`,
+    url: `${SITE_URL}/projects/${item.slug}`,
     author: { "@type": "Person", name: "Pedro Mauri", url: SITE_URL },
     about: item.company,
     dateCreated: item.year,
@@ -80,7 +80,7 @@ export const pages = [
     path: "/",
     title: "Pedro Mauri | UX & Product Design Portfolio",
     description:
-      "Pedro Mauri — Product design (UX & UI) portfolio. Case studies across B2B SaaS and digital products.",
+      "Pedro Mauri — Product design (UX & UI) portfolio. Selected projects across B2B SaaS and digital products.",
     image: DEFAULT_OG_IMAGE,
     type: "website",
     jsonLd: [person, website],
@@ -95,10 +95,10 @@ export const pages = [
     jsonLd: [person],
   },
   {
-    path: "/case-studies",
-    title: "Case Studies | Pedro Mauri",
+    path: "/projects",
+    title: "Projects | Pedro Mauri",
     description:
-      "Selected product design case studies across B2B SaaS, community platforms, and shipped digital products.",
+      "Selected product design projects across B2B SaaS, community platforms, and shipped digital products.",
     image: DEFAULT_OG_IMAGE,
     type: "website",
     jsonLd: [website],
@@ -113,7 +113,7 @@ export const pages = [
     jsonLd: [],
   },
   ...cases.map((item) => ({
-    path: `/case-studies/${item.slug}`,
+    path: `/projects/${item.slug}`,
     title: `${item.title} | Pedro Mauri`,
     description: item.summary,
     image: item.image,

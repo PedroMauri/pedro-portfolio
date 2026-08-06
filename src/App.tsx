@@ -11,9 +11,9 @@ import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import Resume from "@/pages/Resume";
 
-function LegacyWorkRedirect() {
+function LegacyProjectsRedirect() {
   const { slug } = useParams();
-  return <Navigate to={slug ? `/case-studies/${slug}` : "/case-studies"} replace />;
+  return <Navigate to={slug ? `/projects/${slug}` : "/projects"} replace />;
 }
 
 export default function App() {
@@ -23,14 +23,16 @@ export default function App() {
       <PageLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
+          <Route path="/projects" element={<CaseStudies />} />
+          <Route path="/projects/:slug" element={<CaseStudyPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/share/kanopi" element={<KanopiShare />} />
-          <Route path="/work" element={<Navigate to="/case-studies" replace />} />
-          <Route path="/work/:slug" element={<LegacyWorkRedirect />} />
+          <Route path="/case-studies" element={<Navigate to="/projects" replace />} />
+          <Route path="/case-studies/:slug" element={<LegacyProjectsRedirect />} />
+          <Route path="/work" element={<Navigate to="/projects" replace />} />
+          <Route path="/work/:slug" element={<LegacyProjectsRedirect />} />
           <Route path="/contact" element={<Navigate to="/#get-in-touch" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -21,10 +21,10 @@ export default function NotFound() {
           Go home
         </Link>
         <Link
-          to="/case-studies"
+          to="/projects"
           className="inline-flex items-center rounded-full border border-border bg-white px-5 py-2.5 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
         >
-          View case studies
+          View projects
         </Link>
       </div>
     </section>

@@ -35,8 +35,8 @@ export function Footer() {
             <Link to="/" className="text-muted transition-colors hover:text-accent-dark">
               Home
             </Link>
-            <Link to="/case-studies" className="text-muted transition-colors hover:text-accent-dark">
-              Case Studies
+            <Link to="/projects" className="text-muted transition-colors hover:text-accent-dark">
+              Projects
             </Link>
             <Link to="/about" className="text-muted transition-colors hover:text-accent-dark">
               About

@@ -9,7 +9,7 @@ import {
 } from "@/components/case-study/CaseChapter";
 import { Seo } from "@/components/Seo";
 import { getCaseBySlug, getListedCases } from "@/content/cases";
-import { caseStudiesSeo, getCaseSeo, homeSeo } from "@/content/seo";
+import { getCaseSeo, homeSeo, projectsSeo } from "@/content/seo";
 
 export default function CaseStudyPage() {
   const { slug } = useParams();
@@ -24,12 +24,12 @@ export default function CaseStudyPage() {
   if (!caseStudy || caseStudy.comingSoon) {
     return (
       <section className="mx-auto max-w-4xl px-5 py-20 sm:px-8">
-        <Seo page={caseStudiesSeo} />
+        <Seo page={projectsSeo} />
         <h1 className="text-3xl font-medium">
-          {caseStudy?.comingSoon ? "Case study coming soon" : "Case study not found"}
+          {caseStudy?.comingSoon ? "Project coming soon" : "Project not found"}
         </h1>
-        <Link to="/case-studies" className="mt-4 inline-block text-accent-dark">
-          Back to case studies
+        <Link to="/projects" className="mt-4 inline-block text-accent-dark">
+          Back to projects
         </Link>
       </section>
     );
@@ -45,7 +45,7 @@ export default function CaseStudyPage() {
         <div className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20">
           <div className="flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-accent-dark">
             <Briefcase className="size-4" />
-            <span>{caseStudy.company} Case Study</span>
+            <span>{caseStudy.company}</span>
           </div>
           <h1 className="mt-5 text-balance text-4xl font-medium tracking-tight text-foreground sm:text-5xl md:text-[3.25rem]">
             {caseStudy.title}
@@ -405,7 +405,7 @@ export default function CaseStudyPage() {
           <div className="mx-auto max-w-4xl px-5 sm:px-8">
             <div className="flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-accent-dark">
               <Briefcase className="size-4" />
-              Next Case Study
+              Next Project
             </div>
             <p className="mt-4 text-sm font-medium uppercase tracking-[0.08em] text-muted">
               {nextCase.company}
@@ -438,10 +438,10 @@ export default function CaseStudyPage() {
             ) : null}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                to={`/case-studies/${nextCase.slug}`}
+                to={`/projects/${nextCase.slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
               >
-                View case study
+                View project
                 <ArrowRight className="size-4" />
               </Link>
               {nextCase.liveUrl ? (

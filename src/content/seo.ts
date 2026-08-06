@@ -5,7 +5,7 @@ export const SITE_URL = "https://pedromauri.com";
 export const DEFAULT_OG_IMAGE = "/og-image.jpg";
 export const SITE_NAME = "Pedro Mauri — Product Design Portfolio";
 export const DEFAULT_DESCRIPTION =
-  "Pedro Mauri — Product design (UX & UI) portfolio. Case studies across B2B SaaS and digital products.";
+  "Pedro Mauri — Product design (UX & UI) portfolio. Selected projects across B2B SaaS and digital products.";
 export const THEME_COLOR = "#00959f";
 
 export interface SeoPage {
@@ -64,7 +64,7 @@ function caseStudyJsonLd(caseStudy: CaseStudy) {
     "@type": "CreativeWork",
     name: caseStudy.title,
     description: caseStudy.summary,
-    url: absoluteUrl(`/case-studies/${caseStudy.slug}`),
+    url: absoluteUrl(`/projects/${caseStudy.slug}`),
     author: {
       "@type": "Person",
       name: profile.name,
@@ -78,7 +78,7 @@ function caseStudyJsonLd(caseStudy: CaseStudy) {
 
 function casePage(caseStudy: CaseStudy): SeoPage {
   return {
-    path: `/case-studies/${caseStudy.slug}`,
+    path: `/projects/${caseStudy.slug}`,
     title: `${caseStudy.title} | ${profile.name}`,
     description: caseStudy.summary,
     image: caseStudy.thumbnail ?? DEFAULT_OG_IMAGE,
@@ -114,11 +114,11 @@ export const resumeSeo: SeoPage = {
   jsonLd: personJsonLd(),
 };
 
-export const caseStudiesSeo: SeoPage = {
-  path: "/case-studies",
-  title: `Case Studies | ${profile.name}`,
+export const projectsSeo: SeoPage = {
+  path: "/projects",
+  title: `Projects | ${profile.name}`,
   description:
-    "Selected product design case studies across B2B SaaS, community platforms, and shipped digital products.",
+    "Selected product design projects across B2B SaaS, community platforms, and shipped digital products.",
   image: DEFAULT_OG_IMAGE,
   type: "website",
   jsonLd: websiteJsonLd(),
@@ -158,5 +158,5 @@ export function getCaseSeo(slug: string): SeoPage | undefined {
 
 export function getIndexableSeoPages(): SeoPage[] {
   const listed = cases.filter((item) => !item.comingSoon);
-  return [homeSeo, aboutSeo, caseStudiesSeo, privacySeo, ...listed.map(casePage)];
+  return [homeSeo, aboutSeo, projectsSeo, privacySeo, ...listed.map(casePage)];
 }

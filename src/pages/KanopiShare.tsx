@@ -457,8 +457,8 @@ function ProductHoverCard({
   image,
   tags,
   external = false,
-  ctaLabel = "Open case study",
-  eyebrow = "Case study",
+  ctaLabel = "Open project",
+  eyebrow = "Project",
   imagePosition = "top",
 }: {
   href: string;
@@ -624,7 +624,7 @@ function BuildClockLink({ withCard = false }: { withCard?: boolean }) {
 
   return (
     <ProductHoverCard
-      href={`/case-studies/${buildClock.slug}`}
+      href={`/projects/${buildClock.slug}`}
       label="BuildClock"
       title={buildClock.title}
       company={buildClock.company}
@@ -633,8 +633,8 @@ function BuildClockLink({ withCard = false }: { withCard?: boolean }) {
       summary={buildClock.summary}
       image={buildClock.thumbnail ?? "/cases/buildclock/active-workers.png"}
       tags={buildClock.tags}
-      ctaLabel="Open case study"
-      eyebrow="Case study"
+      ctaLabel="Open project"
+      eyebrow="Project"
     />
   );
 }
@@ -647,7 +647,7 @@ function LeafLink({ withCard = false }: { withCard?: boolean }) {
 
   return (
     <ProductHoverCard
-      href={`/case-studies/${leaf.slug}`}
+      href={`/projects/${leaf.slug}`}
       label="Leaf"
       title={leaf.title}
       company={leaf.company}
@@ -656,8 +656,8 @@ function LeafLink({ withCard = false }: { withCard?: boolean }) {
       summary={leaf.summary}
       image={leaf.thumbnail ?? "/cases/leaf/thumbnail.png"}
       tags={leaf.tags}
-      ctaLabel="Open case study"
-      eyebrow="Case study"
+      ctaLabel="Open project"
+      eyebrow="Project"
       imagePosition="center"
     />
   );
@@ -743,7 +743,7 @@ function Content() {
         Pedro Mauri · Primary example:{" "}
         {yethos ? (
           <ProductHoverCard
-            href={`/case-studies/${yethos.slug}`}
+            href={`/projects/${yethos.slug}`}
             label="Yethos"
             title={yethos.title}
             company={yethos.company}
@@ -755,7 +755,7 @@ function Content() {
           />
         ) : (
           <Link
-            to="/case-studies/yethos-community-discovery"
+            to="/projects/yethos-community-discovery"
             className="font-medium text-accent-dark underline-offset-2 hover:underline"
           >
             Yethos
