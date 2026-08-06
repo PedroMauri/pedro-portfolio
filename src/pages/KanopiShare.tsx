@@ -1,4 +1,5 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { Expand, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
@@ -69,15 +70,122 @@ const MARKET_RESEARCH_SLIDES = [
 function Figure({
   src,
   caption,
+  expandable = false,
 }: {
   src: string;
   caption: string;
+  expandable?: boolean;
 }) {
+  const [open, setOpen] = useState(false);
+  const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previouslyFocused = triggerRef.current;
+    closeRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
+    };
+  }, [open]);
+
   return (
-    <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
-      <img src={src} alt={caption} className="w-full" loading="lazy" decoding="async" />
-      <figcaption className="border-t border-border px-4 py-3 text-sm text-muted">{caption}</figcaption>
-    </figure>
+    <>
+      <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
+        {expandable ? (
+          <button
+            ref={triggerRef}
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label={`Expand image: ${caption}`}
+            className="group relative block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          >
+            <img src={src} alt={caption} className="w-full" loading="lazy" decoding="async" />
+            <span className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-white opacity-90 shadow-sm backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+              <Expand className="size-3.5" />
+              Expand
+            </span>
+          </button>
+        ) : (
+          <img src={src} alt={caption} className="w-full" loading="lazy" decoding="async" />
+        )}
+        <figcaption className="border-t border-border px-4 py-3 text-sm text-muted">{caption}</figcaption>
+      </figure>
+
+      {expandable && open ? (
+        <div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm sm:p-8"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className="relative flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-3 sm:px-5">
+              <p id={titleId} className="truncate text-sm font-medium text-foreground">
+                {caption}
+              </p>
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close expanded image"
+                className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-accent-soft"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <div className="max-h-[calc(100vh-7rem)] overflow-auto bg-slate-100/80 p-3 sm:p-6">
+              <img
+                src={src}
+                alt={caption}
+                decoding="async"
+                className="mx-auto block h-auto w-auto max-w-none"
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -227,6 +335,7 @@ function Content() {
       <Figure
         src="/share/kanopi/01-goal-workflow.png"
         caption="Project Scope / Workflow"
+        expandable
       />
 
       <SubTitle>Discovery</SubTitle>
