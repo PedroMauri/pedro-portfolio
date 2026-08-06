@@ -62,19 +62,19 @@ const MARKET_RESEARCH_SLIDES = [
 const WEB_HIFI_SLIDES = [
   {
     src: "/cases/yethos/hifi-web.png",
-    caption: "Community homepage — cover, join CTA, favorites, discussions, files, and members",
+    caption: "Phase 1 — Early web hi-fi: community homepage structure (cover, join, discussions, files, members)",
   },
   {
     src: "/share/kanopi/10a-hifi-web-community-home.png",
-    caption: "Community homepage — setup complete state and interactions feed",
+    caption: "Phase 2 — Refined homepage: setup feedback, interactions feed, and clearer community chrome",
   },
   {
     src: "/share/kanopi/10b-hifi-web-channels-annotated.png",
-    caption: "Channels tab — nested community navigation and channel list (annotated)",
+    caption: "Phase 3 — Channels become the primary surface (nested nav + annotated IA decisions)",
   },
   {
     src: "/share/kanopi/10c-hifi-web-channels-card.png",
-    caption: "Channels tab — channel card and community header pattern",
+    caption: "Phase 4 — Later UI polish: channel cards and community header patterns",
   },
 ] as const;
 
@@ -835,7 +835,7 @@ function Content() {
         src="/share/kanopi/08-first-hifi-wire-community.png"
         caption="First hi-fi wire — community page"
       />
-      <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Web hi-fi UI" />
+      <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Web hi-fi evolution" />
       <Figure
         src="/cases/yethos/hifi-channels.png"
         caption="Mobile hi-fi — community channels with follow state, activity stats, channel list, and channel feed with composer"
