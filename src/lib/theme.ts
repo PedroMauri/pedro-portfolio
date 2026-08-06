@@ -13,7 +13,7 @@ export function readStoredTheme(): Theme | null {
 }
 
 export function resolveTheme(stored: Theme | null = readStoredTheme()): Theme {
-  return stored ?? getSystemTheme();
+  return stored ?? "dark";
 }
 
 export function applyTheme(theme: Theme) {

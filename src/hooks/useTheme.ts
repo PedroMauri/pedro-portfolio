@@ -18,14 +18,7 @@ export function useTheme() {
   }, [theme]);
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      if (readStoredTheme()) return;
-      setThemeState(resolveTheme(null));
-    };
-    media.addEventListener("change", onChange);
     return () => {
-      media.removeEventListener("change", onChange);
       applyTheme("light");
     };
   }, []);
