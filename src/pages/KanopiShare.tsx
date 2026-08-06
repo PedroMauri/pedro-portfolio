@@ -816,6 +816,7 @@ function Content() {
       <Figure
         src="/share/kanopi/04-ia-structure.png"
         caption="Platform elements, information hierarchy, and core pages"
+        expandable
       />
 
       <ChapterTitle id="ch-ux-strategy">1c. UX Strategy</ChapterTitle>
