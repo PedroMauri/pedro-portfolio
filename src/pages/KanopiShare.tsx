@@ -1069,11 +1069,11 @@ function Content() {
         structure—over packing every request into the first release.
       </P>
       <P>
-        <strong className="text-foreground">How I built alignment:</strong> I walked through research
-        synthesis and the IA/flows together, showed where extra surface area would dilute clarity, and
-        proposed a presentation prototype that proved the core experience while leaving explicit room to grow.
-        That framed “not now” as sequencing, not rejection—so we agreed on a focused MVP instead of a longer,
-        muddier wishlist.
+        <strong className="text-foreground">How I built alignment:</strong> I sat with the project manager
+        and walked through the research synthesis, IA, and flows side by side—so the trade-offs were visible:
+        what users needed to understand first versus what would crowd the first release. We agreed to prove
+        the core experience in a presentation prototype first, then grow from that foundation once it was
+        clear and testable.
       </P>
 
       <p className="mt-16 text-sm text-muted-soft">

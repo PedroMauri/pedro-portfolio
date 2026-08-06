@@ -158,7 +158,7 @@ On Yethos, competitive research and early persona work pushed toward a broad “
 
 When feature appetite grew beyond the original MVP goals, the project manager wanted more of the wishlist in v1. I argued for a scalable foundation—privacy, moderation, and community-centric structure—over packing every request into the first release.
 
-**How I built alignment:** I walked through research synthesis and the IA/flows together, showed where extra surface area would dilute clarity, and proposed a presentation prototype that proved the core experience while leaving explicit room to grow. That framed “not now” as sequencing, not rejection—so we agreed on a focused MVP instead of a longer, muddier wishlist.
+**How I built alignment:** I sat with the project manager and walked through the research synthesis, IA, and flows side by side—so the trade-offs were visible: what users needed to understand first versus what would crowd the first release. We agreed to prove the core experience in a presentation prototype first, then grow from that foundation once it was clear and testable.
 
 ---
 
