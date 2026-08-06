@@ -67,6 +67,11 @@ Below is a flowchart illustrating how research and iterations were applied:
 
 **Into the next phase:** Hierarchy and page jobs became the brief for flows, wires, and UI—so visual design supported scanning and join/engage decisions.
 
+### Information Architecture
+
+This section outlines the structure and organization of the platform, focusing initially on the web version for MVP development. Our goal was to conduct research and gather user feedback after the prototype was completed. Based on the insights collected during testing, we planned to iterate and refine the web experience, followed by the adaptation of the platform for mobile devices.
+
+*[IMAGE: 04-ia-structure.png — Platform elements, information hierarchy, and core pages]*  
 *[IMAGE: 04-ia-userflows.png — IA hierarchy + role-based community dashboard flows]*
 
 ### UX Strategy
@@ -157,6 +162,7 @@ When feature appetite grows, I bring research synthesis and the IA/flows back to
 | `02a-competitors.png` | Market research — identify competitors |
 | `02b-feature-analysis.png` | Market research — feature analysis |
 | `03-personas.png` | Persona structure table |
+| `04-ia-structure.png` | Information architecture diagram |
 | `04-ia-userflows.png` | Content strategy + UX |
 | `05-brand-ui.png` | Visual design |
 | `06-prototypes.png` | UX / testing |

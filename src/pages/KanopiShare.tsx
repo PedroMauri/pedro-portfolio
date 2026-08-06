@@ -302,6 +302,18 @@ function Content() {
         <strong className="text-foreground">Into the next phase:</strong> Hierarchy and page jobs became the
         brief for flows, wires, and UI.
       </P>
+
+      <SubTitle>Information Architecture</SubTitle>
+      <P>
+        This section outlines the structure and organization of the platform, focusing initially on the web
+        version for MVP development. Our goal was to conduct research and gather user feedback after the
+        prototype was completed. Based on the insights collected during testing, we planned to iterate and
+        refine the web experience, followed by the adaptation of the platform for mobile devices.
+      </P>
+      <Figure
+        src="/share/kanopi/04-ia-structure.png"
+        caption="Platform elements, information hierarchy, and core pages"
+      />
       <Figure
         src="/share/kanopi/04-ia-userflows.png"
         caption="Information architecture and role-based community dashboard flows"
