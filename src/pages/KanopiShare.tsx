@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode, type FocusEvent } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type FocusEvent as ReactFocusEvent } from "react";
 import { createPortal } from "react-dom";
 import { Expand, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -498,7 +498,7 @@ function ProductHoverCard({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [preview.open]);
 
-  function onTriggerKeyDown(event: KeyboardEvent<HTMLAnchorElement>) {
+  function onTriggerKeyDown(event: ReactKeyboardEvent<HTMLAnchorElement>) {
     if (event.key === "Escape" && preview.open) {
       event.preventDefault();
       preview.hideNow();
@@ -515,7 +515,7 @@ function ProductHoverCard({
     }
   }
 
-  function onTriggerBlur(event: FocusEvent<HTMLAnchorElement>) {
+  function onTriggerBlur(event: ReactFocusEvent<HTMLAnchorElement>) {
     const next = event.relatedTarget as Node | null;
     if (next && document.getElementById(preview.cardId)?.contains(next)) return;
     preview.hide();
