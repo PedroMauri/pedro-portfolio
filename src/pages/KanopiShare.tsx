@@ -712,18 +712,17 @@ function Content() {
           Client reference
         </p>
         <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">
-          Stakeholder and my contractor on Yethos:{" "}
+          For a client reference, you can reach{" "}
           <LinkedInHoverCard
             href="https://www.linkedin.com/in/felipepuddu/"
             name="Felipe Puddu"
             headline="Senior Engineering Manager at Luma Health"
             location="Milan, Lombardy, Italy"
           />
-          . I was hired on this project from{" "}
-          <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. The team
-          also included 2 frontend developers, 1 backend developer, 1 PM, and 1 marketing person. All
-          images used in this share were produced and used in the real project. You’re welcome to contact
-          him as a reference for confirmation — he is based in Italy:{" "}
+          — the stakeholder who hired me on Yethos. I worked with him from{" "}
+          <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. All
+          images in this share were produced and used on the real project. He&apos;s based in Italy and
+          happy to confirm:{" "}
           <a
             href="tel:+393339940143"
             className="font-medium text-accent-dark underline-offset-2 hover:underline"
