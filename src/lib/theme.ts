@@ -3,10 +3,6 @@ export type Theme = "light" | "dark";
 /** Scoped to the Kanopi share page only. */
 export const THEME_STORAGE_KEY = "kanopi-share-theme";
 
-export function getSystemTheme(): Theme {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
 export function readStoredTheme(): Theme | null {
   const value = localStorage.getItem(THEME_STORAGE_KEY);
   return value === "light" || value === "dark" ? value : null;

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   THEME_STORAGE_KEY,
   applyTheme,
-  readStoredTheme,
   resolveTheme,
   type Theme,
 } from "@/lib/theme";
@@ -10,7 +9,7 @@ import {
 /** Dark mode for the Kanopi share page only — resets to light when the page unmounts. */
 export function useTheme() {
   const [theme, setThemeState] = useState<Theme>(() =>
-    typeof window === "undefined" ? "light" : resolveTheme()
+    typeof window === "undefined" ? "dark" : resolveTheme()
   );
 
   useEffect(() => {
