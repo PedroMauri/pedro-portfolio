@@ -1031,16 +1031,19 @@ function Content() {
         who saw the problem differently. How did you build alignment?
       </SubTitle>
       <P>
-        When feature appetite grew beyond the original MVP goals, the project manager wanted more of the
-        wishlist in v1. I argued for a scalable foundation (privacy, moderation, and community-centric
-        structure) over packing every request into the first release.
+        On Yethos, the main stakeholder wanted paid communities only, similar to Circle. I recommended the
+        opposite shape: keep the community free so influencers could bring followers in, and let admins
+        monetize through a paid channel inside it, with flexible pricing per admin.
       </P>
       <P>
-        <strong className="text-foreground">How I built alignment:</strong> I sat with the project manager
-        and walked through the research synthesis, IA, and flows side by side, so the trade-offs were visible:
-        what users needed to understand first versus what would crowd the first release. We agreed to prove
-        the core experience in a presentation prototype first, then grow from that foundation once it was
-        clear and testable.
+        Interviews backed that. Most influencers wanted maximum reach first, then a clear place to monetize
+        once people were already in.
+      </P>
+      <P>
+        <strong className="text-foreground">How I built alignment:</strong> I brought the interview themes
+        next to the Circle-style paid-only model and showed the trade-off: paywall at the community door
+        vs. free entry with monetization one level deeper. We aligned on free communities + paid channels
+        for the presentation MVP.
       </P>
 
       <div className="mt-16 space-y-3 border-t border-border pt-8">
