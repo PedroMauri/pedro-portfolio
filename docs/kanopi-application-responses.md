@@ -136,7 +136,7 @@ For complex UI I document behavior and constraints and share with the team—esp
 
 **Most immediate impact for Kanopi’s clients:** I can take a website from zero to launch with confidence—discovery through IA/content structure, UX, and visual design, including WordPress builds when that’s the right stack. I’m especially useful when information is scattered and users need to evaluate or act quickly.
 
-**The types of challenges you are especially well suited to solve:** Complex navigation and information architecture, multi-role experiences, research-backed prioritization, and turning strategy into testable prototypes and polished UI.
+**The types of challenges you are especially well suited to solve:** Taking a client’s early vision—sketches, references, or rough ideas—and turning it into a clear structure on paper, then into screens that still honor what they want while staying logical toward the end goal. I’m strongest when that means navigating complexity: information architecture, multi-role experiences, research-backed prioritization, and prototypes that prove the path before polished UI.
 
 **How you would balance client goals, audience needs, accessibility, and technical constraints:** I treat client goals, audience needs, accessibility, and technical constraints as things to negotiate early—not trade-offs to discover late. On products like BuildClock that meant readable field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
 

@@ -1014,8 +1014,11 @@ function Content() {
         <strong className="text-foreground">
           The types of challenges you are especially well suited to solve:
         </strong>{" "}
-        Complex navigation and information architecture, multi-role experiences, research-backed
-        prioritization, and turning strategy into testable prototypes and polished UI.
+        Taking a client’s early vision—sketches, references, or rough ideas—and turning it into a clear
+        structure on paper, then into screens that still honor what they want while staying logical toward
+        the end goal. I’m strongest when that means navigating complexity: information architecture,
+        multi-role experiences, research-backed prioritization, and prototypes that prove the path before
+        polished UI.
       </P>
       <P>
         <strong className="text-foreground">
