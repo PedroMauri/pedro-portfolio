@@ -1,6 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type FocusEvent as ReactFocusEvent } from "react";
 import { createPortal } from "react-dom";
-import { Expand, ArrowRight, X, List } from "lucide-react";
+import { Expand, ArrowRight, ArrowUp, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { ShareCarousel } from "@/components/ShareCarousel";
@@ -282,12 +282,6 @@ function prefersReducedMotion() {
 }
 
 function ChapterNav() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const fabRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const titleId = useId();
-
   function scrollTo(id: string) {
     const behavior = prefersReducedMotion() ? "auto" : "smooth";
     if (id === "ch-home") {
@@ -295,47 +289,14 @@ function ChapterNav() {
     } else {
       document.getElementById(id)?.scrollIntoView({ behavior, block: "start" });
     }
-    setMobileOpen(false);
   }
 
-  useEffect(() => {
-    if (!mobileOpen) return;
-
-    const previouslyFocused = fabRef.current;
-    closeRef.current?.focus();
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileOpen(false);
-        return;
-      }
-      if (event.key !== "Tab" || !panelRef.current) return;
-
-      const focusable = panelRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-      previouslyFocused?.focus();
-    };
-  }, [mobileOpen]);
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+  }
 
   return (
     <>
@@ -358,61 +319,15 @@ function ChapterNav() {
         </div>
       </nav>
 
-      {/* Mobile FAB */}
+      {/* Mobile back-to-top */}
       <button
-        ref={fabRef}
         type="button"
         className="fixed bottom-5 right-5 z-40 inline-flex size-12 items-center justify-center rounded-full border border-border bg-foreground text-background shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 xl:hidden"
-        aria-label="Open chapter index"
-        aria-expanded={mobileOpen}
-        aria-haspopup="dialog"
-        onClick={() => setMobileOpen(true)}
+        aria-label="Back to top"
+        onClick={scrollToTop}
       >
-        <List className="size-5" aria-hidden="true" />
+        <ArrowUp className="size-5" aria-hidden="true" />
       </button>
-
-      {mobileOpen ? (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 p-4 backdrop-blur-sm sm:items-center xl:hidden"
-          onClick={() => setMobileOpen(false)}
-        >
-          <div
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            className="w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
-              <p id={titleId} className="text-sm font-medium text-foreground">
-                Chapter index
-              </p>
-              <button
-                ref={closeRef}
-                type="button"
-                aria-label="Close chapter index"
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex size-9 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                <X className="size-4" aria-hidden="true" />
-              </button>
-            </div>
-            <nav aria-label="Chapters" className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto p-3">
-              {CHAPTERS.map((chapter) => (
-                <button
-                  key={chapter.id}
-                  type="button"
-                  onClick={() => scrollTo(chapter.id)}
-                  className="rounded-xl px-3 py-3 text-left text-sm font-medium text-foreground transition-colors hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                >
-                  {chapter.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-        </div>
-      ) : null}
     </>
   );
 }
