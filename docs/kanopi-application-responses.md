@@ -108,7 +108,7 @@ Yethos is a dynamic and flexible social platform that allows for deep interactio
 Regularly ran client and stakeholder sessions on [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) (a live field time-tracking product for Canadian contractors)—with owners and PMs on job sites—walking through product decisions, recommendations, and next steps.
 
 **Figma — 4**  
-Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end.
+Primary tool on [Yethos](https://pedromauri.com/case-studies/yethos-community-discovery) for wires, interactive prototypes, and hi-fi UI systems end to end.
 
 **Interaction design & prototyping — 4**  
 On [Yethos](https://pedromauri.com/case-studies/yethos-community-discovery), clickable prototypes made influencer meetings and shadowing actionable—we adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI.

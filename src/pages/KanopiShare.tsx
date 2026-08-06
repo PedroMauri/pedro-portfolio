@@ -1016,7 +1016,12 @@ function Content() {
       />
       <Skill
         title="Figma — 4"
-        body="Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end."
+        body={
+          <>
+            Primary tool on <YethosLink /> for wires, interactive prototypes, and hi-fi UI systems end to
+            end.
+          </>
+        }
       />
       <Skill
         title="Interaction design & prototyping — 4"
