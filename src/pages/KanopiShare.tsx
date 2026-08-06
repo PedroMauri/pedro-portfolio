@@ -67,21 +67,13 @@ const WEB_HIFI_SLIDES = [
     caption: "Phase 1 — Early web hi-fi: community homepage structure (cover, join, discussions, files, members)",
   },
   {
-    src: "/share/kanopi/10a-hifi-web-community-home.png",
-    caption: "Phase 2 — Refined homepage: setup feedback, interactions feed, and clearer community chrome",
-  },
-  {
     src: "/share/kanopi/10b-hifi-web-channels-annotated.png",
-    caption: "Phase 3 — Channels become the primary surface (nested nav + annotated IA decisions)",
-  },
-  {
-    src: "/share/kanopi/10c-hifi-web-channels-card.png",
-    caption: "Phase 4 — Later UI polish: channel cards and community header patterns",
+    caption: "Phase 2 — Channels become the primary surface (nested nav + annotated IA decisions)",
   },
   {
     src: "/cases/yethos/hifi-channels.png",
     caption:
-      "Phase 5 — Mobile hi-fi: community channels with follow state, activity stats, channel list, and feed with composer",
+      "Phase 3 — Mobile hi-fi: community channels with follow state, activity stats, channel list, and feed with composer",
   },
 ] as const;
 
@@ -264,7 +256,7 @@ function Skill({
   children,
 }: {
   title: string;
-  body: string;
+  body: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -521,8 +513,8 @@ function LinkedInHoverCard({
   );
 }
 
-function CaseStudyHoverCard({
-  to,
+function ProductHoverCard({
+  href,
   label,
   title,
   company,
@@ -531,8 +523,11 @@ function CaseStudyHoverCard({
   summary,
   image,
   tags,
+  external = false,
+  ctaLabel = "Open case study",
+  eyebrow = "Case study",
 }: {
-  to: string;
+  href: string;
   label: string;
   title: string;
   company: string;
@@ -541,8 +536,15 @@ function CaseStudyHoverCard({
   summary: string;
   image: string;
   tags: string[];
+  external?: boolean;
+  ctaLabel?: string;
+  eyebrow?: string;
 }) {
   const preview = useHoverPreview();
+  const triggerClass =
+    "font-medium text-accent-dark underline-offset-2 hover:underline";
+  const ctaClass =
+    "mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5";
 
   return (
     <span
@@ -551,15 +553,29 @@ function CaseStudyHoverCard({
       onMouseEnter={preview.show}
       onMouseLeave={preview.hide}
     >
-      <Link
-        to={to}
-        aria-describedby={preview.open ? preview.cardId : undefined}
-        className="font-medium text-accent-dark underline-offset-2 hover:underline"
-        onFocus={preview.show}
-        onBlur={preview.hide}
-      >
-        {label}
-      </Link>
+      {external ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          aria-describedby={preview.open ? preview.cardId : undefined}
+          className={triggerClass}
+          onFocus={preview.show}
+          onBlur={preview.hide}
+        >
+          {label}
+        </a>
+      ) : (
+        <Link
+          to={href}
+          aria-describedby={preview.open ? preview.cardId : undefined}
+          className={triggerClass}
+          onFocus={preview.show}
+          onBlur={preview.hide}
+        >
+          {label}
+        </Link>
+      )}
       <HoverPreviewPortal
         open={preview.open}
         coords={preview.coords}
@@ -580,7 +596,7 @@ function CaseStudyHoverCard({
         </div>
         <div className="p-4">
           <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-accent-dark">
-            Case study · {company}
+            {eyebrow} · {company}
           </p>
           <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{title}</p>
           <p className="mt-1 text-xs text-muted-soft">
@@ -597,16 +613,53 @@ function CaseStudyHoverCard({
               </span>
             ))}
           </div>
-          <Link
-            to={to}
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5"
-          >
-            Open case study
-            <ArrowRight className="size-3.5" aria-hidden />
-          </Link>
+          {external ? (
+            <a href={href} target="_blank" rel="noreferrer" className={ctaClass}>
+              {ctaLabel}
+              <ArrowRight className="size-3.5" aria-hidden />
+            </a>
+          ) : (
+            <Link to={href} className={ctaClass}>
+              {ctaLabel}
+              <ArrowRight className="size-3.5" aria-hidden />
+            </Link>
+          )}
         </div>
       </HoverPreviewPortal>
     </span>
+  );
+}
+
+function BuildClockLink() {
+  const buildClock = getCaseBySlug("buildclock-field-time-tracking");
+  if (!buildClock) {
+    return (
+      <a
+        href="https://www.buildclock.io/"
+        target="_blank"
+        rel="noreferrer"
+        className="font-medium text-accent-dark underline-offset-2 hover:underline"
+      >
+        BuildClock
+      </a>
+    );
+  }
+
+  return (
+    <ProductHoverCard
+      href={buildClock.liveUrl ?? "https://www.buildclock.io/"}
+      external
+      label="BuildClock"
+      title={buildClock.title}
+      company={buildClock.company}
+      role={buildClock.role}
+      year={buildClock.year}
+      summary={buildClock.summary}
+      image={buildClock.thumbnail ?? "/cases/buildclock/active-workers.png"}
+      tags={buildClock.tags}
+      ctaLabel="Visit buildclock.io"
+      eyebrow="Live product"
+    />
   );
 }
 
@@ -679,8 +732,8 @@ function Content() {
       <p className="mt-4 text-lg text-muted">
         Pedro Mauri · Primary example:{" "}
         {yethos ? (
-          <CaseStudyHoverCard
-            to={`/case-studies/${yethos.slug}`}
+          <ProductHoverCard
+            href={`/case-studies/${yethos.slug}`}
             label="Yethos"
             title={yethos.title}
             company={yethos.company}
@@ -863,10 +916,9 @@ function Content() {
         supports clear CTAs and long sessions.
       </P>
       <P>
-        <strong className="text-foreground">Activities:</strong> Logo and brand system. First
-        high-fidelity community page wire (annotated structure), then polished UI for web and
-        mobile. Collaborated with the project manager so design stayed tied to business goals for a scalable
-        MVP.
+        <strong className="text-foreground">Activities:</strong> Logo and brand system. Evolved community
+        UI from early web hi-fi through channels patterns, then polished web and mobile. Collaborated with
+        the project manager so design stayed tied to business goals for a scalable MVP.
       </P>
       <P>
         <strong className="text-foreground">Deliverables:</strong> Brand guidelines, hi-fi UI, presentation-ready
@@ -891,35 +943,68 @@ function Content() {
       <ChapterTitle id="ch-self-assessment">2. Self-assessment</ChapterTitle>
       <Skill
         title="Facilitating client meetings and presenting — 4"
-        body="Comfortable running and presenting in client/stakeholder meetings—walking through process, recommendations, and design decisions clearly."
+        body={
+          <>
+            Regularly ran client and stakeholder sessions on{" "}
+            <BuildClockLink /> (a live field time-tracking product for Canadian contractors)—with owners
+            and PMs on job sites—walking through product decisions, recommendations, and next steps.
+          </>
+        }
       />
       <Skill
         title="Figma — 4"
-        body="Primary tool for wires, interactive prototypes, and hi-fi UI systems day to day."
+        body="Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end."
       />
       <Skill
         title="Interaction design & prototyping — 4"
-        body="Strong at mapping complex flows and building clickable prototypes, then iterating from usability feedback."
+        body={
+          <>
+            On <BuildClockLink /> designed dual-persona flows (worker clock-in with GPS/geofence, admin
+            Quick Actions, timesheet review states) and iterated from real field use.
+          </>
+        }
       />
       <Skill
         title="User research & usability testing — 4"
-        body="Experience with competitive research, persona work, and usability testing to inform and validate design decisions."
+        body={
+          <>
+            Field research on <BuildClockLink />
+            —site visits, observation, and competitive teardown—plus MVP testing with early contractor
+            customers that changed scope.
+          </>
+        }
       />
       <Skill
         title="Content strategy & information architecture — 4"
-        body="Confident structuring content hierarchies, page jobs, and navigation so products stay clear and scalable."
+        body="On Leaf (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump."
       />
       <Skill
         title="Accessible design / WCAG — 3"
-        body="Design with clarity, hierarchy, and usable controls in mind; I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely."
+        body={
+          <>
+            Design for clarity and usable controls—e.g. <BuildClockLink /> mobile web for field workers
+            (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s
+            accessibility practice closely.
+          </>
+        }
       />
       <Skill
         title="Managing multiple projects — 4"
-        body="Agency experience delivering parallel client work without dropping quality or communication."
+        body={
+          <>
+            Balanced <BuildClockLink /> with parallel client and agency work without dropping communication
+            or quality.
+          </>
+        }
       />
       <Skill
         title="Collaborating with strategists, developers, content, PMs — 4"
-        body="Work closely with PMs and cross-functional partners; for important components I document behavior and constraints and share with the team—especially the PM—for review before build."
+        body={
+          <>
+            Close daily loop with engineers and brand on <BuildClockLink />; for complex UI I document
+            behavior and constraints for PM and engineering review before build.
+          </>
+        }
       >
         <Figure
           src="/share/kanopi/09-community-box-spec.png"
@@ -939,14 +1024,19 @@ function Content() {
         testable prototypes and polished UI.
       </P>
       <P>
-        <strong className="text-foreground">Balancing goals:</strong> I treat business goals, user needs, and
-        technical scope as constraints to negotiate early—not trade-offs to discover late. I surface what’s
-        in / out for the MVP so the experience stays focused and shippable.
+        <strong className="text-foreground">Balancing goals:</strong> I treat client goals, audience needs,
+        accessibility, and technical constraints as things to negotiate early—not trade-offs to discover
+        late. On products like <BuildClockLink /> (a live field time-tracking product for Canadian
+        contractors) that meant readable field UI and a focused MVP (punches + timesheet) instead of a
+        bloated suite. I surface what’s in / out so the experience stays shippable.
       </P>
       <P>
-        <strong className="text-foreground">Meaningful decision:</strong> I prioritize structural clarity
-        (hierarchy, page jobs, what users see first) over decorative complexity. When usability feedback
-        points to confusion, I simplify the model before adding more UI.
+        <strong className="text-foreground">Meaningful decision:</strong> On <BuildClockLink /> I initially
+        pushed a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor
+        customers showed they already used external finance tools and got confused by punches “disappearing”
+        across reports—so I changed the recommendation to a simpler Reports export (period / jobsite /
+        rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to
+        billing without overbuilding.
       </P>
 
       <ChapterTitle id="ch-additional">4. Additional questions</ChapterTitle>

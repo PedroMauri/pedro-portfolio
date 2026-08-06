@@ -87,14 +87,14 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 
 **Goals:** A distinct, community-first brand and UI that supports long sessions and clear CTAs.
 
-**Activities:** Logo and brand system. First high-fidelity community page wire, then polished UI for web and mobile. Collaborated with the project manager so design stayed tied to business goals for a scalable MVP.
+**Activities:** Logo and brand system. Evolved community UI from early web hi-fi through channels patterns, then polished web and mobile. Collaborated with the project manager so design stayed tied to business goals for a scalable MVP.
 
 **Deliverables:** Brand guidelines, hi-fi UI, presentation-ready prototype.
 
 **Into the next phase:** Usability feedback and PM alignment shaped what shipped in the presentation prototype versus what stayed marked for later—so Visual Design supported a focused MVP handoff, not an endless feature surface.
 
 *[IMAGE carousel: brand guidelines — cover, logomark, color, typography, logo on backgrounds]*  
-*[IMAGE carousel: hi-fi evolution — web phases 1–4 + mobile phase 5]*
+*[IMAGE carousel: hi-fi evolution — early web, channels annotated, mobile]*
 
 #### Conclusion
 
@@ -105,28 +105,28 @@ Yethos is a dynamic and flexible social platform that allows for deep interactio
 ## 2) Self-assessment
 
 **Facilitating client meetings / presenting — 4**  
-Comfortable running and presenting in client/stakeholder meetings—walking through process, recommendations, and design decisions clearly.
+Regularly ran client and stakeholder sessions on [BuildClock](https://www.buildclock.io/) (a live field time-tracking product for Canadian contractors)—with owners and PMs on job sites—walking through product decisions, recommendations, and next steps.
 
 **Figma — 4**  
-Primary tool for wires, interactive prototypes, and hi-fi UI systems day to day.
+Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end.
 
 **Interaction design & prototyping — 4**  
-Strong at mapping complex flows and building clickable prototypes, then iterating from usability feedback.
+On [BuildClock](https://www.buildclock.io/) designed dual-persona flows (worker clock-in with GPS/geofence, admin Quick Actions, timesheet review states) and iterated from real field use.
 
 **User research & usability testing — 4**  
-Experience with competitive research, persona work, and usability testing to inform and validate design decisions.
+Field research on [BuildClock](https://www.buildclock.io/)—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope.
 
 **Content strategy & information architecture — 4**  
-Confident structuring content hierarchies, page jobs, and navigation so products stay clear and scalable.
+On Leaf (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
 
 **Accessible design / WCAG — 3**  
-Design with clarity, hierarchy, and usable controls in mind; I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
+Design for clarity and usable controls—e.g. [BuildClock](https://www.buildclock.io/) mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
 
 **Managing multiple projects — 4**  
-Agency experience delivering parallel client work without dropping quality or communication.
+Balanced [BuildClock](https://www.buildclock.io/) with parallel client and agency work without dropping communication or quality.
 
 **Collaborating with strategists, developers, content, PMs — 4**  
-Work closely with PMs and cross-functional partners; for important components I document behavior and constraints and share with the team—especially the PM—for review before build.
+Close daily loop with engineers and brand on [BuildClock](https://www.buildclock.io/); for complex UI I document behavior and constraints for PM and engineering review before build.
 
 *[IMAGE: 09-community-box-spec.png — Example of how I document important components for PM and engineering review]*
 
@@ -138,9 +138,9 @@ Work closely with PMs and cross-functional partners; for important components I 
 
 **Challenges I fit:** Complex navigation and information architecture, multi-role experiences, research-backed prioritization, and turning strategy into testable prototypes and polished UI.
 
-**Balancing goals:** I treat business goals, user needs, and technical scope as constraints to negotiate early—not trade-offs to discover late. I surface what’s in / out for the MVP so the experience stays focused and shippable.
+**Balancing goals:** I treat client goals, audience needs, accessibility, and technical constraints as things to negotiate early—not trade-offs to discover late. On products like [BuildClock](https://www.buildclock.io/) (a live field time-tracking product for Canadian contractors) that meant readable field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
 
-**Meaningful decision:** I prioritize structural clarity (hierarchy, page jobs, what users see first) over decorative complexity. When usability feedback points to confusion, I simplify the model before adding more UI.
+**Meaningful decision:** On [BuildClock](https://www.buildclock.io/) I initially pushed a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor customers showed they already used external finance tools and got confused by punches “disappearing” across reports—so I changed the recommendation to a simpler Reports export (period / jobsite / rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to billing without overbuilding.
 
 ---
 
@@ -165,9 +165,7 @@ When feature appetite grew beyond the original MVP goals, I worked with the proj
 | `03-personas.png` | 1a Discovery |
 | `04-ia-structure.png` | 1b Content Strategy |
 | `04b-user-flow-dashboard.png` | 1c UX Strategy |
-| `06-prototypes.png` | 1c UX Strategy |
+| Figma prototype embed | 1c UX Strategy |
 | Branding carousel (5 slides) | 1d Visual Design |
-| `08-first-hifi-wire-community.png` | 1d Visual Design |
-| `/cases/yethos/hifi-web.png` | 1d Visual Design |
-| `/cases/yethos/hifi-channels.png` | 1d Visual Design |
+| Hi-fi evolution (3 slides: early web, channels annotated, mobile) | 1d Visual Design |
 | `09-community-box-spec.png` | 2 Self-assessment (collaboration) |
