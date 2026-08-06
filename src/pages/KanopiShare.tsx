@@ -1051,9 +1051,6 @@ function Content() {
         <p className="text-sm leading-relaxed text-foreground/80">
           This share page was reviewed for WCAG 2.2 AA practices used across the experience
         </p>
-        <p className="text-sm text-muted-soft">
-          Confidential application materials · Not listed in site navigation or search indexes.
-        </p>
       </div>
     </article>
   );
