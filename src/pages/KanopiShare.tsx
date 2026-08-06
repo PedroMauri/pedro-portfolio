@@ -32,31 +32,7 @@ const BRANDING_SLIDES = [
   },
   {
     src: "/share/kanopi/branding/02-logomark-wordmark.png",
-    caption: "Logomark and wordmark construction",
-  },
-  {
-    src: "/share/kanopi/branding/03-logo-construction.png",
-    caption: "Logo construction and proportions",
-  },
-  {
-    src: "/share/kanopi/branding/04-clearspace.png",
-    caption: "Clearspace",
-  },
-  {
-    src: "/share/kanopi/branding/05-minimum-size.png",
-    caption: "Minimum size",
-  },
-  {
-    src: "/share/kanopi/branding/06-logo-donts.png",
-    caption: "Logo don’ts",
-  },
-  {
-    src: "/share/kanopi/branding/07-alternative-backgrounds.png",
-    caption: "Logo on alternative backgrounds",
-  },
-  {
-    src: "/share/kanopi/branding/08-mono-color.png",
-    caption: "Mono color logo",
+    caption: "Logomark and wordmark",
   },
   {
     src: "/share/kanopi/branding/09-color-palette.png",
@@ -67,8 +43,8 @@ const BRANDING_SLIDES = [
     caption: "Typography",
   },
   {
-    src: "/share/kanopi/branding/11-watermark.png",
-    caption: "Imagery watermark guidelines",
+    src: "/share/kanopi/branding/07-alternative-backgrounds.png",
+    caption: "Logo on alternative backgrounds",
   },
 ] as const;
 
@@ -244,13 +220,13 @@ function Skill({
 
 const CHAPTERS = [
   { id: "ch-home", label: "0. Overview" },
-  { id: "ch-discovery", label: "1. Discovery" },
-  { id: "ch-content-strategy", label: "2. Content Strategy" },
-  { id: "ch-ux-strategy", label: "3. UX Strategy" },
-  { id: "ch-visual-design", label: "4. Visual Design" },
-  { id: "ch-self-assessment", label: "5. Self-assessment" },
-  { id: "ch-impact", label: "6. Impact at Kanopi" },
-  { id: "ch-additional", label: "7. Additional questions" },
+  { id: "ch-discovery", label: "1a. Discovery" },
+  { id: "ch-content-strategy", label: "1b. Content Strategy" },
+  { id: "ch-ux-strategy", label: "1c. UX Strategy" },
+  { id: "ch-visual-design", label: "1d. Visual Design" },
+  { id: "ch-self-assessment", label: "2. Self-assessment" },
+  { id: "ch-impact", label: "3. Impact at Kanopi" },
+  { id: "ch-additional", label: "4. Additional questions" },
 ] as const;
 
 function ChapterNav() {
@@ -704,7 +680,7 @@ function Content() {
         expandable
       />
 
-      <ChapterTitle id="ch-discovery">1. Discovery</ChapterTitle>
+      <ChapterTitle id="ch-discovery">1a. Discovery</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> Understand the market and who we were designing
         for before defining structure or UI.
@@ -745,21 +721,13 @@ function Content() {
         motivations, including the desire for authentic engagement and monetization opportunities.
       </P>
       <P>
-        <strong className="text-foreground">2. Rapid Development and User Testing:</strong> After the
-        prototype was completed, we conducted quick tests with influencers to validate our assumptions and
-        refine the personas based on their feedback.
+        <strong className="text-foreground">2. Validate later in the loop:</strong> After the first
+        prototype existed, we ran quick tests with influencers and refined the personas from that feedback
+        (Lean UX)—so Discovery hypotheses were checked before locking Visual Design.
       </P>
-      <P>
-        <strong className="text-foreground">Lean UX Flow for Persona Development</strong>
-      </P>
-      <P>Below is a flowchart illustrating how research and iterations were applied:</P>
-      <Figure
-        src="/share/kanopi/03b-persona-flow.png"
-        caption="Persona development flow"
-      />
       <Figure src="/share/kanopi/03-personas.png" caption="Persona structure" />
 
-      <ChapterTitle id="ch-content-strategy">2. Content Strategy</ChapterTitle>
+      <ChapterTitle id="ch-content-strategy">1b. Content Strategy</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> Define what content and structure users need to
         evaluate and participate in a community without hunting across pages.
@@ -791,7 +759,7 @@ function Content() {
         caption="Platform elements, information hierarchy, and core pages"
       />
 
-      <ChapterTitle id="ch-ux-strategy">3. UX Strategy</ChapterTitle>
+      <ChapterTitle id="ch-ux-strategy">1c. UX Strategy</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> Make creation and participation flows intuitive
         for admins, moderators, and members.
@@ -818,8 +786,12 @@ function Content() {
         src="/share/kanopi/04b-user-flow-dashboard.png"
         caption="User flow — Community Dashboard"
       />
+      <Figure
+        src="/share/kanopi/06-prototypes.png"
+        caption="Prototype scenarios — create community, channels, and topics"
+      />
 
-      <ChapterTitle id="ch-visual-design">4. Visual Design</ChapterTitle>
+      <ChapterTitle id="ch-visual-design">1d. Visual Design</ChapterTitle>
       <P>
         <strong className="text-foreground">Goals:</strong> A distinct, community-first brand and UI that
         supports clear CTAs and long sessions.
@@ -834,10 +806,19 @@ function Content() {
         <strong className="text-foreground">Deliverables:</strong> Brand guidelines, hi-fi UI, presentation-ready
         prototype.
       </P>
+      <P>
+        <strong className="text-foreground">Into the next phase:</strong> Usability feedback and PM alignment
+        shaped what shipped in the presentation prototype versus what stayed marked for later—so Visual
+        Design supported a focused MVP handoff, not an endless feature surface.
+      </P>
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
       <Figure
         src="/share/kanopi/08-first-hifi-wire-community.png"
         caption="First hi-fi wire — community page"
+      />
+      <Figure
+        src="/cases/yethos/hifi-web.png"
+        caption="Web hi-fi — community homepage with cover, join CTA, favorites, discussions, files, and members"
       />
       <Figure
         src="/cases/yethos/hifi-channels.png"
@@ -852,7 +833,7 @@ function Content() {
         business goals in focus.
       </P>
 
-      <ChapterTitle id="ch-self-assessment">5. Self-assessment</ChapterTitle>
+      <ChapterTitle id="ch-self-assessment">2. Self-assessment</ChapterTitle>
       <Skill
         title="Facilitating client meetings and presenting — 4"
         body="Comfortable running and presenting in client/stakeholder meetings—walking through process, recommendations, and design decisions clearly."
@@ -891,7 +872,7 @@ function Content() {
         />
       </Skill>
 
-      <ChapterTitle id="ch-impact">6. Impact at Kanopi</ChapterTitle>
+      <ChapterTitle id="ch-impact">3. Impact at Kanopi</ChapterTitle>
       <P>
         <strong className="text-foreground">Immediate impact:</strong> I can jump into client website work
         with a clear path from discovery to IA/content structure, UX, and visual design—especially when
@@ -913,19 +894,23 @@ function Content() {
         points to confusion, I simplify the model before adding more UI.
       </P>
 
-      <ChapterTitle id="ch-additional">7. Additional questions</ChapterTitle>
+      <ChapterTitle id="ch-additional">4. Additional questions</ChapterTitle>
       <SubTitle>When research/feedback changed my recommendation</SubTitle>
       <P>
-        I start with a direction from research, then treat usability feedback as a forcing function to cut
-        scope. When testing shows users struggle, I tighten the MVP—clearer hierarchy and core flows first,
-        defer secondary features—rather than defending a broader feature set.
+        On Yethos, competitive research and early persona work pushed toward a broad “social + community”
+        feature set. Usability testing with influencers showed people struggled when creation and hierarchy
+        weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic
+        and core creation flows first, and mark secondary admin features as “not yet.” That kept the
+        prototype focused on meaningful participation instead of shipping every competitor pattern.
       </P>
 
       <SubTitle>Defending a recommendation with a stakeholder</SubTitle>
       <P>
-        When feature appetite grows, I bring research synthesis and the IA/flows back to the table and argue
-        for a scalable foundation over packing every request into v1. I collaborate closely with the PM so we
-        align on a prototype that proves the core experience and leaves room to grow.
+        When feature appetite grew beyond the original MVP goals, I worked with the project manager using
+        research synthesis (privacy, moderation, community-centric structure) and the IA/flows to argue for a
+        scalable foundation over packing every request into v1. We aligned on a presentation prototype that
+        proved the core experience and left explicit room to grow—rather than diluting clarity to satisfy a
+        longer wishlist.
       </P>
 
       <p className="mt-16 text-sm text-muted-soft">
