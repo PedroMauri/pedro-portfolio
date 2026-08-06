@@ -691,15 +691,16 @@ function Content() {
       </p>
 
       <P>
-        Hi Vicki — thank you for getting back to me. I’ve answered the questions using{" "}
-        <strong className="text-foreground">Yethos</strong>, an end-to-end UX/UI project where I led
-        discovery through visual design for a community-focused platform. It’s the clearest example of my
-        process for website/product strategy work.
+        Hi Vicki — thank you for getting back to me. I chose{" "}
+        <strong className="text-foreground">Yethos</strong> as my example because it follows the same
+        phase structure you asked about—Discovery, Content Strategy, UX Strategy, and Visual Design—end to
+        end on a community-focused platform where I led from research through polished UI. It’s the clearest
+        demonstration of how I approach website and product strategy work.
       </P>
 
       <P>
-        Below I walk through Discovery, Content Strategy, UX Strategy, and Visual Design using Yethos as the
-        example—goals and activities, deliverables, and how research/feedback informed the next phase.
+        Below I walk through each phase with goals and activities, deliverables, and how research and
+        feedback informed what came next.
       </P>
       <SubTitle>Project Scope / Workflow</SubTitle>
       <Figure

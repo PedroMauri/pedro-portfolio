@@ -11,7 +11,7 @@ Private share: https://pedromauri.com/share/kanopi
 
 Hi Vicki,
 
-Thank you for getting back to me. I’ve answered the questions using **Yethos**, an end-to-end UX/UI project where I led discovery through visual design for a community-focused platform. It’s the clearest example of my process for website/product strategy work.
+Thank you for getting back to me. I chose **Yethos** as my example because it follows the same phase structure you asked about—Discovery, Content Strategy, UX Strategy, and Visual Design—end to end on a community-focused platform where I led from research through polished UI. It’s the clearest demonstration of how I approach website and product strategy work.
 
 Best,  
 Pedro Mauri
