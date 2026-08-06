@@ -41,7 +41,7 @@ export function ShareCarousel({ slides, label = "Brand guidelines" }: ShareCarou
 
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
-      <div className="relative bg-white">
+      <div className="relative bg-card">
         {slides.map((slide, slideIndex) => (
           <img
             key={slide.src}
@@ -63,17 +63,17 @@ export function ShareCarousel({ slides, label = "Brand guidelines" }: ShareCarou
           type="button"
           aria-label="Previous slide"
           onClick={() => setIndex((value) => (value - 1 + total) % total)}
-          className="absolute left-3 top-1/2 z-20 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white/95 text-foreground shadow-sm transition-colors hover:bg-accent-soft"
+          className="absolute left-3 top-1/2 z-20 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-accent-soft"
         >
-          <ChevronLeft className="size-5" />
+          <ChevronLeft className="size-5" aria-hidden="true" />
         </button>
         <button
           type="button"
           aria-label="Next slide"
           onClick={() => setIndex((value) => (value + 1) % total)}
-          className="absolute right-3 top-1/2 z-20 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white/95 text-foreground shadow-sm transition-colors hover:bg-accent-soft"
+          className="absolute right-3 top-1/2 z-20 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-md transition-colors hover:bg-accent-soft"
         >
-          <ChevronRight className="size-5" />
+          <ChevronRight className="size-5" aria-hidden="true" />
         </button>
       </div>
       <figcaption className="flex flex-col gap-3 border-t border-border px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
@@ -89,7 +89,7 @@ export function ShareCarousel({ slides, label = "Brand guidelines" }: ShareCarou
               key={slide.src}
               type="button"
               aria-label={`Go to slide ${slideIndex + 1}: ${slide.caption}`}
-              aria-current={slideIndex === index}
+              aria-current={slideIndex === index ? "true" : undefined}
               onClick={() => setIndex(slideIndex)}
               className={cn(
                 "size-2.5 rounded-full transition-colors",
