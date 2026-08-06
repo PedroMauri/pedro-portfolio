@@ -789,8 +789,8 @@ function Content() {
       </P>
       <P>
         <strong className="text-foreground">Activities:</strong> Competitor analysis: features, strengths,
-        weaknesses, and gaps. Defined Lean UX personas (Influencer/Admin, Moderator, Active Member) with
-        motivations, behaviors, and use scenarios, then refined them through prototype tests with influencers.
+        weaknesses, and gaps. Defined Lean UX personas with motivations, behaviors, and use scenarios, then
+        refined them through prototype tests with influencers.
       </P>
       <P>
         <strong className="text-foreground">Deliverables:</strong> Competitive teardown, opportunity framing,
