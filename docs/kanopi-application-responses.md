@@ -96,7 +96,7 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 
 #### Conclusion
 
-Yethos is a dynamic and flexible social platform that allows for deep interaction within niche-based communities. By collaborating closely with the project manager, I ensured that the final product met the original goals, delivering a scalable MVP that lays the foundation for future growth and success. The project demonstrates my ability to design comprehensive user experiences while keeping the business goals in focus.
+We landed on a focused presentation MVP: a clear Community → Channel → Topic hierarchy, brand system, and hi-fi UI, scoped with the project manager around what tested well versus what stayed for later. That kept the original goals intact without bloating the first release.
 
 ---
 
@@ -115,7 +115,7 @@ On Yethos, clickable prototypes made influencer meetings and shadowing actionabl
 Field research on BuildClock: site visits, observation, and competitive teardown, plus MVP testing with early contractor customers that changed scope.
 
 **Content strategy & information architecture: 4**  
-On [Leaf](https://pedromauri.com/projects/leaf-team-network-health) (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
+On [Leaf](https://pedromauri.com/projects/leaf-team-network-health) (an HR platform for large corporate teams) I structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
 
 **Accessible design / WCAG: 3**  
 Design for clarity and usable controls, e.g. BuildClock mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
@@ -146,11 +146,11 @@ For complex UI I document behavior and constraints and share with the team, espe
 
 ### Tell us about a time research, user feedback, or analytics changed your original design recommendation. What did you learn, and what did you do differently?
 
-On Yethos, competitive research and early persona work pushed toward a broad “social + community” feature set. Usability testing with influencers showed people struggled when creation and hierarchy weren’t clear, so I changed the recommendation: tighten the MVP around Community → Channel → Topic and core creation flows first.
+On Yethos (covered in Discovery and UX Strategy above), competitive research pushed a broad “social + community” feature set. Usability with influencers showed creation and hierarchy weren’t clear, so I tightened the MVP around Community → Channel → Topic and core creation flows first.
 
-**What I learned:** competitor breadth is not the same as user clarity. More features early made the product harder to understand, not more valuable.
+**What I learned:** competitor breadth is not the same as user clarity.
 
-**What I did differently:** I cut the presentation scope to the hierarchy and creation paths that tested well, marked secondary admin ideas for later, and rebuilt the prototype around meaningful participation instead of shipping every competitor pattern.
+**What I did differently:** I cut presentation scope to the hierarchy and creation paths that tested well, and marked secondary admin ideas for later.
 
 ### Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder who saw the problem differently. How did you build alignment?
 

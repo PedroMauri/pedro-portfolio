@@ -849,10 +849,8 @@ function Content() {
 
       <SubTitle>Information Architecture</SubTitle>
       <P>
-        This section outlines the structure and organization of the platform, focusing initially on the web
-        version for MVP development. Our goal was to conduct research and gather user feedback after the
-        prototype was completed. Based on the insights collected during testing, we planned to iterate and
-        refine the web experience, followed by the adaptation of the platform for mobile devices.
+        We organized the web MVP around Community → Channel → Topic so discovery and participation had a
+        clear home before mobile adaptation. The hierarchy below became the brief for flows and UI.
       </P>
       <Figure
         src="/share/kanopi/04-ia-structure.png"
@@ -913,14 +911,12 @@ function Content() {
         Design supported a focused MVP handoff, not an endless feature surface.
       </P>
       <ShareCarousel slides={[...BRANDING_SLIDES]} label="Yethos brand guidelines" />
-      <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Web hi-fi evolution" />
+      <ShareCarousel slides={[...WEB_HIFI_SLIDES]} label="Hi-fi evolution" />
       <SubTitle>Conclusion</SubTitle>
       <P>
-        Yethos is a dynamic and flexible social platform that allows for deep interaction within niche-based
-        communities. By collaborating closely with the project manager, I ensured that the final product met
-        the original goals, delivering a scalable MVP that lays the foundation for future growth and success.
-        The project demonstrates my ability to design comprehensive user experiences while keeping the
-        business goals in focus.
+        We landed on a focused presentation MVP: a clear Community → Channel → Topic hierarchy, brand
+        system, and hi-fi UI, scoped with the project manager around what tested well versus what stayed for
+        later. That kept the original goals intact without bloating the first release.
       </P>
 
       <ChapterTitle id="ch-self-assessment">2. Self-assessment</ChapterTitle>
@@ -950,7 +946,7 @@ function Content() {
         title="Content strategy & information architecture: 4"
         body={
           <>
-            On <LeafLink withCard /> (an HR platform for large corporate teams) structured information
+            On <LeafLink withCard /> (an HR platform for large corporate teams) I structured information
             architecture for roles and responsibilities and made Team Network Health readable as
             manager-facing signals, not a raw data dump.
           </>
@@ -1015,19 +1011,17 @@ function Content() {
         recommendation. What did you learn, and what did you do differently?
       </SubTitle>
       <P>
-        On Yethos, competitive research and early persona work pushed toward a broad “social + community”
-        feature set. Usability testing with influencers showed people struggled when creation and hierarchy
-        weren’t clear, so I changed the recommendation: tighten the MVP around Community → Channel → Topic
-        and core creation flows first.
+        On Yethos (covered in Discovery and UX Strategy above), competitive research pushed a broad “social +
+        community” feature set. Usability with influencers showed creation and hierarchy weren’t clear, so I
+        tightened the MVP around Community → Channel → Topic and core creation flows first.
       </P>
       <P>
         <strong className="text-foreground">What I learned:</strong> competitor breadth is not the same as
-        user clarity. More features early made the product harder to understand, not more valuable.
+        user clarity.
       </P>
       <P>
-        <strong className="text-foreground">What I did differently:</strong> I cut the presentation scope to
-        the hierarchy and creation paths that tested well, marked secondary admin ideas for later, and rebuilt
-        the prototype around meaningful participation instead of shipping every competitor pattern.
+        <strong className="text-foreground">What I did differently:</strong> I cut presentation scope to the
+        hierarchy and creation paths that tested well, and marked secondary admin ideas for later.
       </P>
 
       <SubTitle>
