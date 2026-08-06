@@ -39,8 +39,19 @@ Market research → Personas → Information architecture → Brand → Wirefram
 
 **Into the next phase:** Research showed differentiation should come from a clearer community hierarchy and stronger privacy/moderation—not more “social network” noise. That fed IA and content structure.
 
-*[IMAGE: 02-market-research.png — Competitors + feature comparison]*  
-*[IMAGE: 03-personas.png — Persona definition + Lean UX loop]*
+*[IMAGE: 02-market-research.png — Competitors + feature comparison]*
+
+### Persona Definition
+
+**Lean UX Objectives and Process for Personas**
+
+Our goal was to validate key design hypotheses, ensuring that the product’s features and experience aligned with the expectations of influencers, who play a critical role in Yethos.
+
+1. **Defining Hypothetical Personas:** We created initial personas based on market research, focusing on influencers’ common activities, objectives, and motivations, including the desire for authentic engagement and monetization opportunities.
+
+2. **Rapid Development and User Testing:** After the prototype was completed, we conducted quick tests with influencers to validate our assumptions and refine the personas based on their feedback.
+
+*[IMAGE: 03-personas.png — Persona structure]*
 
 ### Content Strategy
 
@@ -140,7 +151,7 @@ When feature appetite grows, I bring research synthesis and the IA/flows back to
 |------|---------|
 | `01-goal-workflow.png` | Discovery / process overview |
 | `02-market-research.png` | Discovery |
-| `03-personas.png` | Discovery + research story |
+| `03-personas.png` | Persona structure table |
 | `04-ia-userflows.png` | Content strategy + UX |
 | `05-brand-ui.png` | Visual design |
 | `06-prototypes.png` | UX / testing |

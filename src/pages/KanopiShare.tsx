@@ -239,7 +239,26 @@ function Content() {
         network” noise. That fed IA and content structure.
       </P>
       <Figure src="/share/kanopi/02-market-research.png" caption="Competitors and feature comparison" />
-      <Figure src="/share/kanopi/03-personas.png" caption="Persona definition and Lean UX loop" />
+
+      <SubTitle>Persona Definition</SubTitle>
+      <P>
+        <strong className="text-foreground">Lean UX Objectives and Process for Personas</strong>
+      </P>
+      <P>
+        Our goal was to validate key design hypotheses, ensuring that the product’s features and experience
+        aligned with the expectations of influencers, who play a critical role in Yethos.
+      </P>
+      <P>
+        <strong className="text-foreground">1. Defining Hypothetical Personas:</strong> We created initial
+        personas based on market research, focusing on influencers’ common activities, objectives, and
+        motivations, including the desire for authentic engagement and monetization opportunities.
+      </P>
+      <P>
+        <strong className="text-foreground">2. Rapid Development and User Testing:</strong> After the
+        prototype was completed, we conducted quick tests with influencers to validate our assumptions and
+        refine the personas based on their feedback.
+      </P>
+      <Figure src="/share/kanopi/03-personas.png" caption="Persona structure" />
 
       <SubTitle>Content Strategy</SubTitle>
       <P>
