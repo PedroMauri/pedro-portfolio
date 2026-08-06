@@ -146,13 +146,19 @@ For complex UI I document behavior and constraints and share with the team—esp
 
 ## 4) Additional questions
 
-### When research/feedback changed my recommendation
+### Tell us about a time research, user feedback, or analytics changed your original design recommendation. What did you learn, and what did you do differently?
 
-On Yethos, competitive research and early persona work pushed toward a broad “social + community” feature set. Usability testing with influencers showed people struggled when creation and hierarchy weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic and core creation flows first. That kept the prototype focused on meaningful participation instead of shipping every competitor pattern.
+On Yethos, competitive research and early persona work pushed toward a broad “social + community” feature set. Usability testing with influencers showed people struggled when creation and hierarchy weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic and core creation flows first.
 
-### Defending a recommendation with a stakeholder
+**What I learned:** competitor breadth is not the same as user clarity—more features early made the product harder to understand, not more valuable.
 
-When feature appetite grew beyond the original MVP goals, I worked with the project manager using research synthesis (privacy, moderation, community-centric structure) and the IA/flows to argue for a scalable foundation over packing every request into v1. We aligned on a presentation prototype that proved the core experience and left explicit room to grow—rather than diluting clarity to satisfy a longer wishlist.
+**What I did differently:** I cut the presentation scope to the hierarchy and creation paths that tested well, marked secondary admin ideas for later, and rebuilt the prototype around meaningful participation instead of shipping every competitor pattern.
+
+### Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder who saw the problem differently. How did you build alignment?
+
+When feature appetite grew beyond the original MVP goals, the project manager wanted more of the wishlist in v1. I argued for a scalable foundation—privacy, moderation, and community-centric structure—over packing every request into the first release.
+
+**How I built alignment:** I walked through research synthesis and the IA/flows together, showed where extra surface area would dilute clarity, and proposed a presentation prototype that proved the core experience while leaving explicit room to grow. That framed “not now” as sequencing, not rejection—so we agreed on a focused MVP instead of a longer, muddier wishlist.
 
 ---
 

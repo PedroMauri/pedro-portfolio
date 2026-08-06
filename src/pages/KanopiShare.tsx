@@ -242,8 +242,8 @@ function ChapterTitle({ id, children }: { id: string; children: string }) {
   );
 }
 
-function SubTitle({ children }: { children: string }) {
-  return <h3 className="mt-8 text-lg font-medium text-foreground">{children}</h3>;
+function SubTitle({ children }: { children: ReactNode }) {
+  return <h3 className="mt-8 text-lg font-medium text-foreground text-balance">{children}</h3>;
 }
 
 function P({ children }: { children: ReactNode }) {
@@ -1037,22 +1037,41 @@ function Content() {
       </P>
 
       <ChapterTitle id="ch-additional">4. Additional questions</ChapterTitle>
-      <SubTitle>When research/feedback changed my recommendation</SubTitle>
+      <SubTitle>
+        Tell us about a time research, user feedback, or analytics changed your original design
+        recommendation. What did you learn, and what did you do differently?
+      </SubTitle>
       <P>
         On Yethos, competitive research and early persona work pushed toward a broad “social + community”
         feature set. Usability testing with influencers showed people struggled when creation and hierarchy
         weren’t clear—so I changed the recommendation: tighten the MVP around Community → Channel → Topic
-        and core creation flows first. That kept the
-        prototype focused on meaningful participation instead of shipping every competitor pattern.
+        and core creation flows first.
+      </P>
+      <P>
+        <strong className="text-foreground">What I learned:</strong> competitor breadth is not the same as
+        user clarity—more features early made the product harder to understand, not more valuable.
+      </P>
+      <P>
+        <strong className="text-foreground">What I did differently:</strong> I cut the presentation scope to
+        the hierarchy and creation paths that tested well, marked secondary admin ideas for later, and rebuilt
+        the prototype around meaningful participation instead of shipping every competitor pattern.
       </P>
 
-      <SubTitle>Defending a recommendation with a stakeholder</SubTitle>
+      <SubTitle>
+        Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder
+        who saw the problem differently. How did you build alignment?
+      </SubTitle>
       <P>
-        When feature appetite grew beyond the original MVP goals, I worked with the project manager using
-        research synthesis (privacy, moderation, community-centric structure) and the IA/flows to argue for a
-        scalable foundation over packing every request into v1. We aligned on a presentation prototype that
-        proved the core experience and left explicit room to grow—rather than diluting clarity to satisfy a
-        longer wishlist.
+        When feature appetite grew beyond the original MVP goals, the project manager wanted more of the
+        wishlist in v1. I argued for a scalable foundation—privacy, moderation, and community-centric
+        structure—over packing every request into the first release.
+      </P>
+      <P>
+        <strong className="text-foreground">How I built alignment:</strong> I walked through research
+        synthesis and the IA/flows together, showed where extra surface area would dilute clarity, and
+        proposed a presentation prototype that proved the core experience while leaving explicit room to grow.
+        That framed “not now” as sequencing, not rejection—so we agreed on a focused MVP instead of a longer,
+        muddier wishlist.
       </P>
 
       <p className="mt-16 text-sm text-muted-soft">
