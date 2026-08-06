@@ -55,6 +55,17 @@ const BRANDING_SLIDES = [
   },
 ] as const;
 
+const MARKET_RESEARCH_SLIDES = [
+  {
+    src: "/share/kanopi/02a-competitors.png",
+    caption: "Identify competitors",
+  },
+  {
+    src: "/share/kanopi/02b-feature-analysis.png",
+    caption: "Feature and functionality analysis",
+  },
+] as const;
+
 function Figure({
   src,
   caption,
@@ -238,7 +249,11 @@ function Content() {
         should come from a clearer community hierarchy and stronger privacy/moderation—not more “social
         network” noise. That fed IA and content structure.
       </P>
-      <Figure src="/share/kanopi/02-market-research.png" caption="Competitors and feature comparison" />
+      <SubTitle>Market research and analysis</SubTitle>
+      <ShareCarousel
+        slides={[...MARKET_RESEARCH_SLIDES]}
+        label="Market research and analysis"
+      />
 
       <SubTitle>Persona Definition</SubTitle>
       <P>

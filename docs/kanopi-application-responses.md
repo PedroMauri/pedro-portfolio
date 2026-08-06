@@ -39,7 +39,7 @@ Market research → Personas → Information architecture → Brand → Wirefram
 
 **Into the next phase:** Research showed differentiation should come from a clearer community hierarchy and stronger privacy/moderation—not more “social network” noise. That fed IA and content structure.
 
-*[IMAGE: 02-market-research.png — Competitors + feature comparison]*
+*[IMAGE carousel: 02a-competitors.png + 02b-feature-analysis.png — Market research and analysis]*
 
 ### Persona Definition
 
@@ -150,7 +150,8 @@ When feature appetite grows, I bring research synthesis and the IA/flows back to
 | File | Use for |
 |------|---------|
 | `01-goal-workflow.png` | Discovery / process overview |
-| `02-market-research.png` | Discovery |
+| `02a-competitors.png` | Market research — identify competitors |
+| `02b-feature-analysis.png` | Market research — feature analysis |
 | `03-personas.png` | Persona structure table |
 | `04-ia-userflows.png` | Content strategy + UX |
 | `05-brand-ui.png` | Visual design |
