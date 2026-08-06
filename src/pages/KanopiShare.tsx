@@ -177,6 +177,34 @@ function Content() {
         platform. It’s the clearest example of my process for website/product strategy work.
       </P>
 
+      <div className="mt-8 rounded-2xl border border-border bg-cream px-5 py-5 sm:px-6">
+        <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">
+          Client reference
+        </p>
+        <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">
+          Stakeholder and my contractor on Yethos:{" "}
+          <a
+            href="https://www.linkedin.com/in/felipepuddu/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-accent-dark underline-offset-2 hover:underline"
+          >
+            Felipe Puddu
+          </a>
+          . I was hired full-time on this project from{" "}
+          <strong className="text-foreground">2021 to 2023</strong>. All images used in this share were
+          produced and used in the real project. You’re welcome to contact him as a reference for
+          confirmation — he is based in Italy:{" "}
+          <a
+            href="tel:+393339940143"
+            className="font-medium text-accent-dark underline-offset-2 hover:underline"
+          >
+            +39 333 994 0143
+          </a>
+          .
+        </p>
+      </div>
+
       <SectionTitle>1) Approach across a project</SectionTitle>
       <P>
         I follow a structured path similar to how Kanopi frames website work. On Yethos the workflow was:
