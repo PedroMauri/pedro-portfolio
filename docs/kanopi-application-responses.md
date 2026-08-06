@@ -108,22 +108,22 @@ Yethos is a dynamic and flexible social platform that allows for deep interactio
 Regularly ran client and stakeholder sessions on [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) (a live field time-tracking product for Canadian contractors)—with owners and PMs on job sites—walking through product decisions, recommendations, and next steps.
 
 **Figma — 4**  
-Primary tool on [Yethos](https://pedromauri.com/case-studies/yethos-community-discovery) for wires, interactive prototypes, and hi-fi UI systems end to end.
+Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end.
 
 **Interaction design & prototyping — 4**  
-On [Yethos](https://pedromauri.com/case-studies/yethos-community-discovery), clickable prototypes made influencer meetings and shadowing actionable—we adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI.
+On Yethos, clickable prototypes made influencer meetings and shadowing actionable—we adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI.
 
 **User research & usability testing — 4**  
-Field research on [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking)—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope.
+Field research on BuildClock—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope.
 
 **Content strategy & information architecture — 4**  
 On [Leaf](https://pedromauri.com/case-studies/leaf-team-network-health) (an HR platform for large corporate teams) structured information architecture for roles and responsibilities and made Team Network Health readable as manager-facing signals, not a raw data dump.
 
 **Accessible design / WCAG — 3**  
-Design for clarity and usable controls—e.g. [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
+Design for clarity and usable controls—e.g. BuildClock mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely.
 
 **Managing multiple projects — 4**  
-Balanced [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) with parallel client and agency work without dropping communication or quality.
+Balanced BuildClock with parallel client and agency work without dropping communication or quality.
 
 **Collaborating with strategists, developers, content, PMs — 4**  
 For complex UI I document behavior and constraints and share with the team—especially the PM—for review before build. The example below is from Yethos: a Community Box spec written so design, PM, and engineering stay aligned.
@@ -138,9 +138,9 @@ For complex UI I document behavior and constraints and share with the team—esp
 
 **Challenges I fit:** Complex navigation and information architecture, multi-role experiences, research-backed prioritization, and turning strategy into testable prototypes and polished UI.
 
-**Balancing goals:** I treat client goals, audience needs, accessibility, and technical constraints as things to negotiate early—not trade-offs to discover late. On products like [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) that meant readable field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
+**Balancing goals:** I treat client goals, audience needs, accessibility, and technical constraints as things to negotiate early—not trade-offs to discover late. On products like BuildClock that meant readable field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
 
-**Meaningful decision:** On [BuildClock](https://pedromauri.com/case-studies/buildclock-field-time-tracking) I initially pushed a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor customers showed they already used external finance tools and got confused by punches “disappearing” across reports—so I changed the recommendation to a simpler Reports export (period / jobsite / rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to billing without overbuilding.
+**Meaningful decision:** On BuildClock I initially pushed a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor customers showed they already used external finance tools and got confused by punches “disappearing” across reports—so I changed the recommendation to a simpler Reports export (period / jobsite / rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to billing without overbuilding.
 
 ---
 

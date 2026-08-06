@@ -635,17 +635,10 @@ function ProductHoverCard({
   );
 }
 
-function BuildClockLink() {
+function BuildClockLink({ withCard = false }: { withCard?: boolean }) {
   const buildClock = getCaseBySlug("buildclock-field-time-tracking");
-  if (!buildClock) {
-    return (
-      <Link
-        to="/case-studies/buildclock-field-time-tracking"
-        className="font-medium text-accent-dark underline-offset-2 hover:underline"
-      >
-        BuildClock
-      </Link>
-    );
+  if (!withCard || !buildClock) {
+    return <>BuildClock</>;
   }
 
   return (
@@ -665,17 +658,10 @@ function BuildClockLink() {
   );
 }
 
-function LeafLink() {
+function LeafLink({ withCard = false }: { withCard?: boolean }) {
   const leaf = getCaseBySlug("leaf-team-network-health");
-  if (!leaf) {
-    return (
-      <Link
-        to="/case-studies/leaf-team-network-health"
-        className="font-medium text-accent-dark underline-offset-2 hover:underline"
-      >
-        Leaf
-      </Link>
-    );
+  if (!withCard || !leaf) {
+    return <>Leaf</>;
   }
 
   return (
@@ -692,36 +678,6 @@ function LeafLink() {
       ctaLabel="Open case study"
       eyebrow="Case study"
       imagePosition="center"
-    />
-  );
-}
-
-function YethosLink() {
-  const yethos = getCaseBySlug("yethos-community-discovery");
-  if (!yethos) {
-    return (
-      <Link
-        to="/case-studies/yethos-community-discovery"
-        className="font-medium text-accent-dark underline-offset-2 hover:underline"
-      >
-        Yethos
-      </Link>
-    );
-  }
-
-  return (
-    <ProductHoverCard
-      href={`/case-studies/${yethos.slug}`}
-      label="Yethos"
-      title={yethos.title}
-      company={yethos.company}
-      role={yethos.role}
-      year={yethos.year}
-      summary={yethos.summary}
-      image={yethos.thumbnail ?? "/cases/yethos/hifi-channels.png"}
-      tags={yethos.tags}
-      ctaLabel="Open case study"
-      eyebrow="Case study"
     />
   );
 }
@@ -1009,68 +965,40 @@ function Content() {
         body={
           <>
             Regularly ran client and stakeholder sessions on{" "}
-            <BuildClockLink /> (a live field time-tracking product for Canadian contractors)—with owners
-            and PMs on job sites—walking through product decisions, recommendations, and next steps.
+            <BuildClockLink withCard /> (a live field time-tracking product for Canadian contractors)—with
+            owners and PMs on job sites—walking through product decisions, recommendations, and next steps.
           </>
         }
       />
       <Skill
         title="Figma — 4"
-        body={
-          <>
-            Primary tool on <YethosLink /> for wires, interactive prototypes, and hi-fi UI systems end to
-            end.
-          </>
-        }
+        body="Primary tool on Yethos for wires, interactive prototypes, and hi-fi UI systems end to end."
       />
       <Skill
         title="Interaction design & prototyping — 4"
-        body={
-          <>
-            On <YethosLink />, clickable prototypes made influencer meetings and shadowing actionable—we
-            adapted a large part of the MVP (especially creation flows and hierarchy) before locking final
-            UI.
-          </>
-        }
+        body="On Yethos, clickable prototypes made influencer meetings and shadowing actionable—we adapted a large part of the MVP (especially creation flows and hierarchy) before locking final UI."
       />
       <Skill
         title="User research & usability testing — 4"
-        body={
-          <>
-            Field research on <BuildClockLink />
-            —site visits, observation, and competitive teardown—plus MVP testing with early contractor
-            customers that changed scope.
-          </>
-        }
+        body="Field research on BuildClock—site visits, observation, and competitive teardown—plus MVP testing with early contractor customers that changed scope."
       />
       <Skill
         title="Content strategy & information architecture — 4"
         body={
           <>
-            On <LeafLink /> (an HR platform for large corporate teams) structured information architecture
-            for roles and responsibilities and made Team Network Health readable as manager-facing signals,
-            not a raw data dump.
+            On <LeafLink withCard /> (an HR platform for large corporate teams) structured information
+            architecture for roles and responsibilities and made Team Network Health readable as
+            manager-facing signals, not a raw data dump.
           </>
         }
       />
       <Skill
         title="Accessible design / WCAG — 3"
-        body={
-          <>
-            Design for clarity and usable controls—e.g. <BuildClockLink /> mobile web for field workers
-            (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s
-            accessibility practice closely.
-          </>
-        }
+        body="Design for clarity and usable controls—e.g. BuildClock mobile web for field workers (large tap targets, simple clock-in). I haven’t led formal WCAG audits and would follow Kanopi’s accessibility practice closely."
       />
       <Skill
         title="Managing multiple projects — 4"
-        body={
-          <>
-            Balanced <BuildClockLink /> with parallel client and agency work without dropping communication
-            or quality.
-          </>
-        }
+        body="Balanced BuildClock with parallel client and agency work without dropping communication or quality."
       />
       <Skill
         title="Collaborating with strategists, developers, content, PMs — 4"
@@ -1096,13 +1024,12 @@ function Content() {
       <P>
         <strong className="text-foreground">Balancing goals:</strong> I treat client goals, audience needs,
         accessibility, and technical constraints as things to negotiate early—not trade-offs to discover
-        late. On products like <BuildClockLink /> that meant readable field UI and a focused MVP
-        (punches + timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays
-        shippable.
+        late. On products like BuildClock that meant readable field UI and a focused MVP (punches +
+        timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
       </P>
       <P>
-        <strong className="text-foreground">Meaningful decision:</strong> On <BuildClockLink /> I initially
-        pushed a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor
+        <strong className="text-foreground">Meaningful decision:</strong> On BuildClock I initially pushed
+        a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor
         customers showed they already used external finance tools and got confused by punches “disappearing”
         across reports—so I changed the recommendation to a simpler Reports export (period / jobsite /
         rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to
