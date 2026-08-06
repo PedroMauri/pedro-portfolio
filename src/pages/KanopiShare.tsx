@@ -1018,6 +1018,13 @@ function Content() {
         clock-in control under the jobsite picker, prefilled with the last jobsite. That’s now how most
         workers punch in.
       </P>
+      <div className="mx-auto max-w-[17.5rem] sm:max-w-[19rem]">
+        <Figure
+          src="/share/kanopi/10-buildclock-fast-clock-in.png"
+          caption="BuildClock worker clock-in: Jobsite picker plus Fast clock-in for the last jobsite"
+          expandable
+        />
+      </div>
 
       <SubTitle>
         Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder

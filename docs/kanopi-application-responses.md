@@ -148,6 +148,8 @@ On [BuildClock](https://pedromauri.com/projects/buildclock-field-time-tracking),
 
 **What I did differently:** I added a secondary Fast clock-in control under the jobsite picker, prefilled with the last jobsite. That’s now how most workers punch in.
 
+*[IMAGE: 10-buildclock-fast-clock-in.png: BuildClock worker clock-in with Fast clock-in for the last jobsite]*
+
 ### Describe a time you had to explain or defend a strategic recommendation to a client or stakeholder who saw the problem differently. How did you build alignment?
 
 When feature appetite grew beyond the original MVP goals, the project manager wanted more of the wishlist in v1. I argued for a scalable foundation (privacy, moderation, and community-centric structure) over packing every request into the first release.
@@ -169,3 +171,4 @@ When feature appetite grew beyond the original MVP goals, the project manager wa
 | Branding carousel (5 slides) | 1d Visual Design |
 | Hi-fi evolution (3 slides: early web, channels annotated, mobile) | 1d Visual Design |
 | `09-community-box-spec.png` | 2 Self-assessment (collaboration) |
+| `10-buildclock-fast-clock-in.png` | 4 Additional (Fast clock-in) |
