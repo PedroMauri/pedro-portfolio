@@ -314,9 +314,14 @@ function Content() {
         src="/share/kanopi/04-ia-structure.png"
         caption="Platform elements, information hierarchy, and core pages"
       />
+
+      <SubTitle>User Flow Mapping</SubTitle>
+      <P>
+        The following is a key user flow developed for the web MVP to ensure intuitive user interaction:
+      </P>
       <Figure
-        src="/share/kanopi/04-ia-userflows.png"
-        caption="Information architecture and role-based community dashboard flows"
+        src="/share/kanopi/04b-user-flow-dashboard.png"
+        caption="User flow — Community Dashboard"
       />
 
       <SubTitle>UX Strategy</SubTitle>

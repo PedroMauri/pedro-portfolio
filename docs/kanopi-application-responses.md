@@ -71,8 +71,13 @@ Below is a flowchart illustrating how research and iterations were applied:
 
 This section outlines the structure and organization of the platform, focusing initially on the web version for MVP development. Our goal was to conduct research and gather user feedback after the prototype was completed. Based on the insights collected during testing, we planned to iterate and refine the web experience, followed by the adaptation of the platform for mobile devices.
 
-*[IMAGE: 04-ia-structure.png — Platform elements, information hierarchy, and core pages]*  
-*[IMAGE: 04-ia-userflows.png — IA hierarchy + role-based community dashboard flows]*
+*[IMAGE: 04-ia-structure.png — Platform elements, information hierarchy, and core pages]*
+
+### User Flow Mapping
+
+The following is a key user flow developed for the web MVP to ensure intuitive user interaction:
+
+*[IMAGE: 04b-user-flow-dashboard.png — User flow — Community Dashboard]*
 
 ### UX Strategy
 
@@ -163,7 +168,7 @@ When feature appetite grows, I bring research synthesis and the IA/flows back to
 | `02b-feature-analysis.png` | Market research — feature analysis |
 | `03-personas.png` | Persona structure table |
 | `04-ia-structure.png` | Information architecture diagram |
-| `04-ia-userflows.png` | Content strategy + UX |
+| `04b-user-flow-dashboard.png` | User flow — Community Dashboard |
 | `05-brand-ui.png` | Visual design |
 | `06-prototypes.png` | UX / testing |
 | `07-conclusion.png` | Impact / stakeholder alignment |
