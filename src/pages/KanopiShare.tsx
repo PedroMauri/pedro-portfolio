@@ -794,14 +794,7 @@ function Content() {
           — the stakeholder who hired me on Yethos. I worked with him from{" "}
           <strong className="text-foreground">2021 to 2023</strong> as product/visual designer. All
           images in this share were produced and used on the real project. He&apos;s based in Italy and
-          happy to confirm:{" "}
-          <a
-            href="tel:+393339940143"
-            className="font-medium text-accent-dark underline-offset-2 hover:underline"
-          >
-            +39 333 994 0143
-          </a>
-          .
+          happy to confirm.
         </p>
       </div>
 
