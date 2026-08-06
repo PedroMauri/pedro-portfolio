@@ -902,8 +902,8 @@ function Content() {
         the project manager so design stayed tied to business goals for a scalable MVP.
       </P>
       <P>
-        <strong className="text-foreground">Deliverables:</strong> Brand guidelines, hi-fi UI, presentation-ready
-        prototype.
+        <strong className="text-foreground">Deliverables:</strong> Brand guidelines, design system, hi-fi UI,
+        presentation-ready prototype.
       </P>
       <P>
         <strong className="text-foreground">Into the next phase:</strong> Usability feedback and PM alignment

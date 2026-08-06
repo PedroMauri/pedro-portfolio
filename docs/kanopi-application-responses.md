@@ -87,7 +87,7 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 
 **Activities:** Logo and brand system. Evolved community UI from early web hi-fi through channels patterns, then polished web and mobile. Collaborated with the project manager so design stayed tied to business goals for a scalable MVP.
 
-**Deliverables:** Brand guidelines, hi-fi UI, presentation-ready prototype.
+**Deliverables:** Brand guidelines, design system, hi-fi UI, presentation-ready prototype.
 
 **Into the next phase:** Usability feedback and PM alignment shaped what shipped in the presentation prototype versus what stayed marked for later, so Visual Design supported a focused MVP handoff, not an endless feature surface.
 
