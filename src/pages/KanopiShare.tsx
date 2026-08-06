@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode, type FocusEvent } from "react";
 import { createPortal } from "react-dom";
 import { Expand, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -76,7 +76,7 @@ function PrototypeEmbed({
   return (
     <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-cream">
       <div className="border-b border-border bg-card px-4 py-2.5">
-        <p className="text-xs font-medium text-muted sm:text-sm">
+        <p className="text-sm font-medium text-foreground/90 sm:text-sm">
           Tip: use the expand icon in the prototype toolbar to view fullscreen. There&apos;s a
           small bug: if screens don&apos;t advance, press the{" "}
           <span className="text-foreground">Criar</span> button to continue to the next page.
@@ -90,6 +90,10 @@ function PrototypeEmbed({
           loading="lazy"
           className="absolute inset-0 h-full w-full border-0"
         />
+        <p className="sr-only">
+          Interactive Figma prototype embed. If the frame does not load, open the prototype from the
+          caption link context or contact the page owner.
+        </p>
       </div>
       <figcaption className="border-t border-border px-4 py-3 text-sm text-muted">{caption}</figcaption>
     </figure>
@@ -107,6 +111,7 @@ function Figure({
 }) {
   const [open, setOpen] = useState(false);
   const titleId = useId();
+  const describeId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -165,8 +170,8 @@ function Figure({
             className="group relative block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <img src={src} alt={caption} className="w-full" loading="lazy" decoding="async" />
-            <span className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-white opacity-90 shadow-sm backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
-              <Expand className="size-3.5" />
+            <span className="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-white opacity-100 shadow-sm backdrop-blur-sm sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+              <Expand className="size-3.5" aria-hidden="true" />
               Expand
             </span>
           </button>
@@ -182,6 +187,7 @@ function Figure({
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
+          aria-describedby={describeId}
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm sm:p-8"
           onClick={() => setOpen(false)}
         >
@@ -190,17 +196,22 @@ function Figure({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-3 sm:px-5">
-              <p id={titleId} className="truncate text-sm font-medium text-foreground">
-                {caption}
-              </p>
+              <div className="min-w-0">
+                <p id={titleId} className="truncate text-sm font-medium text-foreground">
+                  {caption}
+                </p>
+                <p id={describeId} className="mt-0.5 text-xs text-muted">
+                  Scroll inside the dialog if the image is larger than the viewport.
+                </p>
+              </div>
               <button
                 ref={closeRef}
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close expanded image"
-                className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-accent-soft"
+                className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
-                <X className="size-4" />
+                <X className="size-4" aria-hidden="true" />
               </button>
             </div>
             <div className="max-h-[calc(100vh-7rem)] overflow-auto bg-slate-100/80 p-3 sm:p-6">
@@ -234,7 +245,7 @@ function SubTitle({ children }: { children: ReactNode }) {
 }
 
 function P({ children }: { children: ReactNode }) {
-  return <p className="mt-3 text-base leading-relaxed text-muted sm:text-lg">{children}</p>;
+  return <p className="mt-3 text-base leading-relaxed text-foreground/80 sm:text-lg">{children}</p>;
 }
 
 function Skill({
@@ -248,8 +259,8 @@ function Skill({
 }) {
   return (
     <div className="mt-5">
-      <p className="font-medium text-foreground">{title}</p>
-      <p className="mt-1 text-base leading-relaxed text-muted">{body}</p>
+      <h3 className="text-base font-medium text-foreground">{title}</h3>
+      <p className="mt-1 text-base leading-relaxed text-foreground/80">{body}</p>
       {children}
     </div>
   );
@@ -266,53 +277,38 @@ const CHAPTERS = [
   { id: "ch-additional", label: "4. Additional questions" },
 ] as const;
 
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 function ChapterNav() {
   function scrollTo(id: string) {
+    const behavior = prefersReducedMotion() ? "auto" : "smooth";
     if (id === "ch-home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior });
       return;
     }
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior, block: "start" });
   }
 
   return (
-    <>
-      <nav
-        aria-label="Chapters"
-        className="sticky top-0 z-30 -mx-5 mb-8 border-b border-border bg-background/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 xl:hidden"
-      >
-        <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {CHAPTERS.map((chapter) => (
-            <button
-              key={chapter.id}
-              type="button"
-              onClick={() => scrollTo(chapter.id)}
-              className="shrink-0 rounded-full border border-border bg-cream px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent hover:bg-accent-soft"
-            >
-              {chapter.label}
-            </button>
-          ))}
-        </div>
-      </nav>
-
-      <nav
-        aria-label="Chapters"
-        className="pointer-events-none fixed inset-y-0 right-0 z-40 hidden w-52 items-center justify-end pr-4 xl:flex 2xl:pr-8"
-      >
-        <div className="pointer-events-auto flex w-44 flex-col gap-1.5 2xl:w-52">
-          {CHAPTERS.map((chapter) => (
-            <button
-              key={chapter.id}
-              type="button"
-              onClick={() => scrollTo(chapter.id)}
-              className="rounded-xl border border-border bg-card/95 px-3 py-2 text-left text-xs font-medium leading-snug text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:bg-accent-soft 2xl:text-sm"
-            >
-              {chapter.label}
-            </button>
-          ))}
-        </div>
-      </nav>
-    </>
+    <nav
+      aria-label="Chapters"
+      className="sticky top-0 z-30 -mx-5 mb-8 border-b border-border bg-background/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 xl:fixed xl:inset-y-0 xl:right-0 xl:z-40 xl:mx-0 xl:mb-0 xl:flex xl:w-52 xl:items-center xl:justify-end xl:border-0 xl:bg-transparent xl:px-0 xl:py-0 xl:pr-4 xl:backdrop-blur-none 2xl:pr-8"
+    >
+      <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden xl:pointer-events-auto xl:w-44 xl:flex-col xl:gap-1.5 xl:overflow-visible xl:pb-0 2xl:w-52">
+        {CHAPTERS.map((chapter) => (
+          <button
+            key={chapter.id}
+            type="button"
+            onClick={() => scrollTo(chapter.id)}
+            className="shrink-0 rounded-full border border-border bg-cream px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-accent hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 xl:rounded-xl xl:bg-card/95 xl:px-3 xl:py-2 xl:text-left xl:leading-snug xl:shadow-sm xl:backdrop-blur-sm 2xl:text-sm"
+          >
+            {chapter.label}
+          </button>
+        ))}
+      </div>
+    </nav>
   );
 }
 
@@ -361,6 +357,11 @@ function useHoverPreview() {
     closeTimer.current = window.setTimeout(() => setOpen(false), 160);
   }
 
+  function hideNow() {
+    clearClose();
+    setOpen(false);
+  }
+
   useLayoutEffect(() => {
     if (!open) return;
     const onMove = () => {
@@ -385,6 +386,7 @@ function useHoverPreview() {
     cardId,
     show,
     hide,
+    hideNow,
   };
 }
 
@@ -393,6 +395,8 @@ function HoverPreviewPortal({
   coords,
   placeBelow,
   cardId,
+  titleId,
+  label,
   widthClass,
   onShow,
   onHide,
@@ -402,6 +406,8 @@ function HoverPreviewPortal({
   coords: { top: number; left: number };
   placeBelow: boolean;
   cardId: string;
+  titleId: string;
+  label: string;
   widthClass: string;
   onShow: () => void;
   onHide: () => void;
@@ -412,7 +418,10 @@ function HoverPreviewPortal({
   return createPortal(
     <div
       id={cardId}
-      role="tooltip"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby={titleId}
+      aria-label={`${label} preview`}
       className={cn(
         "fixed z-[200] overflow-hidden rounded-xl border border-border bg-card shadow-xl",
         widthClass
@@ -424,6 +433,12 @@ function HoverPreviewPortal({
       }}
       onMouseEnter={onShow}
       onMouseLeave={onHide}
+      onFocusCapture={onShow}
+      onBlurCapture={(event) => {
+        const next = event.relatedTarget as Node | null;
+        if (next && event.currentTarget.contains(next)) return;
+        onHide();
+      }}
     >
       {children}
     </div>,
@@ -461,10 +476,61 @@ function ProductHoverCard({
   imagePosition?: "top" | "center";
 }) {
   const preview = useHoverPreview();
+  const titleId = useId();
+  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const triggerLinkRef = useRef<HTMLAnchorElement>(null);
   const triggerClass =
-    "font-medium text-accent-dark underline-offset-2 hover:underline";
+    "font-medium text-accent-dark underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-sm";
   const ctaClass =
-    "mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5";
+    "mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2";
+
+  useEffect(() => {
+    if (!preview.open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      preview.hideNow();
+      triggerLinkRef.current?.focus();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [preview.open]);
+
+  function onTriggerKeyDown(event: KeyboardEvent<HTMLAnchorElement>) {
+    if (event.key === "Escape" && preview.open) {
+      event.preventDefault();
+      preview.hideNow();
+      return;
+    }
+    if (event.key === "ArrowDown" && preview.open) {
+      event.preventDefault();
+      ctaRef.current?.focus();
+      return;
+    }
+    if (event.key === "Tab" && !event.shiftKey && preview.open) {
+      event.preventDefault();
+      ctaRef.current?.focus();
+    }
+  }
+
+  function onTriggerBlur(event: FocusEvent<HTMLAnchorElement>) {
+    const next = event.relatedTarget as Node | null;
+    if (next && document.getElementById(preview.cardId)?.contains(next)) return;
+    preview.hide();
+  }
+
+  const triggerProps = {
+    ref: triggerLinkRef,
+    "aria-expanded": preview.open,
+    "aria-haspopup": "dialog" as const,
+    "aria-controls": preview.open ? preview.cardId : undefined,
+    className: triggerClass,
+    onFocus: preview.show,
+    onBlur: onTriggerBlur,
+    onKeyDown: onTriggerKeyDown,
+  };
 
   return (
     <span
@@ -474,25 +540,11 @@ function ProductHoverCard({
       onMouseLeave={preview.hide}
     >
       {external ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          aria-describedby={preview.open ? preview.cardId : undefined}
-          className={triggerClass}
-          onFocus={preview.show}
-          onBlur={preview.hide}
-        >
+        <a href={href} target="_blank" rel="noopener noreferrer" {...triggerProps}>
           {label}
         </a>
       ) : (
-        <Link
-          to={href}
-          aria-describedby={preview.open ? preview.cardId : undefined}
-          className={triggerClass}
-          onFocus={preview.show}
-          onBlur={preview.hide}
-        >
+        <Link to={href} {...triggerProps}>
           {label}
         </Link>
       )}
@@ -501,6 +553,8 @@ function ProductHoverCard({
         coords={preview.coords}
         placeBelow={preview.placeBelow}
         cardId={preview.cardId}
+        titleId={titleId}
+        label={label}
         widthClass="w-80"
         onShow={preview.show}
         onHide={preview.hide}
@@ -521,7 +575,9 @@ function ProductHoverCard({
           <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-accent-dark">
             {eyebrow} · {company}
           </p>
-          <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{title}</p>
+          <p id={titleId} className="mt-1 text-sm font-semibold leading-snug text-foreground">
+            {title}
+          </p>
           <p className="mt-1 text-xs text-muted-soft">
             {role} · {year}
           </p>
@@ -537,12 +593,19 @@ function ProductHoverCard({
             ))}
           </div>
           {external ? (
-            <a href={href} target="_blank" rel="noreferrer" className={ctaClass}>
+            <a
+              ref={ctaRef}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={ctaClass}
+              onFocus={preview.show}
+            >
               {ctaLabel}
               <ArrowRight className="size-3.5" aria-hidden />
             </a>
           ) : (
-            <Link to={href} className={ctaClass}>
+            <Link ref={ctaRef} to={href} className={ctaClass} onFocus={preview.show}>
               {ctaLabel}
               <ArrowRight className="size-3.5" aria-hidden />
             </Link>
@@ -608,6 +671,8 @@ function KanopiThemeMount({ children }: { children: ReactNode }) {
 function Gate({ onUnlock }: { onUnlock: () => void }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
+  const errorId = useId();
+  const titleId = useId();
 
   function onSubmit(event: FormEvent) {
     event.preventDefault();
@@ -621,13 +686,15 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
   }
 
   return (
-    <section className="mx-auto max-w-md px-5 py-20 sm:px-8 sm:py-28">
+    <section className="mx-auto max-w-md px-5 py-20 sm:px-8 sm:py-28" aria-labelledby={titleId}>
       <Seo page={kanopiShareSeo} />
       <ThemeToggle />
       <p className="mt-4 text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private share</p>
-      <h1 className="mt-3 text-3xl font-medium tracking-tight text-foreground">Kanopi application</h1>
+      <h1 id={titleId} className="mt-3 text-3xl font-medium tracking-tight text-foreground">
+        Kanopi application
+      </h1>
       <p className="mt-4 text-muted">Enter the password shared with you to view this page.</p>
-      <form onSubmit={onSubmit} className="mt-8 space-y-4">
+      <form onSubmit={onSubmit} className="mt-8 space-y-4" noValidate>
         <label className="block text-sm font-medium text-foreground" htmlFor="share-password">
           Password
         </label>
@@ -636,16 +703,22 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
           type="password"
           autoComplete="current-password"
           value={value}
+          aria-invalid={error}
+          aria-describedby={error ? errorId : undefined}
           onChange={(event) => {
             setValue(event.target.value);
             setError(false);
           }}
           className="w-full rounded-xl border border-border bg-card px-4 py-3 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-accent"
         />
-        {error ? <p className="text-sm text-red-700">Incorrect password. Please try again.</p> : null}
+        {error ? (
+          <p id={errorId} role="alert" className="text-sm text-red-600 dark:text-red-400">
+            Incorrect password. Please try again.
+          </p>
+        ) : null}
         <button
           type="submit"
-          className="inline-flex rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+          className="inline-flex rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           Unlock
         </button>
