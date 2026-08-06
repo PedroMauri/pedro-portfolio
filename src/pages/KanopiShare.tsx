@@ -1016,9 +1016,7 @@ function Content() {
         </strong>{" "}
         Taking a client’s early vision—sketches, references, or rough ideas—and turning it into a clear
         structure on paper, then into screens that still honor what they want while staying logical toward
-        the end goal. I’m strongest when that means navigating complexity: information architecture,
-        multi-role experiences, research-backed prioritization, and prototypes that prove the path before
-        polished UI.
+        the end goal.
       </P>
       <P>
         <strong className="text-foreground">
