@@ -1005,28 +1005,35 @@ function Content() {
 
       <ChapterTitle id="ch-impact">3. Impact at Kanopi</ChapterTitle>
       <P>
-        <strong className="text-foreground">Immediate impact:</strong> I can jump into client website work
-        with a clear path from discovery to IA/content structure, UX, and visual design—especially when
-        information is scattered and users need to evaluate or act quickly.
+        <strong className="text-foreground">Most immediate impact for Kanopi’s clients:</strong> I can jump
+        into client website work with a clear path from discovery to IA/content structure, UX, and visual
+        design—especially when information is scattered and users need to evaluate or act quickly.
       </P>
       <P>
-        <strong className="text-foreground">Challenges I fit:</strong> Complex navigation and information
-        architecture, multi-role experiences, research-backed prioritization, and turning strategy into
-        testable prototypes and polished UI.
+        <strong className="text-foreground">
+          The types of challenges you are especially well suited to solve:
+        </strong>{" "}
+        Complex navigation and information architecture, multi-role experiences, research-backed
+        prioritization, and turning strategy into testable prototypes and polished UI.
       </P>
       <P>
-        <strong className="text-foreground">Balancing goals:</strong> I treat client goals, audience needs,
-        accessibility, and technical constraints as things to negotiate early—not trade-offs to discover
-        late. On products like BuildClock that meant readable field UI and a focused MVP (punches +
-        timesheet) instead of a bloated suite. I surface what’s in / out so the experience stays shippable.
+        <strong className="text-foreground">
+          How you would balance client goals, audience needs, accessibility, and technical constraints:
+        </strong>{" "}
+        I treat client goals, audience needs, accessibility, and technical constraints as things to
+        negotiate early—not trade-offs to discover late. On products like BuildClock that meant readable
+        field UI and a focused MVP (punches + timesheet) instead of a bloated suite. I surface what’s in /
+        out so the experience stays shippable.
       </P>
       <P>
-        <strong className="text-foreground">Meaningful decision:</strong> On BuildClock I initially pushed
-        a robust Finance area so punches could feed invoice workflows. Early MVP use with contractor
-        customers showed they already used external finance tools and got confused by punches “disappearing”
-        across reports—so I changed the recommendation to a simpler Reports export (period / jobsite /
-        rates) and aligned with the co-founder to drop the heavier model. Outcome: a clearer admin path to
-        billing without overbuilding.
+        <strong className="text-foreground">
+          One example of a recommendation or design decision you made that created a meaningful outcome:
+        </strong>{" "}
+        On BuildClock I initially pushed a robust Finance area so punches could feed invoice workflows.
+        Early MVP use with contractor customers showed they already used external finance tools and got
+        confused by punches “disappearing” across reports—so I changed the recommendation to a simpler
+        Reports export (period / jobsite / rates) and aligned with the co-founder to drop the heavier model.
+        Outcome: a clearer admin path to billing without overbuilding.
       </P>
 
       <ChapterTitle id="ch-additional">4. Additional questions</ChapterTitle>
