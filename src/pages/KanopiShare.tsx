@@ -361,7 +361,14 @@ function Content() {
         src="/share/kanopi/08-first-hifi-wire-community.png"
         caption="First hi-fi wire — community page (annotated layout, cover 6:1, profile 16:9, favorites, discussions, files, people)"
       />
-      <Figure src="/share/kanopi/07-conclusion.png" caption="Project conclusion" />
+      <SubTitle>Conclusion</SubTitle>
+      <P>
+        Yethos is a dynamic and flexible social platform that allows for deep interaction within niche-based
+        communities. By collaborating closely with the project manager, I ensured that the final product met
+        the original goals, delivering a scalable MVP that lays the foundation for future growth and success.
+        The project demonstrates my ability to design comprehensive user experiences while keeping the
+        business goals in focus.
+      </P>
 
       <SectionTitle>2) Self-assessment</SectionTitle>
       <Skill

@@ -100,8 +100,11 @@ The following is a key user flow developed for the web MVP to ensure intuitive u
 
 **Deliverables:** Brand guidelines, hi-fi UI, presentation-ready prototype.
 
-*[IMAGE: 05-brand-ui.png — Brand + UI screens]*  
-*[IMAGE: 07-conclusion.png — Project close / outcomes]*
+*[IMAGE: 05-brand-ui.png — Brand + UI screens]*
+
+### Conclusion
+
+Yethos is a dynamic and flexible social platform that allows for deep interaction within niche-based communities. By collaborating closely with the project manager, I ensured that the final product met the original goals, delivering a scalable MVP that lays the foundation for future growth and success. The project demonstrates my ability to design comprehensive user experiences while keeping the business goals in focus.
 
 ---
 
@@ -171,6 +174,5 @@ When feature appetite grows, I bring research synthesis and the IA/flows back to
 | `04b-user-flow-dashboard.png` | User flow — Community Dashboard |
 | `05-brand-ui.png` | Visual design |
 | `06-prototypes.png` | UX / testing |
-| `07-conclusion.png` | Impact / stakeholder alignment |
 
 Optional: also link https://pedromauri.com/case-studies/yethos-community-discovery for extra wires/hi-fi already on the site.
