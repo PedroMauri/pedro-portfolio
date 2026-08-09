@@ -29,6 +29,7 @@ Not linked in public navigation. `noindex` + robots disallow.
 | Item | Path | Notes |
 |------|------|--------|
 | IELTS (English) | `/immigration/documents/ielts-english` | IDP login, TRF PDF, 2-year expiry |
+| WES | `/immigration/documents/wes` | ECA login, report PDF, 5-year IRCC validity |
 
 Portal passwords on private pages use Show/Hide. Secrets are stored in the repo by design for personal use; the admin gate is client-side only (not bank-grade).
 

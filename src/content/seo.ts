@@ -205,6 +205,15 @@ export const ieltsEnglishSeo: SeoPage = {
   noindex: true,
 };
 
+export const wesSeo: SeoPage = {
+  path: "/immigration/documents/wes",
+  title: `WES | Documents | ${profile.name}`,
+  description: "Private WES ECA report and account reference for IRCC.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export const aaipSeo: SeoPage = {
   path: "/immigration/aaip",
   title: `AAIP | Immigration | ${profile.name}`,

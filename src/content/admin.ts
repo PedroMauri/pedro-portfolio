@@ -9,6 +9,7 @@ export const FRENCH_STUDY_PATH = "/study/french";
 export const IMMIGRATION_PATH = "/immigration";
 export const DOCUMENTS_PATH = "/immigration/documents";
 export const IELTS_ENGLISH_PATH = "/immigration/documents/ielts-english";
+export const WES_PATH = "/immigration/documents/wes";
 export const EXPRESS_ENTRY_PATH = "/immigration/express-entry";
 export const AAIP_PATH = "/immigration/aaip";
 
@@ -35,6 +36,11 @@ export const DOCUMENT_FOLDERS: AdminLink[] = [
     to: IELTS_ENGLISH_PATH,
     label: "IELTS (English)",
     description: "IDP account, TRF, and 2-year validity",
+  },
+  {
+    to: WES_PATH,
+    label: "WES",
+    description: "ECA report and account — 5-year IRCC validity",
   },
 ];
 

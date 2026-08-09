@@ -18,6 +18,7 @@ import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import PrivatePortfolio from "@/pages/PrivatePortfolio";
 import Resume from "@/pages/Resume";
+import Wes from "@/pages/Wes";
 
 function LegacyProjectsRedirect() {
   const { slug } = useParams();
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/immigration/aaip" element={<Aaip />} />
           <Route path="/immigration/documents" element={<Documents />} />
           <Route path="/immigration/documents/ielts-english" element={<IeltsEnglish />} />
+          <Route path="/immigration/documents/wes" element={<Wes />} />
           <Route path="/immigration/:slug" element={<ImmigrationFolder />} />
           <Route path="/documents" element={<Navigate to="/immigration/documents" replace />} />
           <Route
