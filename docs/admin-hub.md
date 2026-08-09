@@ -14,5 +14,6 @@ Not linked in public navigation. `noindex` + robots disallow.
 | Portfolio | `/` | Public site |
 | Kanopi share | `/share/kanopi` | Still uses its own share password |
 | French | `/study/french` | Requires admin unlock; content next |
+| Immigration | `/immigration` | Requires admin unlock; content next |
 
-French study redirects to `/admin` if the admin session is not unlocked.
+French and Immigration redirect to `/admin` if the admin session is not unlocked.

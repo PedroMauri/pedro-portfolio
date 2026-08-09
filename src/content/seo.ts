@@ -169,6 +169,15 @@ export const frenchStudySeo: SeoPage = {
   noindex: true,
 };
 
+export const immigrationSeo: SeoPage = {
+  path: "/immigration",
+  title: `Immigration | ${profile.name}`,
+  description: "Private immigration notes and materials.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export function getCaseSeo(slug: string): SeoPage | undefined {
   const caseStudy = cases.find((item) => item.slug === slug);
   return caseStudy ? casePage(caseStudy) : undefined;

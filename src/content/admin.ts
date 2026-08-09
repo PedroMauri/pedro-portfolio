@@ -6,6 +6,7 @@ export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD?.trim() || "pe
 export const ADMIN_PATH = "/admin";
 
 export const FRENCH_STUDY_PATH = "/study/french";
+export const IMMIGRATION_PATH = "/immigration";
 
 export type AdminLink = {
   to: string;
@@ -30,5 +31,10 @@ export const ADMIN_LINKS: AdminLink[] = [
     to: FRENCH_STUDY_PATH,
     label: "French",
     description: "Private IELTS French study space",
+  },
+  {
+    to: IMMIGRATION_PATH,
+    label: "Immigration",
+    description: "Private immigration notes and materials",
   },
 ];
