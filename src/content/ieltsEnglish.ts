@@ -6,6 +6,17 @@ export const ieltsEnglishPortal = {
   password: "rcfdiYDgLSf$$U6",
 } as const;
 
+/** Scores from ETRF CA75924501361 (General Training), test 6 Oct 2024. */
+export const ieltsEnglishScores = {
+  listening: 7.0,
+  reading: 6.5,
+  writing: 5.5,
+  speaking: 7.0,
+  overall: 6.5,
+  cefr: "B2",
+  module: "General Training",
+} as const;
+
 /** Test date from ETRF filename (DD-MM-YYYY). Results are valid for 2 years. */
 export const ieltsEnglishTrf = {
   candidateNumber: "CA75924501361",
@@ -27,4 +38,8 @@ export function getIeltsValidity(now = new Date()) {
       ? `IELTS results are valid for 2 years. This TRF expires on ${ieltsEnglishTrf.expiresDisplay}.`
       : `IELTS results expired on ${ieltsEnglishTrf.expiresDisplay} (2 years after the test date of ${ieltsEnglishTrf.testDateDisplay}).`,
   };
+}
+
+export function formatBand(score: number) {
+  return score.toFixed(1);
 }

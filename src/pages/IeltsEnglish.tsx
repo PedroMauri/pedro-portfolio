@@ -5,8 +5,10 @@ import { RevealPassword } from "@/components/RevealPassword";
 import { Seo } from "@/components/Seo";
 import { ADMIN_PATH, ADMIN_STORAGE_KEY, DOCUMENTS_PATH } from "@/content/admin";
 import {
+  formatBand,
   getIeltsValidity,
   ieltsEnglishPortal,
+  ieltsEnglishScores,
   ieltsEnglishTrf,
 } from "@/content/ieltsEnglish";
 import { ieltsEnglishSeo } from "@/content/seo";
@@ -16,6 +18,21 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
     <div className="border-b border-border py-3 last:border-b-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
       <dt className="text-sm font-medium text-muted">{label}</dt>
       <dd className="mt-1 text-base text-foreground sm:mt-0">{children}</dd>
+    </div>
+  );
+}
+
+function ScoreCell({ label, score, emphasize = false }: { label: string; score: number; emphasize?: boolean }) {
+  return (
+    <div
+      className={
+        emphasize
+          ? "rounded-2xl border border-accent bg-accent-soft px-4 py-4 text-center"
+          : "rounded-2xl border border-border bg-card px-4 py-4 text-center"
+      }
+    >
+      <p className="text-xs font-medium uppercase tracking-[0.08em] text-muted">{label}</p>
+      <p className="mt-2 text-3xl font-medium tabular-nums text-foreground">{formatBand(score)}</p>
     </div>
   );
 }
@@ -54,6 +71,20 @@ export default function IeltsEnglish() {
       </div>
 
       <section className="mt-10">
+        <h2 className="text-lg font-medium text-foreground">Scores</h2>
+        <p className="mt-2 text-sm text-muted">
+          {ieltsEnglishScores.module} · CEFR {ieltsEnglishScores.cefr}
+        </p>
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <ScoreCell label="Listening" score={ieltsEnglishScores.listening} />
+          <ScoreCell label="Reading" score={ieltsEnglishScores.reading} />
+          <ScoreCell label="Writing" score={ieltsEnglishScores.writing} />
+          <ScoreCell label="Speaking" score={ieltsEnglishScores.speaking} />
+          <ScoreCell label="Overall" score={ieltsEnglishScores.overall} emphasize />
+        </div>
+      </section>
+
+      <section className="mt-10">
         <h2 className="text-lg font-medium text-foreground">IDP account</h2>
         <dl className="mt-3 border-t border-border">
           <Field label="Open portal">
@@ -78,6 +109,7 @@ export default function IeltsEnglish() {
         <h2 className="text-lg font-medium text-foreground">Test report</h2>
         <dl className="mt-3 border-t border-border">
           <Field label="Candidate number">{ieltsEnglishTrf.candidateNumber}</Field>
+          <Field label="Module">{ieltsEnglishScores.module}</Field>
           <Field label="Test date">{ieltsEnglishTrf.testDateDisplay}</Field>
           <Field label="Expires">{ieltsEnglishTrf.expiresDisplay}</Field>
           <Field label="Document">
