@@ -151,6 +151,24 @@ export const kanopiShareSeo: SeoPage = {
   noindex: true,
 };
 
+export const adminSeo: SeoPage = {
+  path: "/admin",
+  title: `Admin | ${profile.name}`,
+  description: "Private admin hub.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
+export const frenchStudySeo: SeoPage = {
+  path: "/study/french",
+  title: `French study | ${profile.name}`,
+  description: "Private IELTS French study space.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export function getCaseSeo(slug: string): SeoPage | undefined {
   const caseStudy = cases.find((item) => item.slug === slug);
   return caseStudy ? casePage(caseStudy) : undefined;

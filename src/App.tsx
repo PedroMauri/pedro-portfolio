@@ -3,8 +3,10 @@ import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageLayout } from "@/components/layout/PageLayout";
 import About from "@/pages/About";
+import Admin from "@/pages/Admin";
 import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
+import FrenchStudy from "@/pages/FrenchStudy";
 import Home from "@/pages/Home";
 import KanopiShare from "@/pages/KanopiShare";
 import NotFound from "@/pages/NotFound";
@@ -28,7 +30,9 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/share/kanopi" element={<KanopiShare />} />
+          <Route path="/study/french" element={<FrenchStudy />} />
           <Route path="/case-studies" element={<Navigate to="/projects" replace />} />
           <Route path="/case-studies/:slug" element={<LegacyProjectsRedirect />} />
           <Route path="/work" element={<Navigate to="/projects" replace />} />
