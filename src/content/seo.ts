@@ -188,8 +188,8 @@ export const immigrationSeo: SeoPage = {
 };
 
 export const documentsSeo: SeoPage = {
-  path: "/documents",
-  title: `Documents | ${profile.name}`,
+  path: "/immigration/documents",
+  title: `Documents | Immigration | ${profile.name}`,
   description: "Private shared documents for immigration processes.",
   image: DEFAULT_OG_IMAGE,
   type: "website",
@@ -197,7 +197,7 @@ export const documentsSeo: SeoPage = {
 };
 
 export const ieltsEnglishSeo: SeoPage = {
-  path: "/documents/ielts-english",
+  path: "/immigration/documents/ielts-english",
   title: `IELTS English | Documents | ${profile.name}`,
   description: "Private IELTS English TRF and IDP account reference.",
   image: DEFAULT_OG_IMAGE,

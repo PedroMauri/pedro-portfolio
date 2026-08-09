@@ -40,11 +40,16 @@ export default function App() {
           <Route path="/admin/private-portfolio" element={<PrivatePortfolio />} />
           <Route path="/share/kanopi" element={<KanopiShare />} />
           <Route path="/study/french" element={<FrenchStudy />} />
-          <Route path="/documents" element={<Documents />} />
-          <Route path="/documents/ielts-english" element={<IeltsEnglish />} />
           <Route path="/immigration" element={<Immigration />} />
           <Route path="/immigration/aaip" element={<Aaip />} />
+          <Route path="/immigration/documents" element={<Documents />} />
+          <Route path="/immigration/documents/ielts-english" element={<IeltsEnglish />} />
           <Route path="/immigration/:slug" element={<ImmigrationFolder />} />
+          <Route path="/documents" element={<Navigate to="/immigration/documents" replace />} />
+          <Route
+            path="/documents/ielts-english"
+            element={<Navigate to="/immigration/documents/ielts-english" replace />}
+          />
           <Route path="/case-studies" element={<Navigate to="/projects" replace />} />
           <Route path="/case-studies/:slug" element={<LegacyProjectsRedirect />} />
           <Route path="/work" element={<Navigate to="/projects" replace />} />

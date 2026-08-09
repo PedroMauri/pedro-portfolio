@@ -6,9 +6,9 @@ export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD?.trim() || "pe
 export const ADMIN_PATH = "/admin";
 export const PRIVATE_PORTFOLIO_PATH = "/admin/private-portfolio";
 export const FRENCH_STUDY_PATH = "/study/french";
-export const DOCUMENTS_PATH = "/documents";
-export const IELTS_ENGLISH_PATH = "/documents/ielts-english";
 export const IMMIGRATION_PATH = "/immigration";
+export const DOCUMENTS_PATH = "/immigration/documents";
+export const IELTS_ENGLISH_PATH = "/immigration/documents/ielts-english";
 export const EXPRESS_ENTRY_PATH = "/immigration/express-entry";
 export const AAIP_PATH = "/immigration/aaip";
 
@@ -38,8 +38,13 @@ export const DOCUMENT_FOLDERS: AdminLink[] = [
   },
 ];
 
-/** Immigration program folders. */
+/** Immigration program folders (Documents holds shared evidence). */
 export const IMMIGRATION_FOLDERS: AdminLink[] = [
+  {
+    to: DOCUMENTS_PATH,
+    label: "Documents",
+    description: "Shared documents used across AAIP, Express Entry, and other processes",
+  },
   {
     to: EXPRESS_ENTRY_PATH,
     label: "Express Entry",
@@ -62,11 +67,6 @@ export const ADMIN_LINKS: AdminLink[] = [
     to: PRIVATE_PORTFOLIO_PATH,
     label: "Private portfolio",
     description: "Company-specific application shares",
-  },
-  {
-    to: DOCUMENTS_PATH,
-    label: "Documents",
-    description: "Shared documents for immigration processes",
   },
   {
     to: FRENCH_STUDY_PATH,

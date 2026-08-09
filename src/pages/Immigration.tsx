@@ -23,7 +23,7 @@ export default function Immigration() {
         Immigration
       </h1>
       <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
-        Private notes and materials by immigration program.
+        Private notes, shared documents, and materials by immigration program.
       </p>
 
       <ul className="mt-10 space-y-4">

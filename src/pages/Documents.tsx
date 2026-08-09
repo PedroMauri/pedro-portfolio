@@ -5,6 +5,7 @@ import {
   ADMIN_PATH,
   ADMIN_STORAGE_KEY,
   DOCUMENT_FOLDERS,
+  IMMIGRATION_PATH,
 } from "@/content/admin";
 import { documentsSeo } from "@/content/seo";
 
@@ -18,7 +19,7 @@ export default function Documents() {
   return (
     <section className="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={documentsSeo} />
-      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private</p>
+      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Immigration</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
         Documents
       </h1>
@@ -48,10 +49,10 @@ export default function Documents() {
 
       <div className="mt-10 flex flex-wrap items-center gap-4">
         <Link
-          to={ADMIN_PATH}
+          to={IMMIGRATION_PATH}
           className="inline-flex rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
-          Back to admin
+          Back to immigration
         </Link>
         <p className="flex items-center gap-2 text-sm text-muted-soft">
           <Lock className="size-3.5" aria-hidden="true" />

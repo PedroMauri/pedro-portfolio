@@ -13,26 +13,26 @@ Not linked in public navigation. `noindex` + robots disallow.
 |--------|------|--------|
 | Portfolio | `/` | Public site |
 | Private portfolio | `/admin/private-portfolio` | Index of company-specific shares |
-| Documents | `/documents` | Shared docs for immigration processes |
 | French | `/study/french` | Requires admin unlock; content next |
-| Immigration | `/immigration` | Index of program folders |
+| Immigration | `/immigration` | Index of program folders + documents |
 
-## Documents
+## Immigration
 
 | Folder | Path | Notes |
 |--------|------|--------|
-| IELTS (English) | `/documents/ielts-english` | IDP login, TRF PDF, 2-year expiry |
+| Documents | `/immigration/documents` | Shared docs for AAIP / EE / other processes |
+| Express Entry | `/immigration/express-entry` | Stub |
+| AAIP | `/immigration/aaip` | Expired profile snapshot + portal credentials |
+
+### Documents
+
+| Item | Path | Notes |
+|------|------|--------|
+| IELTS (English) | `/immigration/documents/ielts-english` | IDP login, TRF PDF, 2-year expiry |
 
 Portal passwords on private pages use Show/Hide. Secrets are stored in the repo by design for personal use; the admin gate is client-side only (not bank-grade).
 
-## Immigration folders
-
-| Folder | Path |
-|--------|------|
-| Express Entry | `/immigration/express-entry` |
-| AAIP | `/immigration/aaip` |
-
-AAIP holds an **expired** profile snapshot for the next Worker EOI. Portal username and password (reveal) are on the page.
+Old `/documents` URLs redirect into `/immigration/documents`.
 
 ## Private portfolio shares
 
