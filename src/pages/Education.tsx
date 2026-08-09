@@ -3,7 +3,7 @@ import { ArrowRight, FileText } from "lucide-react";
 import { AdminBackLink } from "@/components/AdminBackLink";
 import { Seo } from "@/components/Seo";
 import { ADMIN_PATH, ADMIN_STORAGE_KEY, DOCUMENTS_PATH } from "@/content/admin";
-import { EDUCATION_PATH, WES_PATH } from "@/content/documentsCatalog";
+import { WES_PATH } from "@/content/documentsCatalog";
 import { educationSeo } from "@/content/seo";
 
 const HIGH_SCHOOL = {
@@ -31,25 +31,6 @@ export default function Education() {
       </p>
 
       <section className="mt-10">
-        <h2 className="text-lg font-medium text-foreground">School documents</h2>
-        <ul className="mt-4 space-y-3">
-          <li>
-            <a
-              href={HIGH_SCHOOL.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex items-start gap-3 rounded-2xl border border-border bg-card px-4 py-4 transition-colors hover:border-accent hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              <FileText className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
-              <span className="text-base font-medium text-foreground group-hover:text-accent-dark">
-                {HIGH_SCHOOL.label}
-              </span>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section className="mt-10">
         <h2 className="text-lg font-medium text-foreground">Credential assessment</h2>
         <Link
           to={WES_PATH}
@@ -66,6 +47,25 @@ export default function Education() {
             aria-hidden="true"
           />
         </Link>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-lg font-medium text-foreground">School documents</h2>
+        <ul className="mt-4 space-y-3">
+          <li>
+            <a
+              href={HIGH_SCHOOL.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-start gap-3 rounded-2xl border border-border bg-card px-4 py-4 transition-colors hover:border-accent hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              <FileText className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
+              <span className="text-base font-medium text-foreground group-hover:text-accent-dark">
+                {HIGH_SCHOOL.label}
+              </span>
+            </a>
+          </li>
+        </ul>
       </section>
 
       <Link

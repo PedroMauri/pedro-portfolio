@@ -6,32 +6,32 @@ export const ieltsEnglishPortal = {
   password: "rcfdiYDgLSf$$U6",
 } as const;
 
-/** Scores from ETRF CA75924501361 (General Training), test 6 Oct 2024. */
+/** Scores from ETRF CA09724504530 (General Training), test 9 Mar 2025. */
 export const ieltsEnglishScores = {
   listening: 7.0,
-  reading: 6.5,
-  writing: 5.5,
-  speaking: 7.0,
-  overall: 6.5,
-  cefr: "B2",
+  reading: 7.0,
+  writing: 6.5,
+  speaking: 8.0,
+  overall: 7.0,
+  cefr: "C1",
   module: "General Training",
 } as const;
 
-/** Test date from ETRF filename (DD-MM-YYYY). Results are valid for 2 years. */
+/** Test date from ETRF (9 March 2025). Results are valid for 2 years. */
 export const ieltsEnglishTrf = {
-  candidateNumber: "CA75924501361",
-  testDateIso: "2024-10-06",
-  testDateDisplay: "6 October 2024",
-  expiresIso: "2026-10-06",
-  expiresDisplay: "6 October 2026",
-  pdfPath: "/documents/ielts/ca75924501361-etrf.pdf",
+  candidateNumber: "CA09724504530",
+  testDateIso: "2025-03-09",
+  testDateDisplay: "9 March 2025",
+  expiresIso: "2027-03-09",
+  expiresDisplay: "9 March 2027",
+  pdfPath: "/documents/ielts/ca09724504530-etrf.pdf",
   pdfLabel: "Electronic Test Report Form (ETRF)",
 } as const;
 
-/** Older IELTS report kept for reference only (not the current TRF for applications). */
+/** Older IELTS reports kept for reference only (not the current TRF for applications). */
 export const ieltsEnglishPreviousReference = {
-  pdfPath: "/documents/ielts/pedro-ielts-previous-reference.pdf",
-  pdfLabel: "Previous IELTS report",
+  pdfPath: "/documents/ielts/ca75924501361-etrf.pdf",
+  pdfLabel: "Previous IELTS report (6 Oct 2024)",
   note: "Reference only — do not use for new applications. Use the current ETRF above.",
 } as const;
 

@@ -9,6 +9,7 @@ import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
 import Documents from "@/pages/Documents";
 import DocumentCategoryPage from "@/pages/DocumentCategoryPage";
+import DocumentPerson from "@/pages/DocumentPerson";
 import Education from "@/pages/Education";
 import FrenchStudy from "@/pages/FrenchStudy";
 import Home from "@/pages/Home";
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="/immigration/documents/education/wes" element={<Wes />} />
           <Route path="/immigration/documents/wes" element={<Navigate to="/immigration/documents/education/wes" replace />} />
           <Route path="/immigration/documents/work-history" element={<WorkHistory />} />
+          <Route path="/immigration/documents/person/:personId" element={<DocumentPerson />} />
           <Route
             path="/immigration/documents/references"
             element={<Navigate to="/immigration/documents/work-history" replace />}

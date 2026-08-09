@@ -54,10 +54,6 @@ export default function Aaip() {
       </div>
 
       <Section title="Portal">
-        <Field
-          label="Login"
-          value={aaipPortal.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-        />
         <div className="border-b border-border py-3 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
           <dt className="text-sm font-medium text-muted">Open portal</dt>
           <dd className="mt-1 sm:mt-0">
@@ -112,15 +108,6 @@ export default function Aaip() {
         <Field label="Total work experience" value={aaipProfile.totalWorkExperience} />
         <Field label="Job offer" value={aaipProfile.jobOffer} />
       </Section>
-
-      <section className="mt-10">
-        <h2 className="text-lg font-medium text-foreground">Next Worker EOI</h2>
-        <ol className="mt-4 list-decimal space-y-2 border-t border-border pt-4 pl-5 text-base leading-relaxed text-foreground/80">
-          {aaipProfile.notesForNextWorkerEoi.map((note) => (
-            <li key={note}>{note}</li>
-          ))}
-        </ol>
-      </section>
 
       <Link
         to={IMMIGRATION_PATH}

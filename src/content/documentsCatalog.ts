@@ -11,44 +11,48 @@ export type DocumentCategory = {
   files: DocumentFile[];
 };
 
-export type DocumentIndexLink = {
-  to: string;
-  label: string;
-  description: string;
-};
-
 export const IDENTITY_FAMILY_PATH = "/immigration/documents/identity-family";
 export const WORK_HISTORY_PATH = "/immigration/documents/work-history";
 export const EDUCATION_PATH = "/immigration/documents/education";
 export const IELTS_ENGLISH_PATH = "/immigration/documents/ielts-english";
 export const WES_PATH = "/immigration/documents/education/wes";
+export const STATUS_PERMITS_PATH = "/immigration/documents/status-permits";
 
-/** Index cards on Documents. */
-export const DOCUMENT_INDEX_LINKS: DocumentIndexLink[] = [
-  {
-    to: IELTS_ENGLISH_PATH,
-    label: "IELTS (English)",
-    description: "Current TRF, scores, IDP account — plus previous test as reference",
-  },
-  {
-    to: EDUCATION_PATH,
-    label: "Education",
-    description: "High school diploma and WES ECA",
-  },
-  {
-    to: WORK_HISTORY_PATH,
-    label: "Work history",
-    description: "Schedule A table, employers, and reference letters",
-  },
-  {
-    to: IDENTITY_FAMILY_PATH,
-    label: "Identity & family",
-    description: "Passport, marriage, and birth certificates",
-  },
-];
-
-/** Generic file-list categories (Education and WES have dedicated pages). */
+/** Generic file-list categories (used by DocumentCategoryPage). */
 export const DOCUMENT_CATEGORIES: DocumentCategory[] = [
+  {
+    path: STATUS_PERMITS_PATH,
+    label: "Status & permits",
+    description:
+      "IRCC letters from Nov 2025. Approvals for Pedro (WP), Davi and Henry (SP) are valid to 2026-11-17 and currently linked to Pedro’s work permit. Caroline’s SOWP was refused (spouse TEER 5 / NOC 75110); she later received a visitor visa. All family status currently expires November 2026.",
+    files: [
+      {
+        label: "Approval letter — Pedro (work permit extension)",
+        href: "/documents/status-permits/approval-pedro.pdf",
+        note: "Nov 18, 2025 · WP-EXT U517896290 · valid to 2026-11-17 · eTA J533964534 to 2030-11-17 · UCI 9667-3943 · App W310323454",
+      },
+      {
+        label: "Approval letter — Henry (study permit extension)",
+        href: "/documents/status-permits/approval-henry.pdf",
+        note: "Nov 18, 2025 · SP-EXT F315630274 · valid to 2026-11-17 · App S307607474",
+      },
+      {
+        label: "Approval letter — Davi (study permit extension)",
+        href: "/documents/status-permits/approval-davi.pdf",
+        note: "Nov 18, 2025 · SP-EXT F315630286 · valid to 2026-11-17 · App S307607472",
+      },
+      {
+        label: "Refusal letter — Caroline (Spousal Open Work Permit)",
+        href: "/documents/status-permits/refusal-caroline.pdf",
+        note: "Nov 17, 2025 · App W310323452 · UCI 9667-3841 · refused: spouse not in TEER 0–1 / select TEER 2–3 · TR status noted as expired same day",
+      },
+      {
+        label: "Officer decision notes — Caroline SOWP refusal",
+        href: "/documents/status-permits/officers-notes-refusal-caroline.pdf",
+        note: "Nov 17, 2025 · Spouse LMIA WP Construction Labourer NOC 75110 (TEER 5) · not eligible for C41 SOWP under rules as of 2025-01-21 · R205(c)(ii)",
+      },
+    ],
+  },
   {
     path: IDENTITY_FAMILY_PATH,
     label: "Identity & family",

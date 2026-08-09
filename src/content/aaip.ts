@@ -42,12 +42,4 @@ export const aaipProfile = {
   totalWorkExperience: "Less than 6 months",
 
   jobOffer: "Full-time employment job offer in Alberta",
-
-  notesForNextWorkerEoi: [
-    "Reuse the snapshot fields above as the baseline for the next Worker EOI.",
-    "Confirm pathway is still Express Entry Stream — Priority Sectors before submitting.",
-    "Re-check NOC 75110, work permit expiry, CRS, and job offer details against current documents.",
-    "Update anything that changed since this expired application (language, experience, education, EE profile).",
-    "Open the AAIP portal with the username and password on this page (password is masked until you click Show).",
-  ],
 } as const;

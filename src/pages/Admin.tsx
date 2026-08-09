@@ -68,12 +68,25 @@ function AdminGate({ onUnlock }: { onUnlock: () => void }) {
   );
 }
 
-function AdminHub() {
+function AdminHub({ onLogout }: { onLogout: () => void }) {
   return (
     <section className="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={adminSeo} />
-      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private</p>
-      <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">Admin</h1>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private</p>
+          <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+            Admin
+          </h1>
+        </div>
+        <button
+          type="button"
+          onClick={onLogout}
+          className="mt-1 inline-flex rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:bg-accent-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        >
+          Log out
+        </button>
+      </div>
       <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
         Quick links to the public portfolio, company-specific shares, and personal spaces.
       </p>
@@ -113,5 +126,14 @@ export default function Admin() {
     () => sessionStorage.getItem(ADMIN_STORAGE_KEY) === "1"
   );
 
-  return unlocked ? <AdminHub /> : <AdminGate onUnlock={() => setUnlocked(true)} />;
+  function logout() {
+    sessionStorage.removeItem(ADMIN_STORAGE_KEY);
+    setUnlocked(false);
+  }
+
+  return unlocked ? (
+    <AdminHub onLogout={logout} />
+  ) : (
+    <AdminGate onUnlock={() => setUnlocked(true)} />
+  );
 }

@@ -4,27 +4,11 @@ import { AdminBackLink } from "@/components/AdminBackLink";
 import { Seo } from "@/components/Seo";
 import { ADMIN_PATH, ADMIN_STORAGE_KEY, DOCUMENTS_PATH } from "@/content/admin";
 import {
-  WORK_HISTORY_PATH,
   workHistoryEntries,
   workHistoryLetters,
   workHistorySource,
-  type WorkHistoryEntry,
 } from "@/content/workHistory";
 import { workHistorySeo } from "@/content/seo";
-import { cn } from "@/lib/utils";
-
-function alignmentLabel(alignment: NonNullable<WorkHistoryEntry["reference"]>["alignment"]) {
-  switch (alignment) {
-    case "match":
-      return "Dates match";
-    case "partial":
-      return "Partial match";
-    case "missing":
-      return "Missing letter";
-    case "unverified":
-      return "Verify on PDF";
-  }
-}
 
 export default function WorkHistory() {
   const unlocked = sessionStorage.getItem(ADMIN_STORAGE_KEY) === "1";
@@ -63,55 +47,25 @@ export default function WorkHistory() {
           <table className="min-w-full text-left text-sm">
             <thead className="border-b border-border bg-card text-xs uppercase tracking-[0.06em] text-muted">
               <tr>
-                <th className="px-4 py-3 font-medium">From</th>
-                <th className="px-4 py-3 font-medium">To</th>
+                <th className="whitespace-nowrap px-4 py-3 font-medium">From</th>
+                <th className="whitespace-nowrap px-4 py-3 font-medium">To</th>
                 <th className="px-4 py-3 font-medium">Activity</th>
-                <th className="px-4 py-3 font-medium">Location</th>
-                <th className="px-4 py-3 font-medium">Employer</th>
-                <th className="px-4 py-3 font-medium">Reference check</th>
+                <th className="px-4 py-3 font-medium">City or town and country</th>
+                <th className="px-4 py-3 font-medium">Company / employer</th>
               </tr>
             </thead>
             <tbody>
               {workHistoryEntries.map((entry) => (
                 <tr key={entry.id} className="border-b border-border last:border-b-0 align-top">
-                  <td className="px-4 py-3 tabular-nums text-foreground">{entry.from}</td>
-                  <td className="px-4 py-3 tabular-nums text-foreground">{entry.toLabel}</td>
+                  <td className="whitespace-nowrap px-4 py-3 tabular-nums text-foreground">
+                    {entry.from}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 tabular-nums text-foreground">
+                    {entry.toLabel}
+                  </td>
                   <td className="px-4 py-3 text-foreground">{entry.activity}</td>
                   <td className="px-4 py-3 text-muted">{entry.location}</td>
                   <td className="px-4 py-3 text-foreground">{entry.employer}</td>
-                  <td className="px-4 py-3">
-                    {entry.reference ? (
-                      <div className="space-y-1">
-                        <p
-                          className={cn(
-                            "text-xs font-medium uppercase tracking-[0.06em]",
-                            entry.reference.alignment === "match" && "text-accent-dark",
-                            entry.reference.alignment === "missing" && "text-red-600 dark:text-red-400",
-                            entry.reference.alignment === "unverified" && "text-amber-700 dark:text-amber-400",
-                            entry.reference.alignment === "partial" && "text-amber-700 dark:text-amber-400"
-                          )}
-                        >
-                          {alignmentLabel(entry.reference.alignment)}
-                        </p>
-                        {entry.reference.href ? (
-                          <a
-                            href={entry.reference.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="block text-sm font-medium text-accent-dark underline-offset-2 hover:underline"
-                          >
-                            {entry.reference.label}
-                          </a>
-                        ) : (
-                          <p className="text-sm text-muted">{entry.reference.label}</p>
-                        )}
-                        <p className="text-xs text-muted">{entry.reference.letterDates}</p>
-                        <p className="text-xs leading-relaxed text-muted">{entry.reference.alignmentNote}</p>
-                      </div>
-                    ) : (
-                      <span className="text-muted">—</span>
-                    )}
-                  </td>
                 </tr>
               ))}
             </tbody>

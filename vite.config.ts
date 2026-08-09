@@ -10,4 +10,19 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    watch: {
+      // PDFs/images under public lock often on Windows (OneDrive) and crash the watcher
+      ignored: [
+        "**/.tmp-*/**",
+        "**/.tmp-*",
+        "**/public/documents/**",
+        "**/public/**/*.pdf",
+        "**/public/**/*.PDF",
+        "**/public/**/*.png",
+        "**/public/**/*.jpg",
+        "**/public/**/*.jpeg",
+      ],
+    },
+  },
 });

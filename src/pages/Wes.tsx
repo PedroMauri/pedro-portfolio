@@ -4,7 +4,7 @@ import { ExternalLink, FileText } from "lucide-react";
 import { AdminBackLink } from "@/components/AdminBackLink";
 import { RevealPassword } from "@/components/RevealPassword";
 import { Seo } from "@/components/Seo";
-import { ADMIN_PATH, ADMIN_STORAGE_KEY, DOCUMENTS_PATH } from "@/content/admin";
+import { ADMIN_PATH, ADMIN_STORAGE_KEY } from "@/content/admin";
 import { EDUCATION_PATH } from "@/content/documentsCatalog";
 import { getWesValidity, wesEca, wesPortal } from "@/content/wes";
 import { wesSeo } from "@/content/seo";
