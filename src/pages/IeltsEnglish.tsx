@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { ExternalLink, FileText } from "lucide-react";
+import { AdminBackLink } from "@/components/AdminBackLink";
 import { RevealPassword } from "@/components/RevealPassword";
 import { Seo } from "@/components/Seo";
 import { ADMIN_PATH, ADMIN_STORAGE_KEY, DOCUMENTS_PATH } from "@/content/admin";
@@ -48,6 +49,7 @@ export default function IeltsEnglish() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={ieltsEnglishSeo} />
+      <AdminBackLink to={DOCUMENTS_PATH} label="Back to documents" />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Documents</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
         IELTS (English)

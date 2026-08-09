@@ -1,5 +1,6 @@
 import { Navigate, Link } from "react-router-dom";
 import { ArrowRight, Lock } from "lucide-react";
+import { AdminBackLink } from "@/components/AdminBackLink";
 import { Seo } from "@/components/Seo";
 import {
   ADMIN_PATH,
@@ -18,6 +19,7 @@ export default function Immigration() {
   return (
     <section className="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={immigrationSeo} />
+      <AdminBackLink to={ADMIN_PATH} label="Back to admin" />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
         Immigration

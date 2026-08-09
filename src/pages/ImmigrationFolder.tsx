@@ -1,4 +1,5 @@
 import { Navigate, Link, useParams } from "react-router-dom";
+import { AdminBackLink } from "@/components/AdminBackLink";
 import { Seo } from "@/components/Seo";
 import {
   ADMIN_PATH,
@@ -10,10 +11,12 @@ import { DEFAULT_OG_IMAGE, type SeoPage } from "@/content/seo";
 import { profile } from "@/content/profile";
 
 const FOLDER_BY_SLUG = Object.fromEntries(
-  IMMIGRATION_FOLDERS.map((folder) => {
-    const slug = folder.to.replace(`${IMMIGRATION_PATH}/`, "");
-    return [slug, folder];
-  })
+  IMMIGRATION_FOLDERS.filter((folder) => folder.to !== `${IMMIGRATION_PATH}/documents` && folder.to !== `${IMMIGRATION_PATH}/aaip`).map(
+    (folder) => {
+      const slug = folder.to.replace(`${IMMIGRATION_PATH}/`, "");
+      return [slug, folder];
+    }
+  )
 );
 
 function folderSeo(label: string, path: string, description: string): SeoPage {
@@ -43,6 +46,7 @@ export default function ImmigrationFolder() {
   return (
     <section className="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={folderSeo(folder.label, folder.to, folder.description)} />
+      <AdminBackLink to={IMMIGRATION_PATH} label="Back to immigration" />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Immigration</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
         {folder.label}

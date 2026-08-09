@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
+import { AdminBackLink } from "@/components/AdminBackLink";
 import { RevealPassword } from "@/components/RevealPassword";
 import { Seo } from "@/components/Seo";
 import { aaipPortal, aaipProfile } from "@/content/aaip";
@@ -35,6 +36,7 @@ export default function Aaip() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={aaipSeo} />
+      <AdminBackLink to={IMMIGRATION_PATH} label="Back to immigration" />
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Immigration</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">AAIP</h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
