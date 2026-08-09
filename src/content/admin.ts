@@ -9,7 +9,7 @@ export const FRENCH_STUDY_PATH = "/study/french";
 export const IMMIGRATION_PATH = "/immigration";
 export const DOCUMENTS_PATH = "/immigration/documents";
 export const IELTS_ENGLISH_PATH = "/immigration/documents/ielts-english";
-export const WES_PATH = "/immigration/documents/wes";
+export const WES_PATH = "/immigration/documents/education/wes";
 export const EXPRESS_ENTRY_PATH = "/immigration/express-entry";
 export const AAIP_PATH = "/immigration/aaip";
 

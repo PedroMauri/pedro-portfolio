@@ -205,9 +205,18 @@ export const ieltsEnglishSeo: SeoPage = {
   noindex: true,
 };
 
+export const educationSeo: SeoPage = {
+  path: "/immigration/documents/education",
+  title: `Education | Documents | ${profile.name}`,
+  description: "School credentials and WES ECA for immigration.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export const wesSeo: SeoPage = {
-  path: "/immigration/documents/wes",
-  title: `WES | Documents | ${profile.name}`,
+  path: "/immigration/documents/education/wes",
+  title: `WES | Education | ${profile.name}`,
   description: "Private WES ECA report and account reference for IRCC.",
   image: DEFAULT_OG_IMAGE,
   type: "website",

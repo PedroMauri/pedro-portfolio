@@ -9,6 +9,7 @@ import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
 import Documents from "@/pages/Documents";
 import DocumentCategoryPage from "@/pages/DocumentCategoryPage";
+import Education from "@/pages/Education";
 import FrenchStudy from "@/pages/FrenchStudy";
 import Home from "@/pages/Home";
 import IeltsEnglish from "@/pages/IeltsEnglish";
@@ -47,11 +48,21 @@ export default function App() {
           <Route path="/immigration/aaip" element={<Aaip />} />
           <Route path="/immigration/documents" element={<Documents />} />
           <Route path="/immigration/documents/ielts-english" element={<IeltsEnglish />} />
-          <Route path="/immigration/documents/wes" element={<Wes />} />
+          <Route path="/immigration/documents/education" element={<Education />} />
+          <Route path="/immigration/documents/education/wes" element={<Wes />} />
+          <Route path="/immigration/documents/wes" element={<Navigate to="/immigration/documents/education/wes" replace />} />
           <Route path="/immigration/documents/work-history" element={<WorkHistory />} />
           <Route
             path="/immigration/documents/references"
             element={<Navigate to="/immigration/documents/work-history" replace />}
+          />
+          <Route
+            path="/immigration/documents/identity"
+            element={<Navigate to="/immigration/documents/identity-family" replace />}
+          />
+          <Route
+            path="/immigration/documents/family"
+            element={<Navigate to="/immigration/documents/identity-family" replace />}
           />
           <Route path="/immigration/documents/:slug" element={<DocumentCategoryPage />} />
           <Route path="/immigration/:slug" element={<ImmigrationFolder />} />

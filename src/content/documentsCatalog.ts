@@ -17,14 +17,13 @@ export type DocumentIndexLink = {
   description: string;
 };
 
-export const IDENTITY_PATH = "/immigration/documents/identity";
-export const FAMILY_PATH = "/immigration/documents/family";
+export const IDENTITY_FAMILY_PATH = "/immigration/documents/identity-family";
 export const WORK_HISTORY_PATH = "/immigration/documents/work-history";
 export const EDUCATION_PATH = "/immigration/documents/education";
 export const IELTS_ENGLISH_PATH = "/immigration/documents/ielts-english";
-export const WES_PATH = "/immigration/documents/wes";
+export const WES_PATH = "/immigration/documents/education/wes";
 
-/** Index cards on Documents (specialized pages first, then packs). */
+/** Index cards on Documents. */
 export const DOCUMENT_INDEX_LINKS: DocumentIndexLink[] = [
   {
     to: IELTS_ENGLISH_PATH,
@@ -32,9 +31,9 @@ export const DOCUMENT_INDEX_LINKS: DocumentIndexLink[] = [
     description: "Current TRF, scores, IDP account — plus previous test as reference",
   },
   {
-    to: WES_PATH,
-    label: "WES",
-    description: "ECA report and account — 5-year IRCC validity",
+    to: EDUCATION_PATH,
+    label: "Education",
+    description: "High school diploma and WES ECA",
   },
   {
     to: WORK_HISTORY_PATH,
@@ -42,39 +41,23 @@ export const DOCUMENT_INDEX_LINKS: DocumentIndexLink[] = [
     description: "Schedule A table, employers, and reference letters",
   },
   {
-    to: IDENTITY_PATH,
-    label: "Identity",
-    description: "Passport",
-  },
-  {
-    to: FAMILY_PATH,
-    label: "Family",
-    description: "Marriage and birth certificates",
-  },
-  {
-    to: EDUCATION_PATH,
-    label: "Education",
-    description: "High school diploma (see also WES for ECA)",
+    to: IDENTITY_FAMILY_PATH,
+    label: "Identity & family",
+    description: "Passport, marriage, and birth certificates",
   },
 ];
 
+/** Generic file-list categories (Education and WES have dedicated pages). */
 export const DOCUMENT_CATEGORIES: DocumentCategory[] = [
   {
-    path: IDENTITY_PATH,
-    label: "Identity",
-    description: "Identity documents used across immigration processes.",
+    path: IDENTITY_FAMILY_PATH,
+    label: "Identity & family",
+    description: "Passport and civil-status documents for you and your family.",
     files: [
       {
         label: "Passport — Pedro",
         href: "/documents/identity/pedro-passport.pdf",
       },
-    ],
-  },
-  {
-    path: FAMILY_PATH,
-    label: "Family",
-    description: "Civil status and children’s identity documents.",
-    files: [
       {
         label: "Marriage certificate",
         href: "/documents/family/marriage-certificate.pdf",
@@ -94,17 +77,6 @@ export const DOCUMENT_CATEGORIES: DocumentCategory[] = [
       {
         label: "Birth certificate — Henry",
         href: "/documents/family/birth-certificate-henry.pdf",
-      },
-    ],
-  },
-  {
-    path: EDUCATION_PATH,
-    label: "Education",
-    description: "School credentials. For Canadian equivalency, see WES.",
-    files: [
-      {
-        label: "High school diploma",
-        href: "/documents/education/high-school.pdf",
       },
     ],
   },

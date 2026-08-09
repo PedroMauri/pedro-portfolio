@@ -5,6 +5,7 @@ import { AdminBackLink } from "@/components/AdminBackLink";
 import { RevealPassword } from "@/components/RevealPassword";
 import { Seo } from "@/components/Seo";
 import { ADMIN_PATH, ADMIN_STORAGE_KEY, DOCUMENTS_PATH } from "@/content/admin";
+import { EDUCATION_PATH } from "@/content/documentsCatalog";
 import { getWesValidity, wesEca, wesPortal } from "@/content/wes";
 import { wesSeo } from "@/content/seo";
 
@@ -28,8 +29,8 @@ export default function Wes() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
       <Seo page={wesSeo} />
-      <AdminBackLink to={DOCUMENTS_PATH} label="Back to documents" />
-      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Documents</p>
+      <AdminBackLink to={EDUCATION_PATH} label="Back to education" />
+      <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Education</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">WES</h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
         World Education Services Educational Credential Assessment (ECA) for IRCC immigration.
@@ -95,10 +96,10 @@ export default function Wes() {
       </section>
 
       <Link
-        to={DOCUMENTS_PATH}
+        to={EDUCATION_PATH}
         className="mt-12 inline-flex rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
-        Back to documents
+        Back to education
       </Link>
     </article>
   );

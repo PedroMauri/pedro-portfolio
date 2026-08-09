@@ -29,11 +29,10 @@ Not linked in public navigation. `noindex` + robots disallow.
 | Item | Path | Notes |
 |------|------|--------|
 | IELTS (English) | `/immigration/documents/ielts-english` | Current TRF + previous test as reference only |
-| WES | `/immigration/documents/wes` | ECA login, report PDF, 5-year IRCC validity |
+| Education | `/immigration/documents/education` | High school + link to WES |
+| WES | `/immigration/documents/education/wes` | ECA login, report PDF, 5-year IRCC validity |
 | Work history | `/immigration/documents/work-history` | Schedule A table + reference letters |
-| Identity | `/immigration/documents/identity` | Passport |
-| Family | `/immigration/documents/family` | Marriage + birth certificates |
-| Education | `/immigration/documents/education` | High school diploma |
+| Identity & family | `/immigration/documents/identity-family` | Passport, marriage, birth certificates |
 
 Portal passwords on private pages use Show/Hide. Secrets are stored in the repo by design for personal use; the admin gate is client-side only (not bank-grade).
 
