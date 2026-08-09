@@ -5,10 +5,13 @@ import type { ScriptLine } from "@/content/frenchCourse";
 /**
  * Player contínuo (mobile + desktop).
  *
- * Bug mobile: `new Audio()` por clip quebra a sequência no iOS/Android —
- * o gesto do usuário só destrava o primeiro play. Solução: UM HTMLAudioElement
- * reutilizado; trocar `src` e `play()` no `ended`, sem pausas longas entre clips.
- * Manter isto em todas as semanas futuras.
+ * Regras (manter nas próximas semanas):
+ * - UM HTMLAudioElement para a lição inteira (nunca new Audio() por clip).
+ * - Após trocar src: esperar canplay/loadeddata e só então play().
+ * - Nunca prefetch com outro `new Audio()` — no mobile isso derruba a sessão
+ *   e a sequência para (ex.: depois de “…forma educada”).
+ * - Sem delays longos entre clips.
+ * - Falha de um clip: tenta de novo 1×; se falhar, segue para o próximo.
  */
 
 type SpeakOptions = { rate?: number };
@@ -26,6 +29,7 @@ type QueueItem = {
   url: string;
   rate: number;
   lineIndex: number;
+  label?: string;
 };
 
 const listeners = new Set<Listener>();
@@ -129,6 +133,8 @@ function haltCurrentAudio() {
     try {
       sharedAudio.onended = null;
       sharedAudio.onerror = null;
+      sharedAudio.oncanplay = null;
+      sharedAudio.onloadeddata = null;
       sharedAudio.pause();
     } catch {
       /* ignore */
@@ -140,27 +146,64 @@ function buildQueue(lines: ScriptLine[], playbackRate: number): QueueItem[] {
   const queue: QueueItem[] = [];
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    const rate = line.lang === "pt" ? Math.min(1.05, playbackRate + 0.05) : playbackRate;
+    // Keep rate at 1 on short FR clips for mobile stability; slight nudge only for PT
+    const rate = line.lang === "pt" ? Math.min(1.02, playbackRate) : 1;
     for (const chunk of chunkText(line.text)) {
       const url = lookupClip(line.lang, chunk);
       if (!url) {
         setError(`Sem áudio (${line.lang}): “${chunk.slice(0, 52)}…”`);
         continue;
       }
-      queue.push({ url, rate, lineIndex: i });
+      queue.push({ url, rate, lineIndex: i, label: chunk.slice(0, 40) });
     }
   }
   return queue;
 }
 
-function playClipOnShared(item: QueueItem, generation: number): Promise<void> {
+function waitForCanPlay(audio: HTMLAudioElement, generation: number): Promise<void> {
   return new Promise((resolve, reject) => {
     if (stopRequested || generation !== playGeneration) {
       resolve();
       return;
     }
+    if (audio.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+      resolve();
+      return;
+    }
 
-    const audio = getSharedAudio();
+    const timer = window.setTimeout(() => {
+      cleanup();
+      // Proceed anyway — some mobile browsers never fire canplay reliably
+      resolve();
+    }, 8000);
+
+    const onReady = () => {
+      cleanup();
+      resolve();
+    };
+    const onError = () => {
+      cleanup();
+      reject(new Error("Falha ao carregar áudio"));
+    };
+    const cleanup = () => {
+      window.clearTimeout(timer);
+      audio.removeEventListener("canplay", onReady);
+      audio.removeEventListener("loadeddata", onReady);
+      audio.removeEventListener("error", onError);
+    };
+
+    audio.addEventListener("canplay", onReady);
+    audio.addEventListener("loadeddata", onReady);
+    audio.addEventListener("error", onError);
+  });
+}
+
+async function playClipOnShared(item: QueueItem, generation: number, attempt = 1): Promise<void> {
+  if (stopRequested || generation !== playGeneration) return;
+
+  const audio = getSharedAudio();
+
+  await new Promise<void>((resolve, reject) => {
     let settled = false;
 
     const finish = (fn: () => void) => {
@@ -177,27 +220,60 @@ function playClipOnShared(item: QueueItem, generation: number): Promise<void> {
     settleActiveClip = finishOk;
     setLineIndex(item.lineIndex);
 
-    audio.onended = () => finishOk();
-    audio.onerror = () => finishErr(new Error("Falha ao carregar áudio"));
+    void (async () => {
+      try {
+        audio.onended = null;
+        audio.onerror = null;
+        audio.pause();
 
-    audio.playbackRate = Math.min(1.15, Math.max(0.75, item.rate));
-    audio.volume = 1;
-    audio.muted = false;
-    audio.src = item.url;
+        audio.playbackRate = item.rate;
+        audio.volume = 1;
+        audio.muted = false;
+        audio.src = item.url;
+        audio.load();
 
-    const p = audio.play();
-    if (p) {
-      p.catch((err: unknown) => {
-        const message =
-          err instanceof DOMException && err.name === "NotAllowedError"
-            ? "O celular bloqueou a sequência. Toque Play de novo e deixe tocar até o fim."
-            : err instanceof Error
-              ? err.message
-              : String(err);
-        finishErr(new Error(message));
-      });
-    }
+        await waitForCanPlay(audio, generation);
+        if (stopRequested || generation !== playGeneration) {
+          finishOk();
+          return;
+        }
+
+        audio.onended = () => finishOk();
+        audio.onerror = () => finishErr(new Error("Falha ao tocar áudio"));
+
+        try {
+          await audio.play();
+        } catch (err) {
+          const name = err instanceof DOMException ? err.name : "";
+          // AbortError is common when src changes mid-load on mobile — retry once
+          if ((name === "AbortError" || name === "NotAllowedError") && attempt < 2) {
+            finish(() => {
+              void playClipOnShared(item, generation, attempt + 1).then(resolve, reject);
+            });
+            return;
+          }
+          const message =
+            name === "NotAllowedError"
+              ? "O celular bloqueou a sequência. Toque Play de novo e deixe tocar até o fim."
+              : err instanceof Error
+                ? err.message
+                : String(err);
+          finishErr(new Error(message));
+        }
+      } catch (err) {
+        finishErr(err instanceof Error ? err : new Error(String(err)));
+      }
+    })();
   });
+}
+
+/** Warm HTTP cache without creating a competing Audio element (mobile-safe). */
+function prefetchUrl(url: string) {
+  try {
+    void fetch(url, { mode: "cors", credentials: "omit", cache: "force-cache" }).catch(() => undefined);
+  } catch {
+    /* ignore */
+  }
 }
 
 async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
@@ -212,7 +288,6 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
   haltCurrentAudio();
   stopRequested = false;
 
-  // Create/touch element inside the user-gesture call stack
   getSharedAudio();
 
   setError(null);
@@ -220,7 +295,7 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
   setSpeaking(true);
   setLineIndex(0);
 
-  const playbackRate = (options.rate ?? 0.92) <= 0.8 ? 0.82 : 0.95;
+  const playbackRate = (options.rate ?? 1) <= 0.85 ? 0.9 : 1;
   const queue = buildQueue(lines, playbackRate);
 
   if (queue.length === 0) {
@@ -230,35 +305,36 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
     return;
   }
 
+  // Prefetch first few via fetch only (not Audio)
+  queue.slice(0, 4).forEach((item) => prefetchUrl(item.url));
+
+  let played = 0;
   try {
     for (let i = 0; i < queue.length; i += 1) {
       if (stopRequested || generation !== playGeneration) return;
+      if (i + 1 < queue.length) prefetchUrl(queue[i + 1].url);
 
-      // Prefetch next clip while current plays (helps mobile networks)
-      if (i + 1 < queue.length) {
-        try {
-          const warm = new Audio();
-          warm.preload = "auto";
-          warm.src = queue[i + 1].url;
-        } catch {
-          /* ignore */
-        }
+      try {
+        await playClipOnShared(queue[i], generation);
+        played += 1;
+      } catch (err) {
+        // Don't kill the whole day on one bad clip — continue
+        const detail = err instanceof Error ? err.message : "erro";
+        setError(`Clip pulado (${queue[i].label ?? i}): ${detail}`);
+        if (attemptShouldStop(detail)) return;
       }
-
-      await playClipOnShared(queue[i], generation);
-      // No delay between clips — gaps drop the mobile media session
     }
-  } catch (err) {
-    if (!stopRequested && generation === playGeneration) {
-      const detail = err instanceof Error ? err.message : "erro";
-      setError(`Áudio falhou: ${detail}`);
-    }
+    if (played > 0) setError(null);
   } finally {
     if (generation === playGeneration) {
       setSpeaking(false);
       setLineIndex(-1);
     }
   }
+}
+
+function attemptShouldStop(detail: string) {
+  return detail.includes("bloqueou a sequência");
 }
 
 export const frenchSpeech = {

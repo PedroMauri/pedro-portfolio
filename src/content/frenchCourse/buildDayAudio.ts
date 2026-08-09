@@ -7,9 +7,9 @@ import type { CourseDay, ScriptLine, VocabItem } from "./types";
  * 3) useSyncExternalStore com snapshot cacheado
  * 4) Um play por dia = lessonAudio + vocab recap + gramática
  * 5) Após editar textos: pnpm french-audio && reiniciar pnpm dev
- * 6) MOBILE: um único HTMLAudioElement para toda a sequência (trocar src no ended).
- *    Nunca `new Audio()` por clip — senão o celular para após o primeiro.
- *    Sem delays longos entre clips.
+ * 6) MOBILE: um único HTMLAudioElement; esperar canplay antes de play() após trocar src.
+ *    Nunca prefetch com outro `new Audio()` (derruba a sessão — para após frases longas).
+ *    Sem delays longos entre clips. Falha de 1 clip não encerra o dia.
  */
 
 const RECAP_INTRO = "Agora vamos recapitular o que aprendemos.";
