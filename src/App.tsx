@@ -8,6 +8,7 @@ import Aaip from "@/pages/Aaip";
 import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
 import Documents from "@/pages/Documents";
+import DocumentCategoryPage from "@/pages/DocumentCategoryPage";
 import FrenchStudy from "@/pages/FrenchStudy";
 import Home from "@/pages/Home";
 import IeltsEnglish from "@/pages/IeltsEnglish";
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/immigration/documents" element={<Documents />} />
           <Route path="/immigration/documents/ielts-english" element={<IeltsEnglish />} />
           <Route path="/immigration/documents/wes" element={<Wes />} />
+          <Route path="/immigration/documents/:slug" element={<DocumentCategoryPage />} />
           <Route path="/immigration/:slug" element={<ImmigrationFolder />} />
           <Route path="/documents" element={<Navigate to="/immigration/documents" replace />} />
           <Route

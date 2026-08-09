@@ -28,8 +28,12 @@ Not linked in public navigation. `noindex` + robots disallow.
 
 | Item | Path | Notes |
 |------|------|--------|
-| IELTS (English) | `/immigration/documents/ielts-english` | IDP login, TRF PDF, 2-year expiry |
+| IELTS (English) | `/immigration/documents/ielts-english` | Current TRF + previous test as reference only |
 | WES | `/immigration/documents/wes` | ECA login, report PDF, 5-year IRCC validity |
+| Identity | `/immigration/documents/identity` | Passport |
+| Family | `/immigration/documents/family` | Marriage + birth certificates |
+| References | `/immigration/documents/references` | Alpha, Felipe, Ozeias, Upsigns |
+| Education | `/immigration/documents/education` | High school diploma |
 
 Portal passwords on private pages use Show/Hide. Secrets are stored in the repo by design for personal use; the admin gate is client-side only (not bank-grade).
 

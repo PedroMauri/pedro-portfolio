@@ -30,20 +30,6 @@ export const PRIVATE_PORTFOLIO_SHARES: AdminLink[] = [
   },
 ];
 
-/** Shared documents used across immigration processes. */
-export const DOCUMENT_FOLDERS: AdminLink[] = [
-  {
-    to: IELTS_ENGLISH_PATH,
-    label: "IELTS (English)",
-    description: "IDP account, TRF, and 2-year validity",
-  },
-  {
-    to: WES_PATH,
-    label: "WES",
-    description: "ECA report and account — 5-year IRCC validity",
-  },
-];
-
 /** Immigration program folders (Documents holds shared evidence). */
 export const IMMIGRATION_FOLDERS: AdminLink[] = [
   {

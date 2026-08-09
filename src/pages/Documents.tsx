@@ -5,9 +5,9 @@ import { Seo } from "@/components/Seo";
 import {
   ADMIN_PATH,
   ADMIN_STORAGE_KEY,
-  DOCUMENT_FOLDERS,
   IMMIGRATION_PATH,
 } from "@/content/admin";
+import { DOCUMENT_INDEX_LINKS } from "@/content/documentsCatalog";
 import { documentsSeo } from "@/content/seo";
 
 export default function Documents() {
@@ -30,7 +30,7 @@ export default function Documents() {
       </p>
 
       <ul className="mt-10 space-y-4">
-        {DOCUMENT_FOLDERS.map((folder) => (
+        {DOCUMENT_INDEX_LINKS.map((folder) => (
           <li key={folder.to}>
             <Link
               to={folder.to}

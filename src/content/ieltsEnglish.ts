@@ -28,6 +28,13 @@ export const ieltsEnglishTrf = {
   pdfLabel: "Electronic Test Report Form (ETRF)",
 } as const;
 
+/** Older IELTS report kept for reference only (not the current TRF for applications). */
+export const ieltsEnglishPreviousReference = {
+  pdfPath: "/documents/ielts/pedro-ielts-previous-reference.pdf",
+  pdfLabel: "Previous IELTS report",
+  note: "Reference only — do not use for new applications. Use the current ETRF above.",
+} as const;
+
 export function getIeltsValidity(now = new Date()) {
   const expiry = new Date(`${ieltsEnglishTrf.expiresIso}T23:59:59`);
   const valid = now.getTime() <= expiry.getTime();

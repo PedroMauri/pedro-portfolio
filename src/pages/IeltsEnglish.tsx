@@ -9,6 +9,7 @@ import {
   formatBand,
   getIeltsValidity,
   ieltsEnglishPortal,
+  ieltsEnglishPreviousReference,
   ieltsEnglishScores,
   ieltsEnglishTrf,
 } from "@/content/ieltsEnglish";
@@ -123,6 +124,24 @@ export default function IeltsEnglish() {
             >
               <FileText className="size-4" aria-hidden="true" />
               {ieltsEnglishTrf.pdfLabel}
+            </a>
+          </Field>
+        </dl>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-lg font-medium text-foreground">Previous test (reference only)</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted">{ieltsEnglishPreviousReference.note}</p>
+        <dl className="mt-3 border-t border-border">
+          <Field label="Document">
+            <a
+              href={ieltsEnglishPreviousReference.pdfPath}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 font-medium text-accent-dark underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              <FileText className="size-4" aria-hidden="true" />
+              {ieltsEnglishPreviousReference.pdfLabel}
             </a>
           </Field>
         </dl>
