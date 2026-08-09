@@ -3,7 +3,7 @@
 export const aaipPortal = {
   url: "https://aaip.labour.alberta.ca/",
   username: "pedromauri",
-  passwordNote: "Password stored in password manager (not on this site).",
+  password: "Pedrodm123",
 } as const;
 
 export type AaipApplicationStatus = "expired" | "active" | "draft";
@@ -48,6 +48,6 @@ export const aaipProfile = {
     "Confirm pathway is still Express Entry Stream — Priority Sectors before submitting.",
     "Re-check NOC 75110, work permit expiry, CRS, and job offer details against current documents.",
     "Update anything that changed since this expired application (language, experience, education, EE profile).",
-    "Open the AAIP portal with the username on this page; use your password manager for the password.",
+    "Open the AAIP portal with the username and password on this page (password is masked until you click Show).",
   ],
 } as const;

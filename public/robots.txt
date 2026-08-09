@@ -4,5 +4,6 @@ Disallow: /share/
 Disallow: /admin
 Disallow: /study/
 Disallow: /immigration
+Disallow: /documents
 
 Sitemap: https://pedromauri.com/sitemap.xml

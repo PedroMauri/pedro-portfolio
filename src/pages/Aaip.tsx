@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
+import { RevealPassword } from "@/components/RevealPassword";
 import { Seo } from "@/components/Seo";
 import { aaipPortal, aaipProfile } from "@/content/aaip";
 import { ADMIN_PATH, ADMIN_STORAGE_KEY, IMMIGRATION_PATH } from "@/content/admin";
@@ -70,7 +71,12 @@ export default function Aaip() {
           </dd>
         </div>
         <Field label="Username" value={aaipPortal.username} />
-        <Field label="Password" value={aaipPortal.passwordNote} />
+        <div className="border-b border-border py-3 last:border-b-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4">
+          <dt className="text-sm font-medium text-muted">Password</dt>
+          <dd className="mt-1 sm:mt-0">
+            <RevealPassword value={aaipPortal.password} />
+          </dd>
+        </div>
       </Section>
 
       <Section title="Pathway">

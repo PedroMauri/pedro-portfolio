@@ -7,8 +7,10 @@ import Admin from "@/pages/Admin";
 import Aaip from "@/pages/Aaip";
 import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
+import Documents from "@/pages/Documents";
 import FrenchStudy from "@/pages/FrenchStudy";
 import Home from "@/pages/Home";
+import IeltsEnglish from "@/pages/IeltsEnglish";
 import Immigration from "@/pages/Immigration";
 import ImmigrationFolder from "@/pages/ImmigrationFolder";
 import KanopiShare from "@/pages/KanopiShare";
@@ -38,6 +40,8 @@ export default function App() {
           <Route path="/admin/private-portfolio" element={<PrivatePortfolio />} />
           <Route path="/share/kanopi" element={<KanopiShare />} />
           <Route path="/study/french" element={<FrenchStudy />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/documents/ielts-english" element={<IeltsEnglish />} />
           <Route path="/immigration" element={<Immigration />} />
           <Route path="/immigration/aaip" element={<Aaip />} />
           <Route path="/immigration/:slug" element={<ImmigrationFolder />} />

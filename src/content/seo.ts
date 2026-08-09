@@ -187,6 +187,24 @@ export const immigrationSeo: SeoPage = {
   noindex: true,
 };
 
+export const documentsSeo: SeoPage = {
+  path: "/documents",
+  title: `Documents | ${profile.name}`,
+  description: "Private shared documents for immigration processes.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
+export const ieltsEnglishSeo: SeoPage = {
+  path: "/documents/ielts-english",
+  title: `IELTS English | Documents | ${profile.name}`,
+  description: "Private IELTS English TRF and IDP account reference.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export const aaipSeo: SeoPage = {
   path: "/immigration/aaip",
   title: `AAIP | Immigration | ${profile.name}`,
