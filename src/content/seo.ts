@@ -214,6 +214,15 @@ export const wesSeo: SeoPage = {
   noindex: true,
 };
 
+export const workHistorySeo: SeoPage = {
+  path: "/immigration/documents/work-history",
+  title: `Work history | Documents | ${profile.name}`,
+  description: "Schedule A work history and reference letters for Express Entry.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export const aaipSeo: SeoPage = {
   path: "/immigration/aaip",
   title: `AAIP | Immigration | ${profile.name}`,

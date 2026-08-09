@@ -19,7 +19,7 @@ export type DocumentIndexLink = {
 
 export const IDENTITY_PATH = "/immigration/documents/identity";
 export const FAMILY_PATH = "/immigration/documents/family";
-export const REFERENCES_PATH = "/immigration/documents/references";
+export const WORK_HISTORY_PATH = "/immigration/documents/work-history";
 export const EDUCATION_PATH = "/immigration/documents/education";
 export const IELTS_ENGLISH_PATH = "/immigration/documents/ielts-english";
 export const WES_PATH = "/immigration/documents/wes";
@@ -37,6 +37,11 @@ export const DOCUMENT_INDEX_LINKS: DocumentIndexLink[] = [
     description: "ECA report and account — 5-year IRCC validity",
   },
   {
+    to: WORK_HISTORY_PATH,
+    label: "Work history",
+    description: "Schedule A table, employers, and reference letters",
+  },
+  {
     to: IDENTITY_PATH,
     label: "Identity",
     description: "Passport",
@@ -45,11 +50,6 @@ export const DOCUMENT_INDEX_LINKS: DocumentIndexLink[] = [
     to: FAMILY_PATH,
     label: "Family",
     description: "Marriage and birth certificates",
-  },
-  {
-    to: REFERENCES_PATH,
-    label: "References",
-    description: "Employment / professional reference letters",
   },
   {
     to: EDUCATION_PATH,
@@ -94,29 +94,6 @@ export const DOCUMENT_CATEGORIES: DocumentCategory[] = [
       {
         label: "Birth certificate — Henry",
         href: "/documents/family/birth-certificate-henry.pdf",
-      },
-    ],
-  },
-  {
-    path: REFERENCES_PATH,
-    label: "References",
-    description: "Reference letters for work experience and applications.",
-    files: [
-      {
-        label: "Reference letter — Alpha",
-        href: "/documents/references/reference-alpha.pdf",
-      },
-      {
-        label: "Reference letter — Felipe",
-        href: "/documents/references/reference-felipe.pdf",
-      },
-      {
-        label: "Reference letter — Ozeias",
-        href: "/documents/references/reference-ozeias.pdf",
-      },
-      {
-        label: "Reference letter — Upsigns",
-        href: "/documents/references/reference-upsigns.pdf",
       },
     ],
   },
