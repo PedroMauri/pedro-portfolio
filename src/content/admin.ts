@@ -4,7 +4,7 @@ export const ADMIN_STORAGE_KEY = "admin-hub-unlocked";
 export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD?.trim() || "pedrodm123";
 
 export const ADMIN_PATH = "/admin";
-
+export const PRIVATE_PORTFOLIO_PATH = "/admin/private-portfolio";
 export const FRENCH_STUDY_PATH = "/study/french";
 export const IMMIGRATION_PATH = "/immigration";
 
@@ -16,6 +16,15 @@ export type AdminLink = {
   comingSoon?: boolean;
 };
 
+/** Company-specific private shares (application materials). */
+export const PRIVATE_PORTFOLIO_SHARES: AdminLink[] = [
+  {
+    to: "/share/kanopi",
+    label: "Kanopi",
+    description: "Contract Senior UX/UI Designer — written responses and process",
+  },
+];
+
 export const ADMIN_LINKS: AdminLink[] = [
   {
     to: "/",
@@ -23,9 +32,9 @@ export const ADMIN_LINKS: AdminLink[] = [
     description: "Public product design portfolio",
   },
   {
-    to: "/share/kanopi",
-    label: "Kanopi share",
-    description: "Private application responses for Kanopi",
+    to: PRIVATE_PORTFOLIO_PATH,
+    label: "Private portfolio",
+    description: "Company-specific application shares",
   },
   {
     to: FRENCH_STUDY_PATH,

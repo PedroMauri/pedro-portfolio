@@ -12,6 +12,7 @@ import Immigration from "@/pages/Immigration";
 import KanopiShare from "@/pages/KanopiShare";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
+import PrivatePortfolio from "@/pages/PrivatePortfolio";
 import Resume from "@/pages/Resume";
 
 function LegacyProjectsRedirect() {
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/private-portfolio" element={<PrivatePortfolio />} />
           <Route path="/share/kanopi" element={<KanopiShare />} />
           <Route path="/study/french" element={<FrenchStudy />} />
           <Route path="/immigration" element={<Immigration />} />

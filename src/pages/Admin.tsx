@@ -75,7 +75,7 @@ function AdminHub() {
       <p className="text-sm font-medium uppercase tracking-[0.1em] text-accent-dark">Private</p>
       <h1 className="mt-3 text-4xl font-medium tracking-tight text-foreground sm:text-5xl">Admin</h1>
       <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
-        Quick links to the public portfolio, private share pages, and personal study spaces.
+        Quick links to the public portfolio, company-specific shares, and personal spaces.
       </p>
 
       <ul className="mt-10 space-y-4">

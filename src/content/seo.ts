@@ -160,6 +160,15 @@ export const adminSeo: SeoPage = {
   noindex: true,
 };
 
+export const privatePortfolioSeo: SeoPage = {
+  path: "/admin/private-portfolio",
+  title: `Private portfolio | ${profile.name}`,
+  description: "Company-specific private application shares.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export const frenchStudySeo: SeoPage = {
   path: "/study/french",
   title: `French study | ${profile.name}`,

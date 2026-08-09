@@ -12,8 +12,16 @@ Not linked in public navigation. `noindex` + robots disallow.
 | Button | Path | Notes |
 |--------|------|--------|
 | Portfolio | `/` | Public site |
-| Kanopi share | `/share/kanopi` | Still uses its own share password |
+| Private portfolio | `/admin/private-portfolio` | Index of company-specific shares |
 | French | `/study/french` | Requires admin unlock; content next |
 | Immigration | `/immigration` | Requires admin unlock; content next |
 
-French and Immigration redirect to `/admin` if the admin session is not unlocked.
+## Private portfolio shares
+
+| Company | Path | Notes |
+|---------|------|--------|
+| Kanopi | `/share/kanopi` | Own share password for external recipients |
+
+Add future company shares under `/share/:company` and list them in `PRIVATE_PORTFOLIO_SHARES` (`src/content/admin.ts`).
+
+Private portfolio, French, and Immigration redirect to `/admin` if the admin session is not unlocked.
