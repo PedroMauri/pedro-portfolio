@@ -63,7 +63,7 @@ export const ADMIN_LINKS: AdminLink[] = [
   {
     to: FRENCH_STUDY_PATH,
     label: "French",
-    description: "Private IELTS French study space",
+    description: "In-page TEF Canada course — Week 1 live",
   },
   {
     to: IMMIGRATION_PATH,

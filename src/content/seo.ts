@@ -172,7 +172,7 @@ export const privatePortfolioSeo: SeoPage = {
 export const frenchStudySeo: SeoPage = {
   path: "/study/french",
   title: `French study | ${profile.name}`,
-  description: "Private IELTS French study space.",
+  description: "Private in-page TEF Canada French course from A0 to NCLC 7.",
   image: DEFAULT_OG_IMAGE,
   type: "website",
   noindex: true,
