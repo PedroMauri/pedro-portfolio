@@ -9,6 +9,8 @@ import type { CourseDay, ScriptLine, VocabItem } from "./types";
  * 5) Após editar textos: pnpm french-audio && reiniciar pnpm dev
  * 6) MOBILE: Web Audio API (AudioContext + BufferSource). Não usar HTMLAudioElement
  *    trocando src — no iOS o unlock do toque morre e a lição para após a 1ª frase longa.
+ * 7) Entre clips: resume() + keep-alive + prefetch — senão dias sem cache (ter–dom) param
+ *    no meio quando o AudioContext suspende durante o fetch.
  */
 
 const RECAP_INTRO = "Agora vamos recapitular o que aprendemos.";

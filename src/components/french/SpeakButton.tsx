@@ -32,7 +32,6 @@ export function DayPlayButton({ lines, label = "Play — lição completa do dia
 
 export function AudioTestButton() {
   const { speaking, error, engine, toggleDay } = useFrenchSpeech();
-  const nativeSrc = frenchSpeech.testClipUrl();
 
   return (
     <div className="rounded-2xl border border-border bg-card px-4 py-4">
@@ -44,6 +43,9 @@ export function AudioTestButton() {
       <div className="mt-3">
         <button
           type="button"
+          onPointerDown={() => {
+            void frenchSpeech.warmUp();
+          }}
           onClick={() => toggleDay(frenchSpeech.testScript())}
           className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-sm font-medium text-background"
         >
@@ -51,12 +53,9 @@ export function AudioTestButton() {
           {speaking ? "Parar" : "Testar áudio"}
         </button>
       </div>
-      <audio className="mt-4 w-full" controls preload="auto" src={nativeSrc}>
-        Seu navegador não suporta áudio.
-      </audio>
       {engine ? (
         <p className="mt-2 text-xs text-muted">
-          Motor: {engine === "local-mp3" ? "MP3 do curso ✓" : engine}
+          Motor: {engine === "web-audio" || engine === "local-mp3" ? "Web Audio ✓" : engine}
         </p>
       ) : null}
       {error ? <p className="mt-2 text-xs text-muted">{error}</p> : null}

@@ -90,29 +90,40 @@ const assetsDir = join(root, "src/assets/french-audio/week01");
 let ok = 0;
 let miss = 0;
 const missing = [];
+const perDay = [];
 
 for (const day of week.days) {
   const script = buildFullDayAudio(day);
+  let dayOk = 0;
+  let dayMiss = 0;
+  let dayBytes = 0;
   for (const line of script) {
     for (const chunk of chunkText(line.text)) {
       const key = `${line.lang}::${normalizeKey(chunk)}`;
       const path = manifest[key];
       if (!path) {
         miss += 1;
-        if (missing.length < 25) missing.push(`[${day.id}] missing key: ${key}`);
+        dayMiss += 1;
+        if (missing.length < 40) missing.push(`[${day.id}] missing key: ${key}`);
         continue;
       }
       const fileName = path.split("/").pop();
       const disk = join(assetsDir, fileName);
       if (!existsSync(disk) || readFileSync(disk).length < 500) {
         miss += 1;
-        if (missing.length < 25) missing.push(`[${day.id}] bad file: ${fileName}`);
+        dayMiss += 1;
+        if (missing.length < 40) missing.push(`[${day.id}] bad file: ${fileName}`);
         continue;
       }
+      const size = readFileSync(disk).length;
+      dayBytes += size;
       ok += 1;
+      dayOk += 1;
     }
   }
-  console.log(`✓ ${day.label}: ${script.length} linhas no roteiro completo`);
+  perDay.push({ id: day.id, label: day.label, lines: script.length, clips: dayOk, miss: dayMiss, kb: Math.round(dayBytes / 1024) });
+  const mark = dayMiss === 0 ? "✓" : "✗";
+  console.log(`${mark} ${day.label}: ${script.length} linhas · ${dayOk} clips · ${Math.round(dayBytes / 1024)} KB${dayMiss ? ` · ${dayMiss} falhas` : ""}`);
 }
 
 console.log(JSON.stringify({ ok, miss, days: week.days.length }, null, 2));

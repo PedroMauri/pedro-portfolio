@@ -5,11 +5,11 @@ import type { ScriptLine } from "@/content/frenchCourse";
 /**
  * Player contínuo (mobile + desktop) via Web Audio API.
  *
- * Porquê Web Audio (não HTMLAudioElement + trocar src):
- * - No iOS/Safari, após o 1º clip, trocar `audio.src` e chamar `play()` de novo
- *   perde o unlock do gesto do utilizador → silêncio após a 1ª frase longa
- *   (ex.: “…forma educada”) e a fila para.
- * - AudioContext desbloqueado no toque + BufferSource em sequência não tem esse bug.
+ * iOS quirks handled here (all days share this path):
+ * 1) HTMLAudioElement + trocar src perde o unlock → Web Audio only.
+ * 2) AudioContext suspende durante fetch/decode do próximo MP3 (dias sem cache)
+ *    → resume() antes de cada clip + keep-alive quase silencioso + watchdog.
+ * 3) Prefetch/decode à frente para terça–domingo não “morrerem” no 1º gap de rede.
  */
 
 type SpeakOptions = { rate?: number };
@@ -41,6 +41,8 @@ let stopRequested = false;
 let playGeneration = 0;
 let audioCtx: AudioContext | null = null;
 let currentSource: AudioBufferSourceNode | null = null;
+let keepAliveOsc: OscillatorNode | null = null;
+let keepAliveGain: GainNode | null = null;
 let unlockStarted = false;
 const bufferCache = new Map<string, Promise<AudioBuffer>>();
 let cachedState: SpeechState = {
@@ -51,6 +53,8 @@ let cachedState: SpeechState = {
 };
 
 const manifest = audioManifest as Record<string, string>;
+const LOAD_TIMEOUT_MS = 20_000;
+const PREFETCH_AHEAD = 6;
 
 function getState(): SpeechState {
   return cachedState;
@@ -77,6 +81,7 @@ function setEngine(next: string | null) {
 }
 
 function setLineIndex(next: number) {
+  if (lineIndex === next) return;
   lineIndex = next;
   emit();
 }
@@ -145,7 +150,7 @@ function kickUnlock() {
       src.start(0);
     }
   } catch {
-    /* ignore — playScript reporta erro se falhar de verdade */
+    /* ignore */
   }
 }
 
@@ -154,6 +159,49 @@ async function ensureUnlocked() {
   const ctx = getAudioContext();
   if (ctx.state === "suspended") {
     await ctx.resume();
+  }
+}
+
+/** Mantém o grafo ativo no iOS enquanto fetch/decode corre entre clips. */
+function startKeepAlive() {
+  if (keepAliveOsc) return;
+  try {
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    gain.gain.value = 0.00001;
+    osc.frequency.value = 20;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    keepAliveOsc = osc;
+    keepAliveGain = gain;
+  } catch {
+    /* ignore */
+  }
+}
+
+function stopKeepAlive() {
+  if (keepAliveOsc) {
+    try {
+      keepAliveOsc.stop();
+    } catch {
+      /* ignore */
+    }
+    try {
+      keepAliveOsc.disconnect();
+    } catch {
+      /* ignore */
+    }
+    keepAliveOsc = null;
+  }
+  if (keepAliveGain) {
+    try {
+      keepAliveGain.disconnect();
+    } catch {
+      /* ignore */
+    }
+    keepAliveGain = null;
   }
 }
 
@@ -173,17 +221,32 @@ function buildQueue(lines: ScriptLine[], playbackRate: number): QueueItem[] {
   const queue: QueueItem[] = [];
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    const rate = playbackRate;
     for (const chunk of chunkText(line.text)) {
       const url = lookupClip(line.lang, chunk);
       if (!url) {
         setError(`Sem áudio (${line.lang}): “${chunk.slice(0, 52)}…”`);
         continue;
       }
-      queue.push({ url, rate, lineIndex: i, label: chunk.slice(0, 40) });
+      queue.push({ url, rate: playbackRate, lineIndex: i, label: chunk.slice(0, 40) });
     }
   }
   return queue;
+}
+
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = window.setTimeout(() => reject(new Error(`Timeout ${label}`)), ms);
+    promise.then(
+      (value) => {
+        window.clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        window.clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
 }
 
 function loadBuffer(url: string): Promise<AudioBuffer> {
@@ -191,13 +254,16 @@ function loadBuffer(url: string): Promise<AudioBuffer> {
   if (existing) return existing;
 
   const promise = (async () => {
-    const res = await fetch(url, { credentials: "omit", cache: "force-cache" });
+    const res = await withTimeout(
+      fetch(url, { credentials: "omit", cache: "force-cache" }),
+      LOAD_TIMEOUT_MS,
+      "fetch",
+    );
     if (!res.ok) throw new Error(`HTTP ${res.status} ao carregar áudio`);
-    const raw = await res.arrayBuffer();
-    // Safari needs a detachable copy for decodeAudioData
+    const raw = await withTimeout(res.arrayBuffer(), LOAD_TIMEOUT_MS, "buffer");
     const copy = raw.slice(0);
     const ctx = getAudioContext();
-    return await ctx.decodeAudioData(copy);
+    return await withTimeout(ctx.decodeAudioData(copy), LOAD_TIMEOUT_MS, "decode");
   })();
 
   bufferCache.set(url, promise);
@@ -208,30 +274,45 @@ function loadBuffer(url: string): Promise<AudioBuffer> {
 }
 
 function prefetchAround(queue: QueueItem[], index: number) {
-  for (let j = index; j < Math.min(queue.length, index + 3); j += 1) {
+  for (let j = index; j < Math.min(queue.length, index + PREFETCH_AHEAD); j += 1) {
     void loadBuffer(queue[j].url).catch(() => undefined);
   }
 }
 
-function playBuffer(buffer: AudioBuffer, rate: number, generation: number): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if (stopRequested || generation !== playGeneration) {
-      resolve();
-      return;
-    }
+async function warmInitial(queue: QueueItem[], generation: number, count: number) {
+  const slice = queue.slice(0, count);
+  await Promise.all(
+    slice.map(async (item) => {
+      if (stopRequested || generation !== playGeneration) return;
+      await loadBuffer(item.url).catch(() => undefined);
+    }),
+  );
+}
 
+async function playBuffer(buffer: AudioBuffer, rate: number, generation: number): Promise<void> {
+  if (stopRequested || generation !== playGeneration) return;
+
+  await ensureUnlocked();
+  if (stopRequested || generation !== playGeneration) return;
+
+  return new Promise((resolve, reject) => {
     let settled = false;
     const finish = () => {
       if (settled) return;
       settled = true;
+      window.clearTimeout(watchdog);
       if (currentSource === source) currentSource = null;
       resolve();
     };
 
+    const safeRate = rate > 0 ? rate : 1;
+    const durationMs = Math.max(200, (buffer.duration / safeRate) * 1000 + 500);
+    const watchdog = window.setTimeout(finish, durationMs);
+
     const ctx = getAudioContext();
     const source = ctx.createBufferSource();
     source.buffer = buffer;
-    source.playbackRate.value = rate > 0 ? rate : 1;
+    source.playbackRate.value = safeRate;
     source.connect(ctx.destination);
     source.onended = finish;
     currentSource = source;
@@ -239,6 +320,7 @@ function playBuffer(buffer: AudioBuffer, rate: number, generation: number): Prom
     try {
       source.start(0);
     } catch (err) {
+      window.clearTimeout(watchdog);
       if (currentSource === source) currentSource = null;
       reject(err instanceof Error ? err : new Error(String(err)));
     }
@@ -255,6 +337,7 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
   const generation = playGeneration;
   stopRequested = true;
   haltCurrentSource();
+  stopKeepAlive();
   stopRequested = false;
 
   setError(null);
@@ -281,10 +364,16 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
     return;
   }
 
+  startKeepAlive();
   prefetchAround(queue, 0);
 
   let played = 0;
   try {
+    // Warm first clips so terça–domingo (sem cache) não suspendem no 1º gap
+    await warmInitial(queue, generation, Math.min(8, queue.length));
+    if (stopRequested || generation !== playGeneration) return;
+    await ensureUnlocked();
+
     for (let i = 0; i < queue.length; i += 1) {
       if (stopRequested || generation !== playGeneration) return;
 
@@ -299,12 +388,14 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
       } catch (err) {
         const detail = err instanceof Error ? err.message : "erro";
         setError(`Clip pulado (${queue[i].label ?? i}): ${detail}`);
+        await ensureUnlocked();
       }
     }
     if (played > 0) setError(null);
     if (played === 0) setError("Nenhum clip tocou. Toque Play de novo.");
   } finally {
     if (generation === playGeneration) {
+      stopKeepAlive();
       setSpeaking(false);
       setLineIndex(-1);
     }
@@ -333,6 +424,10 @@ export const frenchSpeech = {
       "/french-audio/week01/fr-58c185a735ce.mp3"
     );
   },
+  /** Quantos clips o dia vai enfileirar (útil para diagnóstico). */
+  countQueue(lines: ScriptLine[]) {
+    return buildQueue(lines, 1).length;
+  },
   subscribe(listener: Listener) {
     listeners.add(listener);
     listener(getState());
@@ -355,6 +450,7 @@ export const frenchSpeech = {
     stopRequested = true;
     playGeneration += 1;
     haltCurrentSource();
+    stopKeepAlive();
     setSpeaking(false);
     setLineIndex(-1);
   },

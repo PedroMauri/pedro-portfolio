@@ -18,6 +18,7 @@ import {
 import { frenchStudyGoal, tefNclc7Scores } from "@/content/frenchStudy";
 import { ieltsEnglishScores } from "@/content/ieltsEnglish";
 import { frenchStudySeo } from "@/content/seo";
+import { frenchSpeech } from "@/lib/frenchSpeech";
 
 export default function FrenchStudy() {
   const unlocked = sessionStorage.getItem(ADMIN_STORAGE_KEY) === "1";
@@ -128,7 +129,10 @@ export default function FrenchStudy() {
             <button
               key={d.id}
               type="button"
-              onClick={() => setDayId(d.id)}
+              onClick={() => {
+                frenchSpeech.stop();
+                setDayId(d.id);
+              }}
               className={`shrink-0 rounded-full border px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                 active
                   ? "border-foreground bg-foreground text-background"
