@@ -6,8 +6,7 @@ export type DocKind =
   | "identity"
   | "status"
   | "education"
-  | "work"
-  | "forms";
+  | "work";
 
 export type RegistryDoc = {
   id: string;
@@ -26,7 +25,6 @@ export const DOC_KIND_LABELS: Record<DocKind, string> = {
   status: "Status & permits",
   education: "Education",
   work: "Work",
-  forms: "Forms",
 };
 
 /** Kind display order on person pages. */
@@ -36,7 +34,6 @@ export const DOC_KIND_ORDER: DocKind[] = [
   "status",
   "education",
   "work",
-  "forms",
 ];
 
 const CURRENT_STATUS_EXPIRY = "2026-11-17";
@@ -165,13 +162,6 @@ export const DOCUMENTS_REGISTRY: RegistryDoc[] = [
     kind: "status",
     superseded: true,
     note: "Replaced by Nov 2025 extension",
-  },
-  {
-    id: "pedro-imm5476",
-    person: "pedro",
-    label: "IMM 5476",
-    href: "/documents/people/pedro/imm5476.pdf",
-    kind: "forms",
   },
   {
     id: "pedro-birth",
@@ -350,13 +340,6 @@ export const DOCUMENTS_REGISTRY: RegistryDoc[] = [
     superseded: true,
   },
   {
-    id: "caroline-imm5476",
-    person: "caroline",
-    label: "IMM 5476",
-    href: "/documents/people/caroline/imm5476.pdf",
-    kind: "forms",
-  },
-  {
     id: "caroline-birth",
     person: "caroline",
     label: "Birth certificate",
@@ -456,13 +439,6 @@ export const DOCUMENTS_REGISTRY: RegistryDoc[] = [
     kind: "identity",
   },
   {
-    id: "davi-imm5476",
-    person: "davi",
-    label: "IMM 5476",
-    href: "/documents/people/davi/imm5476.pdf",
-    kind: "forms",
-  },
-  {
     id: "davi-learner",
     person: "davi",
     label: "Education forms — Learner Support Plan",
@@ -539,13 +515,6 @@ export const DOCUMENTS_REGISTRY: RegistryDoc[] = [
     label: "Birth certificate",
     href: "/documents/people/henry/birth-certificate.pdf",
     kind: "identity",
-  },
-  {
-    id: "henry-imm5476",
-    person: "henry",
-    label: "IMM 5476",
-    href: "/documents/people/henry/imm5476.pdf",
-    kind: "forms",
   },
   {
     id: "henry-learner",
