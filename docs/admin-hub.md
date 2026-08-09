@@ -23,6 +23,8 @@ Not linked in public navigation. `noindex` + robots disallow.
 | Express Entry | `/immigration/express-entry` |
 | AAIP | `/immigration/aaip` |
 
+AAIP holds an **expired** profile snapshot (pathway, NOC, work permit, EE number/CRS, education, language, job offer) for the next Worker EOI. Portal username is on the page; **portal password is not stored on this site** (use a password manager).
+
 ## Private portfolio shares
 
 | Company | Path | Notes |

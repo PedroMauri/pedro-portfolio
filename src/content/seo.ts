@@ -187,6 +187,15 @@ export const immigrationSeo: SeoPage = {
   noindex: true,
 };
 
+export const aaipSeo: SeoPage = {
+  path: "/immigration/aaip",
+  title: `AAIP | Immigration | ${profile.name}`,
+  description: "Private AAIP profile snapshot for the next Worker EOI.",
+  image: DEFAULT_OG_IMAGE,
+  type: "website",
+  noindex: true,
+};
+
 export function getCaseSeo(slug: string): SeoPage | undefined {
   const caseStudy = cases.find((item) => item.slug === slug);
   return caseStudy ? casePage(caseStudy) : undefined;

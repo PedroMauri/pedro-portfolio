@@ -4,6 +4,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageLayout } from "@/components/layout/PageLayout";
 import About from "@/pages/About";
 import Admin from "@/pages/Admin";
+import Aaip from "@/pages/Aaip";
 import CaseStudies from "@/pages/CaseStudies";
 import CaseStudyPage from "@/pages/CaseStudy";
 import FrenchStudy from "@/pages/FrenchStudy";
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/share/kanopi" element={<KanopiShare />} />
           <Route path="/study/french" element={<FrenchStudy />} />
           <Route path="/immigration" element={<Immigration />} />
+          <Route path="/immigration/aaip" element={<Aaip />} />
           <Route path="/immigration/:slug" element={<ImmigrationFolder />} />
           <Route path="/case-studies" element={<Navigate to="/projects" replace />} />
           <Route path="/case-studies/:slug" element={<LegacyProjectsRedirect />} />
