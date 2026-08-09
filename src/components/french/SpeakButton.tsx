@@ -16,6 +16,9 @@ export function DayPlayButton({ lines, label = "Play — lição completa do dia
     <div className="space-y-2">
       <button
         type="button"
+        onPointerDown={() => {
+          void frenchSpeech.warmUp();
+        }}
         onClick={() => toggleDay(lines)}
         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:w-auto"
       >

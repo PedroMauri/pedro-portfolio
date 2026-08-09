@@ -3,15 +3,13 @@ import { resolveCourseAudioUrl } from "@/content/frenchCourse/audioClips";
 import type { ScriptLine } from "@/content/frenchCourse";
 
 /**
- * Player contínuo (mobile + desktop).
+ * Player contínuo (mobile + desktop) via Web Audio API.
  *
- * Regras (manter nas próximas semanas):
- * - UM HTMLAudioElement para a lição inteira (nunca new Audio() por clip).
- * - Após trocar src: esperar canplay/loadeddata e só então play().
- * - Nunca prefetch com outro `new Audio()` — no mobile isso derruba a sessão
- *   e a sequência para (ex.: depois de “…forma educada”).
- * - Sem delays longos entre clips.
- * - Falha de um clip: tenta de novo 1×; se falhar, segue para o próximo.
+ * Porquê Web Audio (não HTMLAudioElement + trocar src):
+ * - No iOS/Safari, após o 1º clip, trocar `audio.src` e chamar `play()` de novo
+ *   perde o unlock do gesto do utilizador → silêncio após a 1ª frase longa
+ *   (ex.: “…forma educada”) e a fila para.
+ * - AudioContext desbloqueado no toque + BufferSource em sequência não tem esse bug.
  */
 
 type SpeakOptions = { rate?: number };
@@ -32,6 +30,8 @@ type QueueItem = {
   label?: string;
 };
 
+type AudioContextCtor = typeof AudioContext;
+
 const listeners = new Set<Listener>();
 let speaking = false;
 let lastError: string | null = null;
@@ -39,8 +39,10 @@ let engine: string | null = null;
 let lineIndex = -1;
 let stopRequested = false;
 let playGeneration = 0;
-let settleActiveClip: (() => void) | null = null;
-let sharedAudio: HTMLAudioElement | null = null;
+let audioCtx: AudioContext | null = null;
+let currentSource: AudioBufferSourceNode | null = null;
+let unlockStarted = false;
+const bufferCache = new Map<string, Promise<AudioBuffer>>();
 let cachedState: SpeechState = {
   speaking: false,
   error: null,
@@ -111,34 +113,59 @@ function chunkText(text: string, max = 160): string[] {
   return parts;
 }
 
-function getSharedAudio(): HTMLAudioElement {
-  if (!sharedAudio) {
-    const audio = new Audio();
-    audio.preload = "auto";
-    audio.playsInline = true;
-    audio.setAttribute("playsinline", "true");
-    audio.setAttribute("webkit-playsinline", "true");
-    sharedAudio = audio;
-  }
-  return sharedAudio;
+function getAudioContextCtor(): AudioContextCtor | null {
+  if (typeof window === "undefined") return null;
+  const w = window as Window & { webkitAudioContext?: AudioContextCtor };
+  return window.AudioContext ?? w.webkitAudioContext ?? null;
 }
 
-function haltCurrentAudio() {
-  if (settleActiveClip) {
-    const settle = settleActiveClip;
-    settleActiveClip = null;
-    settle();
+function getAudioContext(): AudioContext {
+  const Ctor = getAudioContextCtor();
+  if (!Ctor) throw new Error("Web Audio não suportado neste browser.");
+  if (!audioCtx || audioCtx.state === "closed") {
+    audioCtx = new Ctor();
+    unlockStarted = false;
   }
-  if (sharedAudio) {
-    try {
-      sharedAudio.onended = null;
-      sharedAudio.onerror = null;
-      sharedAudio.oncanplay = null;
-      sharedAudio.onloadeddata = null;
-      sharedAudio.pause();
-    } catch {
-      /* ignore */
+  return audioCtx;
+}
+
+/** Tem de correr no gesto do utilizador (pointerdown/click), sem awaits antes. */
+function kickUnlock() {
+  try {
+    const ctx = getAudioContext();
+    if (ctx.state === "suspended") {
+      void ctx.resume();
     }
+    if (!unlockStarted) {
+      unlockStarted = true;
+      const silent = ctx.createBuffer(1, 1, ctx.sampleRate || 22050);
+      const src = ctx.createBufferSource();
+      src.buffer = silent;
+      src.connect(ctx.destination);
+      src.start(0);
+    }
+  } catch {
+    /* ignore — playScript reporta erro se falhar de verdade */
+  }
+}
+
+async function ensureUnlocked() {
+  kickUnlock();
+  const ctx = getAudioContext();
+  if (ctx.state === "suspended") {
+    await ctx.resume();
+  }
+}
+
+function haltCurrentSource() {
+  if (currentSource) {
+    try {
+      currentSource.onended = null;
+      currentSource.stop(0);
+    } catch {
+      /* already stopped */
+    }
+    currentSource = null;
   }
 }
 
@@ -146,8 +173,7 @@ function buildQueue(lines: ScriptLine[], playbackRate: number): QueueItem[] {
   const queue: QueueItem[] = [];
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    // Keep rate at 1 on short FR clips for mobile stability; slight nudge only for PT
-    const rate = line.lang === "pt" ? Math.min(1.02, playbackRate) : 1;
+    const rate = playbackRate;
     for (const chunk of chunkText(line.text)) {
       const url = lookupClip(line.lang, chunk);
       if (!url) {
@@ -160,120 +186,63 @@ function buildQueue(lines: ScriptLine[], playbackRate: number): QueueItem[] {
   return queue;
 }
 
-function waitForCanPlay(audio: HTMLAudioElement, generation: number): Promise<void> {
+function loadBuffer(url: string): Promise<AudioBuffer> {
+  const existing = bufferCache.get(url);
+  if (existing) return existing;
+
+  const promise = (async () => {
+    const res = await fetch(url, { credentials: "omit", cache: "force-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status} ao carregar áudio`);
+    const raw = await res.arrayBuffer();
+    // Safari needs a detachable copy for decodeAudioData
+    const copy = raw.slice(0);
+    const ctx = getAudioContext();
+    return await ctx.decodeAudioData(copy);
+  })();
+
+  bufferCache.set(url, promise);
+  promise.catch(() => {
+    bufferCache.delete(url);
+  });
+  return promise;
+}
+
+function prefetchAround(queue: QueueItem[], index: number) {
+  for (let j = index; j < Math.min(queue.length, index + 3); j += 1) {
+    void loadBuffer(queue[j].url).catch(() => undefined);
+  }
+}
+
+function playBuffer(buffer: AudioBuffer, rate: number, generation: number): Promise<void> {
   return new Promise((resolve, reject) => {
     if (stopRequested || generation !== playGeneration) {
       resolve();
       return;
     }
-    if (audio.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
-      resolve();
-      return;
-    }
 
-    const timer = window.setTimeout(() => {
-      cleanup();
-      // Proceed anyway — some mobile browsers never fire canplay reliably
-      resolve();
-    }, 8000);
-
-    const onReady = () => {
-      cleanup();
-      resolve();
-    };
-    const onError = () => {
-      cleanup();
-      reject(new Error("Falha ao carregar áudio"));
-    };
-    const cleanup = () => {
-      window.clearTimeout(timer);
-      audio.removeEventListener("canplay", onReady);
-      audio.removeEventListener("loadeddata", onReady);
-      audio.removeEventListener("error", onError);
-    };
-
-    audio.addEventListener("canplay", onReady);
-    audio.addEventListener("loadeddata", onReady);
-    audio.addEventListener("error", onError);
-  });
-}
-
-async function playClipOnShared(item: QueueItem, generation: number, attempt = 1): Promise<void> {
-  if (stopRequested || generation !== playGeneration) return;
-
-  const audio = getSharedAudio();
-
-  await new Promise<void>((resolve, reject) => {
     let settled = false;
-
-    const finish = (fn: () => void) => {
+    const finish = () => {
       if (settled) return;
       settled = true;
-      if (settleActiveClip === finishOk) settleActiveClip = null;
-      audio.onended = null;
-      audio.onerror = null;
-      fn();
+      if (currentSource === source) currentSource = null;
+      resolve();
     };
-    const finishOk = () => finish(resolve);
-    const finishErr = (err: Error) => finish(() => reject(err));
 
-    settleActiveClip = finishOk;
-    setLineIndex(item.lineIndex);
+    const ctx = getAudioContext();
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.playbackRate.value = rate > 0 ? rate : 1;
+    source.connect(ctx.destination);
+    source.onended = finish;
+    currentSource = source;
 
-    void (async () => {
-      try {
-        audio.onended = null;
-        audio.onerror = null;
-        audio.pause();
-
-        audio.playbackRate = item.rate;
-        audio.volume = 1;
-        audio.muted = false;
-        audio.src = item.url;
-        audio.load();
-
-        await waitForCanPlay(audio, generation);
-        if (stopRequested || generation !== playGeneration) {
-          finishOk();
-          return;
-        }
-
-        audio.onended = () => finishOk();
-        audio.onerror = () => finishErr(new Error("Falha ao tocar áudio"));
-
-        try {
-          await audio.play();
-        } catch (err) {
-          const name = err instanceof DOMException ? err.name : "";
-          // AbortError is common when src changes mid-load on mobile — retry once
-          if ((name === "AbortError" || name === "NotAllowedError") && attempt < 2) {
-            finish(() => {
-              void playClipOnShared(item, generation, attempt + 1).then(resolve, reject);
-            });
-            return;
-          }
-          const message =
-            name === "NotAllowedError"
-              ? "O celular bloqueou a sequência. Toque Play de novo e deixe tocar até o fim."
-              : err instanceof Error
-                ? err.message
-                : String(err);
-          finishErr(new Error(message));
-        }
-      } catch (err) {
-        finishErr(err instanceof Error ? err : new Error(String(err)));
-      }
-    })();
+    try {
+      source.start(0);
+    } catch (err) {
+      if (currentSource === source) currentSource = null;
+      reject(err instanceof Error ? err : new Error(String(err)));
+    }
   });
-}
-
-/** Warm HTTP cache without creating a competing Audio element (mobile-safe). */
-function prefetchUrl(url: string) {
-  try {
-    void fetch(url, { mode: "cors", credentials: "omit", cache: "force-cache" }).catch(() => undefined);
-  } catch {
-    /* ignore */
-  }
 }
 
 async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
@@ -285,17 +254,24 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
   playGeneration += 1;
   const generation = playGeneration;
   stopRequested = true;
-  haltCurrentAudio();
+  haltCurrentSource();
   stopRequested = false;
 
-  getSharedAudio();
-
   setError(null);
-  setEngine("local-mp3");
+  setEngine("web-audio");
   setSpeaking(true);
   setLineIndex(0);
 
-  const playbackRate = (options.rate ?? 1) <= 0.85 ? 0.9 : 1;
+  try {
+    await ensureUnlocked();
+  } catch (err) {
+    setError(err instanceof Error ? err.message : "Não foi possível iniciar o áudio.");
+    setSpeaking(false);
+    setLineIndex(-1);
+    return;
+  }
+
+  const playbackRate = (options.rate ?? 1) <= 0.85 ? 0.92 : 1;
   const queue = buildQueue(lines, playbackRate);
 
   if (queue.length === 0) {
@@ -305,26 +281,28 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
     return;
   }
 
-  // Prefetch first few via fetch only (not Audio)
-  queue.slice(0, 4).forEach((item) => prefetchUrl(item.url));
+  prefetchAround(queue, 0);
 
   let played = 0;
   try {
     for (let i = 0; i < queue.length; i += 1) {
       if (stopRequested || generation !== playGeneration) return;
-      if (i + 1 < queue.length) prefetchUrl(queue[i + 1].url);
+
+      setLineIndex(queue[i].lineIndex);
+      prefetchAround(queue, i + 1);
 
       try {
-        await playClipOnShared(queue[i], generation);
+        const buffer = await loadBuffer(queue[i].url);
+        if (stopRequested || generation !== playGeneration) return;
+        await playBuffer(buffer, queue[i].rate, generation);
         played += 1;
       } catch (err) {
-        // Don't kill the whole day on one bad clip — continue
         const detail = err instanceof Error ? err.message : "erro";
         setError(`Clip pulado (${queue[i].label ?? i}): ${detail}`);
-        if (attemptShouldStop(detail)) return;
       }
     }
     if (played > 0) setError(null);
+    if (played === 0) setError("Nenhum clip tocou. Toque Play de novo.");
   } finally {
     if (generation === playGeneration) {
       setSpeaking(false);
@@ -333,17 +311,13 @@ async function playScript(lines: ScriptLine[], options: SpeakOptions = {}) {
   }
 }
 
-function attemptShouldStop(detail: string) {
-  return detail.includes("bloqueou a sequência");
-}
-
 export const frenchSpeech = {
   getState,
   isSpeaking() {
     return speaking;
   },
   isSupported() {
-    return typeof window !== "undefined" && typeof Audio !== "undefined";
+    return getAudioContextCtor() !== null;
   },
   lookupClip,
   testScript(): ScriptLine[] {
@@ -370,6 +344,7 @@ export const frenchSpeech = {
     await playScript(lines, options);
   },
   toggleDay(lines: ScriptLine[]) {
+    kickUnlock();
     if (speaking) {
       frenchSpeech.stop();
       return;
@@ -379,13 +354,16 @@ export const frenchSpeech = {
   stop() {
     stopRequested = true;
     playGeneration += 1;
-    haltCurrentAudio();
+    haltCurrentSource();
     setSpeaking(false);
     setLineIndex(-1);
   },
   async warmUp() {
-    if (typeof window !== "undefined") {
-      getSharedAudio();
+    kickUnlock();
+    try {
+      await ensureUnlocked();
+    } catch {
+      /* ignore */
     }
   },
 };
