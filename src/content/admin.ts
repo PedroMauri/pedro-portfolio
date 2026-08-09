@@ -7,6 +7,8 @@ export const ADMIN_PATH = "/admin";
 export const PRIVATE_PORTFOLIO_PATH = "/admin/private-portfolio";
 export const FRENCH_STUDY_PATH = "/study/french";
 export const IMMIGRATION_PATH = "/immigration";
+export const EXPRESS_ENTRY_PATH = "/immigration/express-entry";
+export const AAIP_PATH = "/immigration/aaip";
 
 export type AdminLink = {
   to: string;
@@ -22,6 +24,20 @@ export const PRIVATE_PORTFOLIO_SHARES: AdminLink[] = [
     to: "/share/kanopi",
     label: "Kanopi",
     description: "Contract Senior UX/UI Designer — written responses and process",
+  },
+];
+
+/** Immigration program folders. */
+export const IMMIGRATION_FOLDERS: AdminLink[] = [
+  {
+    to: EXPRESS_ENTRY_PATH,
+    label: "Express Entry",
+    description: "Federal Express Entry notes and materials",
+  },
+  {
+    to: AAIP_PATH,
+    label: "AAIP",
+    description: "Alberta Advantage Immigration Program notes and materials",
   },
 ];
 
