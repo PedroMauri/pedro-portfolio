@@ -1,7 +1,9 @@
 ﻿import { Analytics } from "@vercel/analytics/react";
-import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageLayout } from "@/components/layout/PageLayout";
+import { isMaintenanceDisabled, isMaintenanceExemptRoute } from "@/lib/maintenance-mode.mjs";
 import About from "@/pages/About";
 import Admin from "@/pages/Admin";
 import Aaip from "@/pages/Aaip";
@@ -17,6 +19,7 @@ import IeltsEnglish from "@/pages/IeltsEnglish";
 import Immigration from "@/pages/Immigration";
 import ImmigrationFolder from "@/pages/ImmigrationFolder";
 import KanopiShare from "@/pages/KanopiShare";
+import Maintenance from "@/pages/Maintenance";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import PrivatePortfolio from "@/pages/PrivatePortfolio";
@@ -29,10 +32,19 @@ function LegacyProjectsRedirect() {
   return <Navigate to={slug ? `/projects/${slug}` : "/projects"} replace />;
 }
 
-export default function App() {
+/** On unless VITE_MAINTENANCE_MODE is 0, false, off, or no. See docs/maintenance-mode.md. */
+const maintenanceMode = !isMaintenanceDisabled(import.meta.env.VITE_MAINTENANCE_MODE);
+
+function RoutedShell() {
+  const { pathname } = useLocation();
+
+  if (maintenanceMode && !isMaintenanceExemptRoute(pathname)) {
+    return <Maintenance />;
+  }
+
   return (
-    <BrowserRouter>
-      <ScrollToTop />
+    <>
+      <Helmet htmlAttributes={{ lang: "en" }} />
       <PageLayout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -81,6 +93,15 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </PageLayout>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <RoutedShell />
       <Analytics />
     </BrowserRouter>
   );

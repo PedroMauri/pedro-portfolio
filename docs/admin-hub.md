@@ -3,6 +3,8 @@
 URL: https://pedromauri.com/admin  
 Password: `pedrodm123`
 
+While maintenance mode is on, the public portfolio shows a holding page. Admin and the private areas linked from here stay available. See [maintenance-mode.md](./maintenance-mode.md).
+
 Optional override in Vercel: `VITE_ADMIN_PASSWORD`
 
 Not linked in public navigation. `noindex` + robots disallow.
